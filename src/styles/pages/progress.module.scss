@@ -1,0 +1,35 @@
+.article {
+  padding: 2rem;
+  &_title {
+    font-family: fantasy;
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 2rem;
+  }
+  &_row {
+    margin: 0;
+    justify-content: center;
+  }
+  &_col {
+    padding: 2rem;
+    @media (max-width: 500px) {
+      padding: 20px 0;
+    }
+    h4 {
+      font-size: 36px;
+    }
+    p {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    &_image {
+      border-radius: 14px;
+      transition: filter 0.3s;
+      &:hover {
+        filter: brightness(0.7);
+        transition: filter 0.3s;
+        cursor: pointer;
+      }
+    }
+  }
+}

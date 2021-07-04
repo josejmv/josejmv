@@ -1,0 +1,19 @@
+.button {
+  border: none;
+  font-weight: 500;
+  &_icon {
+    animation: move 0.8s linear infinite;
+
+    @keyframes move {
+      0% {
+        transform: translateX(-5px);
+      }
+      50% {
+        transform: translateX(5px);
+      }
+      100% {
+        transform: translateX(-5px);
+      }
+    }
+  }
+}

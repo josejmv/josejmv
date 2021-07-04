@@ -16,3 +16,9 @@ export type ModalType = {
   show: boolean
   setShow: Dispatch<SetStateAction<boolean>>
 }
+
+export type NextButtonType = {
+  href: string
+  text?: string
+  variant?: string
+}

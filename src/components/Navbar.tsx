@@ -24,8 +24,11 @@ export const Navbar: FC<{ attributes: navbarAttributesType }> = ({
     <BNavbar.Toggle aria-controls='responsive-navbar-nav' />
     <BNavbar.Collapse id='responsive-navbar-nav'>
       <Nav>
-        <Link passHref href='#'>
-          <Nav.Link>Sobre mi</Nav.Link>
+        <Link passHref href='/progress'>
+          <Nav.Link>Mi progreso</Nav.Link>
+        </Link>
+        <Link passHref href='/projects'>
+          <Nav.Link>Mis proyectos</Nav.Link>
         </Link>
         <Link passHref href='/contact'>
           <Nav.Link>Contacto</Nav.Link>

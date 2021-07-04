@@ -1,13 +1,12 @@
 // next components
 import Image from 'next/image'
-import Link from 'next/link'
 
 // bootstrap components
-import { Card, Row, Col, Button } from 'react-bootstrap'
-import { ChevronDoubleRight } from 'react-bootstrap-icons'
+import { Card, Row, Col } from 'react-bootstrap'
 
 // components
 import { Layout } from 'components/Layout'
+import { NextRight } from 'components/atoms'
 
 // styles
 import styles from 'styles/home.module.scss'
@@ -26,10 +25,14 @@ const Home: FC = () => (
       />
       <Card.ImgOverlay className={styles.card_overlay}>
         <Row className='justify-content-center'>
-          <Col className='mb-5' md={6}>
-            <h1>Hola, mi nombre es Jose Vasquez</h1>
-            <h2>Soy desarrollador web</h2>
-            <p>
+          <Col className='mb-lg-5' sm={12} md={10} lg={8}>
+            <h1 className={styles.card_overlay_title}>
+              Hola, mi nombre es Jose Vasquez
+            </h1>
+            <h2 className={styles.card_overlay_subtitle}>
+              Soy desarrollador web
+            </h2>
+            <p className={styles.card_overlay_description}>
               Me fascinan todos los ambitos de la programacion, backend,
               frontend, devops, data science y demas, actualmente mi fuerte se
               basa en frontend pero quiero seguir expandiendo mis conocimientos
@@ -37,12 +40,12 @@ const Home: FC = () => (
               favoritas
             </p>
           </Col>
-          <Col className='mb-5' md={12}>
-            <h3>
+          <Col className='mb-lg-5 mb-md-2' md={12}>
+            <h3 className={styles.card_overlay_subtitle}>
               Actualmente mi experiencia se basa en las siguientes herramientas
             </h3>
             <Row className='mt-5'>
-              <Col md={3}>
+              <Col xs={3}>
                 <Image
                   className={styles.card_overlay_logo_invert}
                   src='/logos/nextjs.svg'
@@ -51,7 +54,7 @@ const Home: FC = () => (
                   alt='next.js logo'
                 />
               </Col>
-              <Col md={3}>
+              <Col xs={3}>
                 <Image
                   className={styles.card_overlay_logo}
                   src='/logos/nodejs.svg'
@@ -60,7 +63,7 @@ const Home: FC = () => (
                   alt='node.js logo'
                 />
               </Col>
-              <Col md={3}>
+              <Col xs={3}>
                 <Image
                   className={styles.card_overlay_logo}
                   src='/logos/symfony.svg'
@@ -69,7 +72,7 @@ const Home: FC = () => (
                   alt='symfony logo'
                 />
               </Col>
-              <Col md={3}>
+              <Col xs={3}>
                 <Image
                   className={styles.card_overlay_logo}
                   src='/logos/wordpress.svg'
@@ -81,17 +84,9 @@ const Home: FC = () => (
             </Row>
           </Col>
           <Col md={12}>
-            <Link passHref href='#'>
-              <Button
-                as='a'
-                className={styles.card_overlay_next}
-                variant='outline-light'
-                size='lg'
-              >
-                Echa un vistazo a mis proyectos realizados{' '}
-                <ChevronDoubleRight className={styles.card_overlay_next_icon} />
-              </Button>
-            </Link>
+            <NextRight href='/progress'>
+              Echa un vistazo a mi progreso
+            </NextRight>
           </Col>
         </Row>
       </Card.ImgOverlay>
