@@ -2,45 +2,52 @@
 
 .card {
   border: none !important;
-
   &_background {
-    filter: brightness(0.4) grayscale(1) contrast(0.8);
+    filter: brightness(0.6) grayscale(1);
     border-radius: 0;
     width: 100vw;
     height: 100vh;
     object-fit: cover;
+    @media (max-width: 500px) {
+      height: 102vh;
+    }
+    @media (max-width: 410px) {
+      height: 112vh;
+    }
   }
   &_overlay {
+    padding-top: 6rem;
     height: 100%;
-    display: flex;
-    align-items: center;
     text-align: center;
-    color: $white;
-
-    &_logo {
-      filter: grayscale(1) brightness(2);
-      transition: filter 0.3s;
-      &_invert {
-        filter: invert(1);
-      }
-      &:hover {
-        filter: grayscale(0);
-        transition: filter 0.3s;
-      }
-    }
-
     @media (max-width: 500px) {
-      align-items: flex-end;
+      padding-top: 3rem;
     }
-    @media (max-width: 900px) {
-      &_title {
-        font-size: 28px;
+    &_body {
+      color: $white;
+      &_logo {
+        filter: grayscale(1) brightness(2);
+        transition: filter 0.3s;
+        &_invert {
+          filter: invert(1);
+        }
+        &:hover {
+          filter: grayscale(0);
+          transition: filter 0.3s;
+        }
       }
-      &_subtitle {
-        font-size: 20px;
+      @media (max-width: 500px) {
+        align-items: flex-end;
       }
-      &_description {
-        font-size: 16px;
+      @media (max-width: 900px) {
+        &_title {
+          font-size: 28px;
+        }
+        &_subtitle {
+          font-size: 20px;
+        }
+        &_description {
+          font-size: 16px;
+        }
       }
     }
   }
