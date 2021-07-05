@@ -27,9 +27,9 @@ export const Navbar: FC<{ attributes: navbarAttributesType }> = ({
         <Link passHref href='/progress'>
           <Nav.Link>Mi progreso</Nav.Link>
         </Link>
-        <Link passHref href='/projects'>
-          <Nav.Link>Mis proyectos</Nav.Link>
-        </Link>
+        {/* <Link passHref href='/blog'>
+          <Nav.Link>Blog</Nav.Link>
+        </Link> */}
         <Link passHref href='/contact'>
           <Nav.Link>Contacto</Nav.Link>
         </Link>

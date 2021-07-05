@@ -70,9 +70,7 @@ export const Centria: FC = () => {
             ))}
           </Carousel>
         </Col>
-        <NextRight href='/projects'>
-          Mira los proyectos que he realizado
-        </NextRight>
+        {/* <NextRight href='/blog'>Echa un vistazo a mi blog</NextRight> */}
       </Row>
       <ReactViewer
         noNavbar
