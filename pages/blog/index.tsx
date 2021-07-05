@@ -7,12 +7,12 @@ import styles from 'styles/home.module.scss'
 // types
 import type { FC } from 'react'
 
-const Projects: FC = () => (
+const Blog: FC = () => (
   <Layout>
     <div className={styles.container}>
-      <h1>Proyectos 😀</h1>
+      <h1>Blog en construccion 😀</h1>
     </div>
   </Layout>
 )
 
-export default Projects
+export default Blog

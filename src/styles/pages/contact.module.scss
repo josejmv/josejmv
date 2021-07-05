@@ -1,0 +1,13 @@
+.rrss {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  text-decoration: none;
+  width: fit-content;
+  transition: transform 0.5s;
+  &:hover {
+    text-decoration: none;
+    transform: scale(1.05);
+    transition: transform 0.3s;
+  }
+}
