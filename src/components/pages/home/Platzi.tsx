@@ -50,9 +50,10 @@ export const Platzi: FC = () => {
           </p>
           <p>
             Altamente recomendada la adquisicion de una membresía en platzi para
-            poder tener acceso a sus cursos, en esta plataforma hay una gran
+            poder tener acceso a su contenido, en esta plataforma hay una gran
             cantidad de cursos de muy alto nivel y de muchas areas
           </p>
+          <i>Nunca pares de aprender!</i>
         </Col>
         <Col className={styles.article_col} xs={12} md={6}>
           <Row className={styles.article_row}>

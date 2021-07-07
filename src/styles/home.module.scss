@@ -5,23 +5,16 @@
   &_background {
     filter: brightness(0.6) grayscale(1);
     border-radius: 0;
-    width: 100vw;
     height: 100vh;
     object-fit: cover;
     @media (max-width: 500px) {
-      height: 102vh;
-    }
-    @media (max-width: 410px) {
-      height: 112vh;
+      height: 130vh;
+      object-fit: cover;
     }
   }
   &_overlay {
     padding-top: 6rem;
-    height: 100%;
     text-align: center;
-    @media (max-width: 500px) {
-      padding-top: 3rem;
-    }
     &_body {
       color: $white;
       &_logo {
@@ -34,9 +27,6 @@
           filter: grayscale(0);
           transition: filter 0.3s;
         }
-      }
-      @media (max-width: 500px) {
-        align-items: flex-end;
       }
       @media (max-width: 900px) {
         &_title {
