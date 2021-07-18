@@ -32,7 +32,9 @@ export const SeoContenidos: FC = () => {
 
   return (
     <article className={styles.article}>
-      <h2 className={styles.article_title}>Seo Contenidos</h2>
+      <h2 className={styles.article_title}>
+        Seo Contenidos <p>Agencia de marketing digital</p>
+      </h2>
       <Row className={styles.article_row}>
         <Col className={styles.article_col} xs={12} md={6}>
           <Carousel fade pause={false} interval={2000}>
@@ -51,24 +53,21 @@ export const SeoContenidos: FC = () => {
           </Carousel>
         </Col>
         <Col className={styles.article_col} xs={12} md={6}>
-          <h4>
-            Comence a trabajar en Seo Contenidos: Agencia de marketing digital
-            en 2020
-          </h4>
+          <h4>Comence a trabajar en Seo Contenidos en 2020</h4>
           <p>
             Desempeñandome en el area de programacion y desarrollo web, obtuve
             mi primer trabajo en seo contenidos, el cual estuvo lleno de muchas
-            experiencias llenas de aprendizajes, estres, satisfacciones y por
-            sobre todo muchas amistades y buenos recuerdos
+            experiencias de aprendizajes, estres, satisfacciones y por sobre
+            todo muchas amistades y buenos recuerdos
           </p>
           <p>
             Dure alrededor de 1 año y 2 meses trabajando en Seo Contenidos, en
             donde tambien me desempeñe como lider del equipo de programacion
             durante unos 3 meses aproximadamente, en dicha labor comprendi
-            tambien muchos aspectos mas ademas de solo escribir codigo, aprendi
-            como manegar y gestionar un proyecto, como organizarlo y como
-            calcular las tareas, la dificultad y el tiempo de ejecucion de las
-            mismas, basandome en la metodologia SCRUM
+            tambien muchos aspectos ademas de solo escribir codigo, aprendi como
+            manegar y gestionar un proyecto, como organizarlo y como calcular
+            las tareas, la dificultad y el tiempo de ejecucion de las mismas,
+            basandome en la metodologia SCRUM
           </p>
         </Col>
       </Row>

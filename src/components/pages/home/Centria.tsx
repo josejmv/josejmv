@@ -48,7 +48,7 @@ export const Centria: FC = () => {
           </p>
           <p>
             Junto con todo el equipo de programacion siento que mis habilidades
-            han ido mejorando mucho, y a su vez mi aporte a la empresa ha sudo
+            han ido mejorando mucho, y a su vez mi aporte a la empresa ha sido
             muy bien recibido, colaborando para dar siempre lo mejor para poder
             salir adelante como equipo y dar soluciones optimas y acertadas ante
             cualquier inconveniente o modulo nuevo
