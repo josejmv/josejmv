@@ -1,0 +1,44 @@
+@import 'styles/variables.scss';
+
+.footer {
+  padding-block: 1rem;
+  background: rgba($white, 0.15);
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .label {
+      margin-inline: 0.4rem;
+      font-size: $small-size;
+    }
+    .icon {
+      filter: invert(1);
+    }
+    .divider {
+      &::before {
+        top: 0.8em;
+        height: 50%;
+        border-color: $white;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .footer {
+    background: rgba($black, 0.05);
+
+    .content {
+      .icon {
+        filter: invert(0);
+      }
+      .divider {
+        &::before {
+          border-color: $black;
+        }
+      }
+    }
+  }
+}

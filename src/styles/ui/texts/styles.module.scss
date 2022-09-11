@@ -1,0 +1,30 @@
+@import 'styles/variables.scss';
+
+.title {
+  font-size: $title-size;
+  @media (max-width: 480px) {
+    font-size: $mobile-title-size;
+  }
+}
+.subtitle {
+  font-size: $subtitle-size;
+  @media (max-width: 480px) {
+    font-size: $mobile-subtitle-size;
+  }
+}
+.regular {
+  font-size: $regular-size;
+  @media (max-width: 480px) {
+    font-size: $mobile-regular-size;
+  }
+}
+.small {
+  font-size: $small-size;
+  @media (max-width: 480px) {
+    font-size: $mobile-small-size;
+  }
+}
+.error {
+  @extend .small;
+  font-weight: bold;
+}

@@ -1,0 +1,110 @@
+@import 'styles/variables.scss';
+@import 'styles/ui/texts/styles.module.scss';
+
+.navbar {
+  background: rgba($white, 0.15);
+  @media (max-width: 770px) {
+    background: $gray;
+  }
+
+  &_header {
+    @media (max-width: 770px) {
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+
+    .logo {
+      color: $white !important;
+      font-family: $font-oswald;
+      font-size: $title-size !important;
+
+      &:hover {
+        @extend .logo;
+      }
+      @media (max-width: 770px) {
+        margin-inline: auto;
+      }
+    }
+    .toggle {
+      :global(.navbar-toggler-icon) {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      @media (max-width: 770px) {
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+
+  .collapse {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 770px) {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .item {
+      font-size: $small-size;
+      color: $white !important;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .anchors {
+      .item {
+        margin-inline: 0.8rem;
+        @media (max-width: 770px) {
+          border-radius: 13px;
+          margin-block: 0.8rem;
+          padding-inline: 1rem;
+          border-bottom: 1px solid $white;
+        }
+      }
+    }
+    .rrss {
+      @media (max-width: 770px) {
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+
+      .item {
+        margin-inline: 0.4rem;
+      }
+    }
+  }
+}
+@media (prefers-color-scheme: light) {
+  .navbar {
+    background: rgba($black, 0.05);
+
+    .logo {
+      color: $black !important;
+    }
+    .toggle {
+      :global(.navbar-toggler-icon) {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+    }
+    .collapse {
+      .item {
+        color: $black !important;
+      }
+      .anchors {
+        .item {
+          @media (max-width: 770px) {
+            border-bottom: 1px solid $black;
+          }
+        }
+      }
+    }
+  }
+}
