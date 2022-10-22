@@ -9,9 +9,17 @@
     align-items: center;
     justify-content: center;
 
+    @media (max-width: 375px) {
+      padding: 0;
+    }
+
     .label {
       margin-inline: 0.4rem;
       font-size: $small-size;
+
+      @media (max-width: 375px) {
+        margin: 0;
+      }
     }
     .icon {
       filter: invert(1);

@@ -14,6 +14,8 @@ import Image from 'next/image'
 export const Footer: FC = () => (
   <footer className={classes.footer}>
     <Container className={classes.content}>
+      <span className={classes.label}>Made by - JoseJMV</span>
+      <Divider layout='vertical' className={classes.divider} />
       <span className={classes.label}>Powered by</span>{' '}
       <Image
         width={60}
@@ -22,8 +24,6 @@ export const Footer: FC = () => (
         src='/vercel.svg'
         className={classes.icon}
       />
-      <Divider layout='vertical' className={classes.divider} />
-      <span className={classes.label}>Made by - JoseJMV</span>
     </Container>
   </footer>
 )

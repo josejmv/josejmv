@@ -1,0 +1,63 @@
+@import '/src/styles/variables.scss';
+@import '/src/styles/ui/texts/styles.module.scss';
+@import '/src/styles/ui/buttons/styles.module.scss';
+
+.aside {
+  flex: 1;
+  display: flex;
+  background: $gray;
+  padding-block: 3rem;
+  align-items: center;
+  flex-direction: column;
+
+  .title {
+    font-weight: bold;
+    position: relative;
+    height: fit-content;
+    margin-bottom: 1rem;
+
+    &::before {
+      content: '';
+      width: 15px;
+      left: -0.5em;
+      height: 15px;
+      bottom: -0.1em;
+      border: 3px solid;
+      position: absolute;
+      border-color: transparent transparent $primary $primary;
+    }
+    &::after {
+      content: '';
+      width: 15px;
+      height: 15px;
+      border: 3px solid;
+      position: absolute;
+      border-color: $primary $primary transparent transparent;
+    }
+  }
+
+  .divider {
+    &::before {
+      width: 90%;
+      left: 0.7em;
+      border-color: $primary;
+    }
+  }
+
+  .item {
+    margin-block: 1.5rem;
+    .outline {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .rrss {
+    justify-content: space-between;
+    .item {
+      color: $white;
+    }
+  }
+}

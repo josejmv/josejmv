@@ -1,0 +1,28 @@
+@import '/src/styles/variables.scss';
+@import '/src/styles/ui/texts/styles.module.scss';
+
+.button {
+  @extend .small;
+
+  font-weight: bold;
+  border-radius: 11px;
+  padding-block: 0.5rem;
+
+  &:active,
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.outline {
+  @extend .button;
+  border: none;
+  color: $white;
+  background: transparent;
+  border-bottom: 1px solid $primary;
+
+  &:hover {
+    background: $primary;
+  }
+}

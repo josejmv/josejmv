@@ -1,5 +1,11 @@
 @import 'styles/variables.scss';
 
+.big {
+  font-size: $big-size;
+  @media (max-width: 480px) {
+    font-size: $mobile-big-size;
+  }
+}
 .title {
   font-size: $title-size;
   @media (max-width: 480px) {

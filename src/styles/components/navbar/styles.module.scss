@@ -1,110 +1,72 @@
-@import 'styles/variables.scss';
-@import 'styles/ui/texts/styles.module.scss';
+@import '/src/styles/variables.scss';
+@import '/src/styles/ui/texts/styles.module.scss';
+@import '/src/styles/ui/buttons/styles.module.scss';
 
 .navbar {
-  background: rgba($white, 0.15);
-  @media (max-width: 770px) {
-    background: $gray;
-  }
+  display: none;
+  background: $gray;
+  padding: 1rem 2rem;
 
   &_header {
-    @media (max-width: 770px) {
-      width: 100%;
-      text-align: center;
-      position: relative;
-    }
-
-    .logo {
-      color: $white !important;
-      font-family: $font-oswald;
-      font-size: $title-size !important;
-
-      &:hover {
-        @extend .logo;
-      }
-      @media (max-width: 770px) {
-        margin-inline: auto;
-      }
-    }
-    .toggle {
-      :global(.navbar-toggler-icon) {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-      }
-
-      &:focus {
-        box-shadow: none;
-      }
-
-      @media (max-width: 770px) {
-        position: absolute;
-        right: 0;
-      }
-    }
-  }
-
-  .collapse {
+    width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
-    @media (max-width: 770px) {
-      display: block;
-      margin-bottom: 0.5rem;
-    }
+    .title {
+      color: $white;
+      margin-bottom: 0;
+      font-weight: bold;
+      position: relative;
+      height: fit-content;
 
-    .item {
-      font-size: $small-size;
-      color: $white !important;
-
-      &:hover {
-        text-decoration: underline;
+      &::before {
+        content: '';
+        width: 15px;
+        left: -0.5em;
+        height: 15px;
+        bottom: -0.1em;
+        border: 3px solid;
+        position: absolute;
+        border-color: transparent transparent $primary $primary;
       }
-    }
-    .anchors {
-      .item {
-        margin-inline: 0.8rem;
-        @media (max-width: 770px) {
-          border-radius: 13px;
-          margin-block: 0.8rem;
-          padding-inline: 1rem;
-          border-bottom: 1px solid $white;
-        }
+      &::after {
+        content: '';
+        width: 15px;
+        height: 15px;
+        border: 3px solid;
+        position: absolute;
+        border-color: $primary $primary transparent transparent;
       }
-    }
-    .rrss {
-      @media (max-width: 770px) {
-        flex-direction: row;
-        justify-content: space-evenly;
-      }
-
-      .item {
-        margin-inline: 0.4rem;
-      }
-    }
-  }
-}
-@media (prefers-color-scheme: light) {
-  .navbar {
-    background: rgba($black, 0.05);
-
-    .logo {
-      color: $black !important;
     }
     .toggle {
-      :global(.navbar-toggler-icon) {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-      }
-    }
-    .collapse {
-      .item {
-        color: $black !important;
-      }
-      .anchors {
-        .item {
-          @media (max-width: 770px) {
-            border-bottom: 1px solid $black;
-          }
-        }
+      @extend .button;
+      padding: 7px;
+      background: transparent;
+      border: 1px solid $white;
+
+      div {
+        width: 20px;
+        height: 20px;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
       }
     }
   }
+
+  @media (max-width: 790px) {
+    display: block;
+  }
+}
+
+.offcanvas_header {
+  background: $gray;
+
+  button {
+    background: transparent
+      url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e")
+      center/1em auto no-repeat;
+  }
+}
+
+@media (prefers-color-scheme: light) {
 }

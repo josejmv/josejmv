@@ -1,17 +1,50 @@
+// components
+import { Sidebar } from '@molecules/Sidebar'
+import { Navbar } from '@molecules/Navbar'
+import { Footer } from '@molecules/Footer'
+
+// bootstrap components
+import { Container, Row, Col, Tab } from 'react-bootstrap'
+
 // styles
 import classes from 'styles/home/styles.module.scss'
 
 // types
 import type { NextPage } from 'next'
 
-const Home: NextPage = () => (
-  <div className={classes.container}>
-    <main className={classes.main}>
-      <h1 className={classes.title}>
-        Welcome to <span>Next.js!</span>
-      </h1>
-    </main>
-  </div>
-)
+const Home: NextPage = () => {
+  const contents = [
+    { component: () => <>HOME</>, eventKey: 'home' },
+    { component: () => <>ABOUT</>, eventKey: 'about' },
+    { component: () => <>SKILLS</>, eventKey: 'skills' },
+    { component: () => <>CONTACT</>, eventKey: 'contact' },
+  ]
+
+  return (
+    <>
+      <Tab.Container defaultActiveKey='home'>
+        <Container fluid className={classes.container}>
+          <Row className={classes.content}>
+            <Navbar />
+            <Col className={classes.aside} md={3} xl={2}>
+              <Sidebar />
+            </Col>
+
+            <Col className={classes.main} md={9} xl={10}>
+              <Tab.Content>
+                {contents.map((Content, idx) => (
+                  <Tab.Pane key={idx} eventKey={Content.eventKey}>
+                    <Content.component />
+                  </Tab.Pane>
+                ))}
+              </Tab.Content>
+            </Col>
+          </Row>
+        </Container>
+      </Tab.Container>
+      <Footer />
+    </>
+  )
+}
 
 export default Home
