@@ -1,8 +1,8 @@
 // components
+import * as VIEWS from '@organisms/index'
 import { Sidebar } from '@molecules/Sidebar'
 import { Navbar } from '@molecules/Navbar'
 import { Footer } from '@molecules/Footer'
-import { HomePage } from '@organisms/Home'
 
 // bootstrap components
 import { Container, Row, Col, Tab } from 'react-bootstrap'
@@ -15,10 +15,10 @@ import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
   const contents = [
-    { component: HomePage, eventKey: 'home' },
-    { component: () => <>ABOUT</>, eventKey: 'about' },
-    { component: () => <>SKILLS</>, eventKey: 'skills' },
-    { component: () => <>CONTACT</>, eventKey: 'contact' },
+    { component: VIEWS.HomePage, eventKey: 'home' },
+    { component: VIEWS.AboutPage, eventKey: 'about' },
+    { component: VIEWS.SkillsPage, eventKey: 'skills' },
+    { component: VIEWS.ContactPage, eventKey: 'contact' },
   ]
 
   return (
@@ -34,7 +34,11 @@ const Home: NextPage = () => {
             <Col className={classes.main} md={9} xl={10}>
               <Tab.Content>
                 {contents.map((Content, idx) => (
-                  <Tab.Pane key={idx} eventKey={Content.eventKey}>
+                  <Tab.Pane
+                    key={idx}
+                    className='my-5'
+                    eventKey={Content.eventKey}
+                  >
                     <Content.component />
                   </Tab.Pane>
                 ))}

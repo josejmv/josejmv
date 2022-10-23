@@ -1,9 +1,12 @@
 @import '/src/styles/variables.scss';
+@import '/src/styles/ui/texts/styles.module.scss';
 
 .container {
   padding: 0;
+
   .content {
     margin: 0;
+
     .aside {
       padding: 0;
       display: flex;
@@ -12,9 +15,33 @@
         display: none;
       }
     }
+
     .main {
       background: $black;
       padding-inline: 4rem;
     }
+  }
+}
+
+.title {
+  width: fit-content;
+  position: relative;
+
+  &::before {
+    width: 40%;
+    height: 2px;
+    content: '';
+    bottom: -5px;
+    position: absolute;
+    background: $primary;
+  }
+  &::after {
+    left: 0;
+    width: 20%;
+    content: '';
+    height: 1.5px;
+    bottom: -10px;
+    position: absolute;
+    background: $primary;
   }
 }
