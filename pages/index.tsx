@@ -2,19 +2,20 @@
 import { Sidebar } from '@molecules/Sidebar'
 import { Navbar } from '@molecules/Navbar'
 import { Footer } from '@molecules/Footer'
+import { HomePage } from '@organisms/Home'
 
 // bootstrap components
 import { Container, Row, Col, Tab } from 'react-bootstrap'
 
 // styles
-import classes from 'styles/home/styles.module.scss'
+import classes from 'styles/public/styles.module.scss'
 
 // types
 import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
   const contents = [
-    { component: () => <>HOME</>, eventKey: 'home' },
+    { component: HomePage, eventKey: 'home' },
     { component: () => <>ABOUT</>, eventKey: 'about' },
     { component: () => <>SKILLS</>, eventKey: 'skills' },
     { component: () => <>CONTACT</>, eventKey: 'contact' },

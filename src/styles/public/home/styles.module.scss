@@ -1,0 +1,41 @@
+@import '/src/styles/variables.scss';
+@import '/src/styles/ui/texts/styles.module.scss';
+
+.home {
+  padding-block: 3rem;
+
+  .container {
+    justify-content: center;
+    .profile {
+      width: fit-content;
+      position: relative;
+
+      &::before {
+        content: '';
+        width: 15px;
+        left: -0.5em;
+        height: 15px;
+        bottom: -0.1em;
+        border: 3px solid;
+        position: absolute;
+        border-color: transparent transparent $primary $primary;
+      }
+      &::after {
+        content: '';
+        width: 15px;
+        height: 15px;
+        border: 3px solid;
+        position: absolute;
+        border-color: $primary $primary transparent transparent;
+      }
+
+      &_pic {
+        border-radius: 50%;
+      }
+    }
+    .title {
+      font-size: 52px;
+      color: rgba($white, 0.8);
+    }
+  }
+}
