@@ -5,8 +5,8 @@
 .aside {
   flex: 1;
   display: flex;
+  padding: 3rem 0;
   background: $gray;
-  padding-block: 3rem;
   align-items: center;
   flex-direction: column;
 
@@ -45,7 +45,7 @@
   }
 
   .item {
-    margin-block: 1.5rem;
+    margin: 1.5rem 0;
     .outline {
       width: 100%;
       display: flex;

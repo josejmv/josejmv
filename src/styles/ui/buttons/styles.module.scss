@@ -5,8 +5,8 @@
   @extend .small;
 
   font-weight: bold;
+  padding: 0.5rem 0;
   border-radius: 11px;
-  padding-block: 0.5rem;
 
   &:active,
   &:focus {
