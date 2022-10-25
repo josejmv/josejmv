@@ -1,1 +1,28 @@
 @import '/src/styles/public/styles.module.scss';
+@import '/src/styles/variables.scss';
+
+.about {
+  .title {
+    margin-bottom: 3rem;
+  }
+  .subtitle {
+    margin-bottom: 1.5rem;
+    .name {
+      color: $primary;
+      font-weight: bold;
+    }
+  }
+  .list {
+    .item {
+      @extend .small;
+      color: $white;
+      margin: 1rem 0;
+      background: transparent;
+      border-bottom: 1px solid $gray;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

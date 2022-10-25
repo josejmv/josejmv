@@ -1,7 +1,7 @@
 @import 'styles/variables.scss';
 
 .footer {
-  padding-block: 1rem;
+  padding: 1rem 0;
   background: rgba($white, 0.15);
 
   .content {
@@ -14,7 +14,7 @@
     }
 
     .label {
-      margin-inline: 0.4rem;
+      margin: 0 0.4rem;
       font-size: $small-size;
 
       @media (max-width: 375px) {

@@ -23,7 +23,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Tab.Container defaultActiveKey='home'>
+      <Tab.Container id='tab-content' defaultActiveKey='home'>
         <Container fluid className={classes.container}>
           <Row className={classes.content}>
             <Navbar />

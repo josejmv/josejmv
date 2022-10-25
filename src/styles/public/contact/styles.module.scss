@@ -1,1 +1,33 @@
 @import '/src/styles/public/styles.module.scss';
+@import '/src/styles/variables.scss';
+
+.contact {
+  .title {
+    margin-bottom: 3rem;
+  }
+  .subtitle {
+    color: $primary;
+    font-weight: bold;
+    text-align: center;
+  }
+  .small {
+    text-align: center;
+  }
+  .item {
+    margin: 1rem 0;
+    text-align: center;
+
+    .icon {
+      fill: $primary;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      .icon {
+        fill: $white;
+        transform: scale(1.1);
+      }
+    }
+  }
+}

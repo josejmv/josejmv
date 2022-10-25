@@ -1,8 +1,18 @@
 // main tools
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import Head from 'next/head'
 
 // components
 import { PageLoader } from '@molecules/PageLoader'
+
+// providers
+import { AppContextProvider } from 'context/app/provider'
+import { SSRProvider } from 'react-bootstrap'
+
+// dayjs
+import { locales } from 'lib/dayjs/locales'
+import dayjs from 'dayjs'
 
 // prime components
 import { ScrollTop } from 'primereact/scrolltop'
@@ -17,19 +27,28 @@ import 'styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { NextPage } from 'next'
 
-const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => (
-  <>
-    <Head>
-      <title>JoseJMV</title>
-      <link rel='icon' href='/favicon.ico' />
-      <meta name='description' content='Portafolio' />
-    </Head>
+const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
+  const { locale } = useRouter()
+  dayjs.locale(locales[locale as keyof typeof locales])
 
-    <PageLoader>
-      <Component {...pageProps} />
-      <ScrollTop />
-    </PageLoader>
-  </>
-)
+  return (
+    <>
+      <Head>
+        <title>JoseJMV</title>
+        <link rel='icon' href='/favicon.ico' />
+        <meta name='description' content='Portafolio' />
+      </Head>
+
+      <SSRProvider>
+        <AppContextProvider>
+          <PageLoader>
+            <Component {...pageProps} />
+            <ScrollTop />
+          </PageLoader>
+        </AppContextProvider>
+      </SSRProvider>
+    </>
+  )
+}
 
 export default MyApp
