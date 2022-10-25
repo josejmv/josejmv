@@ -6,8 +6,9 @@ import Head from 'next/head'
 // components
 import { PageLoader } from '@molecules/PageLoader'
 
-// context
+// providers
 import { AppContextProvider } from 'context/app/provider'
+import { SSRProvider } from 'react-bootstrap'
 
 // dayjs
 import { locales } from 'lib/dayjs/locales'
@@ -38,12 +39,14 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
         <meta name='description' content='Portafolio' />
       </Head>
 
-      <AppContextProvider>
-        <PageLoader>
-          <Component {...pageProps} />
-          <ScrollTop />
-        </PageLoader>
-      </AppContextProvider>
+      <SSRProvider>
+        <AppContextProvider>
+          <PageLoader>
+            <Component {...pageProps} />
+            <ScrollTop />
+          </PageLoader>
+        </AppContextProvider>
+      </SSRProvider>
     </>
   )
 }
