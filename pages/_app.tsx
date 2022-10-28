@@ -43,7 +43,7 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
         <AppContextProvider>
           <PageLoader>
             <Component {...pageProps} />
-            <ScrollTop />
+            <ScrollTop className='scroll-to-top' />
           </PageLoader>
         </AppContextProvider>
       </SSRProvider>
