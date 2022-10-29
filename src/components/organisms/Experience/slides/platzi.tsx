@@ -16,6 +16,25 @@ export const PlatziExperience: FC = () => {
     alt: 'platzi',
   }))
 
+  const responsiveOptions = [
+    {
+      breakpoint: '1200px',
+      numVisible: 4,
+    },
+    {
+      breakpoint: '900px',
+      numVisible: 3,
+    },
+    {
+      breakpoint: '550px',
+      numVisible: 2,
+    },
+    {
+      breakpoint: '420px',
+      numVisible: 1,
+    },
+  ]
+
   const itemTemplate = (pic: typeof pics[number]) => (
     <Image
       width={400}
@@ -26,13 +45,15 @@ export const PlatziExperience: FC = () => {
     />
   )
   const thumbnailTemplate = (pic: typeof pics[number]) => (
-    <Image
-      width={50}
-      height={50}
-      alt={pic.alt}
-      src={pic.image}
-      objectFit='cover'
-    />
+    <div>
+      <Image
+        width={70}
+        height={70}
+        alt={pic.alt}
+        src={pic.image}
+        objectFit='cover'
+      />
+    </div>
   )
 
   return (
@@ -60,8 +81,10 @@ export const PlatziExperience: FC = () => {
       <div className='my-3'>
         <Galleria
           value={pics}
+          numVisible={5}
           item={itemTemplate}
           thumbnail={thumbnailTemplate}
+          responsiveOptions={responsiveOptions}
         />
       </div>
 
