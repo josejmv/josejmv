@@ -1,4 +1,4 @@
 export { HomePage } from './Home'
 export { AboutPage } from './About'
-export { SkillsPage } from './Skills'
+export { Experience } from './Experience'
 export { ContactPage } from './Contact'

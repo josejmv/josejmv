@@ -11,7 +11,9 @@ body {
   padding: 0;
   color: $white;
   background: $black;
-  font-family: $font-montserrat;
+  font-family: $font-montserrat, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+    Segoe UI Symbol;
 }
 
 a {
@@ -21,6 +23,29 @@ a {
   &:hover {
     color: inherit;
   }
+}
+
+.scroll-to-top {
+  background: rgba($white, 0.5) !important;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: $gray;
+}
+::-webkit-scrollbar-thumb:active {
+  background: $white;
+}
+::-webkit-scrollbar-track {
+  background: $black;
 }
 
 @media (prefers-color-scheme: light) {

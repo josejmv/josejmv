@@ -2,7 +2,7 @@
 import dayjs from 'dayjs'
 
 // bootstrap components
-import { Container, Row, Col, ListGroup } from 'react-bootstrap'
+import { Container, Row, Col, ListGroup, ProgressBar } from 'react-bootstrap'
 
 // hooks
 import { useApp } from 'hooks/useApp'
@@ -17,6 +17,35 @@ export const AboutPage: FC = () => {
   const { toast } = useApp()
   const birthdate = dayjs('04/30/1999')
 
+  const skills = [
+    { label: 'Next.js', progress: 100 },
+    { label: 'Javascript', progress: 100 },
+    { label: 'Typescript', progress: 95 },
+    { label: 'Node.js', progress: 75 },
+    { label: 'Nest.js', progress: 75 },
+    { label: 'Wordpress', progress: 70 },
+    { label: 'Simfony', progress: 40 },
+    { label: 'C++', progress: 40 },
+    { label: 'Python', progress: 35 },
+    { label: 'Golang', progress: 20 },
+  ]
+
+  const knowledges = [
+    { label: 'Next-auth', progress: 100 },
+    { label: 'React bootstrap', progress: 100 },
+    { label: 'Primereact', progress: 100 },
+    { label: 'Git', progress: 100 },
+    { label: 'Cypress', progress: 90 },
+    { label: 'Sass module', progress: 90 },
+    { label: 'GraphQL', progress: 90 },
+    { label: 'Styled components', progress: 80 },
+    { label: 'Material UI', progress: 85 },
+    { label: 'Tailwind', progress: 75 },
+  ]
+
+  /**
+   * handle copy on clipboard my email
+   */
   const handleCopyEmail = () => {
     navigator.clipboard
       .writeText('josejmvasquez@gmail.com')
@@ -61,9 +90,10 @@ export const AboutPage: FC = () => {
       </p>
 
       <Row>
-        <Col lg={6}>
+        <Col lg={12} xl={6}>
+          <h2 className={`${classes.subtitle} mt-3 mb-0`}>Información</h2>
           <Row>
-            <Col lg={6}>
+            <Col md={6}>
               <ListGroup className={classes.list}>
                 <ListGroup.Item className={classes.item}>
                   <strong>Fecha de nacimiento:</strong>{' '}
@@ -77,7 +107,7 @@ export const AboutPage: FC = () => {
                 </ListGroup.Item>
               </ListGroup>
             </Col>
-            <Col lg={6}>
+            <Col md={6}>
               <ListGroup className={classes.list}>
                 <ListGroup.Item className={classes.item}>
                   <strong>Edad:</strong>{' '}
@@ -97,7 +127,38 @@ export const AboutPage: FC = () => {
             </Col>
           </Row>
         </Col>
-        <Col lg={6}></Col>
+        <Col lg={12} xl={6}>
+          <Row>
+            <Col md={6}>
+              <h2 className={`${classes.subtitle} mt-3 mb-3`}>Habilidades</h2>
+              <ListGroup className={classes.skills}>
+                {skills.map((skill) => (
+                  <ListGroup.Item key={skill.label} className={classes.item}>
+                    <strong>{skill.label}</strong>
+                    <ProgressBar
+                      className={classes.progress}
+                      now={skill.progress}
+                    />
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
+            </Col>
+            <Col md={6}>
+              <h2 className={`${classes.subtitle} mt-3 mb-3`}>Conocimientos</h2>
+              <ListGroup className={classes.skills}>
+                {knowledges.map((skill) => (
+                  <ListGroup.Item key={skill.label} className={classes.item}>
+                    <strong>{skill.label}</strong>
+                    <ProgressBar
+                      className={classes.progress}
+                      now={skill.progress}
+                    />
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
+            </Col>
+          </Row>
+        </Col>
       </Row>
     </Container>
   )

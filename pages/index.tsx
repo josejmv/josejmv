@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   const contents = [
     { component: VIEWS.HomePage, eventKey: 'home' },
     { component: VIEWS.AboutPage, eventKey: 'about' },
-    { component: VIEWS.SkillsPage, eventKey: 'skills' },
+    { component: VIEWS.Experience, eventKey: 'experience' },
     { component: VIEWS.ContactPage, eventKey: 'contact' },
   ]
 

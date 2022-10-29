@@ -9,7 +9,7 @@ import {
   Person,
   Github,
   Linkedin,
-  ListStars,
+  GraphUpArrow,
   Instagram,
   ArrowRight,
 } from 'react-bootstrap-icons'
@@ -20,11 +20,15 @@ import classes from 'styles/components/sidebar/styles.module.scss'
 // types
 import { FC } from 'react'
 
-export const Sidebar: FC = () => {
+type SidebarProps = {
+  handleShowSidebar?: () => void
+}
+
+export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
   const anchors = [
     { label: 'Inicio', eventKey: 'home', icon: House },
     { label: 'Sobre mí', eventKey: 'about', icon: Person },
-    { label: 'Habilidades', eventKey: 'skills', icon: ListStars },
+    { label: 'Experiencia', eventKey: 'experience', icon: GraphUpArrow },
     { label: 'Contacto', eventKey: 'contact', icon: Chat },
   ]
 
@@ -38,7 +42,10 @@ export const Sidebar: FC = () => {
           {anchors.map((Anchor, idx) => (
             <Col className={classes.item} key={idx} xs={12}>
               <Nav.Item>
-                <Nav.Link eventKey={Anchor.eventKey}>
+                <Nav.Link
+                  eventKey={Anchor.eventKey}
+                  onClick={handleShowSidebar}
+                >
                   <Button className={classes.outline}>
                     <span>
                       <Anchor.icon size={20} className='me-2' /> {Anchor.label}
