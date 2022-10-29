@@ -33,7 +33,7 @@ export const Navbar: FC = () => {
 
       <Offcanvas show={showSidebar} onHide={handleShowSidebar}>
         <Offcanvas.Header className={classes.offcanvas_header} closeButton />
-        <Sidebar />
+        <Sidebar handleShowSidebar={handleShowSidebar} />
       </Offcanvas>
     </Container>
   )
