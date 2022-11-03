@@ -1,5 +1,6 @@
 // components
 import { SeoContenidosExperience } from './slides/seocontenidos'
+import { CentriaExperience } from './slides/centria'
 import { PlatziExperience } from './slides/platzi'
 
 // bootstrap components
@@ -23,6 +24,9 @@ export const Experience: FC = () => {
           </Carousel.Item>
           <Carousel.Item>
             <SeoContenidosExperience />
+          </Carousel.Item>
+          <Carousel.Item>
+            <CentriaExperience />
           </Carousel.Item>
         </Carousel>
       </Container>

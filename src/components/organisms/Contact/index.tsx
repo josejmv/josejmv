@@ -1,3 +1,4 @@
+// main tools
 import Link from 'next/link'
 
 // bootstrap components
@@ -5,9 +6,9 @@ import { Container, Row, Col } from 'react-bootstrap'
 import {
   Github,
   Linkedin,
+  Whatsapp,
   Instagram,
   EnvelopeFill,
-  TelephoneInboundFill,
 } from 'react-bootstrap-icons'
 
 // styles
@@ -26,14 +27,14 @@ export const ContactPage: FC = () => {
 
   const items = [
     {
+      icon: Whatsapp,
+      label: 'Whatsapp',
       href: whatsappUrl,
-      label: '+58 (414)754-5160',
-      icon: TelephoneInboundFill,
     },
     {
-      label: email,
       icon: EnvelopeFill,
       href: `mailto:${email}`,
+      label: 'Correo electrónico',
     },
     {
       icon: Linkedin,

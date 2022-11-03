@@ -9,9 +9,11 @@ import {
   Person,
   Github,
   Linkedin,
-  GraphUpArrow,
+  Download,
+  Newspaper,
   Instagram,
   ArrowRight,
+  GraphUpArrow,
 } from 'react-bootstrap-icons'
 
 // styles
@@ -27,6 +29,7 @@ type SidebarProps = {
 export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
   const anchors = [
     { label: 'Inicio', eventKey: 'home', icon: House },
+    { label: 'Blog', eventKey: 'blog', icon: Newspaper },
     { label: 'Sobre mí', eventKey: 'about', icon: Person },
     { label: 'Experiencia', eventKey: 'experience', icon: GraphUpArrow },
     { label: 'Contacto', eventKey: 'contact', icon: Chat },
@@ -80,6 +83,12 @@ export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
             <Instagram size={24} />
           </Nav.Link>
         </Nav>
+
+        <a download href='/assets/cv/Jose_Vasquez.pdf'>
+          <Button className={classes.download}>
+            <Download size={23} className='me-3' /> Descargar CV
+          </Button>
+        </a>
       </Container>
     </aside>
   )
