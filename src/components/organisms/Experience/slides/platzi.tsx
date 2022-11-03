@@ -1,8 +1,5 @@
-// main tools
-import Image from 'next/image'
-
 // prime components
-import { Galleria } from 'primereact/galleria'
+import { Image } from 'primereact/image'
 
 // styles
 import classes from 'styles/public/experience/slides/platzi.module.scss'
@@ -11,50 +8,15 @@ import classes from 'styles/public/experience/slides/platzi.module.scss'
 import { FC } from 'react'
 
 export const PlatziExperience: FC = () => {
-  const pics = Array.from(Array(7).keys()).map((item) => ({
-    image: `/assets/pics/${item + 1}.jpg`,
+  const pics = Array.from(Array(7).keys()).map((idx) => ({
+    image: `/assets/pics/platzi-conf/${idx + 1}.jpg`,
     alt: 'platzi',
   }))
 
-  const responsiveOptions = [
-    {
-      breakpoint: '1200px',
-      numVisible: 4,
-    },
-    {
-      breakpoint: '900px',
-      numVisible: 3,
-    },
-    {
-      breakpoint: '550px',
-      numVisible: 2,
-    },
-    {
-      breakpoint: '420px',
-      numVisible: 1,
-    },
-  ]
-
-  const itemTemplate = (pic: typeof pics[number]) => (
-    <Image
-      width={400}
-      height={400}
-      alt={pic.alt}
-      src={pic.image}
-      objectFit='cover'
-    />
-  )
-  const thumbnailTemplate = (pic: typeof pics[number]) => (
-    <div>
-      <Image
-        width={70}
-        height={70}
-        alt={pic.alt}
-        src={pic.image}
-        objectFit='cover'
-      />
-    </div>
-  )
+  const certificates = Array.from(Array(7).keys()).map((idx) => ({
+    image: `/assets/certificates/${idx + 1}.jpg`,
+    alt: 'platzi certificate',
+  }))
 
   return (
     <article className={classes.platzi}>
@@ -76,18 +38,21 @@ export const PlatziExperience: FC = () => {
         del tiempo y con las experiencias laborales que he tenido el gusto de ir
         teniendo
       </p>
-      <h3 className={classes.small}>2022</h3>
 
-      <div className='my-3'>
-        <Galleria
-          value={pics}
-          numVisible={5}
-          item={itemTemplate}
-          thumbnail={thumbnailTemplate}
-          responsiveOptions={responsiveOptions}
-        />
+      <div className='my-4'>
+        {certificates.map((pic) => (
+          <Image
+            preview
+            width='120'
+            height='120'
+            alt={pic.alt}
+            key={pic.image}
+            src={pic.image}
+            className={classes.pic}
+          />
+        ))}
       </div>
-
+      <h3 className={classes.small}>2022</h3>
       <p>
         Adquirí nuevamente, en colaboracion con un amigo, el plan de platzi
         expert duo, luego de 2 años desconectado de platzi, con la finalidad de
@@ -108,6 +73,20 @@ export const PlatziExperience: FC = () => {
         recomendada y a la cual espero poder continuar asistiendo en los años
         venideros
       </p>
+
+      <div className='my-4'>
+        {pics.map((pic) => (
+          <Image
+            preview
+            width='120'
+            height='120'
+            alt={pic.alt}
+            key={pic.image}
+            src={pic.image}
+            className={classes.pic}
+          />
+        ))}
+      </div>
     </article>
   )
 }

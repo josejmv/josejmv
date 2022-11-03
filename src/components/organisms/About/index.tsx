@@ -1,8 +1,12 @@
 // main tools
+import { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 
 // bootstrap components
 import { Container, Row, Col, ListGroup, ProgressBar } from 'react-bootstrap'
+
+// prime components
+import { Rating } from 'primereact/rating'
 
 // hooks
 import { useApp } from 'hooks/useApp'
@@ -16,6 +20,7 @@ import { FC } from 'react'
 export const AboutPage: FC = () => {
   const { toast } = useApp()
   const birthdate = dayjs('04/30/1999')
+  const [showRatingComponent, setShowRatingComponent] = useState(false)
 
   const skills = [
     { label: 'Next.js', progress: 100 },
@@ -65,6 +70,11 @@ export const AboutPage: FC = () => {
       )
   }
 
+  /**
+   * handle show
+   */
+  useEffect(() => setShowRatingComponent(true), [])
+
   return (
     <Container className={classes.about}>
       <h1 className={classes.title}>Sobre mí</h1>
@@ -105,6 +115,10 @@ export const AboutPage: FC = () => {
                 <ListGroup.Item className={classes.item}>
                   <strong>Residencia:</strong> <p>Venezuela, San Cristóbal</p>
                 </ListGroup.Item>
+                <ListGroup.Item className={classes.item}>
+                  <strong>Lengua materna:</strong>
+                  <p>Español</p>
+                </ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={6}>
@@ -123,6 +137,20 @@ export const AboutPage: FC = () => {
                 <ListGroup.Item className={classes.item}>
                   <strong>Cargo:</strong> <p>Desarrollador frontend</p>
                 </ListGroup.Item>
+                <ListGroup.Item className={classes.item}>
+                  <strong>Nivel de ingles:</strong>
+                  <p>
+                    {showRatingComponent && (
+                      <Rating
+                        readOnly
+                        value={3}
+                        stars={5}
+                        cancel={false}
+                        className={classes.english}
+                      />
+                    )}
+                  </p>
+                </ListGroup.Item>
               </ListGroup>
             </Col>
           </Row>
@@ -130,7 +158,7 @@ export const AboutPage: FC = () => {
         <Col lg={12} xl={6}>
           <Row>
             <Col md={6}>
-              <h2 className={`${classes.subtitle} mt-3 mb-3`}>Habilidades</h2>
+              <h2 className={`${classes.subtitle} mt-3 mb-3`}>Lenguajes</h2>
               <ListGroup className={classes.skills}>
                 {skills.map((skill) => (
                   <ListGroup.Item key={skill.label} className={classes.item}>
@@ -144,7 +172,7 @@ export const AboutPage: FC = () => {
               </ListGroup>
             </Col>
             <Col md={6}>
-              <h2 className={`${classes.subtitle} mt-3 mb-3`}>Conocimientos</h2>
+              <h2 className={`${classes.subtitle} mt-3 mb-3`}>Librerias</h2>
               <ListGroup className={classes.skills}>
                 {knowledges.map((skill) => (
                   <ListGroup.Item key={skill.label} className={classes.item}>

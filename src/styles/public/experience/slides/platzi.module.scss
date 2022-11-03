@@ -14,4 +14,8 @@
     padding-bottom: 0.3rem;
     border-bottom: 2px solid $primary;
   }
+  .pic {
+    margin: 0 0.3rem;
+    object-fit: cover;
+  }
 }

@@ -29,14 +29,24 @@ import { NextPage } from 'next'
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   const { locale } = useRouter()
+  const permalink = 'https://josejmv.vercel.app'
   dayjs.locale(locales[locale as keyof typeof locales])
 
   return (
     <>
       <Head>
         <title>JoseJMV</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='canonical' href={permalink} />
+        <meta property='og:type' content='website' />
+        <meta name='robots' content='index follow' />
+        <meta property='og:url' content={permalink} />
         <meta name='description' content='Portafolio' />
+        <meta property='og:description' content='Portafolio' />
+        <meta property='og:title' content='JoseJMV - portafolio' />
+        <meta
+          property='og:image'
+          content={`${permalink}/assets/img/profile.jpg`}
+        />
       </Head>
 
       <SSRProvider>
