@@ -1,7 +1,7 @@
 @import '/src/styles/ui/texts/styles.module.scss';
 @import '/src/styles/variables.scss';
 
-.platzi {
+.seocontenidos {
   padding: 1rem 0;
   .subtitle {
     text-align: center;
@@ -13,5 +13,10 @@
     margin-bottom: 1rem;
     padding-bottom: 0.3rem;
     border-bottom: 2px solid $primary;
+  }
+
+  .pic {
+    margin: 0 1.5rem;
+    object-fit: cover;
   }
 }

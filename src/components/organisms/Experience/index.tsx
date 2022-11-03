@@ -21,9 +21,9 @@ export const Experience: FC = () => {
           <Carousel.Item>
             <PlatziExperience />
           </Carousel.Item>
-          {/* <Carousel.Item>
+          <Carousel.Item>
             <SeoContenidosExperience />
-          </Carousel.Item> */}
+          </Carousel.Item>
         </Carousel>
       </Container>
     </>
