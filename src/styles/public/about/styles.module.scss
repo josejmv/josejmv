@@ -23,6 +23,13 @@
       p {
         margin: 0;
       }
+
+      .english {
+        :global(.pi-star-fill) {
+          color: $primary;
+          margin-top: 0.3rem;
+        }
+      }
     }
   }
   .skills {
