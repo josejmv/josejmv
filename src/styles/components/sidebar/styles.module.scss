@@ -45,7 +45,7 @@
   }
 
   .item {
-    margin: 1.5rem 0;
+    margin: 1.1rem 0;
     .outline {
       width: 100%;
       display: flex;
@@ -59,6 +59,21 @@
     justify-content: space-between;
     .item {
       color: $white;
+    }
+  }
+
+  .download {
+    @extend .button;
+    width: 100%;
+    color: $primary;
+    font-weight: normal;
+    transition: all 0.3s;
+    background: transparent;
+
+    &:hover {
+      color: $black;
+      font-weight: bold;
+      background: $primary;
     }
   }
 }

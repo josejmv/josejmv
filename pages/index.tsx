@@ -16,6 +16,7 @@ import type { NextPage } from 'next'
 const Home: NextPage = () => {
   const contents = [
     { component: VIEWS.HomePage, eventKey: 'home' },
+    { component: VIEWS.BlogPage, eventKey: 'blog' },
     { component: VIEWS.AboutPage, eventKey: 'about' },
     { component: VIEWS.Experience, eventKey: 'experience' },
     { component: VIEWS.ContactPage, eventKey: 'contact' },
