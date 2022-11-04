@@ -60,6 +60,11 @@ export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
             </Col>
           ))}
         </Row>
+        <a download href='/assets/cv/Jose_Vasquez.pdf'>
+          <Button className={classes.download}>
+            <Download size={23} className='me-3' /> Descargar CV
+          </Button>
+        </a>
         <Nav className={classes.rrss}>
           <Nav.Link
             target='_blank'
@@ -83,12 +88,6 @@ export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
             <Instagram size={24} />
           </Nav.Link>
         </Nav>
-
-        <a download href='/assets/cv/Jose_Vasquez.pdf'>
-          <Button className={classes.download}>
-            <Download size={23} className='me-3' /> Descargar CV
-          </Button>
-        </a>
       </Container>
     </aside>
   )
