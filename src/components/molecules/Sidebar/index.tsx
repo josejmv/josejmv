@@ -2,7 +2,6 @@
 import { Divider } from 'primereact/divider'
 
 // bootstrap components
-import { Container, Row, Col, Button, Nav } from 'react-bootstrap'
 import {
   Chat,
   House,
@@ -15,6 +14,10 @@ import {
   ArrowRight,
   GraphUpArrow,
 } from 'react-bootstrap-icons'
+import { Container, Row, Col, Button, Nav } from 'react-bootstrap'
+
+// hooks
+import { useApp } from 'hooks/useApp'
 
 // styles
 import classes from 'styles/components/sidebar/styles.module.scss'
@@ -27,6 +30,7 @@ type SidebarProps = {
 }
 
 export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
+  const { toast } = useApp()
   const anchors = [
     { label: 'Inicio', eventKey: 'home', icon: House },
     { label: 'Blog', eventKey: 'blog', icon: Newspaper },
@@ -34,6 +38,16 @@ export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
     { label: 'Experiencia', eventKey: 'experience', icon: GraphUpArrow },
     { label: 'Contacto', eventKey: 'contact', icon: Chat },
   ]
+
+  /**
+   * handle show toast on downloaded file
+   */
+  const handleDownloadFile = () =>
+    toast()?.show({
+      summary: 'Éxito!',
+      severity: 'success',
+      detail: 'Árchivo descargado con éxito',
+    })
 
   return (
     <aside className={classes.aside}>
@@ -61,7 +75,7 @@ export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
           ))}
         </Row>
         <a download href='/assets/cv/Jose_Vasquez.pdf'>
-          <Button className={classes.download}>
+          <Button onClick={handleDownloadFile} className={classes.download}>
             <Download size={23} className='me-3' /> Descargar CV
           </Button>
         </a>

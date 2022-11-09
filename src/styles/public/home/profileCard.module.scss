@@ -1,3 +1,83 @@
+@import '/src/styles/ui/texts/styles.module.scss';
+@import '/src/styles/variables.scss';
+
 .profile {
+  padding: 2rem 0;
   text-align: center;
+  border-radius: 11px;
+  transition: border 0.3s;
+
+  &:hover {
+    .avatar {
+      > span {
+        outline: 3px solid rgba($primary, 1);
+      }
+    }
+  }
+
+  .avatar {
+    > span {
+      border-radius: 50%;
+      transition: outline 0.3s;
+      outline: 3px solid rgba($primary, 0.5);
+    }
+    img {
+      border-radius: 50%;
+      border: 5px solid transparent !important;
+    }
+  }
+
+  .title {
+    margin: 0;
+  }
+  .small {
+    word-wrap: break-word;
+    color: rgba($white, 0.8);
+  }
+
+  .rrss {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    margin: 2rem 0;
+    list-style: none;
+    align-items: center;
+    justify-content: space-around;
+
+    .item {
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .info {
+    justify-content: space-between;
+
+    > div {
+      @media (max-width: 500px) {
+        padding: 0;
+      }
+    }
+
+    .title,
+    .subtitle {
+      @extend .small;
+    }
+
+    .title {
+      color: $white;
+      font-weight: bolder;
+    }
+    .subtitle {
+      font-weight: 300;
+    }
+  }
+
+  .actions {
+    margin: 2rem 0;
+    justify-content: center;
+  }
 }
