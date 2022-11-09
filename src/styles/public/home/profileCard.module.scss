@@ -16,11 +16,14 @@
   }
 
   .avatar {
+    border-radius: 50% !important;
+
     > span {
-      border-radius: 50%;
       transition: outline 0.3s;
+      border-radius: 50% !important;
       outline: 3px solid rgba($primary, 0.5);
     }
+
     img {
       border-radius: 50%;
       border: 5px solid transparent !important;
