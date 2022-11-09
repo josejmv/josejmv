@@ -139,17 +139,15 @@ export const AboutPage: FC = () => {
                 </ListGroup.Item>
                 <ListGroup.Item className={classes.item}>
                   <strong>Nivel de ingles:</strong>
-                  <p>
-                    {showRatingComponent && (
-                      <Rating
-                        readOnly
-                        value={3}
-                        stars={5}
-                        cancel={false}
-                        className={classes.english}
-                      />
-                    )}
-                  </p>
+                  {showRatingComponent && (
+                    <Rating
+                      readOnly
+                      value={3}
+                      stars={5}
+                      cancel={false}
+                      className={classes.english}
+                    />
+                  )}
                 </ListGroup.Item>
               </ListGroup>
             </Col>

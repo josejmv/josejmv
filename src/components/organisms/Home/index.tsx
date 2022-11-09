@@ -15,8 +15,8 @@ export const HomePage: FC = () => {
     <Container className={classes.home}>
       <h1 className={classes.title}>Inicio</h1>
 
-      <Row className={classes.profile}>
-        <Col lg={4}>
+      <Row className={classes.container}>
+        <Col xs={12} sm={8} xl={5}>
           <ProfileCard />
         </Col>
       </Row>

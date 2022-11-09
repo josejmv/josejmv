@@ -1,6 +1,5 @@
 // main tools
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import Head from 'next/head'
 
 // components
@@ -12,6 +11,7 @@ import { SSRProvider } from 'react-bootstrap'
 
 // dayjs
 import { locales } from 'lib/dayjs/locales'
+import 'lib/dayjs/plugins'
 import dayjs from 'dayjs'
 
 // prime components
