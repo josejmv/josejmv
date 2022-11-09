@@ -51,7 +51,7 @@ export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
 
   return (
     <aside className={classes.aside}>
-      <h2 className={classes.title}>Portfolio</h2>
+      <h2 className={classes.title}>Portafolios</h2>
       <Divider layout='horizontal' className={classes.divider} />
 
       <Container>

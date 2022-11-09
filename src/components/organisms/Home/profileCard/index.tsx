@@ -103,7 +103,7 @@ export const ProfileCard: FC = () => {
             <Link href={whatsappUrl}>
               <a target='_blank'>
                 <Button>
-                  <Whatsapp size={16} />
+                  <Whatsapp size={24} />
                 </Button>
               </a>
             </Link>
@@ -112,7 +112,7 @@ export const ProfileCard: FC = () => {
             <Link href='https://t.me/+584147545160'>
               <a target='_blank'>
                 <Button>
-                  <Telegram size={16} />
+                  <Telegram size={24} />
                 </Button>
               </a>
             </Link>
