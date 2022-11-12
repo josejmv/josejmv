@@ -12,7 +12,7 @@ import {
   Newspaper,
   Instagram,
   ArrowRight,
-  GraphUpArrow,
+  GraphUpArrow
 } from 'react-bootstrap-icons'
 import { Container, Row, Col, Button, Nav } from 'react-bootstrap'
 
@@ -36,7 +36,7 @@ export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
     { label: 'Blog', eventKey: 'blog', icon: Newspaper },
     { label: 'Sobre mí', eventKey: 'about', icon: Person },
     { label: 'Experiencia', eventKey: 'experience', icon: GraphUpArrow },
-    { label: 'Contacto', eventKey: 'contact', icon: Chat },
+    { label: 'Contacto', eventKey: 'contact', icon: Chat }
   ]
 
   /**
@@ -46,12 +46,12 @@ export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
     toast()?.show({
       summary: 'Éxito!',
       severity: 'success',
-      detail: 'Árchivo descargado con éxito',
+      detail: 'Árchivo descargado con éxito'
     })
 
   return (
     <aside className={classes.aside}>
-      <h2 className={classes.title}>Portafolios</h2>
+      <h2 className={classes.title}>Portafolio</h2>
       <Divider layout='horizontal' className={classes.divider} />
 
       <Container>
@@ -61,8 +61,7 @@ export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
               <Nav.Item>
                 <Nav.Link
                   eventKey={Anchor.eventKey}
-                  onClick={handleShowSidebar}
-                >
+                  onClick={handleShowSidebar}>
                   <Button className={classes.outline}>
                     <span>
                       <Anchor.icon size={20} className='me-2' /> {Anchor.label}
@@ -83,22 +82,19 @@ export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
           <Nav.Link
             target='_blank'
             className={classes.item}
-            href='https://github.com/josejmv'
-          >
+            href='https://github.com/josejmv'>
             <Github size={24} />
           </Nav.Link>
           <Nav.Link
             target='_blank'
             className={classes.item}
-            href='https://www.linkedin.com/in/josejmv/'
-          >
+            href='https://www.linkedin.com/in/josejmv/'>
             <Linkedin size={24} />
           </Nav.Link>
           <Nav.Link
             target='_blank'
             className={classes.item}
-            href='https://instagram.com/josemvasquezv'
-          >
+            href='https://instagram.com/josemvasquezv'>
             <Instagram size={24} />
           </Nav.Link>
         </Nav>

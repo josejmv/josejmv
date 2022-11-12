@@ -24,7 +24,7 @@ export const Navbar: FC = () => {
   return (
     <Container className={classes.navbar}>
       <div className={classes.navbar_header}>
-        <h2 className={classes.title}>Portfolio</h2>
+        <h2 className={classes.title}>Portafolio</h2>
 
         <Button onClick={handleShowSidebar} className={classes.toggle}>
           <div></div>

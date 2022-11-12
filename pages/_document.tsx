@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
     'next.js',
     'cypress',
     'react.js',
-    'portafolio',
+    'portafolio'
   ]
 
   static getInitialProps = async (

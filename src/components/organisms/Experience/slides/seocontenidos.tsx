@@ -10,7 +10,7 @@ import { FC } from 'react'
 export const SeoContenidosExperience: FC = () => {
   const pics = Array.from(Array(3).keys()).map((idx) => ({
     image: `/assets/pics/seocontenidos/${idx + 1}.jpg`,
-    alt: 'seocontenidos',
+    alt: 'seocontenidos'
   }))
 
   return (

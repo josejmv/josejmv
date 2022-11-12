@@ -10,7 +10,7 @@ import {
   Whatsapp,
   Telegram,
   Download,
-  Instagram,
+  Instagram
 } from 'react-bootstrap-icons'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 
@@ -33,7 +33,7 @@ export const ProfileCard: FC = () => {
   const rrss = [
     { link: 'https://www.linkedin.com/in/josejmv/', Icon: Linkedin },
     { link: 'https://github.com/josejmv', Icon: Github },
-    { link: 'https://instagram.com/josemvasquezv/', Icon: Instagram },
+    { link: 'https://instagram.com/josemvasquezv/', Icon: Instagram }
   ]
 
   /**
@@ -43,7 +43,7 @@ export const ProfileCard: FC = () => {
     toast()?.show({
       summary: 'Éxito!',
       severity: 'success',
-      detail: 'Árchivo descargado con éxito',
+      detail: 'Árchivo descargado con éxito'
     })
 
   return (

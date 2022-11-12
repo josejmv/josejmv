@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   swcMinify: true,
   reactStrictMode: true,
-  i18n: { defaultLocale: 'es', locales: ['en', 'es'] },
+  i18n: { defaultLocale: 'es', locales: ['en', 'es'] }
 }
-
-module.exports = nextConfig

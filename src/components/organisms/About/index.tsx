@@ -32,7 +32,7 @@ export const AboutPage: FC = () => {
     { label: 'Simfony', progress: 40 },
     { label: 'C++', progress: 40 },
     { label: 'Python', progress: 35 },
-    { label: 'Golang', progress: 20 },
+    { label: 'Golang', progress: 20 }
   ]
 
   const knowledges = [
@@ -45,7 +45,7 @@ export const AboutPage: FC = () => {
     { label: 'GraphQL', progress: 90 },
     { label: 'Styled components', progress: 80 },
     { label: 'Material UI', progress: 85 },
-    { label: 'Tailwind', progress: 75 },
+    { label: 'Tailwind', progress: 75 }
   ]
 
   /**
@@ -58,14 +58,14 @@ export const AboutPage: FC = () => {
         toast()?.show({
           summary: 'Éxito!',
           severity: 'success',
-          detail: 'Correo copiado éxitosamente',
+          detail: 'Correo copiado éxitosamente'
         })
       )
       .catch(() =>
         toast()?.show({
           summary: 'Error',
           severity: 'error',
-          detail: 'Error copiando el correo',
+          detail: 'Error copiando el correo'
         })
       )
   }
@@ -130,8 +130,7 @@ export const AboutPage: FC = () => {
                 <ListGroup.Item
                   role='button'
                   className={classes.item}
-                  onClick={handleCopyEmail}
-                >
+                  onClick={handleCopyEmail}>
                   <strong>Correo:</strong> <p>josejmvasquez@gmail.com</p>
                 </ListGroup.Item>
                 <ListGroup.Item className={classes.item}>
