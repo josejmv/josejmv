@@ -11,6 +11,10 @@
     .avatar {
       > span {
         outline: 3px solid rgba($primary, 1);
+
+        @media (max-width: 500px) {
+          outline: none;
+        }
       }
     }
   }
@@ -22,11 +26,20 @@
       transition: outline 0.3s;
       border-radius: 50% !important;
       outline: 3px solid rgba($primary, 0.5);
+
+      @media (max-width: 500px) {
+        outline: none;
+      }
     }
 
     img {
       border-radius: 50%;
       border: 5px solid transparent !important;
+
+      @media (max-width: 500px) {
+        width: 150px !important;
+        height: 150px !important;
+      }
     }
   }
 
