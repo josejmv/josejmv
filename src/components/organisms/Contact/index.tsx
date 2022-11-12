@@ -8,7 +8,7 @@ import {
   Linkedin,
   Whatsapp,
   Instagram,
-  EnvelopeFill,
+  EnvelopeFill
 } from 'react-bootstrap-icons'
 
 // styles
@@ -29,31 +29,31 @@ export const ContactPage: FC = () => {
     {
       icon: Whatsapp,
       label: 'Whatsapp',
-      href: whatsappUrl,
+      href: whatsappUrl
     },
     {
       icon: EnvelopeFill,
       href: `mailto:${email}`,
-      label: 'Correo electrónico',
+      label: 'Correo electrónico'
     },
     {
       icon: Linkedin,
       label: '@josejmv',
-      href: linkedinUrl,
-    },
+      href: linkedinUrl
+    }
   ]
 
   const rrss = [
     {
       icon: Instagram,
       href: instagramUrl,
-      label: '@josemvasquezv',
+      label: '@josemvasquezv'
     },
     {
       icon: Github,
       href: githubUrl,
-      label: '@josejmv',
-    },
+      label: '@josejmv'
+    }
   ]
 
   return (

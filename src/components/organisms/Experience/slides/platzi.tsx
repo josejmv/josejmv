@@ -10,12 +10,12 @@ import { FC } from 'react'
 export const PlatziExperience: FC = () => {
   const pics = Array.from(Array(7).keys()).map((idx) => ({
     image: `/assets/pics/platzi-conf/${idx + 1}.jpg`,
-    alt: 'platzi',
+    alt: 'platzi'
   }))
 
   const certificates = Array.from(Array(7).keys()).map((idx) => ({
     image: `/assets/certificates/${idx + 1}.jpg`,
-    alt: 'platzi certificate',
+    alt: 'platzi certificate'
   }))
 
   return (

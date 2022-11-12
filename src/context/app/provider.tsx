@@ -15,7 +15,7 @@ type AppContextProviderProps = {
 }
 
 export const AppContextProvider: FC<AppContextProviderProps> = ({
-  children,
+  children
 }) => {
   const toast = useRef<Toast>(null)
   const context = { toast: () => toast.current as Toast }

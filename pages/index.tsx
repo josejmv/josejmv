@@ -19,7 +19,7 @@ const Home: NextPage = () => {
     { component: VIEWS.BlogPage, eventKey: 'blog' },
     { component: VIEWS.AboutPage, eventKey: 'about' },
     { component: VIEWS.Experience, eventKey: 'experience' },
-    { component: VIEWS.ContactPage, eventKey: 'contact' },
+    { component: VIEWS.ContactPage, eventKey: 'contact' }
   ]
 
   return (
@@ -38,8 +38,7 @@ const Home: NextPage = () => {
                   <Tab.Pane
                     key={idx}
                     className='my-5'
-                    eventKey={Content.eventKey}
-                  >
+                    eventKey={Content.eventKey}>
                     <Content.component />
                   </Tab.Pane>
                 ))}
