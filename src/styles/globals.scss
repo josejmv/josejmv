@@ -24,8 +24,13 @@ a {
 }
 
 .scroll-to-top {
-  background: rgba($white, 0.5) !important;
   border-radius: 50%;
+  filter: brightness(1.5);
+  background: rgba($light-gray, 0.7) !important;
+
+  .p-scrolltop-icon {
+    color: $white;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -37,7 +42,7 @@ a {
   height: 0px;
 }
 ::-webkit-scrollbar-thumb {
-  background: $gray;
+  background: $primary;
 }
 ::-webkit-scrollbar-thumb:active {
   background: $white;

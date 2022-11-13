@@ -95,7 +95,7 @@ export const ProfileCard: FC = () => {
           <Col className='mb-3' lg={12}>
             <a download href='/assets/cv/Jose_Vasquez.pdf'>
               <Button onClick={handleDownloadFile}>
-                Descargar CV <Download className='ms-2' size={16} />
+                <Download className='me-2' size={16} /> Descargar CV
               </Button>
             </a>
           </Col>

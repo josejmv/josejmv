@@ -8,8 +8,8 @@
   .subtitle {
     margin-bottom: 1.5rem;
     .name {
-      color: $primary;
       font-weight: bold;
+      color: $light-primary;
     }
   }
   .list {
@@ -26,8 +26,8 @@
 
       .english {
         :global(.pi-star-fill) {
-          color: $primary;
           margin-top: 0.3rem;
+          color: $light-primary;
         }
       }
     }
@@ -42,15 +42,15 @@
 
       .progress {
         margin-top: 0.5rem;
-        background: $gray;
+        background: $light-gray;
         :global(.progress-bar) {
           color: $black;
           font-weight: bold;
-          background: rgba($primary, 0.7);
+          background: $primary;
           transition: background 0.3s;
 
           &:hover {
-            background: rgba($primary, 1);
+            background: $light-primary;
           }
         }
       }

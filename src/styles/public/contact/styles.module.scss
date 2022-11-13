@@ -6,20 +6,21 @@
     margin-bottom: 3rem;
   }
   .subtitle {
-    color: $primary;
+    color: $white;
     font-weight: bold;
     text-align: center;
   }
   .small {
     text-align: center;
+    color: rgba($white, 0.8);
   }
   .item {
     margin: 1rem 0;
     text-align: center;
 
     .icon {
-      fill: $primary;
       margin-bottom: 1rem;
+      fill: $light-primary;
       transition: all 0.3s;
     }
 

@@ -33,7 +33,7 @@ export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
   const { toast } = useApp()
   const anchors = [
     { label: 'Inicio', eventKey: 'home', icon: House },
-    { label: 'Blog', eventKey: 'blog', icon: Newspaper },
+    // { label: 'Blog', eventKey: 'blog', icon: Newspaper },
     { label: 'Sobre mí', eventKey: 'about', icon: Person },
     { label: 'Experiencia', eventKey: 'experience', icon: GraphUpArrow },
     { label: 'Contacto', eventKey: 'contact', icon: Chat }
