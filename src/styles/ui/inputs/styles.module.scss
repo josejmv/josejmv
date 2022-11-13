@@ -2,9 +2,9 @@
 
 .input {
   width: 100%;
-  border: none;
-  background: $gray;
-  border-radius: 11px;
+  border: none !important;
+  background: $gray !important;
+  border-radius: 11px !important;
 }
 
 .password {
