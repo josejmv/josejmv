@@ -21,7 +21,6 @@ export const Projects: FC = () => {
 
   return (
     <Container as='section' className={classes.projects}>
-      <h2 className={classes.title}>Proyectos personales</h2>
       <Row>
         {personalProjects.map((project) => (
           <Col sm={6} lg={4} xl={3} key={project.name}>

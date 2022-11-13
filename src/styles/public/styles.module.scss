@@ -8,8 +8,11 @@
     margin: 0;
 
     .aside {
+      top: 0;
       padding: 0;
       display: flex;
+      position: sticky;
+      max-height: 100vh;
 
       @media (max-width: 790px) {
         display: none;

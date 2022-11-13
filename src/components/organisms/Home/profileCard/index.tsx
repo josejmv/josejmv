@@ -3,6 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import dayjs from 'dayjs'
 
+// components
+import { fadeIn } from '@atoms/animations/utils'
+import { DivMotion } from '@atoms/animations'
+import { animations } from './utils'
+
 // bootstrap components
 import {
   Github,
@@ -36,6 +41,15 @@ export const ProfileCard: FC = () => {
     { link: 'https://instagram.com/josemvasquezv/', Icon: Instagram }
   ]
 
+  const info = [
+    {
+      title: dayjs().tz(timezoneCode).diff(startWorkDate, 'year'),
+      description: 'Años de experiencia'
+    },
+    { title: 'Senior', description: 'Desarrollador web' },
+    { title: 'Next.js', description: 'Framework dominante' }
+  ]
+
   /**
    * handle show toast on downloaded file
    */
@@ -47,78 +61,76 @@ export const ProfileCard: FC = () => {
     })
 
   return (
-    <article className={classes.profile}>
-      <div className={classes.avatar}>
-        <Image
-          width={80}
-          height={80}
-          alt='profile'
-          src='/assets/pics/profile.jpg'
-        />
-      </div>
-      <h2 className={classes.title}>José Vasquez</h2>
-      <span className={classes.small}>Frontend developer</span>
+    <DivMotion {...fadeIn}>
+      <article className={classes.profile}>
+        <DivMotion {...animations.iconsAnimation}>
+          <div className={classes.avatar}>
+            <Image
+              width={80}
+              height={80}
+              alt='profile'
+              src='/assets/pics/profile.jpg'
+            />
+          </div>
+          <h2 className={classes.title}>José Vasquez</h2>
+          <span className={classes.small}>Frontend developer</span>
 
-      <nav>
-        <ul className={classes.rrss}>
-          {rrss.map(({ link, Icon }) => (
-            <li className={classes.item} key={link}>
-              <Link href={link}>
-                <a>
-                  <Icon size={32} />
+          <nav>
+            <ul className={classes.rrss}>
+              {rrss.map(({ link, Icon }) => (
+                <li key={link} className={classes.item}>
+                  <Link href={link}>
+                    <a>
+                      <Icon size={32} />
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </DivMotion>
+
+        <DivMotion {...animations.textsAnimation}>
+          <Container as='section'>
+            <Row className={classes.info}>
+              {info.map((item, idx) => (
+                <Col key={idx} xs={4}>
+                  <p className={classes.title}>{item.title}</p>
+                  <span className={classes.subtitle}>{item.description}</span>
+                </Col>
+              ))}
+            </Row>
+
+            <Row className={classes.actions}>
+              <Col className='mb-3' lg={12}>
+                <a download href='/assets/cv/Jose_Vasquez.pdf'>
+                  <Button onClick={handleDownloadFile}>
+                    <Download className='me-2' size={16} /> Descargar CV
+                  </Button>
                 </a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <Container as='section'>
-        <Row className={classes.info}>
-          <Col xs={4}>
-            <p className={classes.title}>
-              {dayjs().tz(timezoneCode).diff(startWorkDate, 'year')}
-            </p>
-            <span className={classes.subtitle}>Años de experiencia</span>
-          </Col>
-          <Col xs={4}>
-            <p className={classes.title}>Senior</p>
-            <span className={classes.subtitle}>Desarrollador web</span>
-          </Col>
-          <Col xs={4}>
-            <p className={classes.title}>Next.js</p>
-            <span className={classes.subtitle}>Framework dominante</span>
-          </Col>
-        </Row>
-
-        <Row className={classes.actions}>
-          <Col className='mb-3' lg={12}>
-            <a download href='/assets/cv/Jose_Vasquez.pdf'>
-              <Button onClick={handleDownloadFile}>
-                <Download className='me-2' size={16} /> Descargar CV
-              </Button>
-            </a>
-          </Col>
-          <Col xs='auto'>
-            <Link href={whatsappUrl}>
-              <a target='_blank'>
-                <Button>
-                  <Whatsapp size={24} />
-                </Button>
-              </a>
-            </Link>
-          </Col>
-          <Col xs='auto'>
-            <Link href='https://t.me/+584147545160'>
-              <a target='_blank'>
-                <Button>
-                  <Telegram size={24} />
-                </Button>
-              </a>
-            </Link>
-          </Col>
-        </Row>
-      </Container>
-    </article>
+              </Col>
+              <Col xs='auto'>
+                <Link href={whatsappUrl}>
+                  <a target='_blank'>
+                    <Button>
+                      <Whatsapp size={24} />
+                    </Button>
+                  </a>
+                </Link>
+              </Col>
+              <Col xs='auto'>
+                <Link href='https://t.me/+584147545160'>
+                  <a target='_blank'>
+                    <Button>
+                      <Telegram size={24} />
+                    </Button>
+                  </a>
+                </Link>
+              </Col>
+            </Row>
+          </Container>
+        </DivMotion>
+      </article>
+    </DivMotion>
   )
 }
