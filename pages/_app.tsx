@@ -50,7 +50,10 @@ const MyApp: NextPage<AppProps<MyAppProps>> = ({ Component, pageProps }) => {
         <meta name='description' content='Portafolio' />
         <meta property='og:description' content='Portafolio' />
         <meta property='og:title' content='JoseJMV - portafolio' />
-        <meta property='og:image' content={`/assets/pics/profile.jpg`} />
+        <meta
+          property='og:image'
+          content={`${permalink}/assets/pics/profile.jpg`}
+        />
       </Head>
 
       <SessionProvider session={pageProps.session}>
