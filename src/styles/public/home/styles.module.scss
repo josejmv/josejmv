@@ -3,4 +3,8 @@
 .container {
   padding-top: 3rem;
   justify-content: center;
+
+  @media (max-width: 500px) {
+    padding-top: 1rem;
+  }
 }
