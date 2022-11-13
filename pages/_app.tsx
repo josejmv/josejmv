@@ -1,9 +1,11 @@
 // main tools
+import { SessionProvider } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 // components
 import { PageLoader } from '@molecules/PageLoader'
+import { LoginModal } from '@molecules/LoginModal'
 
 // providers
 import { AppContextProvider } from 'context/app/provider'
@@ -25,9 +27,14 @@ import 'styles/globals.scss'
 
 // types
 import type { AppProps } from 'next/app'
+import { Session } from 'next-auth'
 import { NextPage } from 'next'
 
-const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
+type MyAppProps = {
+  session: Session
+}
+
+const MyApp: NextPage<AppProps<MyAppProps>> = ({ Component, pageProps }) => {
   const { locale } = useRouter()
   const permalink = 'https://josejmv.vercel.app'
   dayjs.locale(locales[locale as keyof typeof locales])
@@ -43,20 +50,21 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
         <meta name='description' content='Portafolio' />
         <meta property='og:description' content='Portafolio' />
         <meta property='og:title' content='JoseJMV - portafolio' />
-        <meta
-          property='og:image'
-          content={`${permalink}/assets/img/profile.jpg`}
-        />
+        <meta property='og:image' content={`/assets/pics/profile.jpg`} />
       </Head>
 
-      <SSRProvider>
-        <AppContextProvider>
-          <PageLoader>
-            <Component {...pageProps} />
-            <ScrollTop className='scroll-to-top' />
-          </PageLoader>
-        </AppContextProvider>
-      </SSRProvider>
+      <SessionProvider session={pageProps.session}>
+        <SSRProvider>
+          <AppContextProvider>
+            <PageLoader>
+              <Component {...pageProps} />
+
+              <LoginModal />
+              <ScrollTop className='scroll-to-top' />
+            </PageLoader>
+          </AppContextProvider>
+        </SSRProvider>
+      </SessionProvider>
     </>
   )
 }

@@ -1,0 +1,47 @@
+@import '/src/styles/ui/buttons/styles.module.scss';
+@import '/src/styles/ui/inputs/styles.module.scss';
+@import '/src/styles/ui/texts/styles.module.scss';
+@import '/src/styles/variables.scss';
+
+.login {
+  margin: 1rem 0;
+  padding: 0 2rem;
+
+  @media (max-width: 500px) {
+    padding: 0;
+  }
+
+  .title {
+    font-weight: bold;
+    width: fit-content;
+    position: relative;
+
+    &::before {
+      width: 40%;
+      height: 2px;
+      content: '';
+      bottom: -5px;
+      position: absolute;
+      background: $light-primary;
+    }
+    &::after {
+      left: 0;
+      width: 20%;
+      content: '';
+      height: 1.5px;
+      bottom: -10px;
+      position: absolute;
+      background: $light-primary;
+    }
+  }
+
+  .small {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
