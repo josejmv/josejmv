@@ -1,3 +1,4 @@
+@import '/src/styles/ui/buttons/styles.module.scss';
 @import '/src/styles/ui/texts/styles.module.scss';
 @import '/src/styles/variables.scss';
 
@@ -92,6 +93,9 @@
     }
   }
 
+  .button {
+    padding: 0.7rem;
+  }
   .actions {
     margin: 2rem 0;
     justify-content: center;

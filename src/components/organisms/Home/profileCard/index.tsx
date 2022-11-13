@@ -104,7 +104,9 @@ export const ProfileCard: FC = () => {
             <Row className={classes.actions}>
               <Col className='mb-3' lg={12}>
                 <a download href='/assets/cv/Jose_Vasquez.pdf'>
-                  <Button onClick={handleDownloadFile}>
+                  <Button
+                    className={classes.button}
+                    onClick={handleDownloadFile}>
                     <Download className='me-2' size={16} /> Descargar CV
                   </Button>
                 </a>
@@ -112,7 +114,7 @@ export const ProfileCard: FC = () => {
               <Col xs='auto'>
                 <Link href={whatsappUrl}>
                   <a target='_blank'>
-                    <Button>
+                    <Button className={classes.button}>
                       <Whatsapp size={24} />
                     </Button>
                   </a>
@@ -121,7 +123,7 @@ export const ProfileCard: FC = () => {
               <Col xs='auto'>
                 <Link href='https://t.me/+584147545160'>
                   <a target='_blank'>
-                    <Button>
+                    <Button className={classes.button}>
                       <Telegram size={24} />
                     </Button>
                   </a>

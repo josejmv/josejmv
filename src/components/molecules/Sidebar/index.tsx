@@ -9,7 +9,6 @@ import {
   Github,
   Linkedin,
   Download,
-  Newspaper,
   Instagram,
   ArrowRight,
   GraphUpArrow
