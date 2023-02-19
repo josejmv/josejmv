@@ -2,13 +2,14 @@
 import Link from 'next/link'
 
 // bootstrap components
-import { Container, Row, Col, Card } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 
 // styles
 import classes from 'styles/public/home/projects.module.scss'
 
 // types
 import { FC } from 'react'
+import { Card } from '@molecules/card'
 
 export const Projects: FC = () => {
   const personalProjects = [
@@ -26,20 +27,7 @@ export const Projects: FC = () => {
           <Col sm={6} lg={4} xl={3} key={project.name}>
             <Link passHref href={project.url}>
               <a target='_blank'>
-                <Card role='button' className={classes.card}>
-                  <Card.Img
-                    alt={project.name}
-                    src={project.picture}
-                    className={classes.card_img}
-                  />
-                  <Card.ImgOverlay className={classes.card_overlay}>
-                    <Card.Footer className={classes.card_footer}>
-                      <Card.Title className={classes.card_title}>
-                        {project.name}
-                      </Card.Title>
-                    </Card.Footer>
-                  </Card.ImgOverlay>
-                </Card>
+                <Card {...project} />
               </a>
             </Link>
           </Col>

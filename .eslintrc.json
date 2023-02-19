@@ -1,3 +1,12 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "standard"],
+  "globals": { "JSX": "writable", "NodeJS": "readonly" },
+  "rules": {
+    "curly": "off",
+    "indent": "off",
+    "multiline-ternary": "off",
+    "no-use-before-define": "off",
+    "import/no-duplicates": ["off"],
+    "space-before-function-paren": "off"
+  }
 }

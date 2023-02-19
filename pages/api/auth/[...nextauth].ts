@@ -20,13 +20,13 @@ export default NextAuth({
         if (
           credentials?.username === process.env.NEXT_PUBLIC_USERNAME &&
           credentials?.password === process.env.NEXT_PUBLIC_PASSWORD
-        )
+        ) {
           return {
             id: '1',
             url: process.env.NEXT_PUBLIC_ADMIN!,
             secret: process.env.NEXT_PUBLIC_SECRET_REDIRECTION!
           }
-        else throw new Error('Usuario o contraseña incorrectos')
+        } else throw new Error('Usuario o contraseña incorrectos')
       }
     })
   ],
