@@ -28,8 +28,8 @@ export default class MyDocument extends Document {
           <meta charSet='utf-8' />
           <meta name='author' content='JoseJMV' />
           <meta name='copyright' content='JoseJMV' />
-          <link rel='shortcut icon' href='/favicon.ico' />
           <meta name='keywords' content={this.keywords.join()} />
+          <link rel='shortcut icon' href='/assets/logos/icon-192x192.png' />
 
           <link
             rel='stylesheet'

@@ -66,7 +66,7 @@ export const ContactPage: FC = () => {
       </p>
       <Row className='my-5 justify-content-center'>
         {items.map((Item) => (
-          <Col key={Item.label} className={classes.item} xs={12} sm={6} lg={4}>
+          <Col key={Item.label} className={classes.item} xs={6} lg={4}>
             <Link href={Item.href}>
               <a target='_blank'>
                 <div>

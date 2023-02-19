@@ -1,16 +1,20 @@
-@import '/src/styles/public/styles.module.scss';
 @import '/src/styles/variables.scss';
+@import '/src/styles/public/styles.module.scss';
 
 .about {
   .title {
     margin-bottom: 3rem;
   }
   .subtitle {
+    color: $white;
     margin-bottom: 1.5rem;
     .name {
       font-weight: bold;
       color: $light-primary;
     }
+  }
+  .small {
+    color: $white;
   }
   .list {
     .item {
