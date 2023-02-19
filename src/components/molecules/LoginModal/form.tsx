@@ -40,7 +40,9 @@ export const LoginForm: FC<LoginFormProps> = ({ handleShowLogin }) => {
       redirect: false
     })
 
-    if (data?.error) { toast()?.show({ summary: 'Error', severity: 'error', detail: data.error }) } else {
+    if (data?.error) {
+      toast()?.show({ summary: 'Error', severity: 'error', detail: data.error })
+    } else {
       handleShowLogin()
     }
 

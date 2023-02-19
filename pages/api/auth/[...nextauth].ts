@@ -16,7 +16,7 @@ export default NextAuth({
       /**
        * verify if the email is found in 8base as josejmvasquez@gmail.com
        */
-      async authorize (credentials) {
+      async authorize(credentials) {
         if (
           credentials?.username === process.env.NEXT_PUBLIC_USERNAME &&
           credentials?.password === process.env.NEXT_PUBLIC_PASSWORD
