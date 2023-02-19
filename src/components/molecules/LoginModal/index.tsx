@@ -40,15 +40,17 @@ export const LoginModal: FC = () => {
 
   return (
     <>
-      {status === 'loading' ? (
+      {status === 'loading'
+        ? (
         <Spinner animation='grow' />
-      ) : (
+          )
+        : (
         <OverlayTrigger placement='top' overlay={loginTooltip}>
           <Button onClick={handleAction} className={classes.button}>
             {session ? <Unlock size={30} /> : <Lock size={30} />}
           </Button>
         </OverlayTrigger>
-      )}
+          )}
 
       <Modal
         centered

@@ -1,5 +1,4 @@
-import { bottomToTop } from '@atoms/animations/utils'
-import { topToBottom } from '@atoms/animations/utils'
+import { bottomToTop, topToBottom } from '@atoms/animations/utils'
 
 export const animations = {
   iconsAnimation: {
