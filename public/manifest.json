@@ -1,0 +1,32 @@
+{
+    "scope": "/",
+    "start_url": "/",
+    "name": "JoseJMV",
+    "display": "standalone",
+    "short_name": "JoseJMV",
+    "theme_color": "#0050ac",
+    "background_color": "#0d1117",
+    "description": "JoseJMV portfolio",
+    "icons": [
+        {
+            "src": "/assets/logos/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/logos/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/logos/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/logos/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
