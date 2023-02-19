@@ -1,8 +1,8 @@
 // components
-import * as VIEWS from '@organisms/index'
 import { Sidebar } from '@molecules/Sidebar'
 import { Navbar } from '@molecules/Navbar'
 import { Footer } from '@molecules/Footer'
+import * as VIEWS from '@organisms/index'
 
 // bootstrap components
 import { Container, Row, Col, Tab } from 'react-bootstrap'
@@ -16,7 +16,7 @@ import type { NextPage } from 'next'
 const Home: NextPage = () => {
   const contents = [
     { component: VIEWS.HomePage, eventKey: 'home' },
-    { component: VIEWS.BlogPage, eventKey: 'blog' },
+    // { component: VIEWS.BlogPage, eventKey: 'blog' },
     { component: VIEWS.AboutPage, eventKey: 'about' },
     { component: VIEWS.Experience, eventKey: 'experience' },
     { component: VIEWS.ContactPage, eventKey: 'contact' }

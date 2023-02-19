@@ -2,8 +2,7 @@
   "private": true,
   "license": "MIT",
   "name": "josejmv",
-  "main": "index.js",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "josejmv <josejmvasquez@gmail.com>",
   "repository": "https://github.com/josejmv/josejmv.git",
   "scripts": {
@@ -11,30 +10,32 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix",
+    "postinstall": "husky install",
     "format": "prettier --write \"src/**/*.tsx\" \"src/**/*.ts\" \"pages/**/*.ts\" \"pages/**/*.tsx\""
   },
   "dependencies": {
-    "bootstrap": "5.2.2",
+    "bootstrap": "5.2.3",
     "dayjs": "1.11.6",
-    "framer-motion": "^7.6.6",
-    "next": "12.3.1",
-    "next-auth": "^4.16.4",
+    "framer-motion": "^7.6.12",
+    "next": "12.3.4",
+    "next-auth": "^4.17.0",
     "primeicons": "6.0.1",
     "primereact": "8.7.2",
     "react": "18.2.0",
     "react-bootstrap": "2.6.0",
-    "react-bootstrap-icons": "1.9.1",
+    "react-bootstrap-icons": "1.10.2",
     "react-dom": "18.2.0",
     "sass": "1.56.1"
   },
   "devDependencies": {
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.8",
-    "eslint": "8.27.0",
-    "eslint-config-next": "12.3.1",
+    "@types/react-dom": "18.0.9",
+    "eslint": "8.28.0",
+    "eslint-config-next": "12.3.4",
     "husky": "^8.0.2",
-    "prettier": "2.7.1",
+    "prettier": "2.8.0",
+    "standard": "^17.0.0",
     "typescript": "4.8.4"
   }
 }

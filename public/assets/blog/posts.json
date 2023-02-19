@@ -1,0 +1,12 @@
+{
+    "posts": [
+        {
+            "name": "Hola",
+            "category": "monologues"
+        },
+        {
+            "name": "Hola",
+            "category": "poems"
+        }
+    ]
+}

@@ -4,8 +4,8 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 // components
-import { PageLoader } from '@molecules/PageLoader'
 import { LoginModal } from '@molecules/LoginModal'
+import { PageLoader } from '@molecules/PageLoader'
 
 // providers
 import { AppContextProvider } from 'context/app/provider'
