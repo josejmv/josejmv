@@ -55,7 +55,7 @@ const MyApp: NextPage<AppProps<MyAppProps>> = ({ Component, pageProps }) => {
         <meta property='og:title' content='JoseJMV - portafolio' />
         <meta
           property='og:image'
-          content={`${permalink}/assets/pics/profile.jpg`}
+          content={`${permalink}/assets/logox/icon-384x384.png`}
         />
       </Head>
 
