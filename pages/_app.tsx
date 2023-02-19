@@ -44,7 +44,7 @@ const MyApp: NextPage<AppProps<MyAppProps>> = ({ Component, pageProps }) => {
       <Head>
         <title>JoseJMV</title>
         <link rel='canonical' href={permalink} />
-        <meta name='theme-color' content='#0050ac' />
+        <meta name='theme-color' content='#d59938' />
         <link rel='manifest' href='/manifest.json' />
         <meta property='og:type' content='website' />
         <meta name='robots' content='index follow' />
