@@ -1,5 +1,12 @@
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === 'development'
+})
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+module.exports = withPWA({
   swcMinify: true,
   reactStrictMode: true,
   i18n: { defaultLocale: 'es', locales: ['en', 'es'] },
@@ -11,4 +18,4 @@ module.exports = {
     NEXT_PUBLIC_PASSWORD: process.env.NEXT_PUBLIC_PASSWORD,
     NEXT_PUBLIC_SECRET_REDIRECTION: process.env.NEXT_PUBLIC_SECRET_REDIRECTION
   }
-}
+})

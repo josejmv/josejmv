@@ -44,10 +44,13 @@ const MyApp: NextPage<AppProps<MyAppProps>> = ({ Component, pageProps }) => {
       <Head>
         <title>JoseJMV</title>
         <link rel='canonical' href={permalink} />
+        <meta name='theme-color' content='#0050ac' />
+        <link rel='manifest' href='/manifest.json' />
         <meta property='og:type' content='website' />
         <meta name='robots' content='index follow' />
         <meta property='og:url' content={permalink} />
         <meta name='description' content='Portafolio' />
+        <link rel='apple-touch-icon' href='/icon.png' />
         <meta property='og:description' content='Portafolio' />
         <meta property='og:title' content='JoseJMV - portafolio' />
         <meta
