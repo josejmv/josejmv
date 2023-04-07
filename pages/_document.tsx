@@ -35,9 +35,9 @@ export default class MyDocument extends Document {
             rel='stylesheet'
             href='https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald&family=Anton&display=swap'
           />
-          <Script id='sc-script' src={process.env.SMART_CAT_SCRIPT_URL} />
         </Head>
         <body>
+          <Script id='sc-script' src={process.env.NEXT_PUBLIC_SMART_CAT_SCRIPT_URL} />
           <Main />
           <NextScript />
         </body>
