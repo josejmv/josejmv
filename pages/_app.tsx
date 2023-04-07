@@ -1,6 +1,7 @@
 // main tools
 import { SessionProvider } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
 import Head from 'next/head'
 
 // components
@@ -58,6 +59,10 @@ const MyApp: NextPage<AppProps<MyAppProps>> = ({ Component, pageProps }) => {
           content={`${permalink}/assets/logox/icon-256x256.png`}
         />
       </Head>
+      <Script
+        id='sc-script'
+        src={process.env.NEXT_PUBLIC_SMART_CAT_SCRIPT_URL}
+      />
 
       <SessionProvider session={pageProps.session}>
         <SSRProvider>

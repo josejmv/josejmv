@@ -1,6 +1,5 @@
 // main tools
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import Script from 'next/script'
 
 // types
 import { DocumentContext, DocumentInitialProps } from 'next/document'
@@ -37,10 +36,6 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
-          <Script
-            id='sc-script'
-            src={process.env.NEXT_PUBLIC_SMART_CAT_SCRIPT_URL}
-          />
           <Main />
           <NextScript />
         </body>
