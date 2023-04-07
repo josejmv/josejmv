@@ -37,6 +37,7 @@ export default class MyDocument extends Document {
           />
           <Script
             id='sc-script'
+            strategy='beforeInteractive'
             src={process.env.NEXT_PUBLIC_SMART_CAT_SCRIPT_URL}
           />
         </Head>
