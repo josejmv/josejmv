@@ -36,6 +36,8 @@ export default class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald&family=Anton&display=swap'
           />
           <Script
+            async={false}
+            defer={false}
             id='sc-script'
             strategy='beforeInteractive'
             src={process.env.NEXT_PUBLIC_SMART_CAT_SCRIPT_URL}
