@@ -1,5 +1,6 @@
 // main tools
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 // types
 import { DocumentContext, DocumentInitialProps } from 'next/document'
@@ -30,11 +31,11 @@ export default class MyDocument extends Document {
           <meta name='copyright' content='JoseJMV' />
           <meta name='keywords' content={this.keywords.join()} />
           <link rel='shortcut icon' href='/assets/logos/icon-192x192.png' />
-
           <link
             rel='stylesheet'
             href='https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald&family=Anton&display=swap'
           />
+          <Script id='sc-script' src={process.env.SMART_CAT_SCRIPT_URL} />
         </Head>
         <body>
           <Main />
