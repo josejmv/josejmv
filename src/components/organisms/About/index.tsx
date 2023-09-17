@@ -141,7 +141,7 @@ export const AboutPage: FC = () => {
                   {showRatingComponent && (
                     <Rating
                       readOnly
-                      value={3}
+                      value={4}
                       stars={5}
                       cancel={false}
                       className={classes.english}

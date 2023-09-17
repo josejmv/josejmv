@@ -1,6 +1,5 @@
 // main tools
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import Script from 'next/script'
 
 // types
 import { DocumentContext, DocumentInitialProps } from 'next/document'
@@ -34,13 +33,6 @@ export default class MyDocument extends Document {
           <link
             rel='stylesheet'
             href='https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald&family=Anton&display=swap'
-          />
-          <Script
-            async={false}
-            defer={false}
-            id='sc-script'
-            strategy='beforeInteractive'
-            src={process.env.NEXT_PUBLIC_SMART_CAT_SCRIPT_URL}
           />
         </Head>
         <body>

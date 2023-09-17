@@ -1,22 +1,14 @@
 // main tools
 import Image from 'next/image'
 import Link from 'next/link'
-import dayjs from 'dayjs'
 
 // components
 import { fadeIn } from '@atoms/animations/utils'
 import { DivMotion } from '@atoms/animations'
-import { animations } from './utils'
+import { animations, info, rrss } from './utils'
 
 // bootstrap components
-import {
-  Github,
-  Linkedin,
-  Whatsapp,
-  Telegram,
-  Download,
-  Instagram
-} from 'react-bootstrap-icons'
+import { Whatsapp, Telegram, Download } from 'react-bootstrap-icons'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 
 // hooks
@@ -30,25 +22,8 @@ import { FC } from 'react'
 
 export const ProfileCard: FC = () => {
   const { toast } = useApp()
-  const timezoneCode = 'America/Caracas'
-  const startWorkDate = dayjs('04/30/2019').tz(timezoneCode)
   const whatsappUrl =
     'https://api.whatsapp.com/send/?phone=%2B584147545160&text=Hola,%20Jose%20Manuel%20mucho%20gusto.&type=phone_number&app_absent=0'
-
-  const rrss = [
-    { link: 'https://www.linkedin.com/in/josejmv/', Icon: Linkedin },
-    { link: 'https://github.com/josejmv', Icon: Github },
-    { link: 'https://instagram.com/josemvasquezv/', Icon: Instagram }
-  ]
-
-  const info = [
-    {
-      title: dayjs().tz(timezoneCode).diff(startWorkDate, 'year'),
-      description: 'Años de experiencia'
-    },
-    { title: 'Senior', description: 'Desarrollador web' },
-    { title: 'Next.js', description: 'Framework dominante' }
-  ]
 
   /**
    * handle show toast on downloaded file
@@ -80,9 +55,7 @@ export const ProfileCard: FC = () => {
               {rrss.map(({ link, Icon }) => (
                 <li key={link} className={classes.item}>
                   <Link href={link}>
-                    <a>
-                      <Icon size={32} />
-                    </a>
+                    <Icon size={32} />
                   </Link>
                 </li>
               ))}
@@ -112,21 +85,17 @@ export const ProfileCard: FC = () => {
                 </a>
               </Col>
               <Col xs='auto'>
-                <Link href={whatsappUrl}>
-                  <a target='_blank'>
-                    <Button className={classes.button}>
-                      <Whatsapp size={24} />
-                    </Button>
-                  </a>
+                <Link target='_blank' href={whatsappUrl}>
+                  <Button className={classes.button}>
+                    <Whatsapp size={24} />
+                  </Button>
                 </Link>
               </Col>
               <Col xs='auto'>
-                <Link href='https://t.me/+584147545160'>
-                  <a target='_blank'>
-                    <Button className={classes.button}>
-                      <Telegram size={24} />
-                    </Button>
-                  </a>
+                <Link target='_blank' href='https://t.me/+584147545160'>
+                  <Button className={classes.button}>
+                    <Telegram size={24} />
+                  </Button>
                 </Link>
               </Col>
             </Row>

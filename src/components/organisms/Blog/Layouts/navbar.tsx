@@ -38,7 +38,7 @@ export const BlogNavbar: FC = () => {
   }
 
   return (
-    <Navbar collapseOnSelect expand='md' expanded={show}>
+    <Navbar className='pt-0' collapseOnSelect expand='md' expanded={show}>
       <Container fluid className={classes.navbar}>
         <Navbar.Brand className={classes.navbar_header}>
           <Link passHref href='/'>
