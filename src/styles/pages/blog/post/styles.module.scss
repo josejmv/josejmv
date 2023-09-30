@@ -1,0 +1,19 @@
+@import '/src/styles/ui/texts/styles.module.scss';
+@import '/src/styles/pages/styles.module.scss';
+@import '/src/styles/variables.scss';
+
+.title {
+  margin-bottom: 3rem;
+}
+
+.content {
+  @extend .small;
+
+  padding: 2rem;
+  border-radius: 11px;
+  background: rgba($white, 0.1);
+
+  @media (max-width: 575px) {
+    padding: 1.5rem 1rem;
+  }
+}

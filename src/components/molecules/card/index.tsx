@@ -2,7 +2,7 @@
 import { Card as BsCard } from 'react-bootstrap'
 
 // styles
-import classes from 'styles/components/card/styles.module.scss'
+import classes from './styles.module.scss'
 
 // main tools
 import { FC } from 'react'
@@ -12,7 +12,7 @@ type CardProps = {
   picture: string
 }
 
-export const Card: FC<CardProps> = (props) => (
+export const GenericCard: FC<CardProps> = (props) => (
   <BsCard role='button' className={classes.card}>
     <BsCard.Img
       alt={props.name}

@@ -9,10 +9,10 @@ import { Container, Row, Col, ListGroup, ProgressBar } from 'react-bootstrap'
 import { Rating } from 'primereact/rating'
 
 // hooks
-import { useApp } from 'hooks/useApp'
+import { useApp } from 'hooks/use-app'
 
 // styles
-import classes from 'styles/public/about/styles.module.scss'
+import classes from 'styles/pages/about/styles.module.scss'
 
 // types
 import { FC } from 'react'

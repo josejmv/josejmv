@@ -1,0 +1,35 @@
+@import '/src/styles/pages/styles.module.scss';
+@import '/src/styles/variables.scss';
+
+.contact {
+  .title {
+    margin-bottom: 3rem;
+  }
+  .subtitle {
+    color: $white;
+    font-weight: bold;
+    text-align: center;
+  }
+  .small {
+    text-align: center;
+    color: rgba($white, 0.8);
+  }
+  .item {
+    color: $white;
+    margin: 1rem 0;
+    text-align: center;
+
+    .icon {
+      margin-bottom: 1rem;
+      fill: $light-primary;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      .icon {
+        fill: $white;
+        transform: scale(1.1);
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "category": "monologos"
+        },
+        {
+            "id": 2,
+            "category": "monologos"
+        }
+    ]
+}

@@ -9,23 +9,27 @@ import {
   Github,
   Linkedin,
   Download,
-  // Newspaper,
+  Newspaper,
   Instagram,
   ArrowRight,
   GraphUpArrow
 } from 'react-bootstrap-icons'
 import { Container, Row, Col, Button, Nav } from 'react-bootstrap'
 
+// components
+import { DivMotion } from '@atoms/animations'
+
 // hooks
-import { useApp } from 'hooks/useApp'
+import { useApp } from 'hooks/use-app'
+
+// utils
+import { animations } from './utils'
 
 // styles
-import classes from 'styles/components/sidebar/styles.module.scss'
+import classes from './styles.module.scss'
 
 // types
 import { FC } from 'react'
-import { DivMotion } from '@atoms/animations'
-import { animations } from './utils'
 
 type SidebarProps = {
   handleShowSidebar?: () => void
@@ -35,7 +39,7 @@ export const Sidebar: FC<SidebarProps> = ({ handleShowSidebar }) => {
   const { toast } = useApp()
   const anchors = [
     { label: 'Inicio', eventKey: 'home', icon: House },
-    // { label: 'Blog', eventKey: 'blog', icon: Newspaper },
+    { label: 'Blog', eventKey: 'blog', icon: Newspaper },
     { label: 'Sobre mí', eventKey: 'about', icon: Person },
     { label: 'Experiencia', eventKey: 'experience', icon: GraphUpArrow },
     { label: 'Contacto', eventKey: 'contact', icon: Chat }

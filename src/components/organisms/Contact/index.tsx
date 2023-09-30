@@ -8,7 +8,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { items, rrss } from './utils'
 
 // styles
-import classes from 'styles/public/contact/styles.module.scss'
+import classes from 'styles/pages/contact/styles.module.scss'
 
 // types
 import { FC } from 'react'

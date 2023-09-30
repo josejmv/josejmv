@@ -8,7 +8,7 @@ import * as VIEWS from '@organisms/index'
 import { Container, Row, Col, Tab } from 'react-bootstrap'
 
 // styles
-import classes from 'styles/public/styles.module.scss'
+import classes from 'styles/pages/styles.module.scss'
 
 // types
 import type { NextPage } from 'next'
@@ -16,9 +16,9 @@ import type { NextPage } from 'next'
 const Home: NextPage = () => {
   const contents = [
     { component: VIEWS.HomePage, eventKey: 'home' },
-    // { component: VIEWS.BlogPage, eventKey: 'blog' },
     { component: VIEWS.AboutPage, eventKey: 'about' },
     { component: VIEWS.Experience, eventKey: 'experience' },
+    { component: VIEWS.BlogCategoriesPage, eventKey: 'blog' },
     { component: VIEWS.ContactPage, eventKey: 'contact' }
   ]
 

@@ -1,14 +1,16 @@
 // components
-import { topToBottom } from '@atoms/animations/utils'
 import { DivMotion } from '@atoms/animations'
-import { ProfileCard } from './profileCard'
+import { ProfileCard } from './profile-card'
 import { Projects } from './projects'
+
+// utils
+import { topToBottom } from '@atoms/animations/utils'
 
 // bootstrap components
 import { Container, Row, Col } from 'react-bootstrap'
 
 // styles
-import classes from 'styles/public/home/styles.module.scss'
+import classes from 'styles/pages/home/styles.module.scss'
 
 // types
 import { FC } from 'react'

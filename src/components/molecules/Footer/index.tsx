@@ -1,3 +1,6 @@
+// main tools
+import Image from 'next/image'
+
 // bootstrap components
 import { Container } from 'react-bootstrap'
 
@@ -5,11 +8,10 @@ import { Container } from 'react-bootstrap'
 import { Divider } from 'primereact/divider'
 
 // styles
-import classes from 'styles/components/footer/styles.module.scss'
+import classes from './styles.module.scss'
 
 // types
 import { FC } from 'react'
-import Image from 'next/image'
 
 export const Footer: FC = () => (
   <footer className={classes.footer}>

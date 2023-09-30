@@ -1,5 +1,5 @@
 // components
-import { SeoContenidosExperience } from './slides/seocontenidos'
+import { SeoContenidosExperience } from './slides/seo-contenidos'
 import { TradesExperience } from './slides/trades-org'
 import { CentriaExperience } from './slides/centria'
 import { PlatziExperience } from './slides/platzi'
@@ -8,7 +8,7 @@ import { PlatziExperience } from './slides/platzi'
 import { Container, Carousel } from 'react-bootstrap'
 
 // styles
-import classes from 'styles/public/experience/styles.module.scss'
+import classes from 'styles/pages/experience/styles.module.scss'
 
 // types
 import { FC } from 'react'

@@ -2,6 +2,7 @@
 import { useRef } from 'react'
 
 // prime components
+import { ScrollTop } from 'primereact/scrolltop'
 import { Toast } from 'primereact/toast'
 
 // context
@@ -23,6 +24,7 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({
   return (
     <AppContext.Provider value={context}>
       {children}
+      <ScrollTop className='scroll-to-top' />
       <Toast ref={toast} position='top-right' />
     </AppContext.Provider>
   )

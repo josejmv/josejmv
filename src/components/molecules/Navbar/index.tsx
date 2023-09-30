@@ -8,7 +8,7 @@ import { Sidebar } from '@molecules/Sidebar'
 import { Offcanvas, Container, Button } from 'react-bootstrap'
 
 // styles
-import classes from 'styles/components/navbar/styles.module.scss'
+import classes from './styles.module.scss'
 
 // types
 import { FC } from 'react'

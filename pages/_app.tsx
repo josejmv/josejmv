@@ -4,8 +4,8 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 // components
-import { LoginModal } from '@molecules/LoginModal'
-import { PageLoader } from '@molecules/PageLoader'
+import { LoginModal } from '@molecules/login-modal'
+import { PageLoader } from '@molecules/page-loader'
 
 // providers
 import { AppContextProvider } from 'context/app/provider'
@@ -15,9 +15,6 @@ import { SSRProvider } from 'react-bootstrap'
 import { locales } from 'lib/dayjs/locales'
 import 'lib/dayjs/plugins'
 import dayjs from 'dayjs'
-
-// prime components
-import { ScrollTop } from 'primereact/scrolltop'
 
 // styles
 import 'primereact/resources/themes/bootstrap4-dark-blue/theme.css'
@@ -66,7 +63,6 @@ const MyApp: NextPage<AppProps<MyAppProps>> = ({ Component, pageProps }) => {
               <Component {...pageProps} />
 
               <LoginModal />
-              <ScrollTop className='scroll-to-top' />
             </PageLoader>
           </AppContextProvider>
         </SSRProvider>
