@@ -34,7 +34,7 @@ export const LoginForm: FC<LoginFormProps> = ({ handleShowLogin }) => {
     ev.preventDefault()
     setLoading(true)
 
-    const data = await signIn<any>('credentials', {
+    const data = await signIn<any>('signin', {
       username,
       password,
       redirect: false
