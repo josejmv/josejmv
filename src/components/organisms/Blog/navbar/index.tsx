@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 // bootstrap components
 import { Navbar, Container, CloseButton, Nav, Row, Col } from 'react-bootstrap'
-import { ChatQuote } from 'react-bootstrap-icons'
+import { ChatQuote, Bookmark } from 'react-bootstrap-icons'
 
 // styles
 import classes from './styles.module.scss'
@@ -20,7 +20,8 @@ export const BlogNavbar: FC = () => {
   const [show, setShow] = useState(false)
 
   const items = [
-    { label: 'Monologos', href: '/blog/monologos', icon: ChatQuote }
+    { label: 'Monologos', href: '/blog/monologos', icon: ChatQuote },
+    { label: 'Poemas', href: '/blog/poemas', icon: Bookmark }
   ]
 
   const handleShow = () => setShow(!show)
@@ -60,7 +61,8 @@ export const BlogNavbar: FC = () => {
                     key={Item.label}
                     className={classes.mobileNav_item}
                     onClick={() => handleNav(Item.href)}>
-                    <Item.icon size={22} />
+                    <Item.icon className='mb-2' size={22} />
+                    <br />
                     <span>{Item.label}</span>
                   </Col>
                 ))}
