@@ -15,6 +15,10 @@
         {
             "id": 2,
             "category": "poemas"
+        },
+        {
+            "id": 1,
+            "category": "cursos"
         }
     ]
 }

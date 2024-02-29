@@ -1,0 +1,37 @@
+{
+    "content": "",
+    "title": "Curso de ingles. Tarea 1",
+    "picture": "/assets/blog/categories/cursos.jpg",
+    "assets": [
+        {
+            "order": 1,
+            "tooltip": "Location of Malta",
+            "url": "/assets/blog/posts/cursos/assets/malta_1.jpg"
+        },
+        {
+            "order": 2,
+            "tooltip": "Shape of the country",
+            "url": "/assets/blog/posts/cursos/assets/malta_2.jpg"
+        },
+        {
+            "order": 3,
+            "tooltip": "Education First (EF) location in Malta",
+            "url": "/assets/blog/posts/cursos/assets/malta_3.jpg"
+        },
+        {
+            "order": 5,
+            "tooltip": "Azure Window, in Gozo",
+            "url": "/assets/blog/posts/cursos/assets/malta_4.jpg"
+        },
+        {
+            "order": 6,
+            "tooltip": "Fort Manoel, in Manoel Island",
+            "url": "/assets/blog/posts/cursos/assets/malta_5.jpg"
+        },
+        {
+            "order": 4,
+            "tooltip": "EF",
+            "url": "/assets/blog/posts/cursos/assets/malta_6.jpg"
+        }
+    ]
+}

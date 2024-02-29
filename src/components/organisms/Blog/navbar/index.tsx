@@ -21,7 +21,8 @@ export const BlogNavbar: FC = () => {
 
   const items = [
     { label: 'Monologos', href: '/blog/monologos', icon: ChatQuote },
-    { label: 'Poemas', href: '/blog/poemas', icon: Bookmark }
+    { label: 'Poemas', href: '/blog/poemas', icon: Bookmark },
+    { label: 'Cursos', href: '/blog/cursos', icon: Bookmark }
   ]
 
   const handleShow = () => setShow(!show)

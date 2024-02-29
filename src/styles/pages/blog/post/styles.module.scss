@@ -16,4 +16,17 @@
   @media (max-width: 575px) {
     padding: 1.5rem 1rem;
   }
+
+  &_assets {
+    min-height: 400px;
+    position: relative;
+    margin-bottom: 2rem;
+
+    &_image {
+      width: 100%;
+      object-fit: contain;
+      margin-bottom: 2rem;
+      border-radius: 11px;
+    }
+  }
 }
