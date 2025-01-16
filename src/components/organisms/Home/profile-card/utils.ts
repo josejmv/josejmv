@@ -22,7 +22,7 @@ export const animations = {
 }
 
 export const whatsappUrl =
-  'https://api.whatsapp.com/send/?phone=%2B584147545160&text=Hola,%20Jose%20Manuel%20mucho%20gusto.&type=phone_number&app_absent=0'
+  'https://api.whatsapp.com/send/?phone=%2B584147545160&text=Hola,%20Jose%20Manuel%20mucho%20gusto.'
 
 export const rrss = [
   { link: 'https://www.linkedin.com/in/josejmv/', Icon: Linkedin },
