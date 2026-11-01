@@ -1,0 +1,18 @@
+{
+  "Metadata": {
+    "title": "José M. Vasquez · Senior Full Stack Developer",
+    "description": "Portfolio of José M. Vasquez: payments, compliance and platform engineering with TypeScript, NestJS, Python and Next.js."
+  },
+  "Nav": {
+    "home": "Home",
+    "experience": "Experience",
+    "areas": "Areas",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has moved.",
+    "back": "Back to home"
+  }
+}

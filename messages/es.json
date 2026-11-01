@@ -1,0 +1,18 @@
+{
+  "Metadata": {
+    "title": "José M. Vasquez · Senior Full Stack Developer",
+    "description": "Portafolio de José M. Vasquez: ingeniería de pagos, compliance y plataforma con TypeScript, NestJS, Python y Next.js."
+  },
+  "Nav": {
+    "home": "Inicio",
+    "experience": "Experiencia",
+    "areas": "Áreas",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o cambió de dirección.",
+    "back": "Volver al inicio"
+  }
+}

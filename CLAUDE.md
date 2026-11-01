@@ -22,7 +22,7 @@ Ya incluidos: `src/app/globals.css` (tokens), `content/countries.ts` (datos del 
 
 - Next.js (App Router, última estable), TypeScript `strict`, React Server Components por defecto.
 - Tailwind CSS v4, con tokens en `src/app/globals.css` (`@theme`).
-- next-intl: locales `es` (por defecto) y `en`, con rutas localizadas (`/es/experiencia` ↔ `/en/experience`).
+- next-intl: locales `es` (por defecto) y `en`, con rutas localizadas (`/es/experiencia` ↔ `/en/experience`). En Next 16 el antiguo `middleware.ts` se llama `src/proxy.ts`.
 - next-themes: tema oscuro (por defecto) y claro.
 - three, @react-three/fiber y drei para 3D. **Globo: react-globe.gl** (decidido), con dos tabs: **Equipo** (nacionalidades de los compañeros) y **Empresas** (sedes de las empresas donde trabajó). Las dos vistas usan estilos de marcador distintos.
 - cmdk (⌘K), Radix UI (Tabs, Dialog, Accordion), Zod (contenido), MDX (case studies).
