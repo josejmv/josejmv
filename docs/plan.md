@@ -16,7 +16,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 - [x] **1.2** Tailwind v4 con los tokens de CLAUDE.md en `@theme`, y fuentes con `next/font`.
 - [x] **1.3** next-intl: `routing.ts` con pathnames localizados, middleware, `[locale]/layout.tsx` y `messages/{es,en}.json`. _(Next 16 deprecó `middleware.ts`: ahora es `src/proxy.ts`, con `export default createMiddleware(routing)` de next-intl 4.14. La paridad de claves ES/EN se comprueba en `src/i18n/messages-parity.ts` (rompe `tsc` y `next build`) y en un test. Con `cacheComponents`, el 404 del catch-all `[...rest]` se resuelve vía RSC: revisar en 7.1.)_
 - [x] **1.4** next-themes: ThemeProvider y ThemeToggle, sin parpadeo al cargar.
-- [ ] **1.5** CI (GitHub Actions): lint, typecheck, test y build. Proyecto en Vercel con previews por PR.
+- [ ] **1.5** CI (GitHub Actions): lint, typecheck, test y build. Proyecto en Vercel con previews por PR. _(CI listo en `.github/workflows/ci.yml`. Remoto: `josejmv/josejmv`, rama `v2`; `dev` conserva el sitio viejo hasta la 7.5. Pendiente: conectar Vercel a `v2` desde el dashboard.)_
 
 ## Fase 2 — Contenido
 
