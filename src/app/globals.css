@@ -1,26 +1,85 @@
+/* Tokens de diseño — Tailwind v4. Fuente: docs/design/screens/Palette.png
+   Todos los pares de texto pasan AA (≥ 4.5:1). */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root,
+[data-theme="dark"] {
+  --bg: #0a0d14;
+  --surface: #121722;
+  --surface-2: #0e131d;
+  --chip: #1b2232;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e8eaf0;
+  --text-2: #c9d0db;
+  --muted: #9aa3b2;
+  --subtle: #7e8798;
+  --accent: #d4bf8e; /* relleno de CTA; texto encima: --on-accent */
+  --on-accent: #0a0d14;
+  --accent-text: #d4bf8e; /* links, cifras */
+  --accent-2: #8fb8de;
+  --success: #6ee7b7;
+  --grid-line: rgba(255, 255, 255, 0.025);
+  --glow-1: rgba(143, 184, 222, 0.16);
+  --glow-2: rgba(212, 191, 142, 0.09);
+}
+
+[data-theme="light"] {
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --surface-2: #efede6;
+  --chip: #e7e4db;
+  --border: rgba(18, 21, 28, 0.1);
+  --text: #12151c;
+  --text-2: #2e3440;
+  --muted: #5b6270;
+  --subtle: #5b6270;
+  --accent: #c9ae74;
+  --on-accent: #12151c;
+  --accent-text: #7d5f24; /* nunca uses --accent como texto en claro */
+  --accent-2: #2f5f8a;
+  --success: #0e7c55;
+  --grid-line: rgba(18, 21, 28, 0.035);
+  --glow-1: rgba(47, 95, 138, 0.12);
+  --glow-2: rgba(125, 95, 36, 0.08);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-chip: var(--chip);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-2: var(--accent-2);
+  --color-success: var(--success);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-sora), ui-sans-serif, system-ui;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --radius-card: 24px;
+  --radius-pill: 999px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
