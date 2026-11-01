@@ -188,6 +188,15 @@ export const StackItem = z
   .strict();
 export type StackItem = z.infer<typeof StackItem>;
 
+// ── Tipos de entrada (lo que se escribe en content/*.ts, antes de defaults) ───
+
+export type ProfileInput = z.input<typeof Profile>;
+export type ExperienceInput = z.input<typeof Experience>;
+export type AreaInput = z.input<typeof Area>;
+export type StatInput = z.input<typeof Stat>;
+export type EducationInput = z.input<typeof Education>;
+export type StackItemInput = z.input<typeof StackItem>;
+
 // ── Utilidades ────────────────────────────────────────────────────────────────
 
 /** Sustituye recursivamente cada `{ es, en }` por el string del locale. */

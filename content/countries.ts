@@ -43,7 +43,7 @@ export const companyCountries: GlobePoint[] = [
     lat: 4.71,
     lng: -74.07,
     name: { es: "Colombia", en: "Colombia" },
-    companies: ["UPCARD", "Trades.org", "Inlaze"],
+    companies: ["Upcard", "Trades.org", "Inlaze"],
   },
   {
     id: "FR",
@@ -51,7 +51,7 @@ export const companyCountries: GlobePoint[] = [
     lat: 48.86,
     lng: 2.35,
     name: { es: "Francia", en: "France" },
-    companies: ["MincaAI"],
+    companies: ["Minca AI"],
   },
   {
     id: "PA",
