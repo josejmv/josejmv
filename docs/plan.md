@@ -5,7 +5,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 ## Fase 0 — Decisiones (antes de codear)
 
 - [x] **0.1** ADR 0001: globo con **react-globe.gl**, cargado con `next/dynamic`, `ssr:false` y fallback SVG.
-- [ ] **0.2** ADR 0002: animaciones con `motion` o solo CSS.
+- [x] **0.2** ADR 0002: híbrido. CSS escrito como utilidades de Tailwind (`@theme --animate-*`, `@utility`) en todo el sitio; `motion` con `LazyMotion` solo en las demos de área.
 - [x] **0.3** ADR 0003: el globo tiene dos tabs, **Equipo** (nacionalidades) y **Empresas** (sedes). En `content/countries.ts` cada país lleva `kind: 'team' | 'company'`.
 - [x] **0.4** Paleta clara definida en CLAUDE.md, con contraste AA verificado.
 - [x] **0.5** Confidencialidad: sin nombres de proveedores, miembros del equipo, bancos ni clientes. Todo lo demás se puede publicar.

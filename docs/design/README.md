@@ -35,4 +35,4 @@ Copia el contenido de este zip en la raíz del repo. Claude Code puede leer las 
 ## Pendiente
 
 - Confirmar la sede de Inlaze (se asumió Colombia).
-- ADR 0002: motion o solo CSS.
+- ~~ADR 0002: motion o solo CSS.~~ Decidido: híbrido (`docs/adr/0002-animations.md`).
