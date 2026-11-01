@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Wireframes — páginas de área</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F4F6}
+.frame{background:#FFFFFF;border:1px solid #CBD2DC;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.bar{display:flex;justify-content:space-between;gap:8px;padding:10px 14px;background:#EEF0F3;border-bottom:1px solid #CBD2DC;font:400 12px 'JetBrains Mono',monospace;color:#374151}
+.in{padding:16px;display:flex;flex-direction:column;gap:10px}
+.b{background:#E3E6EB;border-radius:8px;display:flex;align-items:center;justify-content:center;font:500 12px Inter,sans-serif;color:#4B5563;text-align:center;padding:6px;box-sizing:border-box}
+.sig{background:#FBF5E6;border:1.5px dashed #7A5C1E;border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.sigt{font:600 11px 'JetBrains Mono',monospace;color:#5C4415}
+.r{display:flex;gap:8px;align-items:center}
+.k{font:400 11px 'JetBrains Mono',monospace;color:#4B5563}
+.arrow{font:600 14px Inter;color:#6B7280}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #111827; background: #F3F4F6; min-height: 2000px; box-sizing: border-box; padding: 40px 48px; display: flex; flex-direction: column; gap: 22px">
+<div><h1 style="margin: 0; font-size: 34px; font-weight: 700">Páginas de área — diseño propio por área</h1><p style="margin: 6px 0 0; color: #4B5563; font-size: 15px; line-height: 1.6">Ruta <span class="k">app/[locale]/areas/[slug]/page.tsx</span> → <span class="k">areaRegistry[slug]</span> elige el componente de la página. Shell común (gris): <span class="k">AreaHero · AreaCases · RelatedProjects · ContactCta</span>. <span style="background: #FBF5E6; padding: 1px 6px; border-radius: 4px; color: #5C4415">Módulo firma (dorado)</span> = el elemento único de cada área.</p></div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px">
+
+<div class="frame"><div class="bar"><span>/areas/frontend</span><span>areas/frontend/frontend-page.tsx</span></div><div class="in">
+<div class="b" style="height: 56px">AreaHero — "Interfaces que escalan entre marcas"</div>
+<div class="sig"><span class="sigt">◆ TokenPlayground · client</span>
+<div class="r"><div class="b" style="flex: 1; height: 90px">Selector de marca A/B/C + slider de color</div><div class="arrow">→</div><div class="b" style="flex: 2; height: 90px">Componentes UI reales re-tematizados en vivo (3 capas de tokens)</div></div>
+<div class="r"><div class="b" style="flex: 1; height: 40px">AtomicLibraryMap (10 átomos · 7 moléculas · 5 organismos · 5 templates)</div></div></div>
+<div class="b" style="height: 70px">AreaCases — white-label, librería Trades.org, migración React → Next.js</div>
+<div class="b" style="height: 40px">RelatedProjects · ContactCta</div>
+</div></div>
+
+<div class="frame"><div class="bar"><span>/areas/backend-pagos</span><span>areas/backend/backend-page.tsx</span></div><div class="in">
+<div class="b" style="height: 56px">AreaHero — "Correcto donde se mueve el dinero"</div>
+<div class="sig"><span class="sigt">◆ PaymentFlowSimulator · client · state machine</span>
+<div class="r"><div class="b" style="flex: 1; height: 50px">Intent</div><div class="arrow">→</div><div class="b" style="flex: 1; height: 50px">Checkout (idempotente)</div><div class="arrow">→</div><div class="b" style="flex: 1; height: 50px">Webhook firmado</div><div class="arrow">→</div><div class="b" style="flex: 1; height: 50px">Conciliado</div></div>
+<div class="r"><div class="b" style="flex: 1; height: 50px">Botón "doble clic en pagar" → muestra lock e idempotency key</div><div class="b" style="flex: 1; height: 50px">AuditTrailLog (append-only, en vivo)</div></div></div>
+<div class="b" style="height: 70px">AreaCases — orquestador PSE/Bre-B, pasarela propia, provider gateway, export engine</div>
+<div class="b" style="height: 40px">RelatedProjects · ContactCta</div>
+</div></div>
+
+<div class="frame"><div class="bar"><span>/areas/compliance</span><span>areas/compliance/compliance-page.tsx</span></div><div class="in">
+<div class="b" style="height: 56px">AreaHero — AML/KYC automatizado (LISF Art. 492)</div>
+<div class="sig"><span class="sigt">◆ KycPipeline · scroll-driven</span>
+<div class="r"><div class="b" style="flex: 1; height: 50px">Ingesta</div><div class="arrow">→</div><div class="b" style="flex: 1; height: 50px">Clasificar</div><div class="arrow">→</div><div class="b" style="flex: 1; height: 50px">Extraer</div><div class="arrow">→</div><div class="b" style="flex: 1; height: 50px">Checks</div><div class="arrow">→</div><div class="b" style="flex: 1; height: 50px">Veredicto</div></div>
+<div class="b" style="height: 60px">VerdictCard — razones por check (datos ficticios)</div></div>
+<div class="b" style="height: 70px">AreaCases — arquitectura hexagonal, import-linter, bug de discriminador nullable</div>
+<div class="b" style="height: 40px">RelatedProjects · ContactCta</div>
+</div></div>
+
+<div class="frame"><div class="bar"><span>/areas/devops</span><span>areas/devops/devops-page.tsx</span></div><div class="in">
+<div class="b" style="height: 56px">AreaHero — CI que evita romper cosas</div>
+<div class="sig"><span class="sigt">◆ PipelineRunner · client</span>
+<div class="r"><div class="b" style="flex: 1; height: 50px">lint</div><div class="b" style="flex: 1; height: 50px">typecheck</div><div class="b" style="flex: 1; height: 50px">test</div><div class="b" style="flex: 1; height: 50px">build</div><div class="b" style="flex: 1; height: 50px">deploy</div></div>
+<div class="r"><div class="b" style="flex: 1; height: 50px">Toggle "antes / después" → tiempos (caché 1:36 → 0:03, tests 255 s → 178 s)</div><div class="b" style="flex: 1; height: 50px">InfraMap — GitLab self-hosted, VPN, DigitalOcean</div></div></div>
+<div class="b" style="height: 70px">AreaCases — gate de MR, primer CI/CD de Centria, runbooks</div>
+<div class="b" style="height: 40px">RelatedProjects · ContactCta</div>
+</div></div>
+
+<div class="frame"><div class="bar"><span>/areas/ai-engineering</span><span>areas/ai/ai-page.tsx</span></div><div class="in">
+<div class="b" style="height: 56px">AreaHero — LLMs en producción + desarrollo asistido</div>
+<div class="sig"><span class="sigt">◆ ExtractionDemo · client</span>
+<div class="r"><div class="b" style="flex: 1; height: 90px">Documento de ejemplo (PDF ficticio)</div><div class="arrow">→</div><div class="b" style="flex: 1; height: 90px">JSON extraído campo por campo (efecto streaming)</div></div>
+<div class="b" style="height: 50px">AgentWorkflowDiagram — Jira → Claude Code → validar docs → cerrar ticket</div></div>
+<div class="b" style="height: 70px">AreaCases — extracción con AWS Bedrock, workflow Claude Code en Inlaze</div>
+<div class="b" style="height: 40px">RelatedProjects · ContactCta</div>
+</div></div>
+
+<div class="frame"><div class="bar"><span>/areas/leadership</span><span>areas/leadership/leadership-page.tsx</span></div><div class="in">
+<div class="b" style="height: 56px">AreaHero — Liderar con proceso y calma</div>
+<div class="sig"><span class="sigt">◆ TeamGrowthChart + DocsStandard</span>
+<div class="r"><div class="b" style="flex: 1; height: 90px">Gráfica de equipo 3 → 6 (Centria), célula de 4–5 (Inlaze), 3 (SEO)</div><div class="b" style="flex: 1; height: 90px">RFC → ADR → backend reality → pasos atómicos · 63 features · 5 devs</div></div>
+<div class="b" style="height: 50px">Principles — tarjetas con forma de valores (mentoría, contratación, decisiones)</div></div>
+<div class="b" style="height: 70px">AreaCases — lead de célula, mentoría, estándar de documentación</div>
+<div class="b" style="height: 40px">RelatedProjects · ContactCta</div>
+</div></div>
+
+</div>
+<p class="k" style="margin: 0">Todas las demos usan datos ficticios: nada de datos reales de clientes ni de producción.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2000}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

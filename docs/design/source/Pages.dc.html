@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Wireframes — páginas</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F4F6}
+.frame{background:#FFFFFF;border:1px solid #CBD2DC;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#EEF0F3;border-bottom:1px solid #CBD2DC;font:400 12px 'JetBrains Mono',monospace;color:#374151}
+.in{padding:18px;display:flex;flex-direction:column;gap:12px}
+.b{background:#E3E6EB;border-radius:8px;display:flex;align-items:center;justify-content:center;font:500 12px Inter,sans-serif;color:#4B5563;text-align:center;padding:6px;box-sizing:border-box}
+.d{background:#C9CFD8}
+.r{display:flex;gap:10px}
+.k{font:400 11px 'JetBrains Mono',monospace;color:#4B5563}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #111827; background: #F3F4F6; min-height: 2000px; box-sizing: border-box; padding: 40px 48px; display: flex; flex-direction: column; gap: 22px">
+<div><h1 style="margin: 0; font-size: 34px; font-weight: 700">Wireframes de páginas</h1><p style="margin: 6px 0 0; color: #4B5563; font-size: 15px">Rutas localizadas con next-intl: <span class="k">/es/experiencia ↔ /en/experience</span> · <span class="k">/es/proyectos ↔ /en/projects</span></p></div>
+<div style="display: flex; gap: 28px; align-items: flex-start">
+<div style="flex: 1; display: flex; flex-direction: column; gap: 22px">
+
+<div class="frame"><div class="bar">/[locale]/experiencia · app/[locale]/experiencia/page.tsx</div>
+<div class="in">
+<div class="b d" style="height: 40px">SiteHeader</div>
+<div class="b" style="height: 70px; justify-content: flex-start; padding-left: 16px">PageHero — título, intro, filtro por área (FilterChips · client)</div>
+<div class="b" style="height: 90px">CareerGantt (versión completa, con zoom por año)</div>
+<div class="r">
+<div class="b" style="width: 60px; height: 260px">Rail + nodos</div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 10px">
+<div class="b" style="height: 80px; justify-content: flex-start; padding-left: 16px">ExperienceCard · UPCARD — rol, fechas, contexto, sub-proyectos (Accordion)</div>
+<div class="b" style="height: 80px; justify-content: flex-start; padding-left: 16px">ExperienceCard · MincaAI</div>
+<div class="b" style="height: 80px; justify-content: flex-start; padding-left: 16px">ExperienceCard · Inlaze … SEO Contenidos</div>
+</div>
+</div>
+<div class="r"><div class="b" style="flex: 1; height: 60px">MetricHighlight ×3 (por rol)</div><div class="b" style="flex: 1; height: 60px">Download CV (PDF por idioma)</div></div>
+</div></div>
+
+<div class="frame"><div class="bar">/[locale]/proyectos · app/[locale]/proyectos/page.tsx</div>
+<div class="in">
+<div class="b d" style="height: 40px">SiteHeader</div>
+<div class="b" style="height: 60px">PageHero + FilterChips (área · tecnología)</div>
+<div class="r"><div class="b" style="flex: 1; height: 150px">ProjectCard — Orquestador de pagos</div><div class="b" style="flex: 1; height: 150px">ProjectCard — Pasarela PSP</div><div class="b" style="flex: 1; height: 150px">ProjectCard — Provider gateway</div></div>
+<div class="r"><div class="b" style="flex: 1; height: 150px">ProjectCard — Export engine</div><div class="b" style="flex: 1; height: 150px">ProjectCard — Motor KYC</div><div class="b" style="flex: 1; height: 150px">ProjectCard — Design tokens</div></div>
+</div></div>
+
+<div class="frame"><div class="bar">/[locale]/proyectos/[slug] · case study en MDX (content/projects/es|en/*.mdx)</div>
+<div class="in">
+<div class="b d" style="height: 40px">SiteHeader</div>
+<div class="r"><div class="b" style="flex: 2; height: 110px">CaseHero — título, empresa, rol, año, stack</div><div class="b" style="flex: 1; height: 110px">KeyMetrics</div></div>
+<div class="r">
+<div class="b" style="width: 180px; height: 300px">TableOfContents (sticky)</div>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 10px">
+<div class="b" style="height: 60px">Problema</div>
+<div class="b" style="height: 100px">Arquitectura — diagrama (MDX &lt;Diagram/&gt;)</div>
+<div class="b" style="height: 60px">Decisiones (ADR resumidos)</div>
+<div class="b" style="height: 60px">Resultados + ImpactBars</div>
+</div>
+</div>
+<div class="b" style="height: 50px">NextProject · ContactCta</div>
+</div></div>
+<p class="k" style="margin: 0">⚠ Contenido de proyectos de empresas: revisar NDA / qué se puede publicar (sin nombres de clientes institucionales).</p>
+</div>
+
+<div style="flex: 0 0 390px; display: flex; flex-direction: column; gap: 12px">
+<div class="frame" style="border-radius: 28px"><div class="bar">Home · móvil 390</div>
+<div class="in">
+<div class="r" style="align-items: center"><div class="b d" style="width: 60px; height: 32px">JMV.</div><div style="flex: 1"></div><div class="b" style="width: 44px; height: 44px">⌘K</div><div class="b" style="width: 44px; height: 44px">☰</div></div>
+<div class="b" style="height: 24px; width: 70%">Badge</div>
+<div class="b" style="height: 90px">GradientText (2 líneas)</div>
+<div class="b" style="height: 60px">HeroIntro</div>
+<div class="b d" style="height: 48px">Gmail (primario, ancho completo)</div>
+<div class="r"><div class="b" style="flex: 1; height: 44px">in</div><div class="b" style="flex: 1; height: 44px">GH</div><div class="b" style="flex: 1; height: 44px">WA</div></div>
+<div class="b" style="height: 280px; border-radius: 50%">Globo (tamaño reducido, sin arcos al hacer scroll)</div>
+<div class="r"><div class="b" style="flex: 1; height: 70px">Stat</div><div class="b" style="flex: 1; height: 70px">Stat</div></div>
+<div class="r"><div class="b" style="flex: 1; height: 70px">Stat</div><div class="b" style="flex: 1; height: 70px">Stat</div></div>
+<div class="b" style="height: 44px">Tabs con scroll horizontal</div>
+<div class="b" style="height: 180px">AreaPanel apilado</div>
+<div class="b" style="height: 200px">Gantt → lista vertical en móvil</div>
+<div class="b" style="height: 90px">Formación</div>
+<div class="b" style="height: 90px">Stack</div>
+<div class="b d" style="height: 80px">ContactCta</div>
+</div></div>
+<div class="frame"><div class="bar">Menú móvil (Sheet)</div><div class="in"><div class="b" style="height: 36px">Inicio</div><div class="b" style="height: 36px">Experiencia</div><div class="b" style="height: 36px">Áreas ▸ 6</div><div class="b" style="height: 36px">Proyectos</div><div class="r"><div class="b" style="flex: 1; height: 44px">ES/EN</div><div class="b" style="flex: 1; height: 44px">Tema</div></div></div></div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2000}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
