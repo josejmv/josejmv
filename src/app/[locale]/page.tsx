@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { routing } from "@/i18n/routing";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -12,7 +13,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
   return (
     <main className="min-h-dvh bg-bg px-6 py-24 text-text">
-      <h1 className="font-display text-4xl">{t("title")}</h1>
+      {/* Provisional hasta que SiteHeader (3.3) aloje el ThemeToggle. */}
+      <ThemeToggle />
+      <h1 className="mt-8 font-display text-4xl">{t("title")}</h1>
     </main>
   );
 }

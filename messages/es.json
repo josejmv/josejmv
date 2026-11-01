@@ -14,5 +14,8 @@
     "title": "Página no encontrada",
     "description": "La página que buscas no existe o cambió de dirección.",
     "back": "Volver al inicio"
+  },
+  "Theme": {
+    "toggle": "Cambiar tema claro/oscuro"
   }
 }

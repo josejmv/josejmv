@@ -14,5 +14,8 @@
     "title": "Page not found",
     "description": "The page you're looking for doesn't exist or has moved.",
     "back": "Back to home"
+  },
+  "Theme": {
+    "toggle": "Toggle light/dark theme"
   }
 }

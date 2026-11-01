@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
 
@@ -25,9 +26,17 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${fontVariables} h-full antialiased`}>
+    // `data-theme="dark"` es el valor por defecto sin JS; next-themes lo reemplaza antes del primer paint.
+    <html
+      lang={locale}
+      data-theme="dark"
+      suppressHydrationWarning
+      className={`${fontVariables} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
