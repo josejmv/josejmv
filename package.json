@@ -42,5 +42,9 @@
     "typescript": "^5",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^5.0.5"
+  },
+  "packageManager": "pnpm@10.14.0",
+  "engines": {
+    "node": ">=22"
   }
 }
