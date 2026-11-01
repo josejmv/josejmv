@@ -1,16 +1,9 @@
 // Datos del globo (react-globe.gl). Dos vistas: 'team' y 'company'.
-// Validar con Zod en content/schema.ts (tarea 2.1).
+// Validados con `Country` de content/schema.ts.
+import type { Country } from "./schema";
 
-export type GlobeKind = "team" | "company";
-
-export interface GlobePoint {
-  id: string; // ISO 3166-1 alpha-2
-  kind: GlobeKind;
-  lat: number;
-  lng: number;
-  name: { es: string; en: string };
-  companies?: string[]; // solo para kind 'company': empresas empleadoras (permitido mostrar)
-}
+export type GlobePoint = Country;
+export type GlobeKind = Country["kind"];
 
 /** Origen de los arcos: Cajicá, Colombia */
 export const HOME = { lat: 4.92, lng: -74.03 } as const;

@@ -20,7 +20,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 
 ## Fase 2 — Contenido
 
-- [ ] **2.1** `content/schema.ts` con los esquemas Zod: Profile, ContactLink, Experience, Area, Country, Stat, Education y StackItem, con campos localizados `{ es, en }`.
+- [x] **2.1** `content/schema.ts` con los esquemas Zod: Profile, ContactLink, Experience, Area, Country, Stat, Education y StackItem, con campos localizados `{ es, en }`.
 - [ ] **2.2** Pasar el CV a `content/*.ts`: experiencia, áreas, métricas, formación y stack.
 - [x] **2.3** `content/countries.ts`: 12 nacionalidades del equipo y 4 países de empresas (ya incluido; falta confirmar la sede de Inlaze).
 - [ ] **2.4** `lib/content.ts`: getters server-only por locale, más un test que valide todo el contenido.
