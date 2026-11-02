@@ -123,6 +123,18 @@ export const ImpactMetric = z
   .strict();
 export type ImpactMetric = z.infer<typeof ImpactMetric>;
 
+/** Caso concreto de un área (AreaCases); enlaza al proyecto si tiene ficha. */
+export const AreaCase = z
+  .object({
+    title: Localized,
+    body: Localized,
+    project: z
+      .string()
+      .regex(/^[a-z0-9-]+$/)
+      .optional(),
+  })
+  .strict();
+
 export const Area = z
   .object({
     slug: AreaSlug,
@@ -133,6 +145,7 @@ export const Area = z
     bullets: z.array(Localized).min(1),
     tech: z.array(text).min(1),
     metrics: z.array(ImpactMetric).default([]),
+    cases: z.array(AreaCase).min(1),
   })
   .strict();
 export type Area = z.infer<typeof Area>;

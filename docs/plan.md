@@ -52,7 +52,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 
 ## Fase 6 — Páginas de área (una tarea por área)
 
-- [ ] **6.0** AreaShell, AreaHero, AreaCases, `registry.ts` y `generateStaticParams`.
+- [x] **6.0** AreaShell, AreaHero, AreaCases, `registry.ts` y `generateStaticParams`.
 - [ ] **6.1** Frontend: TokenPlayground y AtomicLibraryMap.
 - [ ] **6.2** Backend y Pagos: PaymentFlowSimulator (máquina de estados, demo de idempotencia) y AuditTrailLog.
 - [ ] **6.3** Compliance: KycPipeline (scroll-driven) y VerdictCard.

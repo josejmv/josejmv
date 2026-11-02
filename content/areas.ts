@@ -38,6 +38,39 @@ export const areas = [
         ratio: 177.53 / 255.3,
       },
     ],
+    cases: [
+      {
+        title: {
+          es: "White-label multimarca",
+          en: "Multi-brand white-label",
+        },
+        body: {
+          es: "Un solo codebase sirve 3 marcas en producción: tokens en 3 capas, configuraciones de marca validadas con Zod y un scaffolder para sumar marcas nuevas.",
+          en: "A single codebase serves 3 production brands: 3-layer tokens, Zod-validated brand configs and a scaffolder to add new brands.",
+        },
+        project: "design-tokens",
+      },
+      {
+        title: {
+          es: "Librería de componentes de Trades.org",
+          en: "Trades.org component library",
+        },
+        body: {
+          es: "Atomic design con unos 27 componentes (10 átomos, 7 moléculas, 5 organismos y 5 templates) compartidos por 2 apps web y una app en React Native.",
+          en: "Atomic design with about 27 components (10 atoms, 7 molecules, 5 organisms and 5 templates) shared by 2 web apps and a React Native app.",
+        },
+      },
+      {
+        title: {
+          es: "Migración de React a Next.js",
+          en: "React to Next.js migration",
+        },
+        body: {
+          es: "Una aplicación en producción pasó de React a Next.js con code splitting por ruta, renderizado en servidor y optimización de assets.",
+          en: "A production application moved from React to Next.js with route-level code splitting, server rendering and asset optimization.",
+        },
+      },
+    ],
   },
   {
     slug: "backend-pagos",
@@ -71,6 +104,41 @@ export const areas = [
         ratio: 0.42 / 33.66,
       },
     ],
+    cases: [
+      {
+        title: {
+          es: "Orquestador de pagos PSE y Bre-B",
+          en: "PSE and Bre-B payment orchestrator",
+        },
+        body: {
+          es: "Recaudo en línea para un cliente institucional: retorno del pagador con reglas de precedencia, webhooks verificados y anti-abuso que nunca bloquea un pago.",
+          en: "Online collections for an institutional client: payer return with precedence rules, verified webhooks and anti-abuse that never blocks a payment.",
+        },
+        project: "payment-orchestrator",
+      },
+      {
+        title: {
+          es: "Pasarela de pagos propia",
+          en: "In-house payment gateway",
+        },
+        body: {
+          es: "PSP directo a los rieles, sin tocar fondos: idempotencia, outbox transaccional, webhooks firmados y cifrado de campos.",
+          en: "A PSP straight to the rails, without holding funds: idempotency, a transactional outbox, signed webhooks and field encryption.",
+        },
+        project: "payment-gateway",
+      },
+      {
+        title: {
+          es: "Motor de exportación asíncrona",
+          en: "Async export engine",
+        },
+        body: {
+          es: "Un solo motor para 10 dominios de negocio, con cola de jobs, streaming a object storage y paginación keyset.",
+          en: "One engine for 10 business domains, with a job queue, streaming to object storage and keyset pagination.",
+        },
+        project: "export-engine",
+      },
+    ],
   },
   {
     slug: "compliance",
@@ -96,6 +164,39 @@ export const areas = [
     ],
     tech: ["python", "fastapi", "sqlalchemy", "postgresql", "pytest"],
     metrics: [],
+    cases: [
+      {
+        title: {
+          es: "Arquitectura hexagonal",
+          en: "Hexagonal architecture",
+        },
+        body: {
+          es: "Un paquete de dominio sin framework, con puertos tipados, sobre el que otro ingeniero siguió construyendo.",
+          en: "A framework-free domain package with typed ports that a second engineer kept building on.",
+        },
+        project: "kyc-engine",
+      },
+      {
+        title: {
+          es: "Fronteras con import-linter",
+          en: "Boundaries with import-linter",
+        },
+        body: {
+          es: "Lideré la implementación de una capa de repositorio en más de 15 entregas en 3 días, protegida por tests de caracterización y un contrato de import-linter bloqueante en CI.",
+          en: "I led the implementation of a repository layer in 15+ slices over 3 days, protected by characterization tests and a blocking import-linter contract in CI.",
+        },
+      },
+      {
+        title: {
+          es: "El bug del discriminador nullable",
+          en: "The nullable discriminator bug",
+        },
+        body: {
+          es: "Una fuga de datos recurrente entre módulos venía de una columna nullable sin tipo. Mostré por qué los tests no la veían y escribí el contrato que la corrigió.",
+          en: "A recurring cross-module data leak came from an untyped nullable column. I showed why the tests missed it and wrote the contract that fixed it.",
+        },
+      },
+    ],
   },
   {
     slug: "devops",
@@ -129,6 +230,39 @@ export const areas = [
         ratio: 3 / 96,
       },
     ],
+    cases: [
+      {
+        title: {
+          es: "Gate de CI para merge requests",
+          en: "Merge-request CI gate",
+        },
+        body: {
+          es: "Lint, typecheck, tests y build limitados al diff del MR, bloqueante en dos repositorios el mismo día.",
+          en: "Lint, typecheck, tests and build scoped to the MR diff, made blocking in two repositories on the same day.",
+        },
+        project: "merge-request-gate",
+      },
+      {
+        title: {
+          es: "Primer CI/CD de la empresa",
+          en: "The company's first CI/CD",
+        },
+        body: {
+          es: "Los despliegues a producción eran manuales y sin verificación; el pipeline automatizó build, tests y despliegue.",
+          en: "Production deployments were manual and unverified; the pipeline automated build, tests and deploy.",
+        },
+      },
+      {
+        title: {
+          es: "Runbooks e infraestructura propia",
+          en: "Runbooks and self-hosted infrastructure",
+        },
+        body: {
+          es: "Administro el GitLab autohospedado (actualizaciones, respaldos diarios y runbooks de reversa) y la VPN de la empresa.",
+          en: "I run the self-hosted GitLab (upgrades, daily backups and rollback runbooks) and the company VPN.",
+        },
+      },
+    ],
   },
   {
     slug: "ai-engineering",
@@ -157,6 +291,39 @@ export const areas = [
     ],
     tech: ["claude code", "aws bedrock", "python", "fastapi"],
     metrics: [],
+    cases: [
+      {
+        title: {
+          es: "Extracción con AWS Bedrock",
+          en: "Extraction with AWS Bedrock",
+        },
+        body: {
+          es: "Extracción documental con LLM en producción dentro de un módulo AML/KYC, con un veredicto auditable por cada validación.",
+          en: "LLM document extraction in production inside an AML/KYC module, with an auditable verdict for each check.",
+        },
+        project: "kyc-engine",
+      },
+      {
+        title: {
+          es: "Workflow con Claude Code",
+          en: "Claude Code workflow",
+        },
+        body: {
+          es: "Integrado con el issue tracker: valida los requisitos de documentación en el repo y cierra los tickets.",
+          en: "Wired into the issue tracker: it validates documentation requirements in the repo and closes tickets.",
+        },
+      },
+      {
+        title: {
+          es: "Auditoría con agentes en paralelo",
+          en: "Audit with parallel agents",
+        },
+        body: {
+          es: "Revisión endpoint por endpoint de un backend legado de 339 endpoints, con verificación cruzada de cada hallazgo antes de declararlo.",
+          en: "An endpoint-by-endpoint review of a 339-endpoint legacy backend, cross-checking every gap before declaring it.",
+        },
+      },
+    ],
   },
   {
     slug: "leadership",
@@ -182,5 +349,37 @@ export const areas = [
     ],
     tech: ["rfc", "adr", "jira"],
     metrics: [],
+    cases: [
+      {
+        title: {
+          es: "Lead de célula",
+          en: "Cell lead",
+        },
+        body: {
+          es: "Lideré una célula completa de 4-5 personas durante unos 5 meses y después acompañé al nuevo líder.",
+          en: "I led a full 4–5 person cell for about 5 months and then supported the new lead.",
+        },
+      },
+      {
+        title: {
+          es: "Mentoría y contratación",
+          en: "Mentoring and hiring",
+        },
+        body: {
+          es: "Un equipo frontend que creció de 3 a 5-6 ingenieros en 4 años, con mentoría, dirección técnica y participación en contrataciones.",
+          en: "A frontend team that grew from 3 to 5–6 engineers over 4 years, with mentoring, technical direction and hiring input.",
+        },
+      },
+      {
+        title: {
+          es: "Estándar de documentación",
+          en: "Documentation standard",
+        },
+        body: {
+          es: "RFC → ADR → realidad del backend → pasos atómicos, aplicado a 63 features, adoptado por 5 desarrolladores y migrado a un segundo repositorio.",
+          en: "RFC → ADR → backend reality → atomic steps, applied to 63 features, adopted by 5 developers and carried over to a second repository.",
+        },
+      },
+    ],
   },
 ] satisfies AreaInput[];

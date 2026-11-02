@@ -140,5 +140,13 @@
     "metrics": "Cifras clave",
     "toc": "En esta página",
     "next": "Siguiente case study"
+  },
+  "AreaPage": {
+    "eyebrow": "área",
+    "metaTitle": "{area} · José M. Vasquez",
+    "cases": "Casos",
+    "related": "Proyectos relacionados",
+    "readCase": "Leer el case study →",
+    "disclaimer": "Demo con datos ficticios: nada de clientes reales ni de producción."
   }
 }

@@ -87,6 +87,7 @@ describe("Area", () => {
       summary: loc("Resumen"),
       bullets: [loc("Punto")],
       tech: ["react"],
+      cases: [{ title: loc("Caso"), body: loc("Detalle") }],
       metrics: [
         { label: loc("Tests"), before: "255 s", after: "178 s", delta: "−30%", ratio: 0.7 },
       ],

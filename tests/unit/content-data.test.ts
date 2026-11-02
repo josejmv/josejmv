@@ -5,6 +5,7 @@ import { companyCountries } from "../../content/countries";
 import { education } from "../../content/education";
 import { experience } from "../../content/experience";
 import { profile } from "../../content/profile";
+import { projects } from "../../content/projects";
 import {
   Area,
   AREA_SLUGS,
@@ -52,6 +53,16 @@ describe("contenido de content/*.ts", () => {
     for (const country of companyCountries) {
       for (const company of country.companies ?? []) {
         expect(companies.has(company), company).toBe(true);
+      }
+    }
+  });
+
+  it("los casos de cada área enlazan solo a proyectos existentes", () => {
+    const slugs = new Set(projects.map((p) => p.slug));
+    for (const area of areas) {
+      for (const item of area.cases) {
+        if ("project" in item && item.project)
+          expect(slugs.has(item.project), item.project).toBe(true);
       }
     }
   });
