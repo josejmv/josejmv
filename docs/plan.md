@@ -34,7 +34,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 
 ## Fase 4 — Home
 
-- [ ] **4.1** HeroSection y ContactTerminal (con efecto de escritura, Gmail como primario).
+- [x] **4.1** HeroSection y ContactTerminal (con efecto de escritura, Gmail como primario).
 - [ ] **4.2** GlobeStaticSvg como fallback, a partir del SVG del lienzo.
 - [ ] **4.3** CollaborationGlobe con react-globe.gl: arcos desde Colombia, marcadores con tooltip, pausa fuera del viewport y reduced-motion.
 - [ ] **4.4** GlobeTabs (Equipo / Empresas, Radix Tabs): cambia el dataset con una transición de puntos. Incluye GlobeLegend y LanguageBadges.

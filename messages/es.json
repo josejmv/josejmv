@@ -54,5 +54,10 @@
     "copyEmail": "Copiar email",
     "copied": "Email copiado al portapapeles",
     "copyFailed": "No se pudo copiar. Mi email es {email}"
+  },
+  "Hero": {
+    "terminalTitle": "~/josejmv — contact",
+    "terminalCommand": "contact --list",
+    "contactList": "Canales de contacto"
   }
 }

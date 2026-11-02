@@ -105,6 +105,11 @@
       stroke-dashoffset: -40;
     }
   }
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
   @keyframes fade-up {
     from {
       opacity: 0;
@@ -115,6 +120,19 @@
       transform: translateY(0);
     }
   }
+}
+
+/*
+ * Efecto de escritura (ContactTerminal). El elemento define `--chars` (longitud del texto) y usa
+ * fuente mono. Con reduced-motion, la regla global deja la animación en ~0 ms: el texto aparece completo.
+ */
+@utility typing {
+  display: inline-block;
+  width: calc(var(--chars) * 1ch);
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  animation: typing calc(var(--chars) * 55ms) steps(var(--chars)) 300ms both;
 }
 
 /* Contenedor de página: 1280px con 56px de padding lateral en desktop (Fusion). */
@@ -152,6 +170,7 @@ body {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
