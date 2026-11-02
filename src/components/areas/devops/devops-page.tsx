@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { AreaShell } from "../area-shell";
 import type { AreaPageProps } from "../registry";
 import { SignatureModule } from "../signature-module";
-import { InfraMap, type InfraNode } from "./infra-map";
+import { type ChainStep, StepChain } from "../step-chain";
 import { PipelineRunner } from "./pipeline-runner";
 
 export async function DevopsPage({ locale }: AreaPageProps) {
@@ -21,10 +21,10 @@ export async function DevopsPage({ locale }: AreaPageProps) {
         disclaimer={tArea("disclaimer")}
       >
         <PipelineRunner />
-        <InfraMap
+        <StepChain
           title={t("infra.title")}
           label={t("infra.label")}
-          nodes={t.raw("infra.nodes") as InfraNode[]}
+          steps={t.raw("infra.nodes") as ChainStep[]}
         />
       </SignatureModule>
     </AreaShell>

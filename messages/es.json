@@ -356,5 +356,92 @@
         }
       ]
     }
+  },
+  "AreaAi": {
+    "title": "Del documento al dato, con trazabilidad",
+    "description": "Pulsa «Extraer»: el JSON se arma campo por campo, como llega desde el modelo, y cada campo resalta de qué parte del documento salió. En producción, esa trazabilidad es lo que permite auditar un veredicto.",
+    "streaming": "extrayendo…",
+    "done": "listo",
+    "waiting": "en espera",
+    "result": "{count} campos extraídos y normalizados.",
+    "actions": {
+      "extract": "Extraer",
+      "again": "Extraer de nuevo"
+    },
+    "document": {
+      "title": "solicitud-de-poliza-ficticia.pdf",
+      "lines": [
+        "SOLICITUD DE PÓLIZA · SEGURO DE GASTOS MÉDICOS",
+        "Solicitante: Ana Ejemplo Ruiz",
+        "RFC: EERA850101XX0 · Fecha de nacimiento: 01/01/1985",
+        "Domicilio: Calle Ficticia 12, Col. Centro, C.P. 00000",
+        "Ocupación declarada: Ingeniera de software",
+        "Suma asegurada solicitada: $ 2.000.000 MXN"
+      ]
+    },
+    "fields": [
+      {
+        "key": "nombre",
+        "label": "Nombre",
+        "value": "Ana Ejemplo Ruiz",
+        "source": "Ana Ejemplo Ruiz"
+      },
+      {
+        "key": "rfc",
+        "label": "RFC",
+        "value": "EERA850101XX0",
+        "source": "EERA850101XX0"
+      },
+      {
+        "key": "fecha_nacimiento",
+        "label": "Fecha de nacimiento",
+        "value": "1985-01-01",
+        "source": "01/01/1985"
+      },
+      {
+        "key": "domicilio",
+        "label": "Domicilio",
+        "value": "Calle Ficticia 12, Col. Centro, 00000",
+        "source": "Calle Ficticia 12"
+      },
+      {
+        "key": "ocupacion",
+        "label": "Ocupación",
+        "value": "Ingeniera de software",
+        "source": "Ingeniera de software"
+      },
+      {
+        "key": "suma_asegurada",
+        "label": "Suma asegurada",
+        "value": "2000000 MXN",
+        "source": "$ 2.000.000 MXN"
+      }
+    ],
+    "workflow": {
+      "title": "AgentWorkflowDiagram",
+      "label": "Workflow de entrega asistido por IA",
+      "steps": [
+        {
+          "key": "ticket",
+          "title": "Ticket en Jira",
+          "detail": "La tarea llega con su plantilla de requerimientos y contexto técnico."
+        },
+        {
+          "key": "agent",
+          "title": "Claude Code",
+          "detail": "Trabaja sobre el repo siguiendo la especificación (spec-first)."
+        },
+        {
+          "key": "docs",
+          "title": "Validar docs",
+          "detail": "Verifica en el repo los requisitos de documentación del ticket."
+        },
+        {
+          "key": "close",
+          "title": "Cerrar ticket",
+          "detail": "Si todo está, marca el ticket como completo."
+        }
+      ]
+    }
   }
 }

@@ -356,5 +356,92 @@
         }
       ]
     }
+  },
+  "AreaAi": {
+    "title": "From document to data, with traceability",
+    "description": "Press «Extract»: the JSON builds up field by field, the way it arrives from the model, and each field highlights the part of the document it came from. In production, that traceability is what makes a verdict auditable.",
+    "streaming": "extracting…",
+    "done": "done",
+    "waiting": "waiting",
+    "result": "{count} fields extracted and normalized.",
+    "actions": {
+      "extract": "Extract",
+      "again": "Extract again"
+    },
+    "document": {
+      "title": "fictitious-policy-request.pdf",
+      "lines": [
+        "POLICY REQUEST · MEDICAL EXPENSES INSURANCE",
+        "Applicant: Ana Ejemplo Ruiz",
+        "RFC: EERA850101XX0 · Date of birth: 01/01/1985",
+        "Address: 12 Fictional St, Downtown, ZIP 00000",
+        "Declared occupation: Software engineer",
+        "Requested sum insured: MXN 2,000,000"
+      ]
+    },
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "value": "Ana Ejemplo Ruiz",
+        "source": "Ana Ejemplo Ruiz"
+      },
+      {
+        "key": "rfc",
+        "label": "RFC",
+        "value": "EERA850101XX0",
+        "source": "EERA850101XX0"
+      },
+      {
+        "key": "date_of_birth",
+        "label": "Date of birth",
+        "value": "1985-01-01",
+        "source": "01/01/1985"
+      },
+      {
+        "key": "address",
+        "label": "Address",
+        "value": "12 Fictional St, Downtown, 00000",
+        "source": "12 Fictional St"
+      },
+      {
+        "key": "occupation",
+        "label": "Occupation",
+        "value": "Software engineer",
+        "source": "Software engineer"
+      },
+      {
+        "key": "sum_insured",
+        "label": "Sum insured",
+        "value": "2000000 MXN",
+        "source": "MXN 2,000,000"
+      }
+    ],
+    "workflow": {
+      "title": "AgentWorkflowDiagram",
+      "label": "AI-assisted delivery workflow",
+      "steps": [
+        {
+          "key": "ticket",
+          "title": "Jira ticket",
+          "detail": "The task arrives with its requirements template and technical context."
+        },
+        {
+          "key": "agent",
+          "title": "Claude Code",
+          "detail": "Works on the repo following the specification (spec-first)."
+        },
+        {
+          "key": "docs",
+          "title": "Validate docs",
+          "detail": "Checks the ticket's documentation requirements in the repo."
+        },
+        {
+          "key": "close",
+          "title": "Close ticket",
+          "detail": "If everything is in place, marks the ticket as complete."
+        }
+      ]
+    }
   }
 }
