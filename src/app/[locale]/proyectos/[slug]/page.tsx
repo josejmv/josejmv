@@ -10,6 +10,7 @@ import { ContactCta } from "@/components/sections/home/contact-cta";
 import { routing } from "@/i18n/routing";
 import { getCaseStudyToc } from "@/lib/case-study";
 import { getCaseStudySlugs, getProfile, getProject } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return getCaseStudySlugs().map((slug) => ({ slug }));
@@ -28,7 +29,13 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const found = resolve(locale, slug);
   if (!found) return {};
-  return { title: `${found.project.title} · José M. Vasquez`, description: found.project.summary };
+  return pageMetadata({
+    href: { pathname: "/proyectos/[slug]", params: { slug } },
+    locale: found.locale,
+    title: `${found.project.title} · José M. Vasquez`,
+    description: found.project.summary,
+    type: "article",
+  });
 }
 
 export default async function CaseStudyPage({ params }: PageProps<"/[locale]/proyectos/[slug]">) {

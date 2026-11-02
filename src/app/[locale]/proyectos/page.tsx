@@ -9,6 +9,7 @@ import { ProjectGrid } from "@/components/projects/project-grid";
 import { ContactCta } from "@/components/sections/home/contact-cta";
 import { routing } from "@/i18n/routing";
 import { getAreas, getProfile, getProjects } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -16,7 +17,12 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
   const t = await getTranslations({ locale, namespace: "Projects" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return pageMetadata({
+    href: "/proyectos",
+    locale,
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  });
 }
 
 export default async function ProjectsPage({ params }: PageProps<"/[locale]/proyectos">) {

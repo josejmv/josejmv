@@ -10,6 +10,7 @@ import { GlowOrbs } from "@/components/ui/backgrounds/glow-orbs";
 import { GridBackground } from "@/components/ui/backgrounds/grid-background";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
+import { IS_INDEXABLE, SITE_URL } from "@/lib/site";
 
 import "../globals.css";
 
@@ -21,7 +22,14 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
   const t = await getTranslations({ locale, namespace: "Metadata" });
-  return { title: t("title"), description: t("description") };
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: t("title"),
+    description: t("description"),
+    applicationName: "José M. Vasquez",
+    authors: [{ name: "José M. Vasquez", url: SITE_URL }],
+    robots: IS_INDEXABLE ? { index: true, follow: true } : { index: false, follow: false },
+  };
 }
 
 export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">) {

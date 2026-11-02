@@ -7,6 +7,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { areaRegistry } from "@/components/areas/registry";
 import { routing } from "@/i18n/routing";
 import { getArea } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return AREA_SLUGS.map((slug) => ({ slug }));
@@ -22,7 +23,12 @@ export async function generateMetadata({
   if (!hasLocale(routing.locales, locale) || !isAreaSlug(slug)) return {};
   const area = getArea(slug, locale)!;
   const t = await getTranslations({ locale, namespace: "AreaPage" });
-  return { title: t("metaTitle", { area: area.title }), description: area.summary };
+  return pageMetadata({
+    href: { pathname: "/areas/[slug]", params: { slug } },
+    locale,
+    title: t("metaTitle", { area: area.title }),
+    description: area.summary,
+  });
 }
 
 export default async function AreaPage({ params }: PageProps<"/[locale]/areas/[slug]">) {

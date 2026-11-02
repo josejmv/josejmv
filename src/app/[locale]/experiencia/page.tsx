@@ -12,6 +12,7 @@ import { ContactCta } from "@/components/sections/home/contact-cta";
 import { Button } from "@/components/ui/button";
 import { routing } from "@/i18n/routing";
 import { getAreas, getExperience, getProfile } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 import { getCurrentMonth } from "@/lib/time";
 
 /** Ruta pública del CV (un único PDF, en inglés). */
@@ -23,7 +24,12 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
   const t = await getTranslations({ locale, namespace: "Experience" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return pageMetadata({
+    href: "/experiencia",
+    locale,
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  });
 }
 
 export default async function ExperiencePage({ params }: PageProps<"/[locale]/experiencia">) {
