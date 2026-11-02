@@ -12,7 +12,7 @@ export interface AreaPageProps {
 export const areaRegistry: Record<AreaSlug, () => Promise<ComponentType<AreaPageProps>>> = {
   frontend: () => import("./frontend/frontend-page").then((m) => m.FrontendPage),
   "backend-pagos": () => import("./backend/backend-page").then((m) => m.BackendPage),
-  compliance: () => import("./default-area-page").then((m) => m.compliancePage),
+  compliance: () => import("./compliance/compliance-page").then((m) => m.CompliancePage),
   devops: () => import("./default-area-page").then((m) => m.devopsPage),
   "ai-engineering": () => import("./default-area-page").then((m) => m.aiPage),
   leadership: () => import("./default-area-page").then((m) => m.leadershipPage),

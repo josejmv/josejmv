@@ -226,5 +226,75 @@
       "alreadyPaid": "payment.rejected: {obligation} is already paid, no double charge",
       "duplicateIgnored": "webhook.duplicate {event}: already applied, ignored"
     }
+  },
+  "AreaCompliance": {
+    "title": "Every verdict explains why",
+    "description": "This is how the KYC engine processes a file: five steps, from attachments to verdict. Scroll to walk through them; on the right, the verdict with the reason for each check.",
+    "pipelineLabel": "KYC engine steps",
+    "steps": [
+      {
+        "key": "ingest",
+        "title": "Ingest",
+        "description": "Receives the policy request's attachments.",
+        "sample": "3 attachments · id.pdf · proof-of-address.jpg · tax-certificate.pdf"
+      },
+      {
+        "key": "classify",
+        "title": "Classify",
+        "description": "Identifies each document's type and discards the ones that don't belong.",
+        "sample": "id → voter ID · proof → utility bill · certificate → tax status"
+      },
+      {
+        "key": "extract",
+        "title": "Extract",
+        "description": "Extracts the fields with an LLM and normalizes them to a typed schema.",
+        "sample": "{ \"name\": \"Ana Ejemplo Ruiz\", \"rfc\": \"EERA850101XX0\", \"address\": \"12 Fictional St\" }"
+      },
+      {
+        "key": "checks",
+        "title": "Checks",
+        "description": "Runs checks and cross-validations by person type and risk tier.",
+        "sample": "validity · name match · recent address · RFC ↔ certificate cross-check"
+      },
+      {
+        "key": "verdict",
+        "title": "Verdict",
+        "description": "Stores the result with the reason for each check, ready for review.",
+        "sample": "needs review · 3 of 4 checks OK · 1 to review"
+      }
+    ],
+    "verdict": {
+      "title": "verdict",
+      "subject": "Ana Ejemplo Ruiz · individual · new client",
+      "result": "Needs review",
+      "resultKind": "review",
+      "checks": [
+        {
+          "name": "ID validity",
+          "result": "pass",
+          "reason": "Expires in 2029: valid on the request date."
+        },
+        {
+          "name": "Name match",
+          "result": "pass",
+          "reason": "The name matches across all three documents."
+        },
+        {
+          "name": "Recent proof of address",
+          "result": "review",
+          "reason": "It is 95 days old; the policy requires 90 or fewer."
+        },
+        {
+          "name": "RFC ↔ tax certificate cross-check",
+          "result": "pass",
+          "reason": "The extracted RFC matches the one on the certificate."
+        }
+      ]
+    },
+    "results": {
+      "pass": "passed",
+      "review": "to review",
+      "fail": "failed"
+    }
   }
 }

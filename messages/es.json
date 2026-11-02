@@ -226,5 +226,75 @@
       "alreadyPaid": "payment.rejected: {obligation} ya está pagada, no se cobra dos veces",
       "duplicateIgnored": "webhook.duplicate {event}: ya aplicado, se ignora"
     }
+  },
+  "AreaCompliance": {
+    "title": "Cada veredicto explica por qué",
+    "description": "Así procesa el motor KYC un expediente: cinco pasos, de los adjuntos al veredicto. Haz scroll para recorrerlos; a la derecha, el veredicto con el motivo de cada validación.",
+    "pipelineLabel": "Pasos del motor KYC",
+    "steps": [
+      {
+        "key": "ingest",
+        "title": "Ingesta",
+        "description": "Recibe los adjuntos de la solicitud de póliza.",
+        "sample": "3 adjuntos · identificación.pdf · comprobante-domicilio.jpg · constancia-fiscal.pdf"
+      },
+      {
+        "key": "classify",
+        "title": "Clasificar",
+        "description": "Identifica el tipo de cada documento y descarta los que no corresponden.",
+        "sample": "identificación → INE · comprobante → recibo de servicios · constancia → situación fiscal"
+      },
+      {
+        "key": "extract",
+        "title": "Extraer",
+        "description": "Extrae los campos con un LLM y los normaliza a un esquema tipado.",
+        "sample": "{ \"nombre\": \"Ana Ejemplo Ruiz\", \"rfc\": \"EERA850101XX0\", \"domicilio\": \"Calle Ficticia 12\" }"
+      },
+      {
+        "key": "checks",
+        "title": "Checks",
+        "description": "Ejecuta validaciones y cruces entre documentos según el tipo de persona y el nivel de riesgo.",
+        "sample": "vigencia · coincidencia de nombre · domicilio reciente · cruce RFC ↔ constancia"
+      },
+      {
+        "key": "verdict",
+        "title": "Veredicto",
+        "description": "Guarda el resultado con el motivo de cada validación, listo para revisión.",
+        "sample": "requiere revisión · 3 de 4 validaciones OK · 1 a revisar"
+      }
+    ],
+    "verdict": {
+      "title": "veredicto",
+      "subject": "Ana Ejemplo Ruiz · persona física · cliente nuevo",
+      "result": "Requiere revisión",
+      "resultKind": "review",
+      "checks": [
+        {
+          "name": "Vigencia de la identificación",
+          "result": "pass",
+          "reason": "Vence en 2029: vigente a la fecha de la solicitud."
+        },
+        {
+          "name": "Coincidencia de nombre",
+          "result": "pass",
+          "reason": "El nombre coincide en los tres documentos."
+        },
+        {
+          "name": "Comprobante de domicilio reciente",
+          "result": "review",
+          "reason": "Tiene 95 días; la política pide 90 o menos."
+        },
+        {
+          "name": "Cruce RFC ↔ constancia fiscal",
+          "result": "pass",
+          "reason": "El RFC extraído coincide con el de la constancia."
+        }
+      ]
+    },
+    "results": {
+      "pass": "aprobada",
+      "review": "a revisar",
+      "fail": "rechazada"
+    }
   }
 }
