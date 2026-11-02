@@ -62,6 +62,13 @@
   },
   "Globe": {
     "ariaTeam": "Globe with connections from Colombia to my teammates' {count} countries",
-    "ariaCompany": "Globe with the headquarters of the companies I worked for, across {count} countries"
+    "ariaCompany": "Globe with the headquarters of the companies I worked for, across {count} countries",
+    "tabsLabel": "Globe view",
+    "tabTeam": "Team · {count} nationalities",
+    "tabCompany": "Companies · {count} countries",
+    "multicultural": "Multicultural teams",
+    "teamSummary": "Team nationalities: {list}",
+    "companySummary": "Company headquarters: {list}",
+    "language": "{name} · {level}"
   }
 }

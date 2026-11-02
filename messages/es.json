@@ -62,6 +62,13 @@
   },
   "Globe": {
     "ariaTeam": "Globo con conexiones desde Colombia hacia los {count} países de mis compañeros de equipo",
-    "ariaCompany": "Globo con las sedes de las empresas donde trabajé, en {count} países"
+    "ariaCompany": "Globo con las sedes de las empresas donde trabajé, en {count} países",
+    "tabsLabel": "Vista del globo",
+    "tabTeam": "Equipo · {count} nacionalidades",
+    "tabCompany": "Empresas · {count} países",
+    "multicultural": "Equipos multiculturales",
+    "teamSummary": "Nacionalidades del equipo: {list}",
+    "companySummary": "Sedes de las empresas: {list}",
+    "language": "{name} · {level}"
   }
 }
