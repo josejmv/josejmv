@@ -3,24 +3,28 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { AreasShowcase } from "@/components/sections/home/areas-showcase";
+import { CareerSection } from "@/components/sections/home/career-section";
 import { HeroSection } from "@/components/sections/home/hero-section";
 import { StatsStrip } from "@/components/sections/home/stats-strip";
 import { GlobeLegend } from "@/components/three/globe/globe-legend";
 import { GlobeStaticSvg } from "@/components/three/globe/globe-static-svg";
 import { GlobeTabs } from "@/components/three/globe/globe-tabs";
 import { routing } from "@/i18n/routing";
-import { getAreas, getGlobeData, getProfile, getStats } from "@/lib/content";
+import { getAreas, getExperience, getGlobeData, getProfile, getStats } from "@/lib/content";
+import { getCurrentMonth } from "@/lib/time";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
 
-  const [t, tGlobe, tStats, tAreas] = await Promise.all([
+  const [t, tGlobe, tStats, tAreas, tCareer, now] = await Promise.all([
     getTranslations({ locale, namespace: "Hero" }),
     getTranslations({ locale, namespace: "Globe" }),
     getTranslations({ locale, namespace: "Stats" }),
     getTranslations({ locale, namespace: "Areas" }),
+    getTranslations({ locale, namespace: "Career" }),
+    getCurrentMonth(),
   ]);
   const profile = getProfile(locale);
   const globe = getGlobeData(locale);
@@ -94,6 +98,18 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           tabs: tAreas("tabs"),
           impact: tAreas("impact"),
           cases: (area) => tAreas("cases", { area }),
+        }}
+      />
+
+      <CareerSection
+        roles={getExperience(locale)}
+        now={now}
+        locale={locale}
+        labels={{
+          title: tCareer("title"),
+          fullLink: tCareer("fullLink"),
+          list: tCareer("list"),
+          present: tCareer("present"),
         }}
       />
     </main>

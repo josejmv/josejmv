@@ -1,30 +1,23 @@
-import { cacheLife } from "next/cache";
 import { getTranslations } from "next-intl/server";
 
 import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
 import type { ContentLocale } from "@content/schema";
 import { Link } from "@/i18n/navigation";
 import { getProfile } from "@/lib/content";
+import { getCurrentMonth } from "@/lib/time";
 
 import { NAV_ITEMS } from "./nav-items";
 import { SiteLogo } from "./site-logo";
-
-/** Año actual. Con `cacheComponents`, `new Date()` solo puede ir dentro de `use cache`. */
-async function currentYear() {
-  "use cache";
-  cacheLife("days");
-  return new Date().getFullYear();
-}
 
 const linkClasses =
   "inline-flex min-h-11 items-center text-sm text-muted transition-colors hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text";
 
 export async function SiteFooter({ locale }: { locale: ContentLocale }) {
-  const [t, tNav, tHeader, year] = await Promise.all([
+  const [t, tNav, tHeader, month] = await Promise.all([
     getTranslations({ locale, namespace: "Footer" }),
     getTranslations({ locale, namespace: "Nav" }),
     getTranslations({ locale, namespace: "Header" }),
-    currentYear(),
+    getCurrentMonth(),
   ]);
   const profile = getProfile(locale);
 
@@ -75,7 +68,7 @@ export async function SiteFooter({ locale }: { locale: ContentLocale }) {
       </div>
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-subtle">
-        <p>{t("rights", { year, name: profile.name })}</p>
+        <p>{t("rights", { year: month.slice(0, 4), name: profile.name })}</p>
         <LocaleSwitcher />
       </div>
     </footer>

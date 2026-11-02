@@ -80,5 +80,11 @@
     "tabs": "Áreas",
     "impact": "impacto medido · antes → después",
     "cases": "Ver casos de {area} →"
+  },
+  "Career": {
+    "title": "Trayectoria",
+    "fullLink": "Experiencia completa →",
+    "list": "Roles, del más reciente al más antiguo",
+    "present": "actualidad"
   }
 }
