@@ -23,9 +23,12 @@ describe("messages", () => {
     expect(Object.keys(flatEn).sort()).toEqual(Object.keys(flatEs).sort());
   });
 
-  it("ningún texto está vacío", () => {
+  it("ningún texto está vacío (los datos de las demos pueden ser números)", () => {
     for (const [key, value] of Object.entries({ ...flatEs, ...flatEn })) {
-      expect(typeof value === "string" && value.trim().length > 0, key).toBe(true);
+      const ok =
+        (typeof value === "string" && value.trim().length > 0) ||
+        (typeof value === "number" && Number.isFinite(value));
+      expect(ok, key).toBe(true);
     }
   });
 });

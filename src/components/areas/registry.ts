@@ -15,5 +15,5 @@ export const areaRegistry: Record<AreaSlug, () => Promise<ComponentType<AreaPage
   compliance: () => import("./compliance/compliance-page").then((m) => m.CompliancePage),
   devops: () => import("./devops/devops-page").then((m) => m.DevopsPage),
   "ai-engineering": () => import("./ai/ai-page").then((m) => m.AiPage),
-  leadership: () => import("./default-area-page").then((m) => m.leadershipPage),
+  leadership: () => import("./leadership/leadership-page").then((m) => m.LeadershipPage),
 };

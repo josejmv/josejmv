@@ -58,7 +58,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 - [x] **6.3** Compliance: KycPipeline (scroll-driven) y VerdictCard.
 - [x] **6.4** DevOps: PipelineRunner (antes/después) e InfraMap.
 - [x] **6.5** AI Engineering: ExtractionDemo y AgentWorkflowDiagram.
-- [ ] **6.6** Leadership: TeamGrowthChart, DocsStandard y Principles.
+- [x] **6.6** Leadership: TeamGrowthChart, DocsStandard y Principles.
 
 ## Fase 7 — Calidad y lanzamiento
 

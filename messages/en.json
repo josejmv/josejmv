@@ -443,5 +443,117 @@
         }
       ]
     }
+  },
+  "AreaLeadership": {
+    "title": "Leading means keeping the reasoning visible",
+    "description": "People and process: the teams I led, the documentation standard a team of 5 adopted, and the principles behind both.",
+    "disclaimer": "No demo: every number in this section is real.",
+    "team": {
+      "title": "TeamGrowthChart",
+      "legend": {
+        "start": "at the start",
+        "growth": "growth",
+        "maybe": "depending on the stage (range)"
+      },
+      "stages": [
+        {
+          "key": "seo",
+          "org": "SEO Contenidos",
+          "period": "2019 – 2021",
+          "role": "Team Lead",
+          "start": 3,
+          "end": 3,
+          "maybe": 0,
+          "summary": "team of 3"
+        },
+        {
+          "key": "centria",
+          "org": "Centria Group",
+          "period": "2021 – 2025",
+          "role": "Front End Supervisor",
+          "start": 3,
+          "end": 5,
+          "maybe": 1,
+          "summary": "from 3 to 5–6 engineers"
+        },
+        {
+          "key": "inlaze",
+          "org": "Inlaze",
+          "period": "2025 · ~5 months",
+          "role": "Cell lead",
+          "start": 4,
+          "end": 4,
+          "maybe": 1,
+          "summary": "4–5 person cell"
+        }
+      ]
+    },
+    "docs": {
+      "title": "DocsStandard",
+      "label": "Artifacts per feature",
+      "steps": [
+        {
+          "key": "rfc",
+          "title": "RFC",
+          "detail": "What we want to solve and what the alternatives are."
+        },
+        {
+          "key": "adr",
+          "title": "ADR",
+          "detail": "What was decided and why, with its evidence."
+        },
+        {
+          "key": "backend",
+          "title": "Backend reality",
+          "detail": "What actually exists on the other side, verified."
+        },
+        {
+          "key": "steps",
+          "title": "Atomic steps",
+          "detail": "The implementation in small, reviewable steps."
+        }
+      ],
+      "stats": [
+        {
+          "value": "63",
+          "label": "features with the full flow"
+        },
+        {
+          "value": "5",
+          "label": "developers adopted it"
+        },
+        {
+          "value": "2",
+          "label": "repositories where it lives today"
+        },
+        {
+          "value": "1,026",
+          "label": "of the repo's 1,427 documents"
+        }
+      ]
+    },
+    "principles": {
+      "title": "Principles",
+      "items": [
+        {
+          "key": "mentoring",
+          "title": "mentoring",
+          "body": "Mentoring means keeping the reasoning visible, not just the solution.",
+          "evidence": "I wrote 116 of the 196 RFCs and ADRs of a frontend platform, and mentored a team that grew from 3 to 5–6 engineers."
+        },
+        {
+          "key": "hiring",
+          "title": "hiring",
+          "body": "A team grows well when whoever leads it helps choose who joins.",
+          "evidence": "At Centria the frontend team grew from 3 to 5–6 engineers over 4 years, with my input on hiring."
+        },
+        {
+          "key": "decisions",
+          "title": "decisions",
+          "body": "A decision is written down with its evidence and corrected in public if its premise fails.",
+          "evidence": "An ADR of mine assumed a premise that turned out false; the next day I corrected it in writing, keeping a record of the mistake."
+        }
+      ]
+    }
   }
 }

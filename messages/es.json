@@ -443,5 +443,117 @@
         }
       ]
     }
+  },
+  "AreaLeadership": {
+    "title": "Liderar es dejar el razonamiento a la vista",
+    "description": "Personas y proceso: los equipos que lideré, el estándar de documentación que adoptó un equipo de 5 y los principios que sostienen ambas cosas.",
+    "disclaimer": "Sin demo: todas las cifras de esta sección son reales.",
+    "team": {
+      "title": "TeamGrowthChart",
+      "legend": {
+        "start": "al empezar",
+        "growth": "crecimiento",
+        "maybe": "según la etapa (rango)"
+      },
+      "stages": [
+        {
+          "key": "seo",
+          "org": "SEO Contenidos",
+          "period": "2019 – 2021",
+          "role": "Team Lead",
+          "start": 3,
+          "end": 3,
+          "maybe": 0,
+          "summary": "equipo de 3"
+        },
+        {
+          "key": "centria",
+          "org": "Centria Group",
+          "period": "2021 – 2025",
+          "role": "Front End Supervisor",
+          "start": 3,
+          "end": 5,
+          "maybe": 1,
+          "summary": "de 3 a 5-6 ingenieros"
+        },
+        {
+          "key": "inlaze",
+          "org": "Inlaze",
+          "period": "2025 · ~5 meses",
+          "role": "Lead de célula",
+          "start": 4,
+          "end": 4,
+          "maybe": 1,
+          "summary": "célula de 4-5"
+        }
+      ]
+    },
+    "docs": {
+      "title": "DocsStandard",
+      "label": "Artefactos por feature",
+      "steps": [
+        {
+          "key": "rfc",
+          "title": "RFC",
+          "detail": "Qué se quiere resolver y qué alternativas hay."
+        },
+        {
+          "key": "adr",
+          "title": "ADR",
+          "detail": "Qué se decidió y por qué, con su evidencia."
+        },
+        {
+          "key": "backend",
+          "title": "Realidad del backend",
+          "detail": "Qué existe de verdad del otro lado, verificado."
+        },
+        {
+          "key": "steps",
+          "title": "Pasos atómicos",
+          "detail": "La implementación en pasos pequeños y revisables."
+        }
+      ],
+      "stats": [
+        {
+          "value": "63",
+          "label": "features con el flujo completo"
+        },
+        {
+          "value": "5",
+          "label": "desarrolladores lo adoptaron"
+        },
+        {
+          "value": "2",
+          "label": "repositorios donde vive hoy"
+        },
+        {
+          "value": "1.026",
+          "label": "documentos de 1.427 del repo"
+        }
+      ]
+    },
+    "principles": {
+      "title": "Principles",
+      "items": [
+        {
+          "key": "mentoring",
+          "title": "mentoría",
+          "body": "Mentorear es dejar el razonamiento a la vista, no solo la solución.",
+          "evidence": "Escribí 116 de los 196 RFC y ADR de una plataforma frontend, y acompañé a un equipo que creció de 3 a 5-6 ingenieros."
+        },
+        {
+          "key": "hiring",
+          "title": "contratación",
+          "body": "Un equipo crece bien si quien lo lidera participa en elegir a quién suma.",
+          "evidence": "En Centria el equipo frontend creció de 3 a 5-6 ingenieros en 4 años, con mi participación en las contrataciones."
+        },
+        {
+          "key": "decisions",
+          "title": "decisiones",
+          "body": "Una decisión se escribe con su evidencia y se corrige en público si su premisa falla.",
+          "evidence": "Un ADR mío asumió una premisa que resultó falsa; al día siguiente lo corregí por escrito, dejando constancia del error."
+        }
+      ]
+    }
   }
 }
