@@ -71,13 +71,28 @@ export function CommandMenu({ areas, email, className }: CommandMenuProps) {
         aria-label={t("triggerLabel", { shortcut })}
         aria-keyshortcuts={apple ? "Meta+K" : "Control+K"}
         className={cn(
-          "inline-flex h-11 items-center gap-2.5 rounded-pill border border-border bg-surface-2 pr-3 pl-4 font-mono text-[13px] text-muted transition-colors hover:text-text",
+          "inline-flex h-11 min-w-11 items-center justify-center gap-2.5 rounded-pill border border-border bg-surface-2 pr-3 pl-4 font-mono text-[13px] text-muted transition-colors hover:text-text pointer-coarse:px-0",
           "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text",
           className,
         )}
       >
         <span className="hidden lg:inline">{t("trigger")}</span>
-        <kbd className="rounded-md bg-chip px-2 py-0.5 font-mono text-text-2">{shortcut}</kbd>
+        <kbd className="rounded-md bg-chip px-2 py-0.5 font-mono text-text-2 pointer-coarse:hidden">
+          {shortcut}
+        </kbd>
+        {/* En pantallas táctiles no hay atajo de teclado: se muestra una lupa. */}
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          className="hidden size-5 text-text pointer-coarse:block"
+        >
+          <circle cx="11" cy="11" r="7" />
+          <path d="m20 20-3.5-3.5" />
+        </svg>
       </button>
       {loaded && (
         <CommandPalette open={open} onOpenChange={changeOpen} areas={areas} email={email} />

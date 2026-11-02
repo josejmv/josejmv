@@ -4,13 +4,24 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { AreasShowcase } from "@/components/sections/home/areas-showcase";
 import { CareerSection } from "@/components/sections/home/career-section";
+import { ContactCta } from "@/components/sections/home/contact-cta";
+import { EducationCard } from "@/components/sections/home/education-card";
 import { HeroSection } from "@/components/sections/home/hero-section";
+import { StackCloud } from "@/components/sections/home/stack-cloud";
 import { StatsStrip } from "@/components/sections/home/stats-strip";
 import { GlobeLegend } from "@/components/three/globe/globe-legend";
 import { GlobeStaticSvg } from "@/components/three/globe/globe-static-svg";
 import { GlobeTabs } from "@/components/three/globe/globe-tabs";
 import { routing } from "@/i18n/routing";
-import { getAreas, getExperience, getGlobeData, getProfile, getStats } from "@/lib/content";
+import {
+  getAreas,
+  getEducation,
+  getExperience,
+  getGlobeData,
+  getProfile,
+  getStack,
+  getStats,
+} from "@/lib/content";
 import { getCurrentMonth } from "@/lib/time";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -18,17 +29,21 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
 
-  const [t, tGlobe, tStats, tAreas, tCareer, now] = await Promise.all([
+  const [t, tGlobe, tStats, tAreas, tCareer, tEducation, tStack, tCta, now] = await Promise.all([
     getTranslations({ locale, namespace: "Hero" }),
     getTranslations({ locale, namespace: "Globe" }),
     getTranslations({ locale, namespace: "Stats" }),
     getTranslations({ locale, namespace: "Areas" }),
     getTranslations({ locale, namespace: "Career" }),
+    getTranslations({ locale, namespace: "Education" }),
+    getTranslations({ locale, namespace: "Stack" }),
+    getTranslations({ locale, namespace: "Cta" }),
     getCurrentMonth(),
   ]);
   const profile = getProfile(locale);
   const globe = getGlobeData(locale);
 
+  const primaryContact = profile.contactLinks.find((link) => link.primary)!;
   const languages = profile.languages.map((l) =>
     tGlobe("language", { name: l.name, level: l.level }),
   );
@@ -111,6 +126,18 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           list: tCareer("list"),
           present: tCareer("present"),
         }}
+      />
+
+      <div className="container-page mt-4 grid gap-4 md:grid-cols-2">
+        <EducationCard title={tEducation("title")} items={getEducation(locale)} />
+        <StackCloud title={tStack("title")} items={getStack()} />
+      </div>
+
+      <ContactCta
+        title={tCta("title")}
+        subtitle={tCta("subtitle")}
+        action={tCta("action")}
+        href={primaryContact.href}
       />
     </main>
   );

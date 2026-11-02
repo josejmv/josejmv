@@ -86,5 +86,16 @@
     "fullLink": "Full experience →",
     "list": "Roles, most recent first",
     "present": "present"
+  },
+  "Education": {
+    "title": "education"
+  },
+  "Stack": {
+    "title": "stack"
+  },
+  "Cta": {
+    "title": "Shall we build something reliable?",
+    "subtitle": "I reply in English or Spanish.",
+    "action": "Email me on Gmail"
   }
 }

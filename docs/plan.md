@@ -41,7 +41,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 - [x] **4.5** StatsStrip.
 - [x] **4.6** AreasShowcase: AreaTabs (Radix) e ImpactBars.
 - [x] **4.7** CareerGantt en desktop, que pasa a lista vertical en móvil.
-- [ ] **4.8** EducationCard, StackCloud y ContactCta.
+- [x] **4.8** EducationCard, StackCloud y ContactCta.
 
 ## Fase 5 — Páginas
 

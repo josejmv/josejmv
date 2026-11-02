@@ -86,5 +86,16 @@
     "fullLink": "Experiencia completa →",
     "list": "Roles, del más reciente al más antiguo",
     "present": "actualidad"
+  },
+  "Education": {
+    "title": "formación"
+  },
+  "Stack": {
+    "title": "stack"
+  },
+  "Cta": {
+    "title": "¿Construimos algo confiable?",
+    "subtitle": "Respondo en español o en inglés.",
+    "action": "Escríbeme a Gmail"
   }
 }

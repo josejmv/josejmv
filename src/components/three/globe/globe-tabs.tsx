@@ -51,7 +51,7 @@ export function GlobeTabs({ label, home, views }: GlobeTabsProps) {
             key={key}
             value={key}
             className={cn(
-              "h-11 rounded-pill px-[18px] text-[13px] font-medium text-text-2 transition-colors sm:h-10",
+              "h-11 rounded-pill px-3 text-xs font-medium whitespace-nowrap text-text-2 transition-colors sm:px-[18px] sm:text-[13px]",
               "hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text",
               "data-[state=active]:bg-accent data-[state=active]:font-semibold data-[state=active]:text-on-accent",
             )}

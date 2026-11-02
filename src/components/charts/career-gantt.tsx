@@ -26,7 +26,10 @@ export function CareerGantt({ roles, now, locale, labels }: CareerGanttProps) {
 
   const firstYear = Math.ceil(domainStart / 12);
   const lastYear = Math.floor(domainEnd / 12);
-  const years = Array.from({ length: lastYear - firstYear + 1 }, (_, i) => firstYear + i);
+  // Se omiten los años pegados a un extremo del eje: su etiqueta quedaría cortada.
+  const years = Array.from({ length: lastYear - firstYear + 1 }, (_, i) => firstYear + i).filter(
+    (year) => pct(year * 12) > 3 && pct(year * 12) < 97,
+  );
 
   const month = new Intl.DateTimeFormat(locale, {
     month: "short",
