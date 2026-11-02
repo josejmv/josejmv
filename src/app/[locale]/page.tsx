@@ -3,6 +3,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { HeroSection } from "@/components/sections/home/hero-section";
+import { CollaborationGlobe } from "@/components/three/globe/collaboration-globe";
 import { GlobeStaticSvg } from "@/components/three/globe/globe-static-svg";
 import { routing } from "@/i18n/routing";
 import { getGlobeData, getProfile } from "@/lib/content";
@@ -29,11 +30,17 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           contactList: t("contactList"),
         }}
         aside={
-          <GlobeStaticSvg
+          <CollaborationGlobe
             points={globe.team}
             home={globe.home}
-            label={tGlobe("ariaTeam", { count: globe.team.length })}
             className="motion-safe:animate-floaty"
+            fallback={
+              <GlobeStaticSvg
+                points={globe.team}
+                home={globe.home}
+                label={tGlobe("ariaTeam", { count: globe.team.length })}
+              />
+            }
           />
         }
       />
