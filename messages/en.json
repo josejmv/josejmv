@@ -97,5 +97,22 @@
     "title": "Shall we build something reliable?",
     "subtitle": "I reply in English or Spanish.",
     "action": "Email me on Gmail"
+  },
+  "Experience": {
+    "metaTitle": "Experience · José M. Vasquez",
+    "metaDescription": "José M. Vasquez's career: regulated fintech, AML/KYC, frontend team leadership and engineering process.",
+    "eyebrow": "experience",
+    "title": "Career",
+    "intro": "Seven years across product, payments and compliance. Filter by area to see where I worked on each topic; each card opens the role's achievements and projects.",
+    "filter": "Filter by area",
+    "all": "All",
+    "empty": "No role matches that filter.",
+    "results": "{count, plural, one {# role} other {# roles}}",
+    "highlights": "Achievements",
+    "projects": "Role projects",
+    "stack": "stack",
+    "metricsTitle": "Measured impact",
+    "download": "Download CV (PDF)",
+    "ganttTitle": "Timeline"
   }
 }

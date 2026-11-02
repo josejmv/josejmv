@@ -97,5 +97,22 @@
     "title": "¿Construimos algo confiable?",
     "subtitle": "Respondo en español o en inglés.",
     "action": "Escríbeme a Gmail"
+  },
+  "Experience": {
+    "metaTitle": "Experiencia · José M. Vasquez",
+    "metaDescription": "Trayectoria de José M. Vasquez: fintech regulada, AML/KYC, liderazgo de equipos frontend y procesos de ingeniería.",
+    "eyebrow": "experiencia",
+    "title": "Trayectoria",
+    "intro": "Siete años entre producto, pagos y cumplimiento. Filtra por área para ver dónde trabajé cada tema; cada tarjeta abre los logros y los proyectos del rol.",
+    "filter": "Filtrar por área",
+    "all": "Todas",
+    "empty": "Ningún rol coincide con ese filtro.",
+    "results": "{count, plural, one {# rol} other {# roles}}",
+    "highlights": "Logros",
+    "projects": "Proyectos del rol",
+    "stack": "stack",
+    "metricsTitle": "Impacto medido",
+    "download": "Descargar CV (PDF, en inglés)",
+    "ganttTitle": "Línea de tiempo"
   }
 }
