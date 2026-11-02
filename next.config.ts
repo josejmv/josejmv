@@ -7,6 +7,16 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   // MDX solo se importa desde content/projects (case studies); no hay páginas .mdx en src/app.
   pageExtensions: ["ts", "tsx", "mdx"],
+  // Enlaces del portafolio anterior que pueden seguir circulando (CV compartido, LinkedIn).
+  async redirects() {
+    return [
+      { source: "/assets/cv/:file*", destination: "/cv/jose-vasquez-cv.pdf", permanent: true },
+    ];
+  },
+  async headers() {
+    // El kill switch del service worker viejo nunca debe quedar en caché HTTP.
+    return [{ source: "/sw.js", headers: [{ key: "Cache-Control", value: "no-cache, no-store" }] }];
+  },
   turbopack: {
     rules: {
       "*.css": {
