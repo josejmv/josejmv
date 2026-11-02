@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "
 
 import { cn } from "@/lib/cn";
 
-import type { CommandArea } from "./command-palette";
+import type { CommandArea, CommandProject } from "./command-palette";
 
 // cmdk solo se descarga la primera vez que se abre el menú: no pesa en el JS inicial del Home.
 const CommandPalette = dynamic(() => import("./command-palette").then((m) => m.CommandPalette), {
@@ -18,12 +18,13 @@ const isApple = () => /Mac|iPhone|iPad/.test(navigator.platform || navigator.use
 
 export interface CommandMenuProps {
   areas: CommandArea[];
+  projects: CommandProject[];
   email: string;
   className?: string;
 }
 
 /** Botón "Buscar… ⌘K" del header + atajo global ⌘K / Ctrl+K. */
-export function CommandMenu({ areas, email, className }: CommandMenuProps) {
+export function CommandMenu({ areas, projects, email, className }: CommandMenuProps) {
   const t = useTranslations("Command");
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -95,7 +96,13 @@ export function CommandMenu({ areas, email, className }: CommandMenuProps) {
         </svg>
       </button>
       {loaded && (
-        <CommandPalette open={open} onOpenChange={changeOpen} areas={areas} email={email} />
+        <CommandPalette
+          open={open}
+          onOpenChange={changeOpen}
+          areas={areas}
+          projects={projects}
+          email={email}
+        />
       )}
     </>
   );

@@ -47,7 +47,8 @@
       "navigation": "navegar",
       "areas": "áreas",
       "preferences": "preferencias",
-      "actions": "acciones"
+      "actions": "acciones",
+      "projects": "proyectos"
     },
     "switchLanguage": "Cambiar a {language}",
     "toggleTheme": "Cambiar tema claro/oscuro",
@@ -133,5 +134,11 @@
       "preproduction": "en preproducción",
       "in-development": "en construcción"
     }
+  },
+  "CaseStudy": {
+    "eyebrow": "case study",
+    "metrics": "Cifras clave",
+    "toc": "En esta página",
+    "next": "Siguiente case study"
   }
 }

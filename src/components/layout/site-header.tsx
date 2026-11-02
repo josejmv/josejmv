@@ -4,7 +4,7 @@ import { CommandMenu } from "@/components/command/command-menu";
 import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import type { ContentLocale } from "@content/schema";
-import { getAreas, getProfile } from "@/lib/content";
+import { getAreas, getProfile, getProjects } from "@/lib/content";
 
 import { MainNav } from "./main-nav";
 import { MobileMenu } from "./mobile-menu";
@@ -18,6 +18,9 @@ export async function SiteHeader({ locale }: { locale: ContentLocale }) {
   const t = await getTranslations({ locale, namespace: "Header" });
   const profile = getProfile(locale);
   const areas = getAreas(locale).map(({ slug, title }) => ({ slug, title }));
+  const projects = getProjects(locale)
+    .filter((project) => project.caseStudy)
+    .map(({ slug, title }) => ({ slug, title }));
 
   return (
     <header className="relative z-20 container-page pt-4 md:pt-7">
@@ -25,7 +28,7 @@ export async function SiteHeader({ locale }: { locale: ContentLocale }) {
         <SiteLogo monogram={profile.monogram} label={t("home", { name: profile.name })} />
         <MainNav className="hidden md:block" />
         <div className="flex items-center gap-2">
-          <CommandMenu areas={areas} email={profile.email} />
+          <CommandMenu areas={areas} projects={projects} email={profile.email} />
           <LocaleSwitcher className="hidden md:inline-flex" />
           <ThemeToggle className="hidden md:inline-flex" />
           <MobileMenu areas={areas} className="md:hidden" />

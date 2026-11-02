@@ -16,10 +16,17 @@ export interface CommandArea {
   title: string;
 }
 
+export interface CommandProject {
+  slug: string;
+  title: string;
+}
+
 interface CommandPaletteProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   areas: CommandArea[];
+  /** Proyectos con case study. */
+  projects: CommandProject[];
   email: string;
 }
 
@@ -43,7 +50,13 @@ const groupClasses =
   "**:[[cmdk-group-heading]]:px-3 **:[[cmdk-group-heading]]:py-2 **:[[cmdk-group-heading]]:font-mono **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:text-subtle";
 
 /** Paleta ⌘K: navegar a secciones y áreas, cambiar idioma y tema, y copiar el email. */
-export function CommandPalette({ open, onOpenChange, areas, email }: CommandPaletteProps) {
+export function CommandPalette({
+  open,
+  onOpenChange,
+  areas,
+  projects,
+  email,
+}: CommandPaletteProps) {
   const t = useTranslations("Command");
   const tNav = useTranslations("Nav");
   const tLocale = useTranslations("LocaleSwitcher");
@@ -154,6 +167,23 @@ export function CommandPalette({ open, onOpenChange, areas, email }: CommandPale
               </Item>
             ))}
           </Command.Group>
+
+          {projects.length > 0 && (
+            <Command.Group heading={t("groups.projects")} className={groupClasses}>
+              {projects.map((project) => (
+                <Item
+                  key={project.slug}
+                  value={`project-${project.slug}`}
+                  keywords={[project.title, tNav("projects")]}
+                  onSelect={() =>
+                    go({ pathname: "/proyectos/[slug]", params: { slug: project.slug } })
+                  }
+                >
+                  {project.title}
+                </Item>
+              ))}
+            </Command.Group>
+          )}
 
           <Command.Group heading={t("groups.preferences")} className={groupClasses}>
             <Item

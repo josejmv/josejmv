@@ -30,7 +30,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 - [x] **3.1** Primitivas en `ui/`: Button, Chip, StatCard, GradientText, AvailabilityBadge y AnimatedCounter.
 - [x] **3.2** Fondos: GridBackground y GlowOrbs.
 - [x] **3.3** SiteHeader (MainNav, LocaleSwitcher, ThemeToggle), MobileMenu (Sheet) y SiteFooter.
-- [x] **3.4** CommandMenu (⌘K) con cmdk: navegar a secciones, áreas y proyectos, cambiar idioma y tema, y copiar el email. _(cmdk y el Sheet móvil se cargan al abrirse por primera vez: JS inicial de `/es` = 163 kB gz sin el chunk `noModule`. Falta el grupo de proyectos: se agrega en la 5.2, cuando exista su contenido.)_
+- [x] **3.4** CommandMenu (⌘K) con cmdk: navegar a secciones, áreas y proyectos, cambiar idioma y tema, y copiar el email. _(cmdk y el Sheet móvil se cargan al abrirse por primera vez: JS inicial de `/es` = 163 kB gz sin el chunk `noModule`. El grupo de proyectos (case studies) se agregó en la 5.3.)_
 
 ## Fase 4 — Home
 
@@ -47,7 +47,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 
 - [x] **5.1** `/experiencia`: Gantt completo, ExperienceCards con acordeón y descarga del CV por idioma. _(Acordeón con `<details>` nativo, sin JS. Un solo CV, en inglés (`public/cv/jose-vasquez-cv.pdf`), en ambos idiomas. Pendiente: zoom por año del Gantt.)_
 - [x] **5.2** `/proyectos`: ProjectCards con filtros.
-- [ ] **5.3** `/proyectos/[slug]`: case study en MDX (CaseHero, KeyMetrics, TOC sticky, componentes MDX).
+- [x] **5.3** `/proyectos/[slug]`: case study en MDX (CaseHero, KeyMetrics, TOC sticky, componentes MDX). _(`@next/mdx` + `rehype-slug` por nombre (Turbopack). Con `cacheComponents` no existe `dynamicParams`: un slug desconocido llama a `notFound()`, pero responde 200 con `noindex` porque el shell ya salió: revisar en 7.1 junto al catch-all.)_
 - [ ] **5.4** Primeros 3 case studies: orquestador de pagos, export engine y motor KYC (ES y EN).
 
 ## Fase 6 — Páginas de área (una tarea por área)
@@ -62,7 +62,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 
 ## Fase 7 — Calidad y lanzamiento
 
-- [ ] **7.1** SEO: metadata por locale, `hreflang`, sitemap, robots, OG images dinámicas y JSON-LD `Person`.
+- [ ] **7.1** SEO: _(Incluye: status 404 real para slugs desconocidos y el catch-all bajo `cacheComponents`.)_ metadata por locale, `hreflang`, sitemap, robots, OG images dinámicas y JSON-LD `Person`.
 - [ ] **7.2** Accesibilidad: auditoría con axe en Playwright y prueba completa con teclado.
 - [ ] **7.3** Rendimiento: Lighthouse ≥ 90 en móvil y revisión del bundle. _(Candidato: `experimental.messages.precompile` de next-intl elimina el parser ICU del cliente, ~16 kB gz.)_
 - [ ] **7.4** E2E: cambio de idioma, cambio de tema, ⌘K, enlaces de contacto y navegación de áreas.

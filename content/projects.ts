@@ -30,7 +30,7 @@ export const projects = [
         label: { es: "rieles de pago", en: "payment rails" },
       },
     ],
-    caseStudy: false, // se activa en la 5.4, con su MDX
+    caseStudy: true,
   },
   {
     slug: "payment-gateway",

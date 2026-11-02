@@ -30,7 +30,11 @@ function renderMenu() {
   return render(
     <NextIntlClientProvider locale="es" messages={es}>
       <ThemeProvider>
-        <CommandMenu areas={areas} email="hola@example.com" />
+        <CommandMenu
+          areas={areas}
+          projects={[{ slug: "payment-orchestrator", title: "Orquestador de pagos" }]}
+          email="hola@example.com"
+        />
       </ThemeProvider>
     </NextIntlClientProvider>,
   );
@@ -88,6 +92,14 @@ describe("CommandMenu", () => {
     await openWithButton(user);
     await user.keyboard("{Escape}");
     await waitFor(() => expect(trigger).toHaveFocus());
+  });
+
+  it("navega a un case study", async () => {
+    const user = userEvent.setup();
+    renderMenu();
+    await openWithButton(user);
+    await user.click(screen.getByText("Orquestador de pagos"));
+    expect(router.push.mock.calls[0][0]).toBe("/es/proyectos/payment-orchestrator");
   });
 
   it("cambia de idioma conservando la página", async () => {
