@@ -16,7 +16,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 - [x] **1.2** Tailwind v4 con los tokens de CLAUDE.md en `@theme`, y fuentes con `next/font`.
 - [x] **1.3** next-intl: `routing.ts` con pathnames localizados, middleware, `[locale]/layout.tsx` y `messages/{es,en}.json`. _(Next 16 deprecó `middleware.ts`: ahora es `src/proxy.ts`, con `export default createMiddleware(routing)` de next-intl 4.14. La paridad de claves ES/EN se comprueba en `src/i18n/messages-parity.ts` (rompe `tsc` y `next build`) y en un test. Con `cacheComponents`, el 404 del catch-all `[...rest]` se resuelve vía RSC: revisar en 7.1.)_
 - [x] **1.4** next-themes: ThemeProvider y ThemeToggle, sin parpadeo al cargar.
-- [ ] **1.5** CI (GitHub Actions): lint, typecheck, test y build. Proyecto en Vercel con previews por PR. _(CI listo en `.github/workflows/ci.yml`. Remoto: `josejmv/josejmv`, rama `v2`; `dev` conserva el sitio viejo hasta la 7.5. Pendiente: conectar Vercel a `v2` desde el dashboard.)_
+- [x] **1.5** CI (GitHub Actions): lint, typecheck, test y build. Proyecto en Vercel con previews por PR. _(CI listo en `.github/workflows/ci.yml`. Remoto: `josejmv/josejmv`, rama `v2`; `dev` conserva el sitio viejo hasta la 7.5. Vercel ya genera previews de `v2`; producción despliega desde `dev`.)_
 
 ## Fase 2 — Contenido
 
@@ -62,7 +62,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 
 ## Fase 7 — Calidad y lanzamiento
 
-- [ ] **7.1** SEO: _(Incluye: status 404 real para slugs desconocidos y el catch-all bajo `cacheComponents`.)_ metadata por locale, `hreflang`, sitemap, robots, OG images dinámicas y JSON-LD `Person`.
+- [x] **7.1** SEO: metadata por locale (canonical, `hreflang` con `x-default`, Open Graph y Twitter), sitemap con alternates, robots (las previews de Vercel no se indexan), OG images dinámicas (general, case study y área) y JSON-LD `Person` en el Home. _(404 real: con `cacheComponents` una ruta dinámica emite su shell con 200 antes de `notFound()`, y una página prerenderizada ignora el `status` de un rewrite. `src/proxy.ts` clasifica la URL contra `routing.pathnames` y los slugs del contenido (`src/i18n/known-paths.ts`); si es desconocida, sirve el HTML de `/[locale]/not-found-page` con status 404. Del sitio anterior: `/assets/cv/*` redirige al CV nuevo (308) y `public/sw.js` desinstala el service worker de next-pwa. `SITE_URL` sale de `NEXT_PUBLIC_SITE_URL` o del dominio de producción de Vercel.)_
 - [ ] **7.2** Accesibilidad: auditoría con axe en Playwright y prueba completa con teclado.
 - [ ] **7.3** Rendimiento: Lighthouse ≥ 90 en móvil y revisión del bundle. _(Candidato: `experimental.messages.precompile` de next-intl elimina el parser ICU del cliente, ~16 kB gz.)_
 - [ ] **7.4** E2E: cambio de idioma, cambio de tema, ⌘K, enlaces de contacto y navegación de áreas.
