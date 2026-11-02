@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -9,6 +10,7 @@ import { EducationCard } from "@/components/sections/home/education-card";
 import { HeroSection } from "@/components/sections/home/hero-section";
 import { StackCloud } from "@/components/sections/home/stack-cloud";
 import { StatsStrip } from "@/components/sections/home/stats-strip";
+import { PersonJsonLd } from "@/components/seo/person-json-ld";
 import { GlobeLegend } from "@/components/three/globe/globe-legend";
 import { GlobeStaticSvg } from "@/components/three/globe/globe-static-svg";
 import { GlobeTabs } from "@/components/three/globe/globe-tabs";
@@ -22,7 +24,21 @@ import {
   getStack,
   getStats,
 } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 import { getCurrentMonth } from "@/lib/time";
+
+export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) return {};
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+  return pageMetadata({
+    href: "/",
+    locale,
+    title: t("title"),
+    description: t("description"),
+    type: "profile",
+  });
+}
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -53,6 +69,11 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
   return (
     <main>
+      <PersonJsonLd
+        profile={profile}
+        locale={locale}
+        knowsAbout={getAreas(locale).map((area) => area.title)}
+      />
       <HeroSection
         profile={profile}
         labels={{
