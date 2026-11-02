@@ -41,7 +41,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
           <ThemeProvider>
-            <div className="relative isolate flex min-h-full flex-1 flex-col overflow-hidden">
+            <div className="relative isolate flex min-h-full flex-1 flex-col overflow-clip">
               <GridBackground />
               <GlowOrbs />
               <a

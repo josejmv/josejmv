@@ -2,7 +2,7 @@ import { cn } from "@/lib/cn";
 
 /**
  * Dos halos radiales (Fusion): azul arriba a la derecha y champagne a la izquierda,
- * a la altura de las áreas. Decorativos; el contenedor padre debe ser `relative overflow-hidden`.
+ * a la altura de las áreas. Decorativos; el contenedor padre debe ser `relative overflow-clip` (no `overflow-hidden`: rompería `sticky` y las animaciones de scroll).
  */
 export function GlowOrbs({ className }: { className?: string }) {
   return (
