@@ -2,21 +2,25 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { AreasShowcase } from "@/components/sections/home/areas-showcase";
 import { HeroSection } from "@/components/sections/home/hero-section";
+import { StatsStrip } from "@/components/sections/home/stats-strip";
 import { GlobeLegend } from "@/components/three/globe/globe-legend";
 import { GlobeStaticSvg } from "@/components/three/globe/globe-static-svg";
 import { GlobeTabs } from "@/components/three/globe/globe-tabs";
 import { routing } from "@/i18n/routing";
-import { getGlobeData, getProfile } from "@/lib/content";
+import { getAreas, getGlobeData, getProfile, getStats } from "@/lib/content";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
 
-  const [t, tGlobe] = await Promise.all([
+  const [t, tGlobe, tStats, tAreas] = await Promise.all([
     getTranslations({ locale, namespace: "Hero" }),
     getTranslations({ locale, namespace: "Globe" }),
+    getTranslations({ locale, namespace: "Stats" }),
+    getTranslations({ locale, namespace: "Areas" }),
   ]);
   const profile = getProfile(locale);
   const globe = getGlobeData(locale);
@@ -77,6 +81,20 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             }}
           />
         }
+      />
+
+      <StatsStrip stats={getStats(locale)} label={tStats("label")} />
+
+      <AreasShowcase
+        areas={getAreas(locale)}
+        defaultSlug="backend-pagos"
+        labels={{
+          title: tAreas("title"),
+          note: tAreas("note"),
+          tabs: tAreas("tabs"),
+          impact: tAreas("impact"),
+          cases: (area) => tAreas("cases", { area }),
+        }}
       />
     </main>
   );

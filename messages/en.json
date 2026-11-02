@@ -70,5 +70,15 @@
     "teamSummary": "Team nationalities: {list}",
     "companySummary": "Company headquarters: {list}",
     "language": "{name} · {level}"
+  },
+  "Stats": {
+    "label": "Key figures"
+  },
+  "Areas": {
+    "title": "Domain areas",
+    "note": "each area → its own page",
+    "tabs": "Areas",
+    "impact": "measured impact · before → after",
+    "cases": "See {area} cases →"
   }
 }

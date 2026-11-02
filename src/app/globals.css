@@ -78,6 +78,7 @@
   --animate-floaty: floaty 7s ease-in-out infinite;
   --animate-dash: dash 2.6s linear infinite;
   --animate-fade-up: fade-up 0.5s ease-out both;
+  --animate-grow-x: grow-x 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 
   @keyframes pulse-soft {
     0%,
@@ -105,6 +106,11 @@
   @keyframes dash {
     to {
       stroke-dashoffset: -40;
+    }
+  }
+  @keyframes grow-x {
+    from {
+      transform: scaleX(0);
     }
   }
   @keyframes typing {

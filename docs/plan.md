@@ -38,8 +38,8 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 - [x] **4.2** GlobeStaticSvg como fallback, a partir del SVG del lienzo.
 - [x] **4.3** CollaborationGlobe con react-globe.gl: arcos desde Colombia, marcadores con tooltip, pausa fuera del viewport y reduced-motion.
 - [x] **4.4** GlobeTabs (Equipo / Empresas, Radix Tabs): cambia el dataset con una transición de puntos. Incluye GlobeLegend y LanguageBadges.
-- [ ] **4.5** StatsStrip.
-- [ ] **4.6** AreasShowcase: AreaTabs (Radix) e ImpactBars.
+- [x] **4.5** StatsStrip.
+- [x] **4.6** AreasShowcase: AreaTabs (Radix) e ImpactBars.
 - [ ] **4.7** CareerGantt en desktop, que pasa a lista vertical en móvil.
 - [ ] **4.8** EducationCard, StackCloud y ContactCta.
 
