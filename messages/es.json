@@ -36,5 +36,23 @@
     "navTitle": "navegación",
     "contactTitle": "contacto",
     "rights": "© {year} {name}"
+  },
+  "Command": {
+    "title": "Buscador de comandos",
+    "trigger": "Buscar…",
+    "triggerLabel": "Abrir buscador de comandos ({shortcut})",
+    "placeholder": "Escribe un comando o busca…",
+    "empty": "Sin resultados.",
+    "groups": {
+      "navigation": "navegar",
+      "areas": "áreas",
+      "preferences": "preferencias",
+      "actions": "acciones"
+    },
+    "switchLanguage": "Cambiar a {language}",
+    "toggleTheme": "Cambiar tema claro/oscuro",
+    "copyEmail": "Copiar email",
+    "copied": "Email copiado al portapapeles",
+    "copyFailed": "No se pudo copiar. Mi email es {email}"
   }
 }

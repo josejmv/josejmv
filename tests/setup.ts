@@ -19,6 +19,14 @@ if (!window.matchMedia) {
   });
 }
 
+// cmdk usa ResizeObserver y scrollIntoView, que jsdom no implementa.
+globalThis.ResizeObserver ??= class {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+} as unknown as typeof ResizeObserver;
+Element.prototype.scrollIntoView ??= function () {};
+
 afterEach(() => {
   cleanup();
 });

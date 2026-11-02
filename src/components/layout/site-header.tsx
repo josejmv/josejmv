@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { CommandMenu } from "@/components/command/command-menu";
 import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import type { ContentLocale } from "@content/schema";
@@ -24,6 +25,7 @@ export async function SiteHeader({ locale }: { locale: ContentLocale }) {
         <SiteLogo monogram={profile.monogram} label={t("home", { name: profile.name })} />
         <MainNav className="hidden md:block" />
         <div className="flex items-center gap-2">
+          <CommandMenu areas={areas} email={profile.email} />
           <LocaleSwitcher className="hidden md:inline-flex" />
           <ThemeToggle className="hidden md:inline-flex" />
           <MobileMenu areas={areas} className="md:hidden" />

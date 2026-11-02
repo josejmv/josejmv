@@ -91,8 +91,9 @@ describe("MobileMenu", () => {
     const user = userEvent.setup();
     renderWith(<MobileMenu areas={areas} />);
 
-    await user.click(screen.getByRole("button", { name: "Abrir menú" }));
-    const dialog = screen.getByRole("dialog");
+    const trigger = screen.getByRole("button", { name: "Abrir menú" });
+    await user.click(trigger);
+    const dialog = await screen.findByRole("dialog");
 
     expect(within(dialog).getByRole("link", { name: "Experiencia" })).toBeInTheDocument();
     expect(within(dialog).getByRole("link", { name: "DevOps" })).toHaveAttribute(
@@ -106,5 +107,6 @@ describe("MobileMenu", () => {
 
     await user.click(within(dialog).getByRole("button", { name: "Cerrar menú" }));
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(trigger).toHaveFocus();
   });
 });

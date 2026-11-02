@@ -36,5 +36,23 @@
     "navTitle": "navigation",
     "contactTitle": "contact",
     "rights": "© {year} {name}"
+  },
+  "Command": {
+    "title": "Command menu",
+    "trigger": "Search…",
+    "triggerLabel": "Open command menu ({shortcut})",
+    "placeholder": "Type a command or search…",
+    "empty": "No results.",
+    "groups": {
+      "navigation": "navigate",
+      "areas": "areas",
+      "preferences": "preferences",
+      "actions": "actions"
+    },
+    "switchLanguage": "Switch to {language}",
+    "toggleTheme": "Toggle light/dark theme",
+    "copyEmail": "Copy email",
+    "copied": "Email copied to clipboard",
+    "copyFailed": "Could not copy. My email is {email}"
   }
 }

@@ -30,7 +30,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 - [x] **3.1** Primitivas en `ui/`: Button, Chip, StatCard, GradientText, AvailabilityBadge y AnimatedCounter.
 - [x] **3.2** Fondos: GridBackground y GlowOrbs.
 - [x] **3.3** SiteHeader (MainNav, LocaleSwitcher, ThemeToggle), MobileMenu (Sheet) y SiteFooter.
-- [ ] **3.4** CommandMenu (⌘K) con cmdk: navegar a secciones, áreas y proyectos, cambiar idioma y tema, y copiar el email.
+- [x] **3.4** CommandMenu (⌘K) con cmdk: navegar a secciones, áreas y proyectos, cambiar idioma y tema, y copiar el email. _(cmdk y el Sheet móvil se cargan al abrirse por primera vez: JS inicial de `/es` = 163 kB gz sin el chunk `noModule`. Falta el grupo de proyectos: se agrega en la 5.2, cuando exista su contenido.)_
 
 ## Fase 4 — Home
 
@@ -64,7 +64,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 
 - [ ] **7.1** SEO: metadata por locale, `hreflang`, sitemap, robots, OG images dinámicas y JSON-LD `Person`.
 - [ ] **7.2** Accesibilidad: auditoría con axe en Playwright y prueba completa con teclado.
-- [ ] **7.3** Rendimiento: Lighthouse ≥ 90 en móvil y revisión del bundle.
+- [ ] **7.3** Rendimiento: Lighthouse ≥ 90 en móvil y revisión del bundle. _(Candidato: `experimental.messages.precompile` de next-intl elimina el parser ICU del cliente, ~16 kB gz.)_
 - [ ] **7.4** E2E: cambio de idioma, cambio de tema, ⌘K, enlaces de contacto y navegación de áreas.
 - [ ] **7.5** Analytics (Vercel Analytics), dominio y lanzamiento.
 
