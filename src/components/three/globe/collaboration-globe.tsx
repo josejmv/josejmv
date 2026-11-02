@@ -40,10 +40,16 @@ function useIdle(): boolean {
   return idle;
 }
 
+/** WebGL acelerado por GPU. Con renderer por software (sin GPU) el globo congelaría la página. */
 function hasWebGL(): boolean {
   try {
     const canvas = document.createElement("canvas");
-    return Boolean(canvas.getContext("webgl2") ?? canvas.getContext("webgl"));
+    const gl = (canvas.getContext("webgl2") ??
+      canvas.getContext("webgl")) as WebGLRenderingContext | null;
+    if (!gl) return false;
+    const info = gl.getExtension?.("WEBGL_debug_renderer_info");
+    const renderer = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : "";
+    return !/swiftshader|llvmpipe|software|basic render/i.test(renderer);
   } catch {
     return false;
   }

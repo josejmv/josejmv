@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "reac
 import Globe, { type GlobeMethods } from "react-globe.gl";
 import { MeshPhongMaterial } from "three";
 import { feature } from "topojson-client";
-import landTopology from "world-atlas/land-110m.json";
+import countriesTopology from "world-atlas/countries-110m.json";
 
 import type { LocalizedCountry } from "@/lib/content";
 import { VIEW_CENTER } from "@/lib/globe/projection";
@@ -49,10 +49,17 @@ const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (c) => `&#${c.ch
 
 type Topology = Parameters<typeof feature>[0];
 
+/**
+ * Un polígono por país: si h3 falla en uno, no se pierde toda la capa. Se excluyen la Antártida
+ * (010, no aporta a la vista) y Corea del Norte (408: h3 no logra rellenar su polígono a resolución 3).
+ */
+const EXCLUDED = new Set(["010", "408"]);
+
 const landFeatures: object[] = (() => {
-  const topology = landTopology as unknown as Topology;
-  const collection = feature(topology, topology.objects.land);
-  return "features" in collection ? collection.features : [collection];
+  const topology = countriesTopology as unknown as Topology;
+  const collection = feature(topology, topology.objects.countries);
+  const features = "features" in collection ? collection.features : [collection];
+  return features.filter((f) => !EXCLUDED.has(String(f.id)));
 })();
 
 /** Re-renderiza cuando next-themes cambia `data-theme` en <html>. */
@@ -107,6 +114,27 @@ export default function GlobeCanvas({
 
   const companies = useMemo(() => points.filter((p) => p.kind === "company"), [points]);
 
+  // Accessors estables: si cambian en cada render, react-globe.gl recalcula todas las capas
+  // (incluidos los hexágonos, lo más caro) aunque los datos sean los mismos.
+  const accessors = useMemo(
+    () => ({
+      land: () => palette.land,
+      arc: () => palette.arc,
+      ring: () => palette.company,
+      pointColor: (d: object) =>
+        (d as LocalizedCountry).kind === "company" ? palette.company : palette.team,
+      pointRadius: (d: object) => ((d as LocalizedCountry).id === homeId ? 0.7 : 0.45),
+      pointLabel: (d: object) => {
+        const point = d as LocalizedCountry;
+        const extra = point.companies?.length
+          ? `<span class="block text-muted">${point.companies.map(escapeHtml).join(" · ")}</span>`
+          : "";
+        return `<div class="rounded-xl border border-border bg-surface px-3 py-2 font-sans text-xs text-text shadow-xl"><strong class="font-semibold">${escapeHtml(point.name)}</strong>${extra}</div>`;
+      },
+    }),
+    [palette, homeId],
+  );
+
   function handleReady() {
     const globe = globeRef.current;
     if (!globe) return;
@@ -137,9 +165,9 @@ export default function GlobeCanvas({
           hexPolygonResolution={3}
           hexPolygonMargin={0.45}
           hexPolygonUseDots
-          hexPolygonColor={() => palette.land}
+          hexPolygonColor={accessors.land}
           arcsData={arcs}
-          arcColor={() => palette.arc}
+          arcColor={accessors.arc}
           arcStroke={0.45}
           arcDashLength={0.35}
           arcDashGap={0.2}
@@ -147,23 +175,15 @@ export default function GlobeCanvas({
           pointsData={points}
           pointLat="lat"
           pointLng="lng"
-          pointColor={(d) =>
-            (d as LocalizedCountry).kind === "company" ? palette.company : palette.team
-          }
+          pointColor={accessors.pointColor}
           pointAltitude={0.012}
-          pointRadius={(d) => ((d as LocalizedCountry).id === homeId ? 0.7 : 0.45)}
+          pointRadius={accessors.pointRadius}
           pointsTransitionDuration={600}
-          pointLabel={(d) => {
-            const point = d as LocalizedCountry;
-            const extra = point.companies?.length
-              ? `<span class="block text-muted">${point.companies.map(escapeHtml).join(" · ")}</span>`
-              : "";
-            return `<div class="rounded-xl border border-border bg-surface px-3 py-2 font-sans text-xs text-text shadow-xl"><strong class="font-semibold">${escapeHtml(point.name)}</strong>${extra}</div>`;
-          }}
+          pointLabel={accessors.pointLabel}
           ringsData={companies}
           ringLat="lat"
           ringLng="lng"
-          ringColor={() => palette.company}
+          ringColor={accessors.ring}
           ringMaxRadius={3}
           ringPropagationSpeed={1.2}
           ringRepeatPeriod={1800}

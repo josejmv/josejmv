@@ -35,3 +35,5 @@ El Home lleva un globo al estilo GitHub con arcos desde Colombia. Se evaluaron t
 - Se pide con el navegador **ocioso** (`requestIdleCallback`, máx. 2,5 s) y cerca del viewport, para no competir con el LCP.
 - En móvil y tablet se queda el `GlobeStaticSvg` (~12 kB gz del SVG del tema activo, sin JS). Esto reemplaza el "pixel ratio ≤ 1.5 en móvil", que sigue aplicando en desktop.
 - Revisar en la 7.3: si Lighthouse desktop baja de 90 por el chunk, evaluar cobe (ver tabla) o un globo propio con three sin la capa de hexágonos.
+- **Sin GPU no hay 3D:** si `WEBGL_debug_renderer_info` reporta un renderer por software (SwiftShader, llvmpipe, "Software", "Basic Render"), se queda el estático. Medido en headless con SwiftShader: el 3D costaba ~55 ms por cuadro (tareas largas continuas).
+- **Datos de tierra:** `world-atlas/countries-110m` (un polígono por país), sin la Antártida ni Corea del Norte (h3 no rellena ese polígono a resolución 3 y rompía la capa entera). Los accessors del globo están memoizados para no recalcular los hexágonos en cada render.
