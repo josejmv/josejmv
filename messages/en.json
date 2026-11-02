@@ -114,5 +114,24 @@
     "metricsTitle": "Measured impact",
     "download": "Download CV (PDF)",
     "ganttTitle": "Timeline"
+  },
+  "Projects": {
+    "metaTitle": "Projects · José M. Vasquez",
+    "metaDescription": "José M. Vasquez's projects in payments, AML/KYC compliance, multi-brand frontend and CI, with their real status and the numbers behind them.",
+    "eyebrow": "projects",
+    "title": "Projects",
+    "intro": "What I built and where it stands today. Client, bank and provider details are left out; the numbers come from commits and real measurements.",
+    "filterArea": "Filter by area",
+    "filterTech": "Filter by technology",
+    "allAreas": "All areas",
+    "allTech": "Whole stack",
+    "results": "{count, plural, one {# project} other {# projects}}",
+    "empty": "No project matches those filters.",
+    "readCase": "Read the case study →",
+    "status": {
+      "production": "in production",
+      "preproduction": "in pre-production",
+      "in-development": "in development"
+    }
   }
 }

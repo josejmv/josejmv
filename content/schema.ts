@@ -188,6 +188,39 @@ export const StackItem = z
   .strict();
 export type StackItem = z.infer<typeof StackItem>;
 
+// ── Proyectos ─────────────────────────────────────────────────────────────────
+
+export const PROJECT_STATUSES = ["production", "preproduction", "in-development"] as const;
+
+/** Cifra destacada de un proyecto (ProjectCard, KeyMetrics del case study). */
+export const KeyMetric = z
+  .object({
+    value: text,
+    label: Localized,
+  })
+  .strict();
+
+export const Project = z
+  .object({
+    slug: z.string().regex(/^[a-z0-9-]+$/),
+    title: Localized,
+    /** Empresa empleadora (se permite publicarla). */
+    company: text,
+    year: z.number().int().min(2015).max(2100),
+    /** Qué hice en el proyecto. */
+    role: Localized,
+    /** Estado real: nunca "producción" si no lo está. */
+    status: z.enum(PROJECT_STATUSES),
+    summary: Localized,
+    areas: z.array(AreaSlug).min(1),
+    tech: z.array(text).min(1),
+    metrics: z.array(KeyMetric).max(3).default([]),
+    /** `true` si tiene case study en `content/projects/{es,en}/<slug>.mdx`. */
+    caseStudy: z.boolean().default(false),
+  })
+  .strict();
+export type Project = z.infer<typeof Project>;
+
 // ── Tipos de entrada (lo que se escribe en content/*.ts, antes de defaults) ───
 
 export type ProfileInput = z.input<typeof Profile>;
@@ -196,6 +229,7 @@ export type AreaInput = z.input<typeof Area>;
 export type StatInput = z.input<typeof Stat>;
 export type EducationInput = z.input<typeof Education>;
 export type StackItemInput = z.input<typeof StackItem>;
+export type ProjectInput = z.input<typeof Project>;
 
 // ── Utilidades ────────────────────────────────────────────────────────────────
 

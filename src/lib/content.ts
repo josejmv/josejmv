@@ -7,6 +7,7 @@ import { companyCountries, HOME, teamCountries } from "@content/countries";
 import { education as rawEducation } from "@content/education";
 import { experience as rawExperience } from "@content/experience";
 import { profile as rawProfile } from "@content/profile";
+import { projects as rawProjects } from "@content/projects";
 import {
   Area,
   type AreaSlug,
@@ -17,6 +18,7 @@ import {
   type Localized,
   type LocalizedTo,
   Profile,
+  Project,
   StackItem,
   Stat,
 } from "@content/schema";
@@ -31,6 +33,7 @@ const content = {
   stats: z.array(Stat).parse(rawStats),
   education: z.array(Education).parse(rawEducation),
   stack: z.array(StackItem).parse(rawStack),
+  projects: z.array(Project).parse(rawProjects),
   countries: {
     team: z.array(Country).parse(teamCountries),
     company: z.array(Country).parse(companyCountries),
@@ -65,6 +68,7 @@ export type LocalizedArea = LocalizedTo<Area>;
 export type LocalizedStat = LocalizedTo<Stat>;
 export type LocalizedEducation = LocalizedTo<Education>;
 export type LocalizedCountry = LocalizedTo<Country>;
+export type LocalizedProject = LocalizedTo<Project>;
 
 export function getProfile(locale: ContentLocale): LocalizedProfile {
   return localize(content.profile, locale);
@@ -105,4 +109,18 @@ export function getGlobeData(locale: ContentLocale) {
     team: localize(content.countries.team, locale),
     company: localize(content.countries.company, locale),
   };
+}
+
+export function getProjects(locale: ContentLocale): LocalizedProject[] {
+  return localize(content.projects, locale);
+}
+
+export function getProject(slug: string, locale: ContentLocale): LocalizedProject | undefined {
+  const project = content.projects.find((p) => p.slug === slug);
+  return project && localize(project, locale);
+}
+
+/** Proyectos con case study en MDX (rutas `/proyectos/[slug]`). */
+export function getCaseStudySlugs(): string[] {
+  return content.projects.filter((p) => p.caseStudy).map((p) => p.slug);
 }

@@ -114,5 +114,24 @@
     "metricsTitle": "Impacto medido",
     "download": "Descargar CV (PDF, en inglés)",
     "ganttTitle": "Línea de tiempo"
+  },
+  "Projects": {
+    "metaTitle": "Proyectos · José M. Vasquez",
+    "metaDescription": "Proyectos de José M. Vasquez en pagos, cumplimiento AML/KYC, frontend multimarca y CI, con su estado real y las cifras que los respaldan.",
+    "eyebrow": "proyectos",
+    "title": "Proyectos",
+    "intro": "Lo que construí y en qué estado está hoy. Los datos de clientes, bancos y proveedores se omiten; las cifras salen de commits y mediciones reales.",
+    "filterArea": "Filtrar por área",
+    "filterTech": "Filtrar por tecnología",
+    "allAreas": "Todas las áreas",
+    "allTech": "Todo el stack",
+    "results": "{count, plural, one {# proyecto} other {# proyectos}}",
+    "empty": "Ningún proyecto coincide con esos filtros.",
+    "readCase": "Leer el case study →",
+    "status": {
+      "production": "en producción",
+      "preproduction": "en preproducción",
+      "in-development": "en construcción"
+    }
   }
 }
