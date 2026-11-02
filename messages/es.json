@@ -17,5 +17,24 @@
   },
   "Theme": {
     "toggle": "Cambiar tema claro/oscuro"
+  },
+  "Header": {
+    "home": "Inicio · {name}",
+    "primaryNav": "Principal",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "menuTitle": "menú",
+    "menuDescription": "Secciones del sitio, áreas, idioma y tema.",
+    "skipToContent": "Saltar al contenido"
+  },
+  "LocaleSwitcher": {
+    "label": "Cambiar idioma a {language}",
+    "es": "español",
+    "en": "inglés"
+  },
+  "Footer": {
+    "navTitle": "navegación",
+    "contactTitle": "contacto",
+    "rights": "© {year} {name}"
   }
 }

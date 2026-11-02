@@ -17,5 +17,24 @@
   },
   "Theme": {
     "toggle": "Toggle light/dark theme"
+  },
+  "Header": {
+    "home": "Home · {name}",
+    "primaryNav": "Main",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menuTitle": "menu",
+    "menuDescription": "Site sections, areas, language and theme.",
+    "skipToContent": "Skip to content"
+  },
+  "LocaleSwitcher": {
+    "label": "Switch language to {language}",
+    "es": "Spanish",
+    "en": "English"
+  },
+  "Footer": {
+    "navTitle": "navigation",
+    "contactTitle": "contact",
+    "rights": "© {year} {name}"
   }
 }

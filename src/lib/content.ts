@@ -2,11 +2,11 @@ import "server-only";
 
 import { z } from "zod";
 
-import { areas as rawAreas } from "../../content/areas";
-import { companyCountries, HOME, teamCountries } from "../../content/countries";
-import { education as rawEducation } from "../../content/education";
-import { experience as rawExperience } from "../../content/experience";
-import { profile as rawProfile } from "../../content/profile";
+import { areas as rawAreas } from "@content/areas";
+import { companyCountries, HOME, teamCountries } from "@content/countries";
+import { education as rawEducation } from "@content/education";
+import { experience as rawExperience } from "@content/experience";
+import { profile as rawProfile } from "@content/profile";
 import {
   Area,
   type AreaSlug,
@@ -19,9 +19,9 @@ import {
   Profile,
   StackItem,
   Stat,
-} from "../../content/schema";
-import { stack as rawStack } from "../../content/stack";
-import { stats as rawStats } from "../../content/stats";
+} from "@content/schema";
+import { stack as rawStack } from "@content/stack";
+import { stats as rawStats } from "@content/stats";
 
 // La validación corre al importar el módulo: si el contenido es inválido, el build falla.
 const content = {

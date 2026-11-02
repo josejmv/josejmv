@@ -16,5 +16,7 @@ export default defineConfig({
     setupFiles: ["./tests/setup.ts"],
     include: ["tests/unit/**/*.test.{ts,tsx}", "src/**/*.test.{ts,tsx}"],
     css: false,
+    // next-intl importa `next/navigation` sin extensión; Vite debe procesarlo para resolverlo.
+    server: { deps: { inline: ["next-intl"] } },
   },
 });

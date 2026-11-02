@@ -3,6 +3,8 @@
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 
+import { cn } from "@/lib/cn";
+
 /**
  * Alterna entre oscuro y claro. Los dos íconos se renderizan siempre y la variante `dark:`
  * (ligada a `data-theme`) decide cuál se ve, así el HTML del servidor y el del cliente coinciden.
@@ -17,7 +19,10 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       aria-label={t("toggle")}
       title={t("toggle")}
       onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
-      className={`inline-flex size-11 items-center justify-center rounded-pill border border-border bg-surface text-text transition-colors hover:bg-chip focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text ${className}`}
+      className={cn(
+        "inline-flex size-11 items-center justify-center rounded-pill border border-border bg-transparent text-text transition-colors hover:bg-chip focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text",
+        className,
+      )}
     >
       {/* Luna: se muestra en oscuro */}
       <svg

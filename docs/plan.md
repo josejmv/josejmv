@@ -29,7 +29,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 
 - [x] **3.1** Primitivas en `ui/`: Button, Chip, StatCard, GradientText, AvailabilityBadge y AnimatedCounter.
 - [x] **3.2** Fondos: GridBackground y GlowOrbs.
-- [ ] **3.3** SiteHeader (MainNav, LocaleSwitcher, ThemeToggle), MobileMenu (Sheet) y SiteFooter.
+- [x] **3.3** SiteHeader (MainNav, LocaleSwitcher, ThemeToggle), MobileMenu (Sheet) y SiteFooter.
 - [ ] **3.4** CommandMenu (⌘K) con cmdk: navegar a secciones, áreas y proyectos, cambiar idioma y tema, y copiar el email.
 
 ## Fase 4 — Home
