@@ -17,7 +17,6 @@ export const stats = [
     label: { es: "tests en verde en la suite", en: "green tests in the suite" },
   },
   {
-    // TODO(José): el vault dice "de 3 a 5-6" en Centria; confirmar que el máximo fue 6.
     id: "team",
     value: 6,
     label: {

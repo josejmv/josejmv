@@ -13,10 +13,18 @@ export const experience = [
     end: null,
     location: { es: "Remoto", en: "Remote" },
     context: {
-      es: "Plataforma de una fintech regulada en tres repositorios: un portal white-label que sirve 3 marcas en producción desde un solo codebase, un back-office administrativo y el backend NestJS que reemplaza un ERP legado.",
-      en: "A regulated fintech platform across three repositories: a white-label portal serving 3 production brands from a single codebase, an admin back-office, and the NestJS backend replacing a legacy ERP.",
+      es: "Fintech regulada en Colombia. Trabajo en su portal white-label (3 marcas en producción desde un solo codebase), el back-office, el backend NestJS que reemplaza un ERP legado, un sitio de recaudo en línea y una pasarela de pagos propia.",
+      en: "A regulated fintech in Colombia. I work on its white-label portal (3 production brands from a single codebase), the back-office, the NestJS backend replacing a legacy ERP, an online collections site and an in-house payment gateway.",
     },
     highlights: [
+      {
+        es: "Co-desarrollo una pasarela de pagos propia sobre PSE y Bre-B (núcleo en NestJS, checkout en Next.js y un conector en Go por riel) con idempotencia, outbox transaccional, webhooks firmados y cifrado de campos AES-256-GCM. Está en camino a certificación.",
+        en: "Co-developing an in-house payment gateway on PSE and Bre-B (NestJS core, Next.js checkout and one Go connector per rail) with idempotency, a transactional outbox, signed webhooks and AES-256-GCM field encryption. It is on its way to certification.",
+      },
+      {
+        es: "Construí el orquestador de pagos de un sitio de recaudo en línea: intentos, sesiones, notificación al cliente y conciliación. Hoy está en pruebas preproductivas.",
+        en: "Built the payment orchestrator of an online collections site: attempts, sessions, client notification and reconciliation. It is now in pre-production testing.",
+      },
       {
         es: "Diseñé y construí un motor de exportación asíncrona (cola de jobs, streaming multipart a object storage, paginación keyset y progreso por SSE) al que migraron 10 dominios de negocio; el tiempo de página del cursor bajó de 33,66 ms a 0,42 ms sobre 300.000 filas.",
         en: "Designed and built an async export engine (job queue, multipart streaming to object storage, keyset pagination and SSE progress) that 10 business domains migrated onto; cursor page time dropped from 33.66 ms to 0.42 ms over 300,000 rows.",
@@ -39,6 +47,13 @@ export const experience = [
       },
     ],
     subProjects: [
+      {
+        title: { es: "Pasarela de pagos propia", en: "In-house payment gateway" },
+        description: {
+          es: "PSP conectado directo a los rieles PSE y Bre-B, sin tocar fondos: el dinero va del banco del pagador a la cuenta del comercio.",
+          en: "A PSP connected directly to the PSE and Bre-B rails without holding funds: money goes from the payer's bank to the merchant's account.",
+        },
+      },
       {
         title: { es: "Motor de exportación asíncrona", en: "Async export engine" },
         description: {
@@ -66,6 +81,7 @@ export const experience = [
       "React",
       "TypeScript",
       "NestJS",
+      "Go",
       "PostgreSQL",
       "Drizzle",
       "Redis",

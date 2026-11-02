@@ -44,24 +44,24 @@ export const areas = [
     title: { es: "Backend & Pagos", en: "Backend & Payments" },
     tagline: { es: "Correcto donde se mueve el dinero", en: "Correct where money moves" },
     summary: {
-      es: "Dos stacks de backend, TypeScript/NestJS y Python/FastAPI, sobre PostgreSQL, Redis y colas. En una fintech regulada trabajo sobre rieles de pago locales (transferencia bancaria, llave de pago instantáneo y QR) y construí el motor de exportación asíncrona de la plataforma.",
-      en: "Two backend stacks, TypeScript/NestJS and Python/FastAPI, over PostgreSQL, Redis and queues. At a regulated fintech I work on local payment rails (bank transfer, instant payment keys and QR) and built the platform's async export engine.",
+      es: "Dos stacks de backend, TypeScript/NestJS y Python/FastAPI, sobre PostgreSQL, Redis y colas. En una fintech regulada construí el orquestador de pagos de un sitio de recaudo en línea y co-desarrollo una pasarela de pagos propia sobre PSE y Bre-B, diseñada para no cobrar dos veces nunca.",
+      en: "Two backend stacks, TypeScript/NestJS and Python/FastAPI, over PostgreSQL, Redis and queues. At a regulated fintech I built the payment orchestrator of an online collections site and co-develop an in-house payment gateway on PSE and Bre-B, designed to never charge twice.",
     },
     bullets: [
       {
-        es: "Rutas de dinero con locks de fila y locks distribuidos sobre Redis",
-        en: "Money paths protected by row-level and Redis-based distributed locks",
+        es: "Idempotencia, locks de fila y outbox transaccional en el núcleo de la pasarela",
+        en: "Idempotency, row-level locks and a transactional outbox in the gateway core",
       },
       {
-        es: "Paso TOTP antes de un cobro masivo irreversible",
-        en: "TOTP step-up before an irreversible bulk charge",
+        es: "Webhooks firmados hacia el comercio y cifrado de campos con AES-256-GCM",
+        en: "Signed webhooks to merchants and field-level encryption with AES-256-GCM",
       },
       {
-        es: "Exportaciones con cola de jobs, streaming a object storage y progreso por SSE",
-        en: "Exports with a job queue, streaming to object storage and SSE progress",
+        es: "Un conector en Go por riel, único dueño de las credenciales de ese riel",
+        en: "One Go connector per rail, the sole owner of that rail's credentials",
       },
     ],
-    tech: ["nestjs", "fastapi", "postgresql", "redis", "bullmq"],
+    tech: ["nestjs", "fastapi", "go", "postgresql", "redis/valkey", "bullmq"],
     metrics: [
       {
         label: { es: "Paginación por cursor (300k filas)", en: "Cursor pagination (300k rows)" },

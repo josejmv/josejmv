@@ -36,14 +36,13 @@ export const teamCountries: GlobePoint[] = [
 ];
 
 export const companyCountries: GlobePoint[] = [
-  // TODO(José): confirmar la sede de Inlaze (se asumió Colombia).
   {
     id: "CO",
     kind: "company",
     lat: 4.71,
     lng: -74.07,
     name: { es: "Colombia", en: "Colombia" },
-    companies: ["Upcard", "Trades.org", "Inlaze"],
+    companies: ["Upcard", "Inlaze"],
   },
   {
     id: "FR",
@@ -52,6 +51,14 @@ export const companyCountries: GlobePoint[] = [
     lng: 2.35,
     name: { es: "Francia", en: "France" },
     companies: ["Minca AI"],
+  },
+  {
+    id: "US",
+    kind: "company",
+    lat: 38.9,
+    lng: -77.04,
+    name: { es: "Estados Unidos", en: "United States" },
+    companies: ["Trades.org"],
   },
   {
     id: "PA",

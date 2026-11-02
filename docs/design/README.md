@@ -34,5 +34,5 @@ Copia el contenido de este zip en la raíz del repo. Claude Code puede leer las 
 
 ## Pendiente
 
-- Confirmar la sede de Inlaze (se asumió Colombia).
+- ~~Confirmar la sede de Inlaze.~~ Colombia (confirmado). Trades.org va en Estados Unidos, así que el tab Empresas muestra 5 países en lugar de los 4 de las capturas.
 - ~~ADR 0002: motion o solo CSS.~~ Decidido: híbrido (`docs/adr/0002-animations.md`).

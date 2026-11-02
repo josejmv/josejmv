@@ -8,6 +8,9 @@ import { ThemeProvider } from "@/components/theme/theme-provider";
 
 import es from "../../messages/es.json";
 
+// La paleta se importa de forma diferida: la primera carga en frío puede superar el 1 s por defecto.
+const LAZY = { timeout: 5000 };
+
 const router = vi.hoisted(() => ({ push: vi.fn(), replace: vi.fn(), prefetch: vi.fn() }));
 
 vi.mock("next/navigation", async (importOriginal) => ({
@@ -35,7 +38,7 @@ function renderMenu() {
 
 async function openWithButton(user: ReturnType<typeof userEvent.setup>) {
   await user.click(screen.getByRole("button", { name: /Abrir buscador de comandos/ }));
-  return screen.findByPlaceholderText(es.Command.placeholder);
+  return screen.findByPlaceholderText(es.Command.placeholder, {}, LAZY);
 }
 
 describe("CommandMenu", () => {
@@ -50,7 +53,9 @@ describe("CommandMenu", () => {
     act(() => {
       window.dispatchEvent(new KeyboardEvent("keydown", { key: "k", ctrlKey: true }));
     });
-    expect(await screen.findByPlaceholderText(es.Command.placeholder)).toBeInTheDocument();
+    expect(
+      await screen.findByPlaceholderText(es.Command.placeholder, {}, LAZY),
+    ).toBeInTheDocument();
   });
 
   it("filtra y navega a un área", async () => {

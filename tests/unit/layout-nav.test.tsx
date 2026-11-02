@@ -93,7 +93,8 @@ describe("MobileMenu", () => {
 
     const trigger = screen.getByRole("button", { name: "Abrir menú" });
     await user.click(trigger);
-    const dialog = await screen.findByRole("dialog");
+    // El Sheet se importa de forma diferida: la primera carga en frío puede superar 1 s.
+    const dialog = await screen.findByRole("dialog", {}, { timeout: 5000 });
 
     expect(within(dialog).getByRole("link", { name: "Experiencia" })).toBeInTheDocument();
     expect(within(dialog).getByRole("link", { name: "DevOps" })).toHaveAttribute(
