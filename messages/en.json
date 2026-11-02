@@ -148,5 +148,38 @@
     "related": "Related projects",
     "readCase": "Read the case study →",
     "disclaimer": "Demo with fictitious data: no real clients and nothing from production."
+  },
+  "AreaFrontend": {
+    "title": "A new brand is a configuration change",
+    "description": "Pick a brand or move the hue: the components on the right only read semantic tokens, so they re-theme without touching their code. It is the same 3-layer model as the real white-label.",
+    "brandLabel": "Brand",
+    "brands": {
+      "a": "Brand A",
+      "b": "Brand B",
+      "c": "Brand C"
+    },
+    "hueLabel": "Brand hue",
+    "layers": {
+      "foundations": "brand foundations",
+      "semantic": "semantic tokens",
+      "components": "components"
+    },
+    "demo": {
+      "badge": "Active account",
+      "balanceLabel": "Available balance",
+      "balance": "$1,250,000",
+      "inputLabel": "Amount to transfer",
+      "inputValue": "$150,000",
+      "cta": "Transfer",
+      "note": "Changing a real brand's primary color is a diff of about 11 lines in its config."
+    },
+    "library": {
+      "title": "Atomic library",
+      "atoms": "Atoms",
+      "molecules": "Molecules",
+      "organisms": "Organisms",
+      "templates": "Templates",
+      "note": "Structure of the Trades.org component library, shared by 2 web apps and a React Native app. Names are representative."
+    }
   }
 }

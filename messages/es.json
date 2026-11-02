@@ -148,5 +148,38 @@
     "related": "Proyectos relacionados",
     "readCase": "Leer el case study →",
     "disclaimer": "Demo con datos ficticios: nada de clientes reales ni de producción."
+  },
+  "AreaFrontend": {
+    "title": "Una marca nueva es un cambio de configuración",
+    "description": "Elige una marca o mueve el tono: los componentes de la derecha solo leen tokens semánticos, así que se re-tematizan sin tocar su código. Es el mismo modelo de 3 capas del white-label real.",
+    "brandLabel": "Marca",
+    "brands": {
+      "a": "Marca A",
+      "b": "Marca B",
+      "c": "Marca C"
+    },
+    "hueLabel": "Tono de marca",
+    "layers": {
+      "foundations": "fundamentos de marca",
+      "semantic": "tokens semánticos",
+      "components": "componentes"
+    },
+    "demo": {
+      "badge": "Cuenta activa",
+      "balanceLabel": "Saldo disponible",
+      "balance": "$ 1.250.000",
+      "inputLabel": "Monto a transferir",
+      "inputValue": "$ 150.000",
+      "cta": "Transferir",
+      "note": "Cambiar el color primario de una marca real es un diff de unas 11 líneas en su configuración."
+    },
+    "library": {
+      "title": "Librería atómica",
+      "atoms": "Átomos",
+      "molecules": "Moléculas",
+      "organisms": "Organismos",
+      "templates": "Templates",
+      "note": "Estructura de la librería de componentes de Trades.org, compartida por 2 apps web y una app en React Native. Los nombres son representativos."
+    }
   }
 }

@@ -10,7 +10,7 @@ export interface AreaPageProps {
  * módulo firma). La ruta `/areas/[slug]` solo elige el componente de aquí.
  */
 export const areaRegistry: Record<AreaSlug, () => Promise<ComponentType<AreaPageProps>>> = {
-  frontend: () => import("./default-area-page").then((m) => m.frontendPage),
+  frontend: () => import("./frontend/frontend-page").then((m) => m.FrontendPage),
   "backend-pagos": () => import("./default-area-page").then((m) => m.backendPage),
   compliance: () => import("./default-area-page").then((m) => m.compliancePage),
   devops: () => import("./default-area-page").then((m) => m.devopsPage),
