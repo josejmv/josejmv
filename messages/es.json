@@ -181,5 +181,50 @@
       "templates": "Templates",
       "note": "Estructura de la librería de componentes de Trades.org, compartida por 2 apps web y una app en React Native. Los nombres son representativos."
     }
+  },
+  "AreaBackend": {
+    "title": "Un pago, aunque hagas clic dos veces",
+    "description": "Simula el ciclo de un cobro. Prueba «Doble clic en pagar»: el segundo intento encuentra el lock de la obligación y devuelve el mismo pago con la misma idempotency key. Al final, reenvía el webhook: el evento ya aplicado se ignora.",
+    "stepsLabel": "Estados del pago",
+    "steps": {
+      "intent": "Intent",
+      "checkout": "Checkout (idempotente)",
+      "webhook": "Webhook firmado",
+      "reconciled": "Conciliado"
+    },
+    "status": {
+      "done": "completado",
+      "active": "en curso",
+      "pending": "pendiente"
+    },
+    "fields": {
+      "obligation": "obligación",
+      "intent": "intento",
+      "lock": "lock",
+      "locked": "tomado",
+      "free": "libre"
+    },
+    "actions": {
+      "pay": "Pagar",
+      "doubleClick": "Doble clic en pagar",
+      "replay": "Reenviar webhook",
+      "reset": "Reiniciar"
+    },
+    "audit": {
+      "appendOnly": "append-only",
+      "empty": "Pulsa «Pagar» para empezar."
+    },
+    "log": {
+      "intentCreated": "intent.created {intent} · key {key}",
+      "lockAcquired": "lock.acquired {obligation}",
+      "idempotentReplay": "idempotency.replay: misma key {key} → se devuelve {intent}, sin cobro nuevo",
+      "checkoutCreated": "checkout.session.created {intent} (idempotente)",
+      "webhookVerified": "webhook.verified {event}: firma y frescura OK",
+      "reconciled": "payment.reconciled {intent}",
+      "lockReleased": "lock.released {obligation}",
+      "clientNotified": "client.notified {obligation}",
+      "alreadyPaid": "payment.rejected: {obligation} ya está pagada, no se cobra dos veces",
+      "duplicateIgnored": "webhook.duplicate {event}: ya aplicado, se ignora"
+    }
   }
 }

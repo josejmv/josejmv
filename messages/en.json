@@ -181,5 +181,50 @@
       "templates": "Templates",
       "note": "Structure of the Trades.org component library, shared by 2 web apps and a React Native app. Names are representative."
     }
+  },
+  "AreaBackend": {
+    "title": "One payment, even if you click twice",
+    "description": "Simulate a charge's lifecycle. Try «Double-click pay»: the second attempt finds the obligation's lock and returns the same payment with the same idempotency key. At the end, replay the webhook: the already-applied event is ignored.",
+    "stepsLabel": "Payment states",
+    "steps": {
+      "intent": "Intent",
+      "checkout": "Checkout (idempotent)",
+      "webhook": "Signed webhook",
+      "reconciled": "Reconciled"
+    },
+    "status": {
+      "done": "done",
+      "active": "in progress",
+      "pending": "pending"
+    },
+    "fields": {
+      "obligation": "obligation",
+      "intent": "intent",
+      "lock": "lock",
+      "locked": "held",
+      "free": "free"
+    },
+    "actions": {
+      "pay": "Pay",
+      "doubleClick": "Double-click pay",
+      "replay": "Replay webhook",
+      "reset": "Reset"
+    },
+    "audit": {
+      "appendOnly": "append-only",
+      "empty": "Press «Pay» to start."
+    },
+    "log": {
+      "intentCreated": "intent.created {intent} · key {key}",
+      "lockAcquired": "lock.acquired {obligation}",
+      "idempotentReplay": "idempotency.replay: same key {key} → returns {intent}, no new charge",
+      "checkoutCreated": "checkout.session.created {intent} (idempotent)",
+      "webhookVerified": "webhook.verified {event}: signature and freshness OK",
+      "reconciled": "payment.reconciled {intent}",
+      "lockReleased": "lock.released {obligation}",
+      "clientNotified": "client.notified {obligation}",
+      "alreadyPaid": "payment.rejected: {obligation} is already paid, no double charge",
+      "duplicateIgnored": "webhook.duplicate {event}: already applied, ignored"
+    }
   }
 }
