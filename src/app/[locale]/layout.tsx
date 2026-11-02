@@ -4,6 +4,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { GlowOrbs } from "@/components/ui/backgrounds/glow-orbs";
+import { GridBackground } from "@/components/ui/backgrounds/grid-background";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
 
@@ -35,7 +37,13 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
     >
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <div className="relative isolate flex min-h-full flex-1 flex-col overflow-hidden">
+              <GridBackground />
+              <GlowOrbs />
+              {children}
+            </div>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>
