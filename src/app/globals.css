@@ -69,6 +69,54 @@
   --radius-pill: 999px;
 }
 
+/* Animaciones (ADR 0002): se usan como utilidades `animate-*`, siempre con `motion-safe:`. */
+@theme {
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+  --animate-caret: caret 1s steps(1) infinite;
+  --animate-floaty: floaty 7s ease-in-out infinite;
+  --animate-dash: dash 2.6s linear infinite;
+  --animate-fade-up: fade-up 0.5s ease-out both;
+
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes caret {
+    50% {
+      opacity: 0;
+    }
+  }
+  @keyframes floaty {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -40;
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 body {
   background: var(--bg);
   color: var(--text);
