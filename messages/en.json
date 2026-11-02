@@ -296,5 +296,65 @@
       "review": "to review",
       "fail": "failed"
     }
+  },
+  "AreaDevops": {
+    "title": "Verify only what changed, and fail if there's nothing to verify",
+    "description": "Run the pipeline and compare before and after the merge-request gate I built: lint, typecheck, tests and build scoped to the MR diff, caching only the package-manager store. The times are the measured ones.",
+    "modeLabel": "Pipeline",
+    "modes": {
+      "before": "Before the gate",
+      "after": "With the gate"
+    },
+    "scope": {
+      "before": "Every MR verifies the whole repository and caches node_modules.",
+      "after": "Every MR verifies only the files in the diff (git merge-base) and caches only the package-manager store."
+    },
+    "stagesLabel": "Pipeline stages",
+    "states": {
+      "idle": "pending",
+      "running": "running",
+      "passed": "passed",
+      "failed": "failed",
+      "skipped": "skipped"
+    },
+    "measured": {
+      "cacheSave": "Cache save",
+      "tests": "Test suite"
+    },
+    "actions": {
+      "run": "Run pipeline",
+      "emptyDiff": "Try an empty diff"
+    },
+    "outcome": {
+      "running": "pipeline running…",
+      "passed": "pipeline passed: the MR can be merged.",
+      "emptyDiff": "lint failed: the change list came back empty. The gate fails instead of passing green without verifying anything."
+    },
+    "infra": {
+      "title": "InfraMap",
+      "label": "How a change travels to production",
+      "nodes": [
+        {
+          "key": "vpn",
+          "title": "Company VPN",
+          "detail": "Internal servers are reachable only through the VPN, which I run."
+        },
+        {
+          "key": "gitlab",
+          "title": "Self-hosted GitLab",
+          "detail": "Upgrades, daily backups and rollback runbooks are on me."
+        },
+        {
+          "key": "ci",
+          "title": "MR gate",
+          "detail": "Lint, typecheck, tests and build on the diff; blocking before merge."
+        },
+        {
+          "key": "do",
+          "title": "Production on DigitalOcean",
+          "detail": "DevOps access across the production environments."
+        }
+      ]
+    }
   }
 }

@@ -296,5 +296,65 @@
       "review": "a revisar",
       "fail": "rechazada"
     }
+  },
+  "AreaDevops": {
+    "title": "Verificar solo lo que cambió, y fallar si no hay nada que verificar",
+    "description": "Corre el pipeline y compara antes y después del gate de merge requests que construí: lint, typecheck, tests y build limitados al diff del MR, con caché solo del store del gestor de paquetes. Los tiempos son los medidos.",
+    "modeLabel": "Pipeline",
+    "modes": {
+      "before": "Antes del gate",
+      "after": "Con el gate"
+    },
+    "scope": {
+      "before": "Cada MR verifica el repositorio completo y guarda node_modules en caché.",
+      "after": "Cada MR verifica solo los archivos del diff (git merge-base) y cachea solo el store del gestor de paquetes."
+    },
+    "stagesLabel": "Etapas del pipeline",
+    "states": {
+      "idle": "pendiente",
+      "running": "en curso",
+      "passed": "aprobada",
+      "failed": "fallida",
+      "skipped": "omitida"
+    },
+    "measured": {
+      "cacheSave": "Guardado de caché",
+      "tests": "Suite de tests"
+    },
+    "actions": {
+      "run": "Ejecutar pipeline",
+      "emptyDiff": "Probar con un diff vacío"
+    },
+    "outcome": {
+      "running": "pipeline en curso…",
+      "passed": "pipeline aprobado: el MR se puede integrar.",
+      "emptyDiff": "lint falló: la lista de cambios llegó vacía. El gate falla en lugar de pasar en verde sin verificar nada."
+    },
+    "infra": {
+      "title": "InfraMap",
+      "label": "Recorrido de un cambio hasta producción",
+      "nodes": [
+        {
+          "key": "vpn",
+          "title": "VPN de la empresa",
+          "detail": "Acceso a los servidores internos solo por la VPN, que administro."
+        },
+        {
+          "key": "gitlab",
+          "title": "GitLab autohospedado",
+          "detail": "Actualizaciones, respaldos diarios y runbooks de reversa a mi cargo."
+        },
+        {
+          "key": "ci",
+          "title": "Gate de MR",
+          "detail": "Lint, typecheck, tests y build sobre el diff; bloqueante para integrar."
+        },
+        {
+          "key": "do",
+          "title": "Producción en DigitalOcean",
+          "detail": "Acceso DevOps a los entornos de producción."
+        }
+      ]
+    }
   }
 }
