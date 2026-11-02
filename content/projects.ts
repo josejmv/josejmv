@@ -67,11 +67,11 @@ export const projects = [
     role: { es: "Autor único del núcleo", en: "Sole author of the core" },
     status: "production",
     summary: {
-      es: "Exportaciones de datos financieros sin timeouts ni memoria sin límite: patrón registry, cola de jobs, streaming multipart a object storage, paginación keyset y progreso por SSE.",
-      en: "Financial data exports without timeouts or unbounded memory: registry pattern, job queue, multipart streaming to object storage, keyset pagination and SSE progress.",
+      es: "Exportaciones de datos financieros sin timeouts ni memoria sin límite: patrón registry, cola de jobs, streaming multipart a object storage, paginación keyset y una API de estado del job.",
+      en: "Financial data exports without timeouts or unbounded memory: registry pattern, job queue, multipart streaming to object storage, keyset pagination and a job status API.",
     },
     areas: ["backend-pagos"],
-    tech: ["NestJS", "BullMQ", "PostgreSQL", "Redis", "SSE"],
+    tech: ["NestJS", "BullMQ", "PostgreSQL", "Redis"],
     metrics: [
       {
         value: "−98.8%",
@@ -85,7 +85,7 @@ export const projects = [
         label: { es: "dominios de negocio migrados", en: "business domains migrated" },
       },
     ],
-    caseStudy: false, // se activa en la 5.4, con su MDX
+    caseStudy: true,
   },
   {
     slug: "kyc-engine",
@@ -110,7 +110,7 @@ export const projects = [
         label: { es: "líneas de Python", en: "lines of Python" },
       },
     ],
-    caseStudy: false, // se activa en la 5.4, con su MDX
+    caseStudy: true,
   },
   {
     slug: "design-tokens",

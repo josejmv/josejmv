@@ -1,0 +1,48 @@
+## Problem
+
+An insurance platform that turns broker documents into quotes had to comply with article 492 (anti-money-laundering): every policy request must go through AML/KYC validation, with evidence of why it was approved or rejected.
+
+Doing it by hand doesn't scale, and doing it "with an LLM" without structure isn't auditable. The challenge was automating validation without losing the traceability of each decision.
+
+## Architecture
+
+<Flow
+  label="KYC pipeline: attachment ingestion, classification, field extraction, checks and cross-validations, and a verdict with reasons."
+  steps={[
+    "Ingest attachments",
+    "Classify",
+    "Extract fields",
+    "Checks and cross-validations",
+    "Verdict",
+  ]}
+/>
+
+The engine covers individuals and companies, new and existing clients, and different risk tiers. The verdict is stored with **the reason for each check**, so an analyst can review the case.
+
+- **FastAPI backend**, with SQLAlchemy 2 repositories and Alembic migrations.
+- **A framework-free domain package**: hexagonal architecture with typed ports (`typing.Protocol`), with no FastAPI or SQLAlchemy inside.
+- **React frontend**: a case inbox and a 4-step validation wizard.
+- LLM extraction runs on **AWS Bedrock**, the personal-data processor approved for these files.
+
+## Decisions
+
+### The domain doesn't depend on the framework
+
+The domain package's ports are Python `Protocol`s, and a **blocking import-linter contract in CI** stops the domain from importing FastAPI or SQLAlchemy. The domain is tested without a database, and a second engineer later built on the package.
+
+### Where the pipeline lives: build, don't reuse
+
+There was an "obvious" option to reuse an existing LLM pipeline. I wrote the technical evaluation: five hard constraints, each with evidence in the code and its negative verification. The conclusion was that reuse bought nothing the existing pattern didn't already provide and cost more. A third option was reclassified from competitor to complement instead of forcing a false binary.
+
+<Callout title="post-mortem">
+  A recurring cross-module data leak came from an untyped nullable column acting as a discriminator.
+  The tests missed it because they grepped the compiled SQL instead of running the query against
+  real rows. I wrote the taxonomy contract that fixed it.
+</Callout>
+
+## Results
+
+- The AML/KYC module **end to end**, from domain design to the production UI.
+- **224 code commits** and **+40.8k lines of Python** in the first 8 weeks, about 30% of them tests or refactors.
+- Backend and frontend of the same feature often shipped **on the same day**.
+- A domain package the team kept building on.

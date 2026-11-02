@@ -1,0 +1,48 @@
+## Problema
+
+Una plataforma de seguros que convierte documentos de brókers en cotizaciones necesitaba cumplir el artículo 492 (prevención de lavado de dinero): cada solicitud de póliza tiene que pasar una validación AML/KYC con evidencia de por qué se aprobó o se rechazó.
+
+Hacerlo a mano no escala, y hacerlo "con un LLM" sin estructura no es auditable. El reto era automatizar la validación sin perder la trazabilidad de cada decisión.
+
+## Arquitectura
+
+<Flow
+  label="Pipeline KYC: ingesta de adjuntos, clasificación, extracción de campos, validaciones y cruces, y veredicto con motivos."
+  steps={[
+    "Ingesta de adjuntos",
+    "Clasificar",
+    "Extraer campos",
+    "Validaciones y cruces",
+    "Veredicto",
+  ]}
+/>
+
+El motor cubre personas físicas y morales, clientes nuevos y existentes, y distintos niveles de riesgo. El veredicto se guarda con **el motivo de cada validación**, para que un analista pueda revisar el caso.
+
+- **Backend en FastAPI**, con repositorios en SQLAlchemy 2 y migraciones con Alembic.
+- **Un paquete de dominio independiente de frameworks**: arquitectura hexagonal con puertos tipados (`typing.Protocol`), sin FastAPI ni SQLAlchemy dentro.
+- **Frontend en React**: una bandeja de casos y un asistente de validación de 4 pasos.
+- La extracción con LLM usa **AWS Bedrock**, el procesador de datos personales aprobado para estos expedientes.
+
+## Decisiones
+
+### El dominio no depende del framework
+
+Los puertos del paquete de dominio son `Protocol` de Python y un contrato de **import-linter bloqueante en CI** impide que el dominio importe FastAPI o SQLAlchemy. El dominio se prueba sin base de datos, y otro ingeniero pudo construir sobre el paquete después.
+
+### Dónde vive el pipeline: construir y no reutilizar
+
+Había una opción "obvia" de reutilizar un pipeline de LLM existente. Escribí la evaluación técnica: cinco restricciones duras, cada una con evidencia en el código y su verificación negativa. La conclusión fue que reutilizar no daba nada que el patrón existente no diera ya y costaba más. Una tercera opción pasó de competidora a complementaria, en lugar de forzar un falso binario.
+
+<Callout title="post-mortem">
+  Una fuga de datos recurrente entre módulos venía de una columna nullable sin tipo que hacía de
+  discriminador. Los tests no la detectaban porque buscaban texto en el SQL compilado en vez de
+  ejecutar la consulta contra filas reales. Escribí el contrato de taxonomía que la corrigió.
+</Callout>
+
+## Resultados
+
+- Módulo AML/KYC **de punta a punta**, desde el diseño del dominio hasta la interfaz en producción.
+- **224 commits de código** y **+40,8k líneas de Python** en las primeras 8 semanas, cerca del 30 % de ellos tests o refactors.
+- Backend y frontend de la misma funcionalidad entregados a menudo **el mismo día**.
+- Un paquete de dominio sobre el que el equipo siguió construyendo.

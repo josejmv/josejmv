@@ -48,7 +48,7 @@ Cada tarea está pensada para una sesión de Claude Code. **Criterio de "hecho" 
 - [x] **5.1** `/experiencia`: Gantt completo, ExperienceCards con acordeón y descarga del CV por idioma. _(Acordeón con `<details>` nativo, sin JS. Un solo CV, en inglés (`public/cv/jose-vasquez-cv.pdf`), en ambos idiomas. Pendiente: zoom por año del Gantt.)_
 - [x] **5.2** `/proyectos`: ProjectCards con filtros.
 - [x] **5.3** `/proyectos/[slug]`: case study en MDX (CaseHero, KeyMetrics, TOC sticky, componentes MDX). _(`@next/mdx` + `rehype-slug` por nombre (Turbopack). Con `cacheComponents` no existe `dynamicParams`: un slug desconocido llama a `notFound()`, pero responde 200 con `noindex` porque el shell ya salió: revisar en 7.1 junto al catch-all.)_
-- [ ] **5.4** Primeros 3 case studies: orquestador de pagos, export engine y motor KYC (ES y EN).
+- [x] **5.4** Primeros 3 case studies: orquestador de pagos, export engine y motor KYC (ES y EN).
 
 ## Fase 6 — Páginas de área (una tarea por área)
 

@@ -26,8 +26,8 @@ export const experience = [
         en: "Built the payment orchestrator of an online collections site: attempts, sessions, client notification and reconciliation. It is now in pre-production testing.",
       },
       {
-        es: "Diseñé y construí un motor de exportación asíncrona (cola de jobs, streaming multipart a object storage, paginación keyset y progreso por SSE) al que migraron 10 dominios de negocio; el tiempo de página del cursor bajó de 33,66 ms a 0,42 ms sobre 300.000 filas.",
-        en: "Designed and built an async export engine (job queue, multipart streaming to object storage, keyset pagination and SSE progress) that 10 business domains migrated onto; cursor page time dropped from 33.66 ms to 0.42 ms over 300,000 rows.",
+        es: "Diseñé y construí un motor de exportación asíncrona (cola de jobs, streaming multipart a object storage, paginación keyset y una API de estado del job) al que migraron 10 dominios de negocio; el tiempo de página del cursor bajó de 33,66 ms a 0,42 ms sobre 300.000 filas.",
+        en: "Designed and built an async export engine (job queue, multipart streaming to object storage, keyset pagination and a job status API) that 10 business domains migrated onto; cursor page time dropped from 33.66 ms to 0.42 ms over 300,000 rows.",
       },
       {
         es: "Establecí el estándar de documentación técnica del frontend (RFC → ADR → realidad del backend → pasos atómicos), aplicado a 63 features y adoptado por 5 desarrolladores.",

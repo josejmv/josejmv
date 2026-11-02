@@ -1,0 +1,46 @@
+## Problem
+
+The white-label platform exported financial data inside the same HTTP request: the bigger the report, the more memory and time, until the request timed out. Each business domain also had its own way of exporting, so fixing it in one place didn't fix it in the others.
+
+It needed a single engine: no export should depend on a request staying alive, and memory should not grow with report size.
+
+## Architecture
+
+<Flow
+  label="Export flow: request, job registration, queue, worker with keyset pagination, streaming to object storage and download."
+  steps={[
+    "Request",
+    "Job registered",
+    "Queue (BullMQ)",
+    "Worker + keyset",
+    "Multipart streaming to object storage",
+    "Download",
+  ]}
+/>
+
+- A **registry** where each domain declares its exporter; the core knows nothing about domains.
+- A jobs table with each job's state, a **queue** and a **worker** that does the work outside the request.
+- The file is written in parts (**multipart**) straight to object storage, so memory stays flat.
+- A status and download API for the frontend.
+
+## Decisions
+
+### Keyset pagination, not OFFSET
+
+Tables keep receiving writes while the export runs. With `OFFSET`, a row inserted or deleted halfway shifts the pages and rows get **duplicated or skipped**. Cursor (keyset) pagination moves over a stable key and also uses the index: cursor page time dropped from **33.66 ms to 0.42 ms** over 300,000 rows, measured with the query plan with and without the index.
+
+### Progress across replicas with pub/sub
+
+The API runs on several replicas: the browser may be connected to one while the worker runs on another. That is why progress events travel over **Redis pub/sub** instead of in-process events.
+
+<Callout title="actual status">
+  The SSE progress channel is built, but today the back-office polls for status: its middle layer
+  buffers the full response before forwarding it. The ADR itself documents this.
+</Callout>
+
+## Results
+
+- **10 business domains** migrated onto a single engine, with no more timeouts on large exports.
+- Sole author of all **42 core files** and all **14 domain exporters**.
+- Cursor page time: **−98.8%** (33.66 ms → 0.42 ms) over 300,000 rows.
+- An ADR and a guide so the rest of the team can add new exporters.

@@ -1,0 +1,47 @@
+## Problema
+
+La plataforma white-label exportaba datos financieros dentro de la misma petición HTTP: cuanto más grande el reporte, más memoria y más tiempo, hasta que la petición vencía. Cada dominio de negocio tenía además su propia forma de exportar, así que arreglarlo en un lugar no lo arreglaba en los demás.
+
+Hacía falta un motor único: que ninguna exportación dependiera de que una petición siguiera viva y que la memoria no creciera con el tamaño del reporte.
+
+## Arquitectura
+
+<Flow
+  label="Flujo de una exportación: solicitud, registro del job, cola, worker con paginación keyset, streaming a object storage y descarga."
+  steps={[
+    "Solicitud",
+    "Job registrado",
+    "Cola (BullMQ)",
+    "Worker + keyset",
+    "Streaming multipart a object storage",
+    "Descarga",
+  ]}
+/>
+
+- Un **registry** donde cada dominio declara su exporter; el núcleo no conoce los dominios.
+- Una tabla de jobs con su estado, una **cola** y un **worker** que hace el trabajo fuera de la petición.
+- El archivo se escribe por partes (**multipart**) directo a object storage, así que la memoria se mantiene constante.
+- Una API de estado y descarga para el frontend.
+
+## Decisiones
+
+### Paginación keyset, no OFFSET
+
+Las tablas reciben escrituras mientras la exportación corre. Con `OFFSET`, una fila insertada o borrada a mitad de camino desplaza las páginas y hace que filas se **dupliquen o se salten**. La paginación por cursor (keyset) avanza sobre una clave estable y además usa el índice: el tiempo por página del cursor bajó de **33,66 ms a 0,42 ms** sobre 300.000 filas, medido con el plan de ejecución con y sin el índice.
+
+### Progreso entre réplicas con pub/sub
+
+La API corre en varias réplicas: el navegador puede estar conectado a una y el worker trabajando en otra. Por eso los eventos de progreso viajan por **Redis pub/sub** y no por eventos en memoria de un proceso.
+
+<Callout title="estado real">
+  El canal de progreso por SSE está construido, pero hoy el back-office consulta el estado por
+  polling: su capa intermedia acumula la respuesta completa antes de reenviarla. Está documentado en
+  el propio ADR.
+</Callout>
+
+## Resultados
+
+- **10 dominios de negocio** migrados a un solo motor, sin timeouts por exportaciones grandes.
+- Autor único de los **42 archivos del núcleo** y de los **14 exporters** de dominio.
+- Tiempo por página del cursor: **−98,8 %** (33,66 ms → 0,42 ms) sobre 300.000 filas.
+- ADR y guía para que el resto del equipo agregue exporters nuevos.
