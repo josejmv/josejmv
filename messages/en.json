@@ -59,5 +59,9 @@
     "terminalTitle": "~/josejmv — contact",
     "terminalCommand": "contact --list",
     "contactList": "Contact channels"
+  },
+  "Globe": {
+    "ariaTeam": "Globe with connections from Colombia to my teammates' {count} countries",
+    "ariaCompany": "Globe with the headquarters of the companies I worked for, across {count} countries"
   }
 }

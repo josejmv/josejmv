@@ -35,7 +35,7 @@ export function HeroSection({ profile, labels, aside }: HeroSectionProps) {
 
         <h1
           id="hero-title"
-          className="font-display text-5xl leading-none font-light tracking-[-0.025em] sm:text-6xl xl:text-[72px]"
+          className="font-display text-5xl leading-none font-light tracking-[-0.025em] sm:text-6xl lg:text-[52px] lg:whitespace-nowrap xl:text-[64px]"
         >
           {first}
           <GradientText className="font-bold">{last}</GradientText>

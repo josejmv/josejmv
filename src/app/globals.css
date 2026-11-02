@@ -23,6 +23,7 @@
   --grid-line: rgba(255, 255, 255, 0.025);
   --glow-1: rgba(143, 184, 222, 0.16);
   --glow-2: rgba(212, 191, 142, 0.09);
+  --globe-image: url("/globe/globe-dark.svg");
 }
 
 [data-theme="light"] {
@@ -43,6 +44,7 @@
   --grid-line: rgba(18, 21, 28, 0.035);
   --glow-1: rgba(47, 95, 138, 0.12);
   --glow-2: rgba(125, 95, 36, 0.08);
+  --globe-image: url("/globe/globe-light.svg");
 }
 
 @theme inline {
@@ -141,6 +143,11 @@
   max-width: 1280px;
   margin-inline: auto;
   padding-inline: clamp(16px, 4.4vw, 56px);
+}
+
+/* Globo de puntos estático (GlobeStaticSvg). Solo se descarga el SVG del tema activo. */
+@utility bg-globe-dots {
+  background: var(--globe-image) center / contain no-repeat;
 }
 
 /* Fondos (GridBackground, GlowOrbs). */
