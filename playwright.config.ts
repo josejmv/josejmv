@@ -18,7 +18,8 @@ export default defineConfig({
     { name: "mobile", use: { ...devices["Pixel 7"] } },
   ],
   webServer: {
-    command: process.env.CI ? "pnpm build && pnpm start" : "pnpm dev",
+    // En CI el build ya corrió en el paso anterior.
+    command: process.env.CI ? "pnpm start" : "pnpm dev",
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
