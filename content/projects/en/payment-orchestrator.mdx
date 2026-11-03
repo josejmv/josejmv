@@ -1,0 +1,49 @@
+## Problem
+
+An institutional client needed its borrowers to pay hundreds of thousands of active obligations online, via PSE and Bre-B. The contract with the previous provider had an end date, so the replacement had a fixed date and no way back: on cutover day, the new site had to collect correctly from the very first payment.
+
+That set three requirements: **never lose a payment even if something fails halfway**, **never block a legitimate payer**, and **pass the payment processor's certification** within the deadline.
+
+## Architecture
+
+The orchestrator is a NestJS backend with a Next.js payment site in front of it. The source of truth for a payment's state is the processor's signed notice, not whatever the payer's browser happens to see.
+
+<Flow
+  label="Payment flow: obligation lookup, payment start, processor checkout, payer return, reconciliation webhook and client notification."
+  steps={[
+    "Obligation lookup",
+    "Payment start",
+    "Processor checkout",
+    "Payer return",
+    "Reconciliation webhook",
+    "Client notification",
+  ]}
+/>
+
+Besides the online flow, a worker delivers the daily payment report to the external reconciliation system.
+
+## Decisions
+
+### The payer's return is resolved with rules, not assumptions
+
+When the payer comes back from checkout, the state may not be settled yet. The return use case applies **five precedence rules** to decide what to show and what to query, without marking as paid anything the processor has not confirmed.
+
+### Every webhook is verified before it touches a payment
+
+Webhook reconciliation checks the notice's **signature** and **freshness**, using constant-time comparison so response timing leaks nothing. A stale or badly signed notice changes nothing.
+
+<Callout title="trade-off">
+  Anti-abuse lives in Redis (sliding windows, lockout and captcha), but it **fails open**: if Redis
+  goes down, no payment is blocked. For a collections site, losing a legitimate payment is worse
+  than letting an abuse attempt through during an outage.
+</Callout>
+
+### Personal data stays where it belongs
+
+The backend has PII guards and a **read-only** operations console, with CSV and XLSX exports that contain no personal data. Support can investigate a payment without seeing more than it needs.
+
+## Results
+
+- **Certified by the payment processor**, checked item by item against its checklist, two weeks after the integration model was confirmed.
+- Deployed to its environment, with a code security audit and TLS 1.2 or higher verified on the published domain.
+- It is now **in pre-production testing**, waiting for the final production cutover.

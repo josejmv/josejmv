@@ -1,0 +1,559 @@
+{
+  "Metadata": {
+    "title": "José M. Vasquez · Senior Full Stack Developer",
+    "description": "Portfolio of José M. Vasquez: payments, compliance and platform engineering with TypeScript, NestJS, Python and Next.js."
+  },
+  "Nav": {
+    "home": "Home",
+    "experience": "Experience",
+    "areas": "Areas",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has moved.",
+    "back": "Back to home"
+  },
+  "Theme": {
+    "toggle": "Toggle light/dark theme"
+  },
+  "Header": {
+    "home": "Home · {name}",
+    "primaryNav": "Main",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menuTitle": "menu",
+    "menuDescription": "Site sections, areas, language and theme.",
+    "skipToContent": "Skip to content"
+  },
+  "LocaleSwitcher": {
+    "label": "Switch language to {language}",
+    "es": "Spanish",
+    "en": "English"
+  },
+  "Footer": {
+    "navTitle": "navigation",
+    "contactTitle": "contact",
+    "rights": "© {year} {name}"
+  },
+  "Command": {
+    "title": "Command menu",
+    "trigger": "Search…",
+    "triggerLabel": "Open command menu ({shortcut})",
+    "placeholder": "Type a command or search…",
+    "empty": "No results.",
+    "groups": {
+      "navigation": "navigate",
+      "areas": "areas",
+      "preferences": "preferences",
+      "actions": "actions",
+      "projects": "projects"
+    },
+    "switchLanguage": "Switch to {language}",
+    "toggleTheme": "Toggle light/dark theme",
+    "copyEmail": "Copy email",
+    "copied": "Email copied to clipboard",
+    "copyFailed": "Could not copy. My email is {email}"
+  },
+  "Hero": {
+    "terminalTitle": "~/josejmv — contact",
+    "terminalCommand": "contact --list",
+    "contactList": "Contact channels"
+  },
+  "Globe": {
+    "ariaTeam": "Globe with connections from Colombia to my teammates' {count} countries",
+    "ariaCompany": "Globe with the headquarters of the companies I worked for, across {count} countries",
+    "tabsLabel": "Globe view",
+    "tabTeam": "Team · {count} nationalities",
+    "tabCompany": "Companies · {count} countries",
+    "multicultural": "Multicultural teams",
+    "teamSummary": "Team nationalities: {list}",
+    "companySummary": "Company headquarters: {list}",
+    "language": "{name} · {level}"
+  },
+  "Stats": {
+    "label": "Key figures"
+  },
+  "Areas": {
+    "title": "Domain areas",
+    "note": "each area → its own page",
+    "tabs": "Areas",
+    "impact": "measured impact · before → after",
+    "cases": "See {area} cases →"
+  },
+  "Career": {
+    "title": "Career",
+    "fullLink": "Full experience →",
+    "list": "Roles, most recent first",
+    "present": "present"
+  },
+  "Education": {
+    "title": "education"
+  },
+  "Stack": {
+    "title": "stack"
+  },
+  "Cta": {
+    "title": "Shall we build something reliable?",
+    "subtitle": "I reply in English or Spanish.",
+    "action": "Email me on Gmail"
+  },
+  "Experience": {
+    "metaTitle": "Experience · José M. Vasquez",
+    "metaDescription": "José M. Vasquez's career: regulated fintech, AML/KYC, frontend team leadership and engineering process.",
+    "eyebrow": "experience",
+    "title": "Career",
+    "intro": "Seven years across product, payments and compliance. Filter by area to see where I worked on each topic; each card opens the role's achievements and projects.",
+    "filter": "Filter by area",
+    "all": "All",
+    "empty": "No role matches that filter.",
+    "results": "{count, plural, one {# role} other {# roles}}",
+    "highlights": "Achievements",
+    "projects": "Role projects",
+    "stack": "stack",
+    "metricsTitle": "Measured impact",
+    "download": "Download CV (PDF)",
+    "ganttTitle": "Timeline"
+  },
+  "Projects": {
+    "metaTitle": "Projects · José M. Vasquez",
+    "metaDescription": "José M. Vasquez's projects in payments, AML/KYC compliance, multi-brand frontend and CI, with their real status and the numbers behind them.",
+    "eyebrow": "projects",
+    "title": "Projects",
+    "intro": "What I built and where it stands today. Client, bank and provider details are left out; the numbers come from commits and real measurements.",
+    "filterArea": "Filter by area",
+    "filterTech": "Filter by technology",
+    "allAreas": "All areas",
+    "allTech": "Whole stack",
+    "results": "{count, plural, one {# project} other {# projects}}",
+    "empty": "No project matches those filters.",
+    "readCase": "Read the case study →",
+    "status": {
+      "production": "in production",
+      "preproduction": "in pre-production",
+      "in-development": "in development"
+    }
+  },
+  "CaseStudy": {
+    "eyebrow": "case study",
+    "metrics": "Key figures",
+    "toc": "On this page",
+    "next": "Next case study"
+  },
+  "AreaPage": {
+    "eyebrow": "area",
+    "metaTitle": "{area} · José M. Vasquez",
+    "cases": "Cases",
+    "related": "Related projects",
+    "readCase": "Read the case study →",
+    "disclaimer": "Demo with fictitious data: no real clients and nothing from production."
+  },
+  "AreaFrontend": {
+    "title": "A new brand is a configuration change",
+    "description": "Pick a brand or move the hue: the components on the right only read semantic tokens, so they re-theme without touching their code. It is the same 3-layer model as the real white-label.",
+    "brandLabel": "Brand",
+    "brands": {
+      "a": "Brand A",
+      "b": "Brand B",
+      "c": "Brand C"
+    },
+    "hueLabel": "Brand hue",
+    "layers": {
+      "foundations": "brand foundations",
+      "semantic": "semantic tokens",
+      "components": "components"
+    },
+    "demo": {
+      "badge": "Active account",
+      "balanceLabel": "Available balance",
+      "balance": "$1,250,000",
+      "inputLabel": "Amount to transfer",
+      "inputValue": "$150,000",
+      "cta": "Transfer",
+      "note": "Changing a real brand's primary color is a diff of about 11 lines in its config."
+    },
+    "library": {
+      "title": "Atomic library",
+      "atoms": "Atoms",
+      "molecules": "Molecules",
+      "organisms": "Organisms",
+      "templates": "Templates",
+      "note": "Structure of the Trades.org component library, shared by 2 web apps and a React Native app. Names are representative."
+    }
+  },
+  "AreaBackend": {
+    "title": "One payment, even if you click twice",
+    "description": "Simulate a charge's lifecycle. Try «Double-click pay»: the second attempt finds the obligation's lock and returns the same payment with the same idempotency key. At the end, replay the webhook: the already-applied event is ignored.",
+    "stepsLabel": "Payment states",
+    "steps": {
+      "intent": "Intent",
+      "checkout": "Checkout (idempotent)",
+      "webhook": "Signed webhook",
+      "reconciled": "Reconciled"
+    },
+    "status": {
+      "done": "done",
+      "active": "in progress",
+      "pending": "pending"
+    },
+    "fields": {
+      "obligation": "obligation",
+      "intent": "intent",
+      "lock": "lock",
+      "locked": "held",
+      "free": "free"
+    },
+    "actions": {
+      "pay": "Pay",
+      "doubleClick": "Double-click pay",
+      "replay": "Replay webhook",
+      "reset": "Reset"
+    },
+    "audit": {
+      "appendOnly": "append-only",
+      "empty": "Press «Pay» to start."
+    },
+    "log": {
+      "intentCreated": "intent.created {intent} · key {key}",
+      "lockAcquired": "lock.acquired {obligation}",
+      "idempotentReplay": "idempotency.replay: same key {key} → returns {intent}, no new charge",
+      "checkoutCreated": "checkout.session.created {intent} (idempotent)",
+      "webhookVerified": "webhook.verified {event}: signature and freshness OK",
+      "reconciled": "payment.reconciled {intent}",
+      "lockReleased": "lock.released {obligation}",
+      "clientNotified": "client.notified {obligation}",
+      "alreadyPaid": "payment.rejected: {obligation} is already paid, no double charge",
+      "duplicateIgnored": "webhook.duplicate {event}: already applied, ignored"
+    }
+  },
+  "AreaCompliance": {
+    "title": "Every verdict explains why",
+    "description": "This is how the KYC engine processes a file: five steps, from attachments to verdict. Scroll to walk through them; on the right, the verdict with the reason for each check.",
+    "pipelineLabel": "KYC engine steps",
+    "steps": [
+      {
+        "key": "ingest",
+        "title": "Ingest",
+        "description": "Receives the policy request's attachments.",
+        "sample": "3 attachments · id.pdf · proof-of-address.jpg · tax-certificate.pdf"
+      },
+      {
+        "key": "classify",
+        "title": "Classify",
+        "description": "Identifies each document's type and discards the ones that don't belong.",
+        "sample": "id → voter ID · proof → utility bill · certificate → tax status"
+      },
+      {
+        "key": "extract",
+        "title": "Extract",
+        "description": "Extracts the fields with an LLM and normalizes them to a typed schema.",
+        "sample": "{ \"name\": \"Ana Ejemplo Ruiz\", \"rfc\": \"EERA850101XX0\", \"address\": \"12 Fictional St\" }"
+      },
+      {
+        "key": "checks",
+        "title": "Checks",
+        "description": "Runs checks and cross-validations by person type and risk tier.",
+        "sample": "validity · name match · recent address · RFC ↔ certificate cross-check"
+      },
+      {
+        "key": "verdict",
+        "title": "Verdict",
+        "description": "Stores the result with the reason for each check, ready for review.",
+        "sample": "needs review · 3 of 4 checks OK · 1 to review"
+      }
+    ],
+    "verdict": {
+      "title": "verdict",
+      "subject": "Ana Ejemplo Ruiz · individual · new client",
+      "result": "Needs review",
+      "resultKind": "review",
+      "checks": [
+        {
+          "name": "ID validity",
+          "result": "pass",
+          "reason": "Expires in 2029: valid on the request date."
+        },
+        {
+          "name": "Name match",
+          "result": "pass",
+          "reason": "The name matches across all three documents."
+        },
+        {
+          "name": "Recent proof of address",
+          "result": "review",
+          "reason": "It is 95 days old; the policy requires 90 or fewer."
+        },
+        {
+          "name": "RFC ↔ tax certificate cross-check",
+          "result": "pass",
+          "reason": "The extracted RFC matches the one on the certificate."
+        }
+      ]
+    },
+    "results": {
+      "pass": "passed",
+      "review": "to review",
+      "fail": "failed"
+    }
+  },
+  "AreaDevops": {
+    "title": "Verify only what changed, and fail if there's nothing to verify",
+    "description": "Run the pipeline and compare before and after the merge-request gate I built: lint, typecheck, tests and build scoped to the MR diff, caching only the package-manager store. The times are the measured ones.",
+    "modeLabel": "Pipeline",
+    "modes": {
+      "before": "Before the gate",
+      "after": "With the gate"
+    },
+    "scope": {
+      "before": "Every MR verifies the whole repository and caches node_modules.",
+      "after": "Every MR verifies only the files in the diff (git merge-base) and caches only the package-manager store."
+    },
+    "stagesLabel": "Pipeline stages",
+    "states": {
+      "idle": "pending",
+      "running": "running",
+      "passed": "passed",
+      "failed": "failed",
+      "skipped": "skipped"
+    },
+    "measured": {
+      "cacheSave": "Cache save",
+      "tests": "Test suite"
+    },
+    "actions": {
+      "run": "Run pipeline",
+      "emptyDiff": "Try an empty diff"
+    },
+    "outcome": {
+      "running": "pipeline running…",
+      "passed": "pipeline passed: the MR can be merged.",
+      "emptyDiff": "lint failed: the change list came back empty. The gate fails instead of passing green without verifying anything."
+    },
+    "infra": {
+      "title": "InfraMap",
+      "label": "How a change travels to production",
+      "nodes": [
+        {
+          "key": "vpn",
+          "title": "Company VPN",
+          "detail": "Internal servers are reachable only through the VPN, which I run."
+        },
+        {
+          "key": "gitlab",
+          "title": "Self-hosted GitLab",
+          "detail": "Upgrades, daily backups and rollback runbooks are on me."
+        },
+        {
+          "key": "ci",
+          "title": "MR gate",
+          "detail": "Lint, typecheck, tests and build on the diff; blocking before merge."
+        },
+        {
+          "key": "do",
+          "title": "Production on DigitalOcean",
+          "detail": "DevOps access across the production environments."
+        }
+      ]
+    }
+  },
+  "AreaAi": {
+    "title": "From document to data, with traceability",
+    "description": "Press «Extract»: the JSON builds up field by field, the way it arrives from the model, and each field highlights the part of the document it came from. In production, that traceability is what makes a verdict auditable.",
+    "streaming": "extracting…",
+    "done": "done",
+    "waiting": "waiting",
+    "result": "{count} fields extracted and normalized.",
+    "actions": {
+      "extract": "Extract",
+      "again": "Extract again"
+    },
+    "document": {
+      "title": "fictitious-policy-request.pdf",
+      "lines": [
+        "POLICY REQUEST · MEDICAL EXPENSES INSURANCE",
+        "Applicant: Ana Ejemplo Ruiz",
+        "RFC: EERA850101XX0 · Date of birth: 01/01/1985",
+        "Address: 12 Fictional St, Downtown, ZIP 00000",
+        "Declared occupation: Software engineer",
+        "Requested sum insured: MXN 2,000,000"
+      ]
+    },
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "value": "Ana Ejemplo Ruiz",
+        "source": "Ana Ejemplo Ruiz"
+      },
+      {
+        "key": "rfc",
+        "label": "RFC",
+        "value": "EERA850101XX0",
+        "source": "EERA850101XX0"
+      },
+      {
+        "key": "date_of_birth",
+        "label": "Date of birth",
+        "value": "1985-01-01",
+        "source": "01/01/1985"
+      },
+      {
+        "key": "address",
+        "label": "Address",
+        "value": "12 Fictional St, Downtown, 00000",
+        "source": "12 Fictional St"
+      },
+      {
+        "key": "occupation",
+        "label": "Occupation",
+        "value": "Software engineer",
+        "source": "Software engineer"
+      },
+      {
+        "key": "sum_insured",
+        "label": "Sum insured",
+        "value": "2000000 MXN",
+        "source": "MXN 2,000,000"
+      }
+    ],
+    "workflow": {
+      "title": "AgentWorkflowDiagram",
+      "label": "AI-assisted delivery workflow",
+      "steps": [
+        {
+          "key": "ticket",
+          "title": "Jira ticket",
+          "detail": "The task arrives with its requirements template and technical context."
+        },
+        {
+          "key": "agent",
+          "title": "Claude Code",
+          "detail": "Works on the repo following the specification (spec-first)."
+        },
+        {
+          "key": "docs",
+          "title": "Validate docs",
+          "detail": "Checks the ticket's documentation requirements in the repo."
+        },
+        {
+          "key": "close",
+          "title": "Close ticket",
+          "detail": "If everything is in place, marks the ticket as complete."
+        }
+      ]
+    }
+  },
+  "AreaLeadership": {
+    "title": "Leading means keeping the reasoning visible",
+    "description": "People and process: the teams I led, the documentation standard a team of 5 adopted, and the principles behind both.",
+    "disclaimer": "No demo: every number in this section is real.",
+    "team": {
+      "title": "TeamGrowthChart",
+      "legend": {
+        "start": "at the start",
+        "growth": "growth",
+        "maybe": "depending on the stage (range)"
+      },
+      "stages": [
+        {
+          "key": "seo",
+          "org": "SEO Contenidos",
+          "period": "2019 – 2021",
+          "role": "Team Lead",
+          "start": 3,
+          "end": 3,
+          "maybe": 0,
+          "summary": "team of 3"
+        },
+        {
+          "key": "centria",
+          "org": "Centria Group",
+          "period": "2021 – 2025",
+          "role": "Front End Supervisor",
+          "start": 3,
+          "end": 5,
+          "maybe": 1,
+          "summary": "from 3 to 5–6 engineers"
+        },
+        {
+          "key": "inlaze",
+          "org": "Inlaze",
+          "period": "2025 · ~5 months",
+          "role": "Cell lead",
+          "start": 4,
+          "end": 4,
+          "maybe": 1,
+          "summary": "4–5 person cell"
+        }
+      ]
+    },
+    "docs": {
+      "title": "DocsStandard",
+      "label": "Artifacts per feature",
+      "steps": [
+        {
+          "key": "rfc",
+          "title": "RFC",
+          "detail": "What we want to solve and what the alternatives are."
+        },
+        {
+          "key": "adr",
+          "title": "ADR",
+          "detail": "What was decided and why, with its evidence."
+        },
+        {
+          "key": "backend",
+          "title": "Backend reality",
+          "detail": "What actually exists on the other side, verified."
+        },
+        {
+          "key": "steps",
+          "title": "Atomic steps",
+          "detail": "The implementation in small, reviewable steps."
+        }
+      ],
+      "stats": [
+        {
+          "value": "63",
+          "label": "features with the full flow"
+        },
+        {
+          "value": "5",
+          "label": "developers adopted it"
+        },
+        {
+          "value": "2",
+          "label": "repositories where it lives today"
+        },
+        {
+          "value": "1,026",
+          "label": "of the repo's 1,427 documents"
+        }
+      ]
+    },
+    "principles": {
+      "title": "Principles",
+      "items": [
+        {
+          "key": "mentoring",
+          "title": "mentoring",
+          "body": "Mentoring means keeping the reasoning visible, not just the solution.",
+          "evidence": "I wrote 116 of the 196 RFCs and ADRs of a frontend platform, and mentored a team that grew from 3 to 5–6 engineers."
+        },
+        {
+          "key": "hiring",
+          "title": "hiring",
+          "body": "A team grows well when whoever leads it helps choose who joins.",
+          "evidence": "At Centria the frontend team grew from 3 to 5–6 engineers over 4 years, with my input on hiring."
+        },
+        {
+          "key": "decisions",
+          "title": "decisions",
+          "body": "A decision is written down with its evidence and corrected in public if its premise fails.",
+          "evidence": "An ADR of mine assumed a premise that turned out false; the next day I corrected it in writing, keeping a record of the mistake."
+        }
+      ]
+    }
+  }
+}

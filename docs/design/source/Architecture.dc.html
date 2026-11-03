@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Árbol de archivos y flujo de datos</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F4F6}
+.card{background:#FFFFFF;border:1px solid #CBD2DC;border-radius:16px;padding:22px;box-sizing:border-box}
+.tree{margin:0;font:400 12.5px/1.65 'JetBrains Mono',monospace;color:#1F2937;white-space:pre}
+.c{color:#6B7280}
+.node{border:1.5px solid #5A6578;border-radius:10px;padding:10px 12px;background:#FFFFFF;font:500 13px Inter,sans-serif}
+.node small{display:block;font:400 11px 'JetBrains Mono',monospace;color:#4B5563;margin-top:3px}
+.down{text-align:center;color:#6B7280;font:600 16px Inter;line-height:1}
+.k{font:400 11px 'JetBrains Mono',monospace;color:#4B5563}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #111827; background: #F3F4F6; min-height: 2000px; box-sizing: border-box; padding: 40px 48px; display: flex; flex-direction: column; gap: 22px">
+<div><h1 style="margin: 0; font-size: 34px; font-weight: 700">Árbol de archivos y flujo de datos</h1><p style="margin: 6px 0 0; color: #4B5563; font-size: 15px">Next.js App Router · TypeScript · Tailwind v4 · next-intl · next-themes · three / R3F · Vercel</p></div>
+<div style="display: grid; grid-template-columns: 1.25fr 1fr; gap: 22px; align-items: start">
+<div class="card"><pre class="tree">portfolio/
+├─ CLAUDE.md                <span class="c"># reglas para Claude Code</span>
+├─ docs/
+│  ├─ plan.md               <span class="c"># fases y tareas</span>
+│  └─ adr/                  <span class="c"># 0001-globe-lib.md, …</span>
+├─ messages/
+│  ├─ es.json               <span class="c"># textos de UI</span>
+│  └─ en.json
+├─ content/                 <span class="c"># datos tipados (Zod)</span>
+│  ├─ schema.ts
+│  ├─ profile.ts            <span class="c"># nombre, contactLinks</span>
+│  ├─ experience.ts         <span class="c"># roles, fechas, logros</span>
+│  ├─ areas.ts              <span class="c"># 6 áreas + métricas</span>
+│  ├─ countries.ts          <span class="c"># globo: país, lat/lng, tipo</span>
+│  ├─ stats.ts · education.ts · stack.ts
+│  └─ projects/{es,en}/*.mdx
+├─ src/
+│  ├─ i18n/  routing.ts · request.ts · navigation.ts
+│  ├─ middleware.ts         <span class="c"># next-intl</span>
+│  ├─ app/
+│  │  ├─ [locale]/
+│  │  │  ├─ layout.tsx      <span class="c"># Providers, header, footer</span>
+│  │  │  ├─ page.tsx        <span class="c"># Home</span>
+│  │  │  ├─ experiencia/page.tsx
+│  │  │  ├─ areas/[slug]/page.tsx
+│  │  │  ├─ proyectos/page.tsx
+│  │  │  ├─ proyectos/[slug]/page.tsx
+│  │  │  ├─ opengraph-image.tsx
+│  │  │  └─ not-found.tsx
+│  │  ├─ sitemap.ts · robots.ts
+│  │  └─ globals.css        <span class="c"># tokens @theme</span>
+│  ├─ components/
+│  │  ├─ layout/   site-header · main-nav · mobile-menu · site-footer
+│  │  ├─ ui/       button · chip · stat-card · gradient-text
+│  │  │            · availability-badge · animated-counter
+│  │  │            · backgrounds/ grid-background · glow-orbs
+│  │  ├─ contact/  contact-terminal · contact-link
+│  │  ├─ command/  command-menu
+│  │  ├─ i18n/     locale-switcher
+│  │  ├─ theme/    theme-provider · theme-toggle
+│  │  ├─ charts/   career-gantt · impact-bars · team-growth
+│  │  ├─ three/globe/ collaboration-globe · globe-static-svg
+│  │  │            · globe-legend · arcs.ts
+│  │  ├─ sections/home/ hero · stats-strip · areas-showcase
+│  │  │            · career · education-card · stack-cloud · contact-cta
+│  │  ├─ areas/    area-shell · area-hero · area-cases · registry.ts
+│  │  │            ├─ frontend/   token-playground …
+│  │  │            ├─ backend/    payment-flow-simulator …
+│  │  │            ├─ compliance/ kyc-pipeline …
+│  │  │            ├─ devops/     pipeline-runner …
+│  │  │            ├─ ai/         extraction-demo …
+│  │  │            └─ leadership/ team-growth …
+│  │  └─ projects/ project-card · case-hero · mdx-components
+│  ├─ hooks/  use-reduced-motion · use-in-view
+│  └─ lib/    content.ts · seo.ts · cn.ts · motion.ts
+├─ public/  cv/es.pdf · cv/en.pdf · og/ · images/
+└─ tests/   unit (Vitest) · e2e (Playwright)</pre></div>
+
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div class="card" style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 18px; font-weight: 700; margin-bottom: 4px">Flujo de datos</div>
+<div style="display: flex; gap: 10px"><div class="node" style="flex: 1">content/*.ts · *.mdx<small>fuente única: CV</small></div><div class="node" style="flex: 1">messages/es|en.json<small>textos de UI</small></div></div>
+<div class="down">↓</div>
+<div class="node">content/schema.ts<small>Zod: valida en build, falla CI si falta un campo o un idioma</small></div>
+<div class="down">↓</div>
+<div class="node">lib/content.ts · getExperience(locale) …<small>funciones server-only tipadas</small></div>
+<div class="down">↓</div>
+<div style="display: flex; gap: 10px"><div class="node" style="flex: 1">Server Components<small>secciones y páginas (SSG)</small></div><div class="node" style="flex: 1">Islas client<small>globo, tabs, ⌘K, demos</small></div></div>
+<div class="down">↓</div>
+<div class="node">Vercel<small>generateStaticParams × locale × slug</small></div>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 18px; font-weight: 700">Reglas clave</div>
+<ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.7; color: #374151">
+<li>Todo lo 3D, con <span class="k">next/dynamic</span> y <span class="k">ssr:false</span>, más un fallback SVG</li>
+<li><span class="k">prefers-reduced-motion</span> apaga la rotación y los arcos</li>
+<li>Nada de textos sueltos en componentes: siempre <span class="k">t('…')</span> o <span class="k">content/</span></li>
+<li>Los colores salen de tokens (<span class="k">@theme</span>), nunca hex sueltos</li>
+<li>Presupuesto: LCP &lt; 2.5 s, JS del home &lt; 200 kB gz</li>
+</ul>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 8px; border-color: #7A5C1E; background: #FBF5E6">
+<div style="font-size: 16px; font-weight: 700">Decisiones pendientes (ADR)</div>
+<div class="k">0001 · Librería del globo: cobe vs react-globe.gl</div>
+<div class="k">0002 · Animaciones: motion vs solo CSS</div>
+<div class="k">0003 · Países: tipo "empresa" vs "colaboración"</div>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2000}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

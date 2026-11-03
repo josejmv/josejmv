@@ -1,0 +1,216 @@
+/* Tokens de diseño — Tailwind v4. Fuente: docs/design/screens/Palette.png
+   Todos los pares de texto pasan AA (≥ 4.5:1). */
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root,
+[data-theme="dark"] {
+  --bg: #0a0d14;
+  --surface: #121722;
+  --surface-2: #0e131d;
+  --chip: #1b2232;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e8eaf0;
+  --text-2: #c9d0db;
+  --muted: #9aa3b2;
+  --subtle: #7e8798;
+  --accent: #d4bf8e; /* relleno de CTA; texto encima: --on-accent */
+  --on-accent: #0a0d14;
+  --accent-text: #d4bf8e; /* links, cifras */
+  --accent-2: #8fb8de;
+  --success: #6ee7b7;
+  --grid-line: rgba(255, 255, 255, 0.025);
+  --glow-1: rgba(143, 184, 222, 0.16);
+  --glow-2: rgba(212, 191, 142, 0.09);
+  --globe-image: url("/globe/globe-dark.svg");
+}
+
+[data-theme="light"] {
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --surface-2: #efede6;
+  --chip: #e7e4db;
+  --border: rgba(18, 21, 28, 0.1);
+  --text: #12151c;
+  --text-2: #2e3440;
+  --muted: #5b6270;
+  --subtle: #5b6270;
+  --accent: #c9ae74;
+  --on-accent: #12151c;
+  --accent-text: #7d5f24; /* nunca uses --accent como texto en claro */
+  --accent-2: #2f5f8a;
+  --success: #0e7c55;
+  --grid-line: rgba(18, 21, 28, 0.035);
+  --glow-1: rgba(47, 95, 138, 0.12);
+  --glow-2: rgba(125, 95, 36, 0.08);
+  --globe-image: url("/globe/globe-light.svg");
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-chip: var(--chip);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-2: var(--accent-2);
+  --color-success: var(--success);
+
+  --font-display: var(--font-sora), ui-sans-serif, system-ui;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --radius-card: 24px;
+  --radius-pill: 999px;
+}
+
+/* Animaciones (ADR 0002): se usan como utilidades `animate-*`, siempre con `motion-safe:`. */
+@theme {
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+  --animate-caret: caret 1s steps(1) infinite;
+  --animate-floaty: floaty 7s ease-in-out infinite;
+  --animate-dash: dash 2.6s linear infinite;
+  --animate-fade-up: fade-up 0.5s ease-out both;
+  --animate-grow-x: grow-x 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes caret {
+    50% {
+      opacity: 0;
+    }
+  }
+  @keyframes floaty {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -40;
+    }
+  }
+  @keyframes grow-x {
+    from {
+      transform: scaleX(0);
+    }
+  }
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/*
+ * Efecto de escritura (ContactTerminal). El elemento define `--chars` (longitud del texto) y usa
+ * fuente mono. Con reduced-motion, la regla global deja la animación en ~0 ms: el texto aparece completo.
+ */
+@utility typing {
+  display: inline-block;
+  width: calc(var(--chars) * 1ch);
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  animation: typing calc(var(--chars) * 55ms) steps(var(--chars)) 300ms both;
+}
+
+/*
+ * Revelado ligado al scroll (KycPipeline). Solo donde el navegador soporta `animation-timeline` y no
+ * se pidió reducir el movimiento; en el resto, el contenido se ve completo desde el inicio.
+ */
+@utility scroll-reveal {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: scroll-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 35%;
+    }
+  }
+}
+
+@keyframes scroll-reveal {
+  from {
+    opacity: 0.25;
+    transform: translateY(18px);
+    border-color: var(--border);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Contenedor de página: 1280px con 56px de padding lateral en desktop (Fusion). */
+@utility container-page {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4.4vw, 56px);
+}
+
+/* Globo de puntos estático (GlobeStaticSvg). Solo se descarga el SVG del tema activo. */
+@utility bg-globe-dots {
+  background: var(--globe-image) center / contain no-repeat;
+}
+
+/* Fondos (GridBackground, GlowOrbs). */
+@utility bg-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@utility bg-glow-1 {
+  background: radial-gradient(circle, var(--glow-1), transparent 65%);
+}
+
+@utility bg-glow-2 {
+  background: radial-gradient(circle, var(--glow-2), transparent 65%);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

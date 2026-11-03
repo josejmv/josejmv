@@ -1,102 +1,36 @@
-<p align="center">
-  <a href="https://github.com/josejmv">
-    <img src="https://contrib.rocks/image?repo=josejmv/josejmv" alt="Contributions" />
-  </a>
-</p>
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-<h1 align="center">Hi there 👋, I'm Jose Vasquez</h1>
-<h3 align="center">Software Developer</h3>
+## Getting Started
 
----
+First, run the development server:
 
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=josejmv&style=for-the-badge&color=25a2e2" alt="Jose's Profile" />
-</p>
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-<div align="center">
-  <p>🚀 Passionate about crafting exceptional web experiences. Proficient in Next.js and leading agile teams. Specialized in automating CI/CD processes and applying scientific methods for decision-making. My English proficiency enables me to collaborate effectively in international teams and adapt to diverse work cultures.</p>
-</div>
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-<div align="center">
-  <table>
-    <tr>
-      <td colspan="2">
-        <h3>🧠 Chore</h3>
-        <div align="center">
-          <a href="https://skillicons.dev">
-            <img src="https://skillicons.dev/icons?i=js,ts,git,github,docker,aws,gcp,kubernetes" />
-          </a>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td width="50%">
-        <h3>⚔️ Frontend</h3>
-        <div align="center">
-          <a href="https://skillicons.dev">
-            <img src="https://skillicons.dev/icons?i=react,nextjs,html,css,tailwind,bootstrap" />
-          </a>
-        </div>
-      </td>
-      <td width="50%">
-        <h3>🛡️ Backend</h3>
-        <div align="center">
-          <a href="https://skillicons.dev">
-            <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb,mysql,postgres,cpp,java" />
-          </a>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
----
+## Learn More
 
-### 📊 Stats & Trophies
+To learn more about Next.js, take a look at the following resources:
 
-<div align="center">
-  <a href="https://github.com/josejmv">
-    <img src="https://github-readme-stats.vercel.app/api?username=josejmv&show_icons=true&theme=onedark&hide_border=false&count_private=true&include_all_commits=true&hide_rank=true" alt="Jose's GitHub Stats" />
-  </a>
-  <a href="https://github.com/josejmv">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=josejmv&layout=compact&theme=onedark&hide_border=false" alt="My Top Languages" />
-  </a>
-</div>
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
----
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### 📈 My GitHub Progress
+## Deploy on Vercel
 
-<div align="center">
-  <a href="https://github.com/josejmv">
-    <img src="https://streak-stats.demolab.com/?user=josejmv&theme=onedark&hide_border=false" alt="Commit Streak" />
-  </a>
-</div>
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
----
-
-### 👨‍💻 My Key Projects
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=josejmv&repo=josejmv&theme=onedark" alt="Project 1" />
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=josejmv&repo=GestorDeTienda&theme=onedark" alt="Project 2" />
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=josejmv&repo=Cafeteria&theme=onedark" alt="Project 3" />
-</div>
-
----
-
-### 🤝 Let's Connect
-
-<div align="center">
-  <p>Feel free to reach out for collaborations or just to say hi! 👋</p>
-  <a href="https://www.linkedin.com/in/josejmv" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" alt="josejmv" height="30" width="40" /></a>
-  <a href="https://josejmv.vercel.app" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/vercel.svg" alt="Portfolio" height="30" width="40" /></a>
-  <a href="https://instagram.com/josejmv" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/instagram.svg" alt="josejmv" height="30" width="40" /></a>
-  <a href="mailto:josejmvasquez@gmail.com" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/gmail.svg" alt="Correo Electrónico" height="30" width="40" /></a>
-<a href="https://wa.me/584147545160" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/whatsapp.svg" alt="WhatsApp" height="30" width="40" /></a>
-<a href="https://t.me/josejmv" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/telegram.svg" alt="Telegram" height="30" width="40" /></a>
-</div>
-
----
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

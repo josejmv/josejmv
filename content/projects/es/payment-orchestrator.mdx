@@ -1,0 +1,49 @@
+## Problema
+
+Un cliente institucional necesitaba que sus deudores pagaran en línea, por PSE y Bre-B, cientos de miles de obligaciones activas. El contrato con el proveedor anterior tenía fecha de fin, así que el reemplazo tenía fecha fija y no había vuelta atrás: el día del corte, el sitio nuevo tenía que cobrar bien desde el primer pago.
+
+Eso definía tres exigencias: **no perder un pago aunque algo falle a mitad de camino**, **no bloquear a un pagador legítimo** y **pasar la certificación de la procesadora de pagos** dentro del plazo.
+
+## Arquitectura
+
+El orquestador es un backend en NestJS con un sitio de pagos en Next.js delante. La fuente de verdad del estado de un pago es el aviso firmado de la procesadora, no lo que el navegador del pagador alcance a ver.
+
+<Flow
+  label="Flujo de un pago: consulta de la obligación, inicio del pago, checkout de la procesadora, retorno del pagador, webhook de conciliación y notificación al cliente."
+  steps={[
+    "Consulta de la obligación",
+    "Inicio del pago",
+    "Checkout de la procesadora",
+    "Retorno del pagador",
+    "Webhook de conciliación",
+    "Notificación al cliente",
+  ]}
+/>
+
+Además del flujo en línea, un worker entrega cada día el reporte de pagos al sistema de conciliación externo.
+
+## Decisiones
+
+### El retorno del pagador se resuelve con reglas, no con suposiciones
+
+Cuando el pagador vuelve del checkout, el estado puede no estar decidido todavía. El caso de uso de retorno aplica **cinco reglas de precedencia** para decidir qué mostrar y qué consultar, sin dar por pagado algo que la procesadora no confirmó.
+
+### Cada webhook se verifica antes de tocar un pago
+
+La conciliación por webhook valida la **firma** y la **frescura** del aviso, con comparación en tiempo constante para no filtrar información por tiempos de respuesta. Un aviso viejo o mal firmado no cambia el estado de nada.
+
+<Callout title="trade-off">
+  El anti-abuso vive en Redis (ventanas deslizantes, bloqueo y captcha), pero **falla abierto**: si
+  Redis se cae, ningún pago se bloquea. Para un sitio de recaudo, perder un pago legítimo es peor
+  que dejar pasar un intento de abuso durante una caída.
+</Callout>
+
+### Los datos personales no salen de donde deben estar
+
+Hay guardas de datos personales en el backend y una consola de operación **de solo lectura**, con exportación a CSV y XLSX que no incluye datos personales. Soporte puede investigar un pago sin ver más de lo necesario.
+
+## Resultados
+
+- **Certificado por la procesadora de pagos**, verificado ítem por ítem contra su checklist, dos semanas después de confirmar el modelo de integración.
+- Desplegado en su ambiente, con auditoría de seguridad de código y TLS 1.2 o superior verificado sobre el dominio publicado.
+- Hoy está **en pruebas preproductivas**, a la espera del corte final a producción.

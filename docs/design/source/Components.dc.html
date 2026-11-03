@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Mapa de componentes — Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F4F6}
+a{color:#1F3A8A}a:hover{color:#0F1F55}
+.cmp{position:relative;border:1.5px dashed #8C96A8;border-radius:14px;padding:30px 14px 14px;box-sizing:border-box;background:#FFFFFF}
+.cmp.sec{background:#F8F9FB;border-color:#5A6578}
+.tag{position:absolute;top:-11px;left:12px;display:inline-flex;gap:8px;align-items:center;padding:3px 10px;border-radius:6px;background:#1F2633;color:#FFFFFF;font:600 11px 'JetBrains Mono',monospace;white-space:nowrap}
+.tag.c{background:#7A5C1E}
+.tag.t{background:#1F4E79}
+.path{font:400 11px 'JetBrains Mono',monospace;color:#4B5563}
+.blk{background:#E3E6EB;border-radius:8px}
+.row{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #111827; background: #F3F4F6; min-height: 2000px; box-sizing: border-box; padding: 40px 48px; display: flex; flex-direction: column; gap: 26px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap">
+<div><h1 style="margin: 0; font-size: 34px; font-weight: 700">Home — mapa de componentes</h1><p style="margin: 6px 0 0; color: #4B5563; font-size: 15px">Ruta <span class="path">app/[locale]/page.tsx</span> · cada caja = un componente y su archivo</p></div>
+<div style="display: flex; gap: 14px; font-size: 12px; color: #374151; flex-wrap: wrap">
+<span style="display: inline-flex; gap: 6px; align-items: center"><span style="width: 12px; height: 12px; border-radius: 3px; background: #1F2633"></span>Server Component</span>
+<span style="display: inline-flex; gap: 6px; align-items: center"><span style="width: 12px; height: 12px; border-radius: 3px; background: #7A5C1E"></span>Client ("use client")</span>
+<span style="display: inline-flex; gap: 6px; align-items: center"><span style="width: 12px; height: 12px; border-radius: 3px; background: #1F4E79"></span>Three.js · dynamic, ssr:false</span>
+</div>
+</div>
+
+<div class="cmp sec"><span class="tag">SiteHeader</span><div class="path" style="margin-bottom: 10px">components/layout/site-header.tsx</div>
+<div class="row">
+<div class="cmp" style="flex: 0 0 140px"><span class="tag">Logo</span><div class="blk" style="height: 28px"></div></div>
+<div class="cmp" style="flex: 1"><span class="tag">MainNav</span><div class="path">layout/main-nav.tsx · next-intl &lt;Link&gt;</div></div>
+<div class="cmp" style="flex: 0 0 200px"><span class="tag c">CommandMenu</span><div class="path">command/command-menu.tsx · cmdk</div></div>
+<div class="cmp" style="flex: 0 0 170px"><span class="tag c">LocaleSwitcher</span><div class="path">i18n/locale-switcher.tsx</div></div>
+<div class="cmp" style="flex: 0 0 160px"><span class="tag c">ThemeToggle</span><div class="path">theme/theme-toggle.tsx</div></div>
+</div>
+</div>
+
+<div class="cmp sec"><span class="tag">HeroSection</span><div class="path" style="margin-bottom: 10px">sections/home/hero-section.tsx · fondo: ui/backgrounds/grid-background.tsx + glow-orbs.tsx</div>
+<div class="row">
+<div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 18px">
+<div class="cmp"><span class="tag">AvailabilityBadge</span><div class="path">ui/availability-badge.tsx</div></div>
+<div class="cmp"><span class="tag">GradientText</span><div class="path">ui/gradient-text.tsx · h1 nombre</div><div class="blk" style="height: 64px; margin-top: 8px"></div></div>
+<div class="cmp"><span class="tag">HeroIntro</span><div class="path">texto desde messages/{es,en}.json</div><div class="blk" style="height: 40px; margin-top: 8px"></div></div>
+<div class="cmp"><span class="tag c">ContactTerminal</span><div class="path">contact/contact-terminal.tsx · typing + caret</div>
+<div class="row" style="margin-top: 18px">
+<div class="cmp" style="flex: 1; border-color: #7A5C1E"><span class="tag">ContactLink · primary</span><div class="path">Gmail</div></div>
+<div class="cmp" style="flex: 1"><span class="tag">ContactLink</span><div class="path">LinkedIn</div></div>
+<div class="cmp" style="flex: 1"><span class="tag">ContactLink</span><div class="path">GitHub</div></div>
+<div class="cmp" style="flex: 1"><span class="tag">ContactLink</span><div class="path">WhatsApp</div></div>
+</div>
+<div class="path" style="margin-top: 8px">datos: content/profile.ts → contactLinks[]</div>
+</div>
+</div>
+<div style="flex: 1 1 440px; display: flex; flex-direction: column; gap: 18px">
+<div class="cmp" style="flex: 1; display: flex; flex-direction: column"><span class="tag t">CollaborationGlobe</span><div class="path">three/globe/collaboration-globe.tsx · globe-arcs.ts · countries.ts</div>
+<div style="flex: 1; min-height: 320px; display: grid; place-items: center"><div style="width: 300px; height: 300px; border-radius: 50%; border: 1.5px dashed #8C96A8; background: repeating-radial-gradient(circle, #E3E6EB 0 2px, transparent 2px 14px)"></div></div>
+<div class="path">fallback: GlobeStaticSvg (prefers-reduced-motion / sin WebGL)</div></div>
+<div class="cmp"><span class="tag">GlobeLegend</span><div class="path">three/globe/globe-legend.tsx · LanguageBadge ×2 + lista de países</div></div>
+</div>
+</div>
+</div>
+
+<div class="cmp sec"><span class="tag">StatsStrip</span><div class="path" style="margin-bottom: 10px">sections/home/stats-strip.tsx · content/stats.ts</div>
+<div class="row">
+<div class="cmp" style="flex: 1"><span class="tag c">StatCard</span><div class="path">ui/stat-card.tsx + AnimatedCounter</div></div>
+<div class="cmp" style="flex: 1"><span class="tag c">StatCard</span><div class="blk" style="height: 30px"></div></div>
+<div class="cmp" style="flex: 1"><span class="tag c">StatCard</span><div class="blk" style="height: 30px"></div></div>
+<div class="cmp" style="flex: 1"><span class="tag c">StatCard</span><div class="blk" style="height: 30px"></div></div>
+</div>
+</div>
+
+<div class="cmp sec"><span class="tag">AreasShowcase</span><div class="path" style="margin-bottom: 10px">sections/home/areas-showcase.tsx · content/areas.ts</div>
+<div class="cmp"><span class="tag c">AreaTabs</span><div class="path">areas/area-tabs.tsx · Radix Tabs · 6 tabs</div>
+<div class="row" style="margin-top: 18px">
+<div class="cmp" style="flex: 1 1 420px"><span class="tag">AreaSummary</span><div class="path">texto + bullets + TechChip[] + link a /areas/[slug]</div><div class="blk" style="height: 120px; margin-top: 8px"></div></div>
+<div class="cmp" style="flex: 1 1 420px"><span class="tag c">ImpactBars</span><div class="path">charts/impact-bars.tsx · antes → después</div><div class="blk" style="height: 120px; margin-top: 8px"></div></div>
+</div>
+</div>
+</div>
+
+<div class="cmp sec"><span class="tag">CareerSection</span><div class="path" style="margin-bottom: 10px">sections/home/career-section.tsx · content/experience.ts</div>
+<div class="cmp"><span class="tag c">CareerGantt</span><div class="path">charts/career-gantt.tsx · GanttAxis + GanttRow ×6 · tooltip por rol</div>
+<div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px">
+<div class="blk" style="height: 16px; width: 30%; margin-left: 60%"></div>
+<div class="blk" style="height: 16px; width: 22%; margin-left: 70%"></div>
+<div class="blk" style="height: 16px; width: 45%; margin-left: 40%"></div>
+<div class="blk" style="height: 16px; width: 55%; margin-left: 15%"></div>
+</div></div>
+</div>
+
+<div class="row">
+<div class="cmp sec" style="flex: 1 1 400px"><span class="tag">EducationCard</span><div class="path">sections/home/education-card.tsx · content/education.ts</div><div class="blk" style="height: 90px; margin-top: 10px"></div></div>
+<div class="cmp sec" style="flex: 1 1 400px"><span class="tag">StackCloud</span><div class="path">sections/home/stack-cloud.tsx · TechChip[] · content/stack.ts</div><div class="blk" style="height: 90px; margin-top: 10px"></div></div>
+</div>
+
+<div class="cmp sec"><span class="tag">ContactCta</span><div class="path">sections/home/contact-cta.tsx · id="contacto" · botón primario Gmail</div><div class="blk" style="height: 60px; margin-top: 10px"></div></div>
+<div class="cmp sec"><span class="tag">SiteFooter</span><div class="path">components/layout/site-footer.tsx · enlaces, ©, cambio de idioma</div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2000}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
