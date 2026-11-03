@@ -67,13 +67,13 @@ Componentes sugeridos, en `src/components/contact/`:
 
 **Campos.** Cada uno con `<label>` real y `name`/`autocomplete`:
 
-| name | tipo | requerido | autocomplete | validación |
-|---|---|---|---|---|
-| `name` | text | sí | `name` | trim, 2–80 caracteres |
-| `email` | email | sí | `email` | Zod `.email()` |
-| `company` | text | no | `organization` | máximo 80 |
-| `type` | select | sí (default `empleo`) | — | enum `empleo` · `contrato` · `consultoria` · `otro` |
-| `message` | textarea, 6 filas, resize vertical | sí | — | trim, 10–2000 caracteres |
+| name      | tipo                               | requerido             | autocomplete   | validación                                          |
+| --------- | ---------------------------------- | --------------------- | -------------- | --------------------------------------------------- |
+| `name`    | text                               | sí                    | `name`         | trim, 2–80 caracteres                               |
+| `email`   | email                              | sí                    | `email`        | Zod `.email()`                                      |
+| `company` | text                               | no                    | `organization` | máximo 80                                           |
+| `type`    | select                             | sí (default `empleo`) | —              | enum `empleo` · `contrato` · `consultoria` · `otro` |
+| `message` | textarea, 6 filas, resize vertical | sí                    | —              | trim, 10–2000 caracteres                            |
 
 Las etiquetas del select vienen de `content/contact.ts` → `opportunityTypes`.
 

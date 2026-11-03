@@ -50,15 +50,15 @@
 - **Nodos:** `id` (el slug existente), `code` (FE, BE, KYC, OPS, AI, LD), `position3d: [x, y, z]`, `position2d: { x, y }` en un viewBox de 1000×600, y `depth` para la escala del fallback.
 - **Conexiones:** `[from, to, labelKey]`, 7 en total. La etiqueta es el proyecto que comparten las dos áreas:
 
-| De | A | Etiqueta ES | Etiqueta EN |
-|---|---|---|---|
-| frontend | backend-pagos | Sitio de pagos (Next.js) | Payments site (Next.js) |
-| backend-pagos | devops | Gate de CI | CI gate |
-| backend-pagos | compliance | Motor KYC (FastAPI) | KYC engine (FastAPI) |
-| compliance | ai-engineering | Extracción con Bedrock | Extraction with Bedrock |
-| ai-engineering | leadership | Workflow con Claude Code | Claude Code workflow |
-| leadership | frontend | Estándar de documentación | Documentation standard |
-| frontend | devops | Suite de tests −30% | Test suite −30% |
+| De             | A              | Etiqueta ES               | Etiqueta EN             |
+| -------------- | -------------- | ------------------------- | ----------------------- |
+| frontend       | backend-pagos  | Sitio de pagos (Next.js)  | Payments site (Next.js) |
+| backend-pagos  | devops         | Gate de CI                | CI gate                 |
+| backend-pagos  | compliance     | Motor KYC (FastAPI)       | KYC engine (FastAPI)    |
+| compliance     | ai-engineering | Extracción con Bedrock    | Extraction with Bedrock |
+| ai-engineering | leadership     | Workflow con Claude Code  | Claude Code workflow    |
+| leadership     | frontend       | Estándar de documentación | Documentation standard  |
+| frontend       | devops         | Suite de tests −30%       | Test suite −30%         |
 
 ### 3.2 Escena 3D (react-three-fiber + drei)
 
@@ -143,14 +143,14 @@ Cómo es:
 
 Métricas por área (las mismas que ya muestran las páginas de área):
 
-| Área | Métrica | Etiqueta |
-|---|---|---|
-| Frontend | −30% | suite de tests (255 s → 178 s) |
-| Backend & Pagos | −98.8% | paginación por cursor (300k filas) |
-| Compliance AML/KYC | 224 | commits de código en 8 semanas |
-| DevOps | −97% | guardado de caché en CI (1:36 → 0:03) |
-| AI Engineering | 403 | commits pareados con IA en 4 repositorios |
-| Leadership | 63 | features con el estándar RFC → ADR |
+| Área               | Métrica | Etiqueta                                  |
+| ------------------ | ------- | ----------------------------------------- |
+| Frontend           | −30%    | suite de tests (255 s → 178 s)            |
+| Backend & Pagos    | −98.8%  | paginación por cursor (300k filas)        |
+| Compliance AML/KYC | 224     | commits de código en 8 semanas            |
+| DevOps             | −97%    | guardado de caché en CI (1:36 → 0:03)     |
+| AI Engineering     | 403     | commits pareados con IA en 4 repositorios |
+| Leadership         | 63      | features con el estándar RFC → ADR        |
 
 ## 5. Lista "Todas las áreas"
 

@@ -2,15 +2,15 @@
 
 Las capturas salen del prototipo navegable del lienzo y están en `screens/`. Usa las fuentes del sitio (Sora, Inter y JetBrains Mono), aunque en alguna captura no se hayan cargado.
 
-| Captura | Qué muestra |
-|---|---|
-| `areas-desktop.png` | /areas al cargar, con Backend & Pagos seleccionado |
-| `areas-nodo-seleccionado.png` | Después de elegir Compliance: conexiones iluminadas, etiquetas y panel actualizado |
-| `areas-movil.png` | 420px de ancho. **Defecto conocido:** el nodo y la etiqueta de Compliance se salen del borde; la spec pide recolocarlos |
-| `contacto-desktop.png` | /contacto en su estado inicial |
-| `contacto-error-validacion.png` | Envío con campos vacíos: alerta de validación |
-| `contacto-enviado.png` | Estado de éxito después de abrir el mailto |
-| `contacto-movil.png` | 420px de ancho |
+| Captura                         | Qué muestra                                                                                                             |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `areas-desktop.png`             | /areas al cargar, con Backend & Pagos seleccionado                                                                      |
+| `areas-nodo-seleccionado.png`   | Después de elegir Compliance: conexiones iluminadas, etiquetas y panel actualizado                                      |
+| `areas-movil.png`               | 420px de ancho. **Defecto conocido:** el nodo y la etiqueta de Compliance se salen del borde; la spec pide recolocarlos |
+| `contacto-desktop.png`          | /contacto en su estado inicial                                                                                          |
+| `contacto-error-validacion.png` | Envío con campos vacíos: alerta de validación                                                                           |
+| `contacto-enviado.png`          | Estado de éxito después de abrir el mailto                                                                              |
+| `contacto-movil.png`            | 420px de ancho                                                                                                          |
 
 ## Fuente (`source/`)
 
