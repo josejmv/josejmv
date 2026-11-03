@@ -48,6 +48,8 @@ test.describe("teclado (escritorio)", () => {
     "/en/projects/kyc-engine",
     "/es/areas/frontend",
     "/es/areas/devops",
+    "/es/areas",
+    "/es/contacto",
   ]) {
     test(`todo lo enfocable con Tab muestra el foco · ${path}`, async ({ page }) => {
       await gotoReady(page, path);

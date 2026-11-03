@@ -17,6 +17,10 @@ const PAGES = [
   "/en/areas/devops",
   "/es/areas/ai-engineering",
   "/en/areas/leadership",
+  "/es/areas",
+  "/en/areas",
+  "/es/contacto",
+  "/en/contact",
   "/es/no-existe",
 ];
 

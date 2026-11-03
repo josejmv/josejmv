@@ -186,14 +186,13 @@ export function ConstellationFallback2D({
               className={cn(
                 placed,
                 // El punto (x, y) es el centro de la esfera; la etiqueta cuelga debajo.
-                "group/node -translate-1/2 rounded-full outline-none",
+                "group/node -translate-1/2 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-text",
               )}
             >
               <span
                 aria-hidden="true"
                 className={cn(
                   "grid size-[calc(52px*var(--depth))] place-items-center rounded-full font-mono text-xs font-semibold transition-[transform,background-color,box-shadow] duration-300 sm:size-[calc(62px*var(--depth))]",
-                  "group-focus-visible/node:outline-2 group-focus-visible/node:outline-offset-4 group-focus-visible/node:outline-accent-text",
                   active
                     ? "scale-115 bg-radial-[at_35%_30%] from-text via-accent via-40% to-accent-text text-on-accent shadow-[0_0_36px_color-mix(in_srgb,var(--accent)_45%,transparent)]"
                     : "bg-radial-[at_35%_30%] from-text/85 via-accent-2 via-35% to-(--constellation-node) text-bg shadow-[0_0_24px_color-mix(in_srgb,var(--accent-2)_20%,transparent)] group-hover/node:scale-105",

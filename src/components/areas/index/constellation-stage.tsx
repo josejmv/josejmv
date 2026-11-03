@@ -111,6 +111,8 @@ export function ConstellationStage({ graph, labels }: ConstellationStageProps) {
     <section className="container-page flex flex-wrap gap-5">
       <div
         ref={stage}
+        // Con la escena 3D, los radios accesibles son invisibles: el anillo de foco lo pinta el escenario.
+        data-focus-ring=""
         className="relative isolate aspect-4/5 min-h-[520px] w-full flex-[999_1_560px] overflow-hidden rounded-[28px] border border-border bg-radial from-(--constellation-from) to-(--constellation-to) to-70% has-[.sr-only_[role=radio]:focus-visible]:outline-2 has-[.sr-only_[role=radio]:focus-visible]:outline-offset-2 has-[.sr-only_[role=radio]:focus-visible]:outline-accent-text sm:aspect-auto sm:min-h-[600px]"
       >
         <div

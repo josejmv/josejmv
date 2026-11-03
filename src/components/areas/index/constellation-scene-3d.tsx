@@ -178,12 +178,14 @@ function Edge({
   to,
   label,
   active,
+  compact,
   palette,
 }: {
   from: Vector3;
   to: Vector3;
   label: string;
   active: boolean;
+  compact: boolean;
   palette: Palette;
 }) {
   const line = useRef<{ material: { dashOffset: number } } | null>(null);
@@ -209,8 +211,16 @@ function Edge({
       <Html position={mid} center zIndexRange={[20, 0]} style={{ pointerEvents: "none" }}>
         <span
           data-constellation-label={active ? "" : undefined}
+          // En móvil: etiqueta en dos líneas si hace falta y corrida hacia el centro si la línea va
+          // pegada a un borde.
+          style={
+            compact && Math.abs(mid.x) > 1.5
+              ? { translate: `${mid.x > 0 ? -35 : 35}% 0` }
+              : undefined
+          }
           className={cn(
-            "block rounded-md border border-accent-text/40 bg-surface/90 px-2 py-0.5 font-mono text-[11px] whitespace-nowrap text-accent-text transition-opacity duration-200",
+            "block rounded-md border border-accent-text/40 bg-surface/90 px-2 py-0.5 text-center font-mono text-[11px] text-accent-text transition-opacity duration-200",
+            compact ? "w-max max-w-32" : "whitespace-nowrap",
             active ? "opacity-100" : "invisible opacity-0",
           )}
         >
@@ -309,6 +319,12 @@ function Node({
       >
         <span
           data-constellation-label={showName ? "" : undefined}
+          // En móvil, los nodos laterales corren su etiqueta hacia el centro para no salirse del borde.
+          style={
+            compact && Math.abs(position.x) > 1.5
+              ? { translate: `${position.x > 0 ? -40 : 40}% 0` }
+              : undefined
+          }
           className={cn(
             "block rounded-full border bg-surface/90 px-3 py-1 text-xs font-medium whitespace-nowrap transition-colors",
             !showName && "invisible",
@@ -341,7 +357,9 @@ function CameraFit() {
 
   useEffect(() => {
     const tan = Math.tan(((FOV / 2) * Math.PI) / 180);
-    const distance = Math.max(9, HALF_WIDTH / (tan * aspect));
+    // En vertical, margen extra: la rotación del grupo (±12°) acerca los nodos laterales al borde.
+    const halfWidth = aspect < 1 ? HALF_WIDTH + 0.7 : HALF_WIDTH;
+    const distance = Math.max(9, halfWidth / (tan * aspect));
     camera.position.setLength(Math.hypot(distance, 1.2));
     controls?.update();
   }, [aspect, camera, controls]);
@@ -434,6 +452,7 @@ function Scene({
             to={positions.get(edge.to)!}
             label={edge.label}
             active={isEdgeActive(edge, selected)}
+            compact={compact}
             palette={palette}
           />
         ))}
