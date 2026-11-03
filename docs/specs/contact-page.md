@@ -77,7 +77,7 @@ Componentes sugeridos, en `src/components/contact/`:
 
 Las etiquetas del select vienen de `content/contact.ts` → `opportunityTypes`.
 
-**Envío (ADR 0004: sin terceros).**
+**Envío (ADR 0005: sin terceros).**
 
 1. Al pulsar **Enviar mensaje**, valida con Zod (`contactFormSchema` en `content/schema.ts`).
 2. Si es inválido:
