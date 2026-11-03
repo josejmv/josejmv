@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import { ContactTerminal } from "@/components/contact/contact-terminal";
+import type { TerminalProps } from "@/components/contact/terminal/terminal-props";
 import { AvailabilityBadge } from "@/components/ui/availability-badge";
 import { GradientText } from "@/components/ui/gradient-text";
 import type { LocalizedProfile } from "@/lib/content";
@@ -12,12 +13,13 @@ interface HeroSectionProps {
     terminalCommand: string;
     contactList: string;
   };
+  terminal: TerminalProps;
   /** Columna derecha: el globo con sus tabs (tareas 4.2–4.4). */
   aside?: ReactNode;
 }
 
 /** Hero del Home: identidad + terminal de contacto a la izquierda y globo a la derecha. */
-export function HeroSection({ profile, labels, aside }: HeroSectionProps) {
+export function HeroSection({ profile, labels, terminal, aside }: HeroSectionProps) {
   // El apellido va con degradado: "José M. <Vasquez>".
   const lastSpace = profile.name.lastIndexOf(" ");
   const first = profile.name.slice(0, lastSpace + 1);
@@ -50,6 +52,7 @@ export function HeroSection({ profile, labels, aside }: HeroSectionProps) {
           command={labels.terminalCommand}
           listLabel={labels.contactList}
           links={profile.contactLinks}
+          terminal={terminal}
         />
       </div>
 

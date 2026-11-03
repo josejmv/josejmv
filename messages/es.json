@@ -554,5 +554,45 @@
         }
       ]
     }
+  },
+  "Terminal": {
+    "inputLabel": "Terminal interactiva: escribe un comando y pulsa Enter",
+    "placeholder": "escribe help",
+    "outputLabel": "Salida de la terminal",
+    "help": {
+      "title": "Comandos disponibles:",
+      "hint": "Hay un par de comandos ocultos. Suerte.",
+      "commands": {
+        "help": "esta ayuda",
+        "whoami": "quién soy",
+        "experience": "mi trayectoria",
+        "skills": "stack técnico",
+        "ls": "lista áreas y proyectos (ls areas · ls proyectos)",
+        "cd": "navega por el sitio (cd areas/devops · cd proyectos · cd ~)",
+        "contact": "canales de contacto (contact gmail abre uno)",
+        "theme": "cambia el tema (theme dark · theme light)",
+        "lang": "cambia el idioma (lang en)",
+        "clear": "limpia la pantalla"
+      }
+    },
+    "notFound": "comando no encontrado: {cmd}. Prueba help.",
+    "noSuchPath": "cd: no existe el directorio: {path}",
+    "navigating": "→ abriendo {path}…",
+    "opening": "→ abriendo {label}…",
+    "unknownChannel": "contact: canal desconocido «{id}». Opciones: {list}",
+    "contactTitle": "Canales de contacto:",
+    "themeSet": "tema → {value}",
+    "themeUsage": "uso: theme dark | light",
+    "langSet": "idioma → {value}",
+    "langUsage": "uso: lang es | en",
+    "sudo": [
+      "[sudo] contraseña para recruiter: ********",
+      "Acceso concedido. Excelente decisión.",
+      "Escríbeme y hablamos:"
+    ],
+    "sudoDenied": "Este incidente será reportado. (Prueba con sudo hire jose.)",
+    "rm": "rm: permiso denegado. Este portafolio está en producción.",
+    "exit": "No hay salida. Mejor escribe contact.",
+    "lsUsage": "uso: ls [areas | proyectos]"
   }
 }

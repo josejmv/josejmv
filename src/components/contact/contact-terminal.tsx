@@ -4,6 +4,8 @@ import type { CSSProperties } from "react";
 import { cn } from "@/lib/cn";
 
 import { ContactLink } from "./contact-link";
+import type { TerminalProps } from "./terminal/terminal-props";
+import { TerminalPrompt } from "./terminal/terminal-prompt";
 
 interface ContactTerminalProps {
   title: string;
@@ -11,6 +13,8 @@ interface ContactTerminalProps {
   /** Etiqueta accesible de la lista de enlaces. */
   listLabel: string;
   links: ContactLinkData[];
+  /** Prompt interactivo (comandos, easter eggs). */
+  terminal: TerminalProps;
   className?: string;
 }
 
@@ -19,14 +23,15 @@ const START_MS = 300;
 
 /**
  * Terminal de contacto (Fusion). El comando se "escribe" con CSS (`typing`) y los enlaces aparecen
- * después, escalonados. Server Component: sin JS; con reduced-motion todo aparece de inmediato.
- * Gmail va primero y con relleno (CTA primario).
+ * después, escalonados; con reduced-motion todo aparece de inmediato. Gmail va primero y con relleno
+ * (CTA primario). La última línea es un prompt real (`TerminalPrompt`): acepta comandos.
  */
 export function ContactTerminal({
   title,
   command,
   listLabel,
   links,
+  terminal,
   className,
 }: ContactTerminalProps) {
   const ordered = [...links].sort((a, b) => Number(b.primary) - Number(a.primary));
@@ -34,8 +39,11 @@ export function ContactTerminal({
 
   return (
     <div
+      // El input no dibuja anillo propio: la terminal entera marca el foco.
+      data-focus-ring
       className={cn(
         "max-w-[560px] overflow-hidden rounded-2xl border border-border bg-surface-2/90",
+        "has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-2 has-[input:focus-visible]:outline-accent-text",
         className,
       )}
     >
@@ -68,10 +76,7 @@ export function ContactTerminal({
           ))}
         </ul>
 
-        <p aria-hidden="true">
-          <span className="text-accent-text">$</span>{" "}
-          <span className="inline-block h-[15px] w-2 bg-text align-middle motion-safe:animate-caret" />
-        </p>
+        <TerminalPrompt {...terminal} />
       </div>
     </div>
   );

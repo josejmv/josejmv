@@ -554,5 +554,45 @@
         }
       ]
     }
+  },
+  "Terminal": {
+    "inputLabel": "Interactive terminal: type a command and press Enter",
+    "placeholder": "type help",
+    "outputLabel": "Terminal output",
+    "help": {
+      "title": "Available commands:",
+      "hint": "There are a couple of hidden commands. Good luck.",
+      "commands": {
+        "help": "this help",
+        "whoami": "who I am",
+        "experience": "my career",
+        "skills": "tech stack",
+        "ls": "list areas and projects (ls areas · ls projects)",
+        "cd": "browse the site (cd areas/devops · cd projects · cd ~)",
+        "contact": "contact channels (contact gmail opens one)",
+        "theme": "switch theme (theme dark · theme light)",
+        "lang": "switch language (lang es)",
+        "clear": "clear the screen"
+      }
+    },
+    "notFound": "command not found: {cmd}. Try help.",
+    "noSuchPath": "cd: no such directory: {path}",
+    "navigating": "→ opening {path}…",
+    "opening": "→ opening {label}…",
+    "unknownChannel": "contact: unknown channel “{id}”. Options: {list}",
+    "contactTitle": "Contact channels:",
+    "themeSet": "theme → {value}",
+    "themeUsage": "usage: theme dark | light",
+    "langSet": "language → {value}",
+    "langUsage": "usage: lang es | en",
+    "sudo": [
+      "[sudo] password for recruiter: ********",
+      "Access granted. Excellent choice.",
+      "Write to me and let's talk:"
+    ],
+    "sudoDenied": "This incident will be reported. (Try sudo hire jose.)",
+    "rm": "rm: permission denied. This portfolio is in production.",
+    "exit": "There is no exit. Try contact instead.",
+    "lsUsage": "usage: ls [areas | projects]"
   }
 }

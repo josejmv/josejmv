@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { AreasShowcase } from "@/components/sections/home/areas-showcase";
 import { CareerSection } from "@/components/sections/home/career-section";
+import { getTerminalProps } from "@/components/contact/terminal/terminal-props";
 import { ContactCta } from "@/components/sections/home/contact-cta";
 import { EducationCard } from "@/components/sections/home/education-card";
 import { HeroSection } from "@/components/sections/home/hero-section";
@@ -56,6 +57,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     getTranslations({ locale, namespace: "Cta" }),
     getCurrentMonth(),
   ]);
+  const terminal = await getTerminalProps(locale);
   const profile = getProfile(locale);
   const globe = getGlobeData(locale);
 
@@ -76,6 +78,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       />
       <HeroSection
         profile={profile}
+        terminal={terminal}
         labels={{
           terminalTitle: t("terminalTitle"),
           terminalCommand: t("terminalCommand"),
