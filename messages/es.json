@@ -113,7 +113,11 @@
     "stack": "stack",
     "metricsTitle": "Impacto medido",
     "download": "Descargar CV (PDF, en inglés)",
-    "ganttTitle": "Línea de tiempo"
+    "ganttTitle": "Línea de tiempo",
+    "zoom": {
+      "label": "Zoom por año",
+      "all": "Todo"
+    }
   },
   "Projects": {
     "metaTitle": "Proyectos · José M. Vasquez",

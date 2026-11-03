@@ -10,8 +10,5 @@ export async function getCurrentMonth(): Promise<string> {
   return new Date().toISOString().slice(0, 7);
 }
 
-/** `YYYY-MM` → meses desde el año 0 (para restar fechas sin zonas horarias). */
-export function toMonthIndex(yearMonth: string): number {
-  const [year, month] = yearMonth.split("-").map(Number);
-  return year * 12 + (month - 1);
-}
+// Puro y sin "use cache": vive aparte para poder usarse en componentes cliente.
+export { toMonthIndex } from "./month";

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { CareerGantt } from "@/components/charts/career-gantt";
+import { CareerGanttZoom } from "@/components/charts/career-gantt-zoom";
 import { ExperienceCard } from "@/components/experience/experience-card";
 import { ExperienceTimeline } from "@/components/experience/experience-timeline";
 import { MetricHighlight } from "@/components/experience/metric-highlight";
@@ -76,11 +76,12 @@ export default async function ExperiencePage({ params }: PageProps<"/[locale]/ex
           <h2 id="gantt-title" className="font-display text-xl font-semibold">
             {t("ganttTitle")}
           </h2>
-          <CareerGantt
+          <CareerGanttZoom
             roles={roles}
             now={now}
             locale={locale}
             labels={{ list: tCareer("list"), present: tCareer("present") }}
+            zoomLabels={{ label: t("zoom.label"), all: t("zoom.all") }}
           />
         </div>
       </section>
