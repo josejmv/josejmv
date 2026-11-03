@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 
 const css = readFileSync(resolve(__dirname, "../../src/app/globals.css"), "utf8");
 
-/** Tokens de la tabla de CLAUDE.md, más `--on-accent` (texto sobre `--accent`). */
+/** Tokens de la tabla de CLAUDE.md, más `--on-accent` (texto sobre `--accent`) y los de error. */
 const TOKENS = [
   "bg",
   "surface",
@@ -21,6 +21,8 @@ const TOKENS = [
   "accent-text",
   "accent-2",
   "success",
+  "danger-bg",
+  "danger-text",
 ] as const;
 
 function block(selector: RegExp): string {
