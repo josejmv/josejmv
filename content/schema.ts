@@ -58,18 +58,6 @@ export const Profile = z
     monogram: text,
     role: Localized,
     headline: Localized,
-    location: Localized,
-    /**
-     * Dónde vive: origen de los arcos del globo y país del JSON-LD. `country` debe existir en
-     * `content/countries.ts`; `lat`/`lng` son de la ciudad (pueden diferir de los del país).
-     */
-    home: z
-      .object({
-        country: z.string().regex(/^[A-Z]{2}$/),
-        lat: z.number().min(-90).max(90),
-        lng: z.number().min(-180).max(180),
-      })
-      .strict(),
     summary: Localized,
     available: z.boolean(),
     email: z.email(),

@@ -23,8 +23,6 @@ describe("Profile", () => {
     monogram: "AP.",
     role: loc("Dev"),
     headline: loc("Titular"),
-    location: loc("Ciudad"),
-    home: { country: "CO", lat: 4.92, lng: -74.03 },
     summary: loc("Resumen"),
     available: true,
     email: "ana@example.com",

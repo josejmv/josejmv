@@ -93,7 +93,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                   <GlobeStaticSvg
                     points={globe.team}
                     home={globe.home}
-                    label={tGlobe("ariaTeam", { count: globe.team.length })}
+                    label={tGlobe("ariaTeam", {
+                      count: globe.team.length,
+                      origin: globe.home.name,
+                    })}
                   />
                 ),
                 legend: legend(

@@ -1,11 +1,12 @@
 import type { GlobeHome, LocalizedCountry } from "@/lib/content";
 import { cn } from "@/lib/cn";
+import { withHome } from "@/lib/globe/with-home";
 import { arcPath, GLOBE_CENTER, GLOBE_VIEWBOX, project, toLimb } from "@/lib/globe/projection";
 
 interface GlobeStaticSvgProps {
   points: LocalizedCountry[];
+  /** Origen de los arcos (HOME_*): se resalta en champagne. */
   home: GlobeHome;
-  /** Código ISO del país de origen (se resalta en champagne). */
   label: string;
   className?: string;
 }
@@ -15,7 +16,13 @@ interface GlobeStaticSvgProps {
  * desde `content/countries.ts`. Es el fallback del globo 3D (sin WebGL, reduced-motion o mientras
  * carga). Equipo: punto en `--accent-2`. Empresas: anillo en `--accent-text` (ADR 0003).
  */
-export function GlobeStaticSvg({ points, home, label, className }: GlobeStaticSvgProps) {
+export function GlobeStaticSvg({
+  points: viewPoints,
+  home,
+  label,
+  className,
+}: GlobeStaticSvgProps) {
+  const points = withHome(viewPoints, home);
   const origin = project(home);
   const targets = points
     .filter((p) => p.id !== home.id || p.kind === "company")

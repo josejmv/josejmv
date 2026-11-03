@@ -25,6 +25,8 @@ import {
 import { stack as rawStack } from "@content/stack";
 import { stats as rawStats } from "@content/stats";
 
+import { countryName, HOME } from "./home";
+
 // La validación corre al importar el módulo: si el contenido es inválido, el build falla.
 const content = {
   profile: Profile.parse(rawProfile),
@@ -39,16 +41,6 @@ const content = {
     company: z.array(Country).parse(companyCountries),
   },
 };
-
-// `profile.home.country` debe ser un país del globo: si no, el origen no tendría marcador.
-{
-  const ids = new Set([...content.countries.team, ...content.countries.company].map((c) => c.id));
-  if (!ids.has(content.profile.home.country)) {
-    throw new Error(
-      `profile.home.country "${content.profile.home.country}" no existe en content/countries.ts`,
-    );
-  }
-}
 
 function isLocalized(value: unknown): value is Localized {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
@@ -72,7 +64,8 @@ export function localize<T>(value: T, locale: ContentLocale): LocalizedTo<T> {
   return value as LocalizedTo<T>;
 }
 
-export type LocalizedProfile = LocalizedTo<Profile>;
+/** `location` («Ciudad, País») sale de las variables HOME_* (src/lib/home.ts). */
+export type LocalizedProfile = LocalizedTo<Profile> & { location: string; country: string };
 export type LocalizedExperience = LocalizedTo<Experience>;
 export type LocalizedArea = LocalizedTo<Area>;
 export type LocalizedStat = LocalizedTo<Stat>;
@@ -81,7 +74,11 @@ export type LocalizedCountry = LocalizedTo<Country>;
 export type LocalizedProject = LocalizedTo<Project>;
 
 export function getProfile(locale: ContentLocale): LocalizedProfile {
-  return localize(content.profile, locale);
+  return {
+    ...localize(content.profile, locale),
+    location: `${HOME.city}, ${countryName(HOME.country, locale)}`,
+    country: HOME.country,
+  };
 }
 
 export function getExperience(locale: ContentLocale): LocalizedExperience[] {
@@ -113,16 +110,21 @@ export function getStack(): StackItem[] {
   return content.stack;
 }
 
-/** Origen del globo: id del país (para no trazarse un arco a sí mismo) y coordenadas. */
+/** Origen del globo (HOME_*): id del país, su nombre localizado y coordenadas de la ciudad. */
 export interface GlobeHome {
   id: string;
+  name: string;
   lat: number;
   lng: number;
 }
 
 export function getGlobeData(locale: ContentLocale) {
-  const { country, lat, lng } = content.profile.home;
-  const home: GlobeHome = { id: country, lat, lng };
+  const home: GlobeHome = {
+    id: HOME.country,
+    name: countryName(HOME.country, locale),
+    lat: HOME.lat,
+    lng: HOME.lng,
+  };
   return {
     home,
     team: localize(content.countries.team, locale),

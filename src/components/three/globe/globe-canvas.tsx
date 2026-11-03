@@ -8,6 +8,7 @@ import countriesTopology from "world-atlas/countries-110m.json";
 
 import type { GlobeHome, LocalizedCountry } from "@/lib/content";
 import { cameraAltitude, VIEW_CENTER } from "@/lib/globe/projection";
+import { withHome } from "@/lib/globe/with-home";
 
 export interface GlobeCanvasProps {
   points: LocalizedCountry[];
@@ -75,12 +76,13 @@ function subscribeTheme(onChange: () => void) {
 const getTheme = () => document.documentElement.getAttribute("data-theme") ?? "dark";
 
 export default function GlobeCanvas({
-  points,
+  points: viewPoints,
   home,
   active,
   onReady,
   rotateAfterMs = 0,
 }: GlobeCanvasProps) {
+  const points = useMemo(() => withHome(viewPoints, home), [viewPoints, home]);
   const globeRef = useRef<GlobeMethods | undefined>(undefined);
   const containerRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState(0);
