@@ -42,7 +42,9 @@ async function gotoReady(page: Page, path: string) {
 
 for (const l of LOCALES) {
   test.describe(`Contacto · ${l.path}`, () => {
-    test("enviar vacío muestra la alerta, marca los campos y enfoca el nombre", async ({ page }) => {
+    test("enviar vacío muestra la alerta, marca los campos y enfoca el nombre", async ({
+      page,
+    }) => {
       await gotoReady(page, l.path);
       await page.getByRole("button", { name: l.submit }).click();
 

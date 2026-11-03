@@ -36,13 +36,44 @@ class SceneBoundary extends Component<{ children: ReactNode; onError: () => void
   }
 }
 
-function supportsWebGL(): boolean {
+/** Los E2E fuerzan la escena 3D con esta clave: el Chromium de CI solo tiene WebGL por software. */
+export const FORCE_3D_KEY = "constellation:3d";
+
+/**
+ * `true` si hay WebGL con GPU. Un renderer por software (SwiftShader, llvmpipe…) dibuja en la CPU y
+ * bloquea el hilo principal en cada frame: ahí la constelación se queda en 2D.
+ */
+function forced3d(): boolean {
   try {
-    const canvas = document.createElement("canvas");
-    return !!(canvas.getContext("webgl2") ?? canvas.getContext("webgl"));
+    return window.localStorage.getItem(FORCE_3D_KEY) === "force";
   } catch {
     return false;
   }
+}
+
+function hasHardwareWebGL(): boolean {
+  if (forced3d()) return true;
+  try {
+    const canvas = document.createElement("canvas");
+    const gl = canvas.getContext("webgl2") ?? canvas.getContext("webgl");
+    if (!gl) return false;
+    const info = gl.getExtension("WEBGL_debug_renderer_info");
+    const renderer = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : "";
+    gl.getExtension("WEBGL_lose_context")?.loseContext();
+    return !/swiftshader|llvmpipe|softpipe|software|basic render/i.test(renderer);
+  } catch {
+    return false;
+  }
+}
+
+/** Ejecuta `task` cuando el navegador esté ocioso (o a los 1,5 s), para no competir con la hidratación. */
+function whenIdle(task: () => void): () => void {
+  if ("requestIdleCallback" in window) {
+    const id = window.requestIdleCallback(task, { timeout: 1500 });
+    return () => window.cancelIdleCallback(id);
+  }
+  const id = setTimeout(task, 300);
+  return () => clearTimeout(id);
 }
 
 type Mode = "2d" | "3d";
@@ -74,16 +105,36 @@ export function ConstellationStage({ graph, labels }: ConstellationStageProps) {
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const small = window.matchMedia("(max-width: 639px)");
+    const fine = window.matchMedia("(pointer: fine)");
+    // La sonda de WebGL crea un contexto (caro con un renderer por software): solo se hace cuando
+    // la escena se va a montar.
+    let webgl: boolean | undefined;
+    const node = stage.current;
+    // Con ratón, la escena se monta sola cuando el navegador está ocioso. En pantallas táctiles
+    // (CPU de móvil) se monta con el primer toque o foco en el escenario: el arranque de la página
+    // no paga el coste de three.js y el 2D ya es una constelación completa.
+    let wanted = fine.matches || forced3d();
     const sync = () => {
-      setMode(!reduced.matches && supportsWebGL() ? "3d" : "2d");
+      const show = wanted && !reduced.matches && (webgl ??= hasHardwareWebGL());
+      setMode(show ? "3d" : "2d");
       setCompact(small.matches);
     };
-    sync();
+    const engage = () => {
+      if (wanted) return;
+      wanted = true;
+      sync();
+    };
+    const cancel = whenIdle(sync);
     reduced.addEventListener("change", sync);
     small.addEventListener("change", sync);
+    node?.addEventListener("pointerdown", engage, { once: true });
+    node?.addEventListener("focusin", engage, { once: true });
     return () => {
+      cancel();
       reduced.removeEventListener("change", sync);
       small.removeEventListener("change", sync);
+      node?.removeEventListener("pointerdown", engage);
+      node?.removeEventListener("focusin", engage);
     };
   }, []);
 
@@ -137,6 +188,7 @@ export function ConstellationStage({ graph, labels }: ConstellationStageProps) {
           <SceneBoundary onError={() => setMode("2d")}>
             <div
               data-scene-3d=""
+              aria-hidden="true"
               className={cn(
                 "absolute inset-0 transition-opacity duration-500",
                 ready ? "opacity-100" : "opacity-0",

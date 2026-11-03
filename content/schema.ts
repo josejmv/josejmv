@@ -5,6 +5,8 @@
  */
 import { z } from "zod";
 
+import { OPPORTUNITY_TYPES } from "./contact-form";
+
 // ── Primitivas ────────────────────────────────────────────────────────────────
 
 export const LOCALES = ["es", "en"] as const;
@@ -236,8 +238,13 @@ export type Project = z.infer<typeof Project>;
 // ── Contacto ──────────────────────────────────────────────────────────────────
 
 export const CONTACT_CHANNEL_IDS = ["gmail", "linkedin", "github", "whatsapp"] as const;
-export const OPPORTUNITY_TYPES = ["empleo", "contrato", "consultoria", "otro"] as const;
-export type OpportunityType = (typeof OPPORTUNITY_TYPES)[number];
+export {
+  type ContactFormField,
+  contactFormSchema,
+  type ContactFormValues,
+  OPPORTUNITY_TYPES,
+  type OpportunityType,
+} from "./contact-form";
 
 export const ContactContent = z
   .object({
@@ -269,20 +276,6 @@ export const ContactContent = z
   })
   .strict();
 export type ContactContent = z.infer<typeof ContactContent>;
-
-/**
- * Formulario de Contacto (ADR 0005). Cada mensaje de error es el nombre del campo: la UI lo traduce
- * con `ContactPage.form.errors.<campo>`.
- */
-export const contactFormSchema = z.object({
-  name: z.string().trim().min(2, "name").max(80, "name"),
-  email: z.string().trim().pipe(z.email("email")),
-  company: z.string().trim().max(80, "company").optional().default(""),
-  type: z.enum(OPPORTUNITY_TYPES, "type").default("empleo"),
-  message: z.string().trim().min(10, "message").max(2000, "message"),
-});
-export type ContactFormValues = z.infer<typeof contactFormSchema>;
-export type ContactFormField = keyof ContactFormValues;
 
 // ── Constelación de áreas ─────────────────────────────────────────────────────
 

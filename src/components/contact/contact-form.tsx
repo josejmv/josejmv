@@ -1,6 +1,6 @@
 "use client";
 
-import { type ContactFormField, contactFormSchema, type OpportunityType } from "@content/schema";
+import { type ContactFormField, contactFormSchema, type OpportunityType } from "@content/contact-form";
 import { useTranslations } from "next-intl";
 import { type FormEvent, type ReactNode, useId, useRef, useState } from "react";
 

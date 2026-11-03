@@ -11,6 +11,28 @@ async function gotoReady(page: Page, path: string) {
 
 const panelTitle = (page: Page) => page.locator("#area-detail-title");
 
+/**
+ * El Chromium de CI solo tiene WebGL por software, donde la página se queda en 2D a propósito.
+ * Esta clave (FORCE_3D_KEY en constellation-stage.tsx) fuerza la escena 3D para probarla.
+ */
+async function force3d(page: Page) {
+  await page.addInitScript(() => window.localStorage.setItem("constellation:3d", "force"));
+}
+
+test("con WebGL se monta la escena 3D, decorativa, con radios accesibles en paralelo", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(isMobile, "basta con escritorio");
+  await force3d(page);
+  await gotoReady(page, "/es/areas");
+  await expect(page.locator("[data-scene-3d] canvas")).toBeVisible();
+  await expect(page.locator("[data-scene-3d]")).toHaveAttribute("aria-hidden", "true");
+  const radios = page.getByRole("radiogroup", { name: "Áreas" }).getByRole("radio");
+  await expect(radios).toHaveCount(6);
+  await expect(page.getByRole("radio", { name: "Backend & Pagos", checked: true })).toHaveCount(1);
+});
+
 test.describe("Áreas · fallback 2D (reduced-motion)", () => {
   test.use({ reducedMotion: "reduce" });
 
@@ -45,9 +67,11 @@ test.describe("Áreas · fallback 2D (reduced-motion)", () => {
   });
 });
 
-test("las flechas cambian el área seleccionada (con o sin 3D)", async ({ page, isMobile }) => {
+test("las flechas cambian el área seleccionada en la escena 3D", async ({ page, isMobile }) => {
   test.skip(isMobile, "flujo de teclado de escritorio");
+  await force3d(page);
   await gotoReady(page, "/es/areas");
+  await expect(page.locator("[data-scene-3d] canvas")).toBeVisible();
   // Con WebGL la capa accesible son radios ocultos; sin él, los botones del fallback.
   const group = page.getByRole("radiogroup", { name: "Áreas" }).last();
   await group.getByRole("radio", { name: "Backend & Pagos" }).focus();
@@ -80,6 +104,7 @@ for (const reducedMotion of ["reduce", "no-preference"] as const) {
     page,
   }) => {
     test.setTimeout(120_000);
+    if (reducedMotion === "no-preference") await force3d(page);
     await page.emulateMedia({ reducedMotion });
     await page.setViewportSize({ width: 390, height: 844 });
     for (const area of ["backend-pagos", "compliance", "ai-engineering", "leadership"]) {

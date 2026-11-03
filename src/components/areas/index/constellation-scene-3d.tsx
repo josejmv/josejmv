@@ -1,10 +1,10 @@
 "use client";
 
 import type { AreaSlug } from "@content/schema";
-import { Html, Line, OrbitControls } from "@react-three/drei";
+import { Line, OrbitControls } from "@react-three/drei";
 import { Canvas, type ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { useTheme } from "next-themes";
-import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import {
   AdditiveBlending,
   BufferAttribute,
@@ -12,6 +12,7 @@ import {
   CanvasTexture,
   type Group,
   type Mesh,
+  type Object3D,
   type PointsMaterial,
   Vector3,
 } from "three";
@@ -173,20 +174,61 @@ function Rings({ palette }: { palette: Palette }) {
   );
 }
 
+/**
+ * Etiquetas de la escena: DOM normal encima del lienzo, sin una raíz de React por etiqueta (como
+ * haría `<Html>` de drei). Cada etiqueta tiene un ancla 3D; `LabelProjector` las proyecta a píxeles
+ * en un único `useFrame` y escribe el `transform` directamente en el nodo.
+ */
+interface LabelRegistry {
+  anchors: Map<string, Object3D>;
+  elements: Map<string, HTMLElement>;
+}
+
+function anchorRef(registry: LabelRegistry, key: string) {
+  return (object: Object3D | null) => {
+    if (object) registry.anchors.set(key, object);
+    else registry.anchors.delete(key);
+  };
+}
+
+function elementRef(registry: LabelRegistry, key: string) {
+  return (element: HTMLElement | null) => {
+    if (element) registry.elements.set(key, element);
+    else registry.elements.delete(key);
+  };
+}
+
+function LabelProjector({ registry }: { registry: LabelRegistry }) {
+  const point = useMemo(() => new Vector3(), []);
+  useFrame(({ camera, size }) => {
+    for (const [key, anchor] of registry.anchors) {
+      const element = registry.elements.get(key);
+      if (!element) continue;
+      anchor.getWorldPosition(point).project(camera);
+      const x = ((point.x + 1) / 2) * size.width;
+      const y = ((1 - point.y) / 2) * size.height;
+      element.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
+    }
+  });
+  return null;
+}
+
+const edgeKey = (edge: { from: string; to: string }) => `edge:${edge.from}-${edge.to}`;
+
 function Edge({
   from,
   to,
-  label,
   active,
-  compact,
   palette,
+  registry,
+  labelKey,
 }: {
   from: Vector3;
   to: Vector3;
-  label: string;
   active: boolean;
-  compact: boolean;
   palette: Palette;
+  registry: LabelRegistry;
+  labelKey: string;
 }) {
   const line = useRef<{ material: { dashOffset: number } } | null>(null);
   useFrame((_, delta) => {
@@ -207,52 +249,33 @@ function Edge({
         dashSize={0.16}
         gapSize={0.12}
       />
-      {/* Siempre montada (desmontar un <Html> de drei durante un render avisa en React 19). */}
-      <Html position={mid} center zIndexRange={[20, 0]} style={{ pointerEvents: "none" }}>
-        <span
-          data-constellation-label={active ? "" : undefined}
-          // En móvil: etiqueta en dos líneas si hace falta y corrida hacia el centro si la línea va
-          // pegada a un borde.
-          style={
-            compact && Math.abs(mid.x) > 1.5
-              ? { translate: `${mid.x > 0 ? -35 : 35}% 0` }
-              : undefined
-          }
-          className={cn(
-            "block rounded-md border border-accent-text/40 bg-surface/90 px-2 py-0.5 text-center font-mono text-[11px] text-accent-text transition-opacity duration-200",
-            compact ? "w-max max-w-32" : "whitespace-nowrap",
-            active ? "opacity-100" : "invisible opacity-0",
-          )}
-        >
-          {label}
-        </span>
-      </Html>
+      <object3D ref={anchorRef(registry, labelKey)} position={mid} />
     </>
   );
 }
 
 function Node({
+  id,
   index,
   position,
-  code,
-  title,
   active,
-  compact,
   palette,
+  registry,
   onSelect,
+  onHover,
 }: {
+  id: AreaSlug;
   index: number;
   position: Vector3;
-  code: string;
-  title: string;
   active: boolean;
-  compact: boolean;
   palette: Palette;
+  registry: LabelRegistry;
   onSelect: () => void;
+  onHover: (id: AreaSlug | null) => void;
 }) {
   const group = useRef<Group>(null);
   const mesh = useRef<Mesh>(null);
-  const [hovered, setHovered] = useState(false);
+  const hovered = useRef(false);
 
   useFrame(({ clock }, delta) => {
     if (group.current) {
@@ -261,7 +284,7 @@ function Node({
         position.y + Math.sin(clock.elapsedTime * 0.9 + index * 1.1) * 0.08;
     }
     if (mesh.current) {
-      const target = active ? 1.15 : hovered ? 1.06 : 1;
+      const target = active ? 1.15 : hovered.current ? 1.06 : 1;
       const s = mesh.current.scale.x + (target - mesh.current.scale.x) * Math.min(1, delta * 10);
       mesh.current.scale.setScalar(s);
     }
@@ -274,8 +297,6 @@ function Node({
     onSelect();
   }
 
-  const showName = !compact || active;
-
   return (
     <group ref={group} position={position}>
       <mesh
@@ -283,11 +304,13 @@ function Node({
         onClick={click}
         onPointerOver={(event) => {
           event.stopPropagation();
-          setHovered(true);
+          hovered.current = true;
+          onHover(id);
           document.body.style.cursor = "pointer";
         }}
         onPointerOut={() => {
-          setHovered(false);
+          hovered.current = false;
+          onHover(null);
           document.body.style.cursor = "";
         }}
       >
@@ -301,43 +324,8 @@ function Node({
         />
       </mesh>
       {active && <Glow color={palette.accent} scale={1.9} opacity={0.55} />}
-      <Html center zIndexRange={[30, 0]} style={{ pointerEvents: "none" }}>
-        <span
-          className={cn(
-            "font-mono text-[11px] font-semibold",
-            active ? "text-on-accent" : "text-bg",
-          )}
-        >
-          {code}
-        </span>
-      </Html>
-      <Html
-        position={[0, -NODE_RADIUS - 0.32, 0]}
-        center
-        zIndexRange={[30, 0]}
-        style={{ pointerEvents: "none" }}
-      >
-        <span
-          data-constellation-label={showName ? "" : undefined}
-          // En móvil, los nodos laterales corren su etiqueta hacia el centro para no salirse del borde.
-          style={
-            compact && Math.abs(position.x) > 1.5
-              ? { translate: `${position.x > 0 ? -40 : 40}% 0` }
-              : undefined
-          }
-          className={cn(
-            "block rounded-full border bg-surface/90 px-3 py-1 text-xs font-medium whitespace-nowrap transition-colors",
-            !showName && "invisible",
-            active
-              ? "border-accent-text/50 text-text"
-              : hovered
-                ? "border-accent-text/30 text-text"
-                : "border-border text-text-2",
-          )}
-        >
-          {title}
-        </span>
-      </Html>
+      <object3D ref={anchorRef(registry, `code:${id}`)} />
+      <object3D ref={anchorRef(registry, `name:${id}`)} position={[0, -NODE_RADIUS - 0.32, 0]} />
     </group>
   );
 }
@@ -396,18 +384,17 @@ function Scene({
   graph,
   selected,
   onSelect,
-  compact,
-  coreLabel,
-}: Omit<ConstellationScene3DProps, "active" | "onReady">) {
-  const { resolvedTheme } = useTheme();
-  const [palette, setPalette] = useState<Palette>(readPalette);
-
-  useEffect(() => {
-    // El tema cambia las variables CSS: se vuelven a leer después de aplicarlo.
-    const frame = requestAnimationFrame(() => setPalette(readPalette()));
-    return () => cancelAnimationFrame(frame);
-  }, [resolvedTheme]);
-
+  onHover,
+  palette,
+  registry,
+}: {
+  graph: ConstellationView;
+  selected: AreaSlug;
+  onSelect: (id: AreaSlug) => void;
+  onHover: (id: AreaSlug | null) => void;
+  palette: Palette;
+  registry: LabelRegistry;
+}) {
   const positions = useMemo(
     () => new Map(graph.nodes.map((node) => [node.id, new Vector3(...node.position3d)])),
     [graph],
@@ -430,9 +417,7 @@ function Scene({
           <meshStandardMaterial color={palette.accent} metalness={0.4} roughness={0.35} />
         </mesh>
         <Glow color={palette.accent} scale={3.2} opacity={0.5} />
-        <Html center zIndexRange={[30, 0]} style={{ pointerEvents: "none" }}>
-          <span className="font-display text-sm font-semibold text-on-accent">{coreLabel}</span>
-        </Html>
+        <object3D ref={anchorRef(registry, "core")} />
 
         {graph.nodes.map((node) => (
           <Line
@@ -447,31 +432,32 @@ function Scene({
 
         {graph.edges.map((edge) => (
           <Edge
-            key={`${edge.from}-${edge.to}`}
+            key={edgeKey(edge)}
+            labelKey={edgeKey(edge)}
             from={positions.get(edge.from)!}
             to={positions.get(edge.to)!}
-            label={edge.label}
             active={isEdgeActive(edge, selected)}
-            compact={compact}
             palette={palette}
+            registry={registry}
           />
         ))}
 
         {graph.nodes.map((node, index) => (
           <Node
             key={node.id}
+            id={node.id}
             index={index}
             position={positions.get(node.id)!}
-            code={node.code}
-            title={node.title}
             active={node.id === selected}
-            compact={compact}
             palette={palette}
+            registry={registry}
             onSelect={() => onSelect(node.id)}
+            onHover={onHover}
           />
         ))}
       </Rig>
 
+      <LabelProjector registry={registry} />
       <CameraFit />
       <OrbitControls
         makeDefault
@@ -489,26 +475,156 @@ function Scene({
 }
 
 /**
+ * Centrado de una etiqueta sobre su ancla. En móvil, las de los nodos laterales se corren hacia el
+ * centro (`amount` % de su ancho) para no salirse del borde.
+ */
+function labelTranslate(x: number, compact: boolean, amount: number): string {
+  if (!compact || Math.abs(x) <= 1.5) return "-50% -50%";
+  return `${x > 0 ? -50 - amount : -50 + amount}% -50%`;
+}
+
+/** Capa DOM de etiquetas: `LabelProjector` las posiciona; aquí solo se decide su aspecto. */
+function Labels({
+  graph,
+  selected,
+  hovered,
+  compact,
+  coreLabel,
+  registry,
+}: {
+  graph: ConstellationView;
+  selected: AreaSlug;
+  hovered: AreaSlug | null;
+  compact: boolean;
+  coreLabel: string;
+  registry: LabelRegistry;
+}) {
+  // Cada etiqueta parte en (0, 0); el proyector la mueve con `transform` y `translate` la centra.
+  const base = "absolute top-0 left-0 will-change-transform";
+  const xOf = (id: AreaSlug) => graph.nodes.find((n) => n.id === id)!.position3d[0];
+
+  return (
+    <div className="pointer-events-none absolute inset-0">
+      <span
+        ref={elementRef(registry, "core")}
+        style={{ translate: "-50% -50%" }}
+        className={cn(base, "font-display text-sm font-semibold text-on-accent")}
+      >
+        {coreLabel}
+      </span>
+
+      {graph.edges.map((edge) => {
+        const active = isEdgeActive(edge, selected);
+        return (
+          <span
+            key={edgeKey(edge)}
+            ref={elementRef(registry, edgeKey(edge))}
+            data-constellation-label={active ? "" : undefined}
+            style={{ translate: labelTranslate((xOf(edge.from) + xOf(edge.to)) / 2, compact, 35) }}
+            className={cn(
+              base,
+              "rounded-md border border-accent-text/40 bg-surface/90 px-2 py-0.5 text-center font-mono text-[11px] text-accent-text transition-opacity duration-200",
+              compact ? "w-max max-w-32" : "whitespace-nowrap",
+              active ? "opacity-100" : "invisible opacity-0",
+            )}
+          >
+            {edge.label}
+          </span>
+        );
+      })}
+
+      {graph.nodes.map((node) => {
+        const active = node.id === selected;
+        const showName = !compact || active;
+        return (
+          <Fragment key={node.id}>
+            <span
+              ref={elementRef(registry, `code:${node.id}`)}
+              style={{ translate: "-50% -50%" }}
+              className={cn(
+                base,
+                "font-mono text-[11px] font-semibold",
+                active ? "text-on-accent" : "text-bg",
+              )}
+            >
+              {node.code}
+            </span>
+            <span
+              ref={elementRef(registry, `name:${node.id}`)}
+              data-constellation-label={showName ? "" : undefined}
+              style={{ translate: labelTranslate(node.position3d[0], compact, 40) }}
+              className={cn(
+                base,
+                "rounded-full border bg-surface/90 px-3 py-1 text-xs font-medium whitespace-nowrap transition-colors",
+                !showName && "invisible",
+                active
+                  ? "border-accent-text/50 text-text"
+                  : hovered === node.id
+                    ? "border-accent-text/30 text-text"
+                    : "border-border text-text-2",
+              )}
+            >
+              {node.title}
+            </span>
+          </Fragment>
+        );
+      })}
+    </div>
+  );
+}
+
+/**
  * Escena 3D de /areas (ADR 0006). Se carga con `next/dynamic` y `ssr: false`; es decorativa para
- * lectores de pantalla (`aria-hidden`): la selección accesible vive en el radiogroup paralelo.
+ * lectores de pantalla (su contenedor lleva `aria-hidden`): la selección accesible vive en el
+ * radiogroup paralelo.
  */
 export default function ConstellationScene3D({
+  graph,
+  selected,
+  onSelect,
   active,
   compact,
+  coreLabel,
   onReady,
-  ...props
 }: ConstellationScene3DProps) {
+  const [registry] = useState<LabelRegistry>(() => ({ anchors: new Map(), elements: new Map() }));
+  const [hovered, setHovered] = useState<AreaSlug | null>(null);
+  const { resolvedTheme } = useTheme();
+  const [palette, setPalette] = useState<Palette>(readPalette);
+
+  useEffect(() => {
+    // El tema cambia las variables CSS: se vuelven a leer después de aplicarlo.
+    const frame = requestAnimationFrame(() => setPalette(readPalette()));
+    return () => cancelAnimationFrame(frame);
+  }, [resolvedTheme]);
+
   return (
-    <Canvas
-      aria-hidden="true"
-      dpr={[1, 1.5]}
-      frameloop={active ? "always" : "demand"}
-      camera={{ fov: FOV, position: [0, 1.2, compact ? 11 : 9] }}
-      gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}
-      onCreated={() => onReady()}
-      className="absolute! inset-0"
-    >
-      <Scene compact={compact} {...props} />
-    </Canvas>
+    <>
+      <Canvas
+        dpr={[1, 1.5]}
+        frameloop={active ? "always" : "demand"}
+        camera={{ fov: FOV, position: [0, 1.2, compact ? 11 : 9] }}
+        gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}
+        onCreated={() => onReady()}
+        className="absolute! inset-0"
+      >
+        <Scene
+          graph={graph}
+          selected={selected}
+          onSelect={onSelect}
+          onHover={setHovered}
+          palette={palette}
+          registry={registry}
+        />
+      </Canvas>
+      <Labels
+        graph={graph}
+        selected={selected}
+        hovered={hovered}
+        compact={compact}
+        coreLabel={coreLabel}
+        registry={registry}
+      />
+    </>
   );
 }

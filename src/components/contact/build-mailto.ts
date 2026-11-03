@@ -1,4 +1,4 @@
-import type { ContactFormValues } from "@content/schema";
+import type { ContactFormValues } from "@content/contact-form";
 
 export interface MailtoOptions {
   /** Destinatario (Gmail del perfil). */
