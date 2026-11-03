@@ -5,9 +5,6 @@ import type { Country } from "./schema";
 export type GlobePoint = Country;
 export type GlobeKind = Country["kind"];
 
-/** Origen de los arcos: Cajicá, Colombia */
-export const HOME = { lat: 4.92, lng: -74.03 } as const;
-
 export const teamCountries: GlobePoint[] = [
   { id: "CO", kind: "team", lat: 4.71, lng: -74.07, name: { es: "Colombia", en: "Colombia" } },
   { id: "MX", kind: "team", lat: 19.43, lng: -99.13, name: { es: "México", en: "Mexico" } },
@@ -33,6 +30,13 @@ export const teamCountries: GlobePoint[] = [
   { id: "LT", kind: "team", lat: 54.69, lng: 25.28, name: { es: "Lituania", en: "Lithuania" } },
   { id: "UA", kind: "team", lat: 50.45, lng: 30.52, name: { es: "Ucrania", en: "Ukraine" } },
   { id: "BD", kind: "team", lat: 23.81, lng: 90.41, name: { es: "Bangladesh", en: "Bangladesh" } },
+  {
+    id: "KR",
+    kind: "team",
+    lat: 37.57,
+    lng: 126.98,
+    name: { es: "Corea del Sur", en: "South Korea" },
+  },
 ];
 
 export const companyCountries: GlobePoint[] = [
