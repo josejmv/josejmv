@@ -40,7 +40,6 @@
   "Command": {
     "title": "Command menu",
     "trigger": "Search…",
-    "triggerLabel": "Open command menu ({shortcut})",
     "placeholder": "Type a command or search…",
     "empty": "No results.",
     "groups": {

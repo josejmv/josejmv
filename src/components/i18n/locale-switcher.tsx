@@ -24,13 +24,15 @@ export function LocaleSwitcher({ className }: { className?: string }) {
   const { locale: _ignored, ...routeParams } = params;
   void _ignored;
   const href = { pathname, params: routeParams } as unknown as Href;
+  const visible = routing.locales.map((l) => l.toUpperCase()).join("/");
 
   return (
     <Link
       href={href}
       locale={target}
       hrefLang={target}
-      aria-label={t("label", { language: t(target) })}
+      // WCAG 2.5.3: el nombre accesible empieza por el texto visible ("ES/EN").
+      aria-label={`${visible} · ${t("label", { language: t(target) })}`}
       className={cn(
         "inline-flex h-11 items-center rounded-pill border border-border px-3.5 font-mono text-xs font-semibold text-muted transition-colors hover:bg-chip",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text",

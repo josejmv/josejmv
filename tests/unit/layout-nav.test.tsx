@@ -65,7 +65,7 @@ describe("LocaleSwitcher", () => {
   it("apunta a la misma página en el otro idioma", () => {
     nav.pathname = "/es/experiencia";
     renderWith(<LocaleSwitcher />);
-    const link = screen.getByRole("link", { name: "Cambiar idioma a inglés" });
+    const link = screen.getByRole("link", { name: /Cambiar idioma a inglés/ });
     expect(link).toHaveAttribute("href", "/en/experience");
     expect(link).toHaveAttribute("hreflang", "en");
   });
@@ -74,7 +74,7 @@ describe("LocaleSwitcher", () => {
     nav.pathname = "/en/areas/devops";
     nav.params = { locale: "en", slug: "devops" };
     renderWith(<LocaleSwitcher />, "en");
-    expect(screen.getByRole("link", { name: "Switch language to Spanish" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /Switch language to Spanish/ })).toHaveAttribute(
       "href",
       "/es/areas/devops",
     );
@@ -102,7 +102,7 @@ describe("MobileMenu", () => {
       "/es/areas/devops",
     );
     expect(
-      within(dialog).getByRole("link", { name: "Cambiar idioma a inglés" }),
+      within(dialog).getByRole("link", { name: /Cambiar idioma a inglés/ }),
     ).toBeInTheDocument();
     expect(within(dialog).getByRole("button", { name: es.Theme.toggle })).toBeInTheDocument();
 

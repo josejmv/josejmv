@@ -69,7 +69,6 @@ export function CommandMenu({ areas, projects, email, className }: CommandMenuPr
         type="button"
         onClick={openMenu}
         onPointerEnter={() => setLoaded(true)}
-        aria-label={t("triggerLabel", { shortcut })}
         aria-keyshortcuts={apple ? "Meta+K" : "Control+K"}
         className={cn(
           "inline-flex h-11 min-w-11 items-center justify-center gap-2.5 rounded-pill border border-border bg-surface-2 pr-3 pl-4 font-mono text-[13px] text-muted transition-colors hover:text-text pointer-coarse:px-0",
@@ -77,7 +76,8 @@ export function CommandMenu({ areas, projects, email, className }: CommandMenuPr
           className,
         )}
       >
-        <span className="hidden lg:inline">{t("trigger")}</span>
+        {/* El nombre accesible sale del contenido (WCAG 2.5.3): el texto solo se oculta visualmente. */}
+        <span className="sr-only lg:not-sr-only">{t("trigger")}</span>
         <kbd className="rounded-md bg-chip px-2 py-0.5 font-mono text-text-2 pointer-coarse:hidden">
           {shortcut}
         </kbd>

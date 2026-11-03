@@ -41,7 +41,7 @@ function renderMenu() {
 }
 
 async function openWithButton(user: ReturnType<typeof userEvent.setup>) {
-  await user.click(screen.getByRole("button", { name: /Abrir buscador de comandos/ }));
+  await user.click(screen.getByRole("button", { name: /Buscar…/ }));
   return screen.findByPlaceholderText(es.Command.placeholder, {}, LAZY);
 }
 
@@ -88,7 +88,7 @@ describe("CommandMenu", () => {
   it("devuelve el foco al botón al cerrar con Escape", async () => {
     const user = userEvent.setup();
     renderMenu();
-    const trigger = screen.getByRole("button", { name: /Abrir buscador de comandos/ });
+    const trigger = screen.getByRole("button", { name: /Buscar…/ });
     await openWithButton(user);
     await user.keyboard("{Escape}");
     await waitFor(() => expect(trigger).toHaveFocus());

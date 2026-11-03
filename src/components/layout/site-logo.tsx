@@ -15,7 +15,8 @@ export function SiteLogo({ monogram, label, className }: SiteLogoProps) {
   return (
     <Link
       href="/"
-      aria-label={label}
+      // WCAG 2.5.3: el nombre accesible empieza por el texto visible.
+      aria-label={`${monogram} ${label}`}
       className={cn(
         "inline-flex h-11 items-center rounded-pill font-display text-xl font-bold text-text",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text",

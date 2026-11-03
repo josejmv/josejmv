@@ -40,7 +40,6 @@
   "Command": {
     "title": "Buscador de comandos",
     "trigger": "Buscar…",
-    "triggerLabel": "Abrir buscador de comandos ({shortcut})",
     "placeholder": "Escribe un comando o busca…",
     "empty": "Sin resultados.",
     "groups": {
