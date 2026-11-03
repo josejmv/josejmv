@@ -132,6 +132,7 @@ export default async function ExperiencePage({ params }: PageProps<"/[locale]/ex
         title={tCta("title")}
         subtitle={tCta("subtitle")}
         action={tCta("action")}
+        secondary={tCta("secondary")}
         href={primaryContact.href}
       />
     </main>

@@ -1,6 +1,7 @@
 import { AreaSummary } from "@/components/areas/area-summary";
 import { AreaTabs } from "@/components/areas/area-tabs";
 import { ImpactBars } from "@/components/charts/impact-bars";
+import { Link } from "@/i18n/navigation";
 import type { LocalizedArea } from "@/lib/content";
 
 interface AreasShowcaseProps {
@@ -8,7 +9,8 @@ interface AreasShowcaseProps {
   defaultSlug: string;
   labels: {
     title: string;
-    note: string;
+    /** Enlace al índice /areas. */
+    allAreas: string;
     tabs: string;
     impact: string;
     cases: (area: string) => string;
@@ -24,7 +26,12 @@ export function AreasShowcase({ areas, defaultSlug, labels }: AreasShowcaseProps
           <h2 id="areas-title" className="font-display text-[28px] font-semibold">
             {labels.title}
           </h2>
-          <p className="font-mono text-xs text-subtle">{labels.note}</p>
+          <Link
+            href="/areas"
+            className="inline-flex min-h-11 items-center font-mono text-xs text-accent-text underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text"
+          >
+            {labels.allAreas}
+          </Link>
         </div>
 
         <AreaTabs

@@ -47,8 +47,12 @@ function hrefFor(to: NavTarget): Href {
       return "/proyectos";
     case "project":
       return { pathname: "/proyectos/[slug]", params: { slug: to.slug } };
+    case "areas":
+      return "/areas";
     case "area":
       return { pathname: "/areas/[slug]", params: { slug: to.slug } };
+    case "contact":
+      return "/contacto";
   }
 }
 

@@ -3,8 +3,11 @@ import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { ProjectCard } from "@/components/projects/project-card";
+import { JsonLd } from "@/components/seo/json-ld";
 import { ContactCta } from "@/components/sections/home/contact-cta";
+import { getPathname } from "@/i18n/navigation";
 import { getArea, getCaseStudySlugs, getProfile, getProjects } from "@/lib/content";
+import { SITE_URL } from "@/lib/site";
 
 import { AreaCases } from "./area-cases";
 import { AreaHero } from "./area-hero";
@@ -21,9 +24,11 @@ interface AreaShellProps {
  * RelatedProjects · ContactCta. Cada área solo aporta su módulo firma.
  */
 export async function AreaShell({ slug, locale, children }: AreaShellProps) {
-  const [t, tAreas, tProjects, tCta] = await Promise.all([
+  const [t, tAreas, tIndex, tNav, tProjects, tCta] = await Promise.all([
     getTranslations({ locale, namespace: "AreaPage" }),
     getTranslations({ locale, namespace: "Areas" }),
+    getTranslations({ locale, namespace: "AreasIndex" }),
+    getTranslations({ locale, namespace: "Nav" }),
     getTranslations({ locale, namespace: "Projects" }),
     getTranslations({ locale, namespace: "Cta" }),
   ]);
@@ -33,7 +38,33 @@ export async function AreaShell({ slug, locale, children }: AreaShellProps) {
 
   return (
     <main>
-      <AreaHero area={area} labels={{ eyebrow: t("eyebrow"), impact: tAreas("impact") }} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { name: tNav("home"), href: "/" as const },
+            { name: tNav("areas"), href: "/areas" as const },
+            {
+              name: area.title,
+              href: { pathname: "/areas/[slug]" as const, params: { slug } },
+            },
+          ].map((item, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: item.name,
+            item: `${SITE_URL}${getPathname({ href: item.href, locale })}`,
+          })),
+        }}
+      />
+      <AreaHero
+        area={area}
+        labels={{
+          areas: tIndex("eyebrow"),
+          breadcrumb: t("breadcrumb"),
+          impact: tAreas("impact"),
+        }}
+      />
 
       {children}
 
@@ -68,6 +99,7 @@ export async function AreaShell({ slug, locale, children }: AreaShellProps) {
         title={tCta("title")}
         subtitle={tCta("subtitle")}
         action={tCta("action")}
+        secondary={tCta("secondary")}
         href={primaryContact.href}
       />
     </main>

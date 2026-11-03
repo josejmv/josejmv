@@ -1,4 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
+import { NextIntlClientProvider } from "next-intl";
 import { describe, expect, it } from "vitest";
 
 import { ContactCta } from "@/components/sections/home/contact-cta";
@@ -26,14 +27,21 @@ describe("StackCloud", () => {
 });
 
 describe("ContactCta", () => {
-  it("es el ancla #contacto y su CTA abre Gmail", () => {
+  it("es el ancla #contacto, su CTA abre Gmail y el secundario lleva a Contacto", () => {
     const { container } = render(
-      <ContactCta
-        title={es.Cta.title}
-        subtitle={es.Cta.subtitle}
-        action={es.Cta.action}
-        href="mailto:josejmvasquez@gmail.com"
-      />,
+      <NextIntlClientProvider locale="es" messages={es}>
+        <ContactCta
+          title={es.Cta.title}
+          subtitle={es.Cta.subtitle}
+          action={es.Cta.action}
+          href="mailto:josejmvasquez@gmail.com"
+          secondary={es.Cta.secondary}
+        />
+      </NextIntlClientProvider>,
+    );
+    expect(screen.getByRole("link", { name: es.Cta.secondary })).toHaveAttribute(
+      "href",
+      "/es/contacto",
     );
     expect(container.querySelector("#contacto")).not.toBeNull();
     expect(screen.getByRole("heading", { level: 2, name: es.Cta.title })).toBeInTheDocument();

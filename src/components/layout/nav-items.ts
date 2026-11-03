@@ -17,7 +17,7 @@ export interface NavItem {
 export const NAV_ITEMS: NavItem[] = [
   { key: "home", href: "/", match: (p) => p === "/" },
   { key: "experience", href: "/experiencia", match: (p) => p.startsWith("/experiencia") },
-  { key: "areas", href: { pathname: "/", hash: "areas" }, match: (p) => p.startsWith("/areas") },
+  { key: "areas", href: "/areas", match: (p) => p.startsWith("/areas") },
   { key: "projects", href: "/proyectos", match: (p) => p.startsWith("/proyectos") },
-  { key: "contact", href: { pathname: "/", hash: "contacto" } },
+  { key: "contact", href: "/contacto", match: (p) => p.startsWith("/contacto") },
 ];

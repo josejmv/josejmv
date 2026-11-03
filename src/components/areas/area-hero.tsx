@@ -1,11 +1,14 @@
 import { ImpactBars } from "@/components/charts/impact-bars";
 import { Chip } from "@/components/ui/chip";
+import { Link } from "@/i18n/navigation";
 import type { LocalizedArea } from "@/lib/content";
 
 interface AreaHeroProps {
   area: LocalizedArea;
   labels: {
-    eyebrow: string;
+    /** Texto del enlace al índice /areas («áreas»). */
+    areas: string;
+    breadcrumb: string;
     impact: string;
   };
 }
@@ -15,9 +18,20 @@ export function AreaHero({ area, labels }: AreaHeroProps) {
   return (
     <header className="container-page grid gap-8 pt-12 pb-10 lg:grid-cols-[1fr_380px] lg:pt-16">
       <div className="flex flex-col gap-5">
-        <p className="font-mono text-[13px] text-muted">
-          {labels.eyebrow} · {area.title}
-        </p>
+        <nav aria-label={labels.breadcrumb}>
+          <ol className="flex flex-wrap items-center gap-1.5 font-mono text-[13px] text-muted">
+            <li>
+              <Link
+                href="/areas"
+                className="inline-flex min-h-6 items-center text-accent-text underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text"
+              >
+                {labels.areas}
+              </Link>
+            </li>
+            <li aria-hidden="true">·</li>
+            <li aria-current="page">{area.title}</li>
+          </ol>
+        </nav>
         <h1 className="font-display text-4xl font-light tracking-[-0.02em] sm:text-5xl">
           {area.tagline}
         </h1>

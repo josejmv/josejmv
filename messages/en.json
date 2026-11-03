@@ -8,7 +8,8 @@
     "experience": "Experience",
     "areas": "Areas",
     "projects": "Projects",
-    "contact": "Contact"
+    "contact": "Contact",
+    "allAreas": "All areas"
   },
   "NotFound": {
     "title": "Page not found",
@@ -38,11 +39,11 @@
     "rights": "© {year} {name}",
     "areasTitle": "areas",
     "channelsTitle": "contact",
-    "statusLink": "See availability →",
-    "localTime": "local time",
     "builtWith": "Built with Next.js, Tailwind and three.js",
     "source": "Site source code",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "unavailable": "Not available right now",
+    "cv": "Download résumé"
   },
   "Command": {
     "title": "Command menu",
@@ -83,7 +84,6 @@
   },
   "Areas": {
     "title": "Domain areas",
-    "note": "each area → its own page",
     "tabs": "Areas",
     "impact": "measured impact · before → after",
     "cases": "See {area} cases →",
@@ -154,7 +154,6 @@
     "next": "Next case study"
   },
   "AreaPage": {
-    "eyebrow": "area",
     "metaTitle": "{area} · José M. Vasquez",
     "cases": "Cases",
     "related": "Related projects",
@@ -582,7 +581,7 @@
         "experience": "my career",
         "skills": "tech stack",
         "ls": "list areas and projects (ls areas · ls projects)",
-        "cd": "browse the site (cd areas/devops · cd projects · cd ~)",
+        "cd": "browse the site (cd areas · cd contact · cd projects · cd ~)",
         "contact": "contact channels (contact gmail opens one)",
         "theme": "switch theme (theme dark · theme light)",
         "lang": "switch language (lang es)",

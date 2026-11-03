@@ -91,6 +91,16 @@ export function MobileMenuSheet({ open, setOpen, areas, onCloseAutoFocus }: Mobi
                     <span className="font-mono text-xs text-subtle">{areas.length}</span>
                   </summary>
                   <ul className="mt-2 grid grid-cols-2 gap-2">
+                    <li className="col-span-2">
+                      <Link
+                        href="/areas"
+                        aria-current={pathname === "/areas" ? "page" : undefined}
+                        onClick={() => setOpen(false)}
+                        className={cn(itemClasses, "px-2 text-[13px] text-accent-text")}
+                      >
+                        {t("allAreas")}
+                      </Link>
+                    </li>
                     {areas.map((area) => (
                       <li key={area.slug}>
                         <Link

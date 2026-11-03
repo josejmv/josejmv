@@ -8,7 +8,8 @@
     "experience": "Experiencia",
     "areas": "Áreas",
     "projects": "Proyectos",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "allAreas": "Todas las áreas"
   },
   "NotFound": {
     "title": "Página no encontrada",
@@ -38,11 +39,11 @@
     "rights": "© {year} {name}",
     "areasTitle": "áreas",
     "channelsTitle": "contacto",
-    "statusLink": "Ver disponibilidad →",
-    "localTime": "hora local",
     "builtWith": "Hecho con Next.js, Tailwind y three.js",
     "source": "Código del sitio",
-    "backToTop": "Volver arriba"
+    "backToTop": "Volver arriba",
+    "unavailable": "Sin disponibilidad por ahora",
+    "cv": "Descargar CV"
   },
   "Command": {
     "title": "Buscador de comandos",
@@ -83,7 +84,6 @@
   },
   "Areas": {
     "title": "Áreas de dominio",
-    "note": "cada área → su propia página",
     "tabs": "Áreas",
     "impact": "impacto medido · antes → después",
     "cases": "Ver casos de {area} →",
@@ -154,7 +154,6 @@
     "next": "Siguiente case study"
   },
   "AreaPage": {
-    "eyebrow": "área",
     "metaTitle": "{area} · José M. Vasquez",
     "cases": "Casos",
     "related": "Proyectos relacionados",
@@ -582,7 +581,7 @@
         "experience": "mi trayectoria",
         "skills": "stack técnico",
         "ls": "lista áreas y proyectos (ls areas · ls proyectos)",
-        "cd": "navega por el sitio (cd areas/devops · cd proyectos · cd ~)",
+        "cd": "navega por el sitio (cd areas · cd contacto · cd proyectos · cd ~)",
         "contact": "canales de contacto (contact gmail abre uno)",
         "theme": "cambia el tema (theme dark · theme light)",
         "lang": "cambia el idioma (lang en)",

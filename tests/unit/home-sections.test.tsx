@@ -26,7 +26,7 @@ const wrap = (node: ReactNode) => (
 
 const areaLabels = {
   title: es.Areas.title,
-  note: es.Areas.note,
+  allAreas: es.Areas.allAreas,
   tabs: es.Areas.tabs,
   impact: es.Areas.impact,
   cases: (area: string) => `Ver casos de ${area} →`,

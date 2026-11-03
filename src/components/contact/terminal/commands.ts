@@ -50,7 +50,9 @@ export type NavTarget =
   | { kind: "experience" }
   | { kind: "projects" }
   | { kind: "project"; slug: string }
-  | { kind: "area"; slug: string };
+  | { kind: "areas" }
+  | { kind: "area"; slug: string }
+  | { kind: "contact" };
 
 export type TerminalAction =
   | { type: "navigate"; to: NavTarget }
@@ -112,8 +114,8 @@ const fill = (template: string, values: Record<string, string>) =>
 /** Nombres de carpeta públicos por idioma (coinciden con las rutas localizadas). */
 function dirs(locale: Locale) {
   return locale === "es"
-    ? { projects: "proyectos", experience: "experiencia" }
-    : { projects: "projects", experience: "experience" };
+    ? { projects: "proyectos", experience: "experiencia", contact: "contacto" }
+    : { projects: "projects", experience: "experience", contact: "contact" };
 }
 
 /** Resuelve un path de `cd` a un destino del sitio. */
@@ -131,9 +133,11 @@ export function resolvePath(raw: string, data: TerminalData): NavTarget | null {
     if (!slug) return { kind: "projects" };
     return data.projects.some((p) => p.slug === slug) ? { kind: "project", slug } : null;
   }
-  if (head === "areas" && slug) {
+  if (head === "areas") {
+    if (!slug) return { kind: "areas" };
     return data.areas.some((a) => a.slug === slug) ? { kind: "area", slug } : null;
   }
+  if (head === "contacto" || head === "contact") return slug ? null : { kind: "contact" };
   return null;
 }
 
@@ -144,7 +148,7 @@ function list(items: string[]): OutputLine[] {
 function ls(arg: string, { data, strings }: Context): CommandResult {
   const d = dirs(data.locale);
   const target = arg.replace(/\/+$/, "").toLowerCase();
-  if (!target) return { lines: list(["areas/", `${d.projects}/`, d.experience]) };
+  if (!target) return { lines: list(["areas/", `${d.projects}/`, d.experience, d.contact]) };
   if (target === "areas") return { lines: list(data.areas.map((a) => a.slug)) };
   if (target === "proyectos" || target === "projects") {
     return { lines: list(data.projects.map((p) => p.slug)) };
@@ -308,6 +312,7 @@ export function complete(input: string, data: TerminalData): string {
             "areas/",
             `${d.projects}/`,
             d.experience,
+            d.contact,
             ...data.areas.map((a) => `areas/${a.slug}`),
             ...data.projects.map((p) => `${d.projects}/${p.slug}`),
           ]

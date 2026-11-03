@@ -58,7 +58,7 @@ describe("terminal: comandos", () => {
   });
 
   it("ls muestra carpetas, áreas y proyectos", () => {
-    expect(text("ls")).toBe("areas/  proyectos/  experiencia");
+    expect(text("ls")).toBe("areas/  proyectos/  experiencia  contacto");
     expect(text("ls areas")).toBe("devops  frontend");
     expect(text("ls proyectos/")).toBe("kyc-engine");
     expect(run("ls nada", ctx).lines[0].tone).toBe("error");
@@ -74,6 +74,9 @@ describe("terminal: comandos", () => {
       to: { kind: "project", slug: "kyc-engine" },
     });
     expect(run("cd", ctx).action).toEqual({ type: "navigate", to: { kind: "home" } });
+    expect(run("cd areas", ctx).action).toEqual({ type: "navigate", to: { kind: "areas" } });
+    expect(run("cd contacto/", ctx).action).toEqual({ type: "navigate", to: { kind: "contact" } });
+    expect(run("cd contact", ctx).action).toEqual({ type: "navigate", to: { kind: "contact" } });
     const missing = run("cd areas/marketing", ctx);
     expect(missing.action).toBeUndefined();
     expect(missing.lines[0].text).toContain("areas/marketing");

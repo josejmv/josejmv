@@ -57,10 +57,10 @@ describe("MainNav", () => {
     expect(link).toHaveAttribute("aria-current", "page");
   });
 
-  it("enlaza Áreas y Contacto a secciones de la Home", () => {
+  it("enlaza Áreas y Contacto a sus páginas", () => {
     renderWith(<MainNav {...navLabels(es)} />);
-    expect(screen.getByRole("link", { name: "Áreas" })).toHaveAttribute("href", "/es#areas");
-    expect(screen.getByRole("link", { name: "Contacto" })).toHaveAttribute("href", "/es#contacto");
+    expect(screen.getByRole("link", { name: "Áreas" })).toHaveAttribute("href", "/es/areas");
+    expect(screen.getByRole("link", { name: "Contacto" })).toHaveAttribute("href", "/es/contacto");
   });
 });
 

@@ -1,12 +1,12 @@
 "use client";
 
 import { Command } from "cmdk";
-import { useParams, useRouter as useNextRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { type ComponentProps, type ReactNode, useEffect, useState } from "react";
 
-import { getPathname, usePathname, useRouter } from "@/i18n/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
 type Href = Parameters<ReturnType<typeof useRouter>["push"]>[0];
@@ -62,7 +62,6 @@ export function CommandPalette({
   const tLocale = useTranslations("LocaleSwitcher");
   const locale = useLocale();
   const router = useRouter();
-  const nextRouter = useNextRouter();
   const pathname = usePathname();
   const params = useParams();
   const { resolvedTheme, setTheme } = useTheme();
@@ -84,11 +83,6 @@ export function CommandPalette({
 
   function go(href: Href) {
     run(() => router.push(href));
-  }
-
-  /** El router de next-intl no acepta `hash`: se resuelve la URL y se navega con el de Next. */
-  function goToSection(hash: string) {
-    run(() => nextRouter.push(`${getPathname({ href: "/", locale })}#${hash}`));
   }
 
   function switchLocale() {
@@ -147,9 +141,16 @@ export function CommandPalette({
               {tNav("projects")}
             </Item>
             <Item
+              value="nav-areas"
+              keywords={[tNav("areas"), "areas", "skills", "habilidades", "constelación"]}
+              onSelect={() => go("/areas")}
+            >
+              {tNav("areas")}
+            </Item>
+            <Item
               value="nav-contact"
-              keywords={[tNav("contact")]}
-              onSelect={() => goToSection("contacto")}
+              keywords={[tNav("contact"), "contacto", "email", "gmail", "whatsapp", "contratar"]}
+              onSelect={() => go("/contacto")}
             >
               {tNav("contact")}
             </Item>

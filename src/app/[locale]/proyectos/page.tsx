@@ -83,6 +83,7 @@ export default async function ProjectsPage({ params }: PageProps<"/[locale]/proy
         title={tCta("title")}
         subtitle={tCta("subtitle")}
         action={tCta("action")}
+        secondary={tCta("secondary")}
         href={primaryContact.href}
       />
     </main>

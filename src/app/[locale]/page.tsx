@@ -136,7 +136,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         defaultSlug="backend-pagos"
         labels={{
           title: tAreas("title"),
-          note: tAreas("note"),
+          allAreas: tAreas("allAreas"),
           tabs: tAreas("tabs"),
           impact: tAreas("impact"),
           cases: (area) => tAreas("cases", { area }),
@@ -164,6 +164,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         title={tCta("title")}
         subtitle={tCta("subtitle")}
         action={tCta("action")}
+        secondary={tCta("secondary")}
         href={primaryContact.href}
       />
     </main>

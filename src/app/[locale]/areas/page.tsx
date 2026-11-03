@@ -93,6 +93,7 @@ export default async function AreasIndexPage({ params }: PageProps<"/[locale]/ar
         title={tCta("title")}
         subtitle={tCta("subtitle")}
         action={tCta("action")}
+        secondary={tCta("secondary")}
         href={primaryContact.href}
       />
     </main>

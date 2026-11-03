@@ -82,6 +82,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/[locale]/pro
         title={tCta("title")}
         subtitle={tCta("subtitle")}
         action={tCta("action")}
+        secondary={tCta("secondary")}
         href={primaryContact.href}
       />
     </main>

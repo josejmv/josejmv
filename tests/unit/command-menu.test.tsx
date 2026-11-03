@@ -78,12 +78,15 @@ describe("CommandMenu", () => {
     );
   });
 
-  it("navega a Contacto en la Home", async () => {
+  it("navega a las páginas de Contacto y de Áreas", async () => {
     const user = userEvent.setup();
     renderMenu();
     await openWithButton(user);
     await user.click(screen.getByText(es.Nav.contact));
-    expect(router.push.mock.calls[0][0]).toBe("/es#contacto");
+    expect(router.push.mock.calls.at(-1)![0]).toBe("/es/contacto");
+    await openWithButton(user);
+    await user.click(screen.getByText(es.Nav.areas, { selector: "[cmdk-item] *" }));
+    expect(router.push.mock.calls.at(-1)![0]).toBe("/es/areas");
   });
 
   it("devuelve el foco al botón al cerrar con Escape", async () => {
