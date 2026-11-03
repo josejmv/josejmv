@@ -1,7 +1,10 @@
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Suspense } from "react";
 
 import { ClientMessages } from "@/components/i18n/client-messages";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -14,6 +17,9 @@ import { fontVariables } from "@/lib/fonts";
 import { IS_INDEXABLE, SITE_URL } from "@/lib/site";
 
 import "../globals.css";
+
+/** `VERCEL=1` en los builds de Vercel (preview y producción). */
+const ON_VERCEL = process.env.VERCEL === "1";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -67,6 +73,17 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
             </div>
           </ThemeProvider>
         </ClientMessages>
+        {/*
+          Analítica sin cookies y Core Web Vitals de usuarios reales. Sus scripts los sirve Vercel
+          (/_vercel/*): fuera de Vercel (local, CI) darían 404, así que solo se incluyen allí. Leen
+          la URL en el cliente: el Suspense evita que eso vuelva dinámico el shell prerenderizado.
+        */}
+        {ON_VERCEL && (
+          <Suspense fallback={null}>
+            <Analytics />
+            <SpeedInsights />
+          </Suspense>
+        )}
       </body>
     </html>
   );
