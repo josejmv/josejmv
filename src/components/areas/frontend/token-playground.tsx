@@ -125,7 +125,7 @@ export function TokenPlayground() {
             <input
               readOnly
               value={t("demo.inputValue")}
-              className="h-11 rounded-(--demo-radius) border border-border bg-surface px-3 text-sm text-text transition-all duration-300 outline-none focus-visible:border-(--demo-action)"
+              className="h-11 rounded-(--demo-radius) border border-border bg-surface px-3 text-sm text-text transition-all duration-300 focus-visible:border-(--demo-action) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text"
             />
           </label>
           <button

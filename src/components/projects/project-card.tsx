@@ -20,7 +20,11 @@ const STATUS_DOT: Record<LocalizedProject["status"], string> = {
 /** Tarjeta de proyecto. Si tiene case study, toda la tarjeta enlaza a él (enlace en el título). */
 export function ProjectCard({ project, labels }: ProjectCardProps) {
   return (
-    <article className="relative flex h-full flex-col gap-4 rounded-card border border-border bg-surface p-6 transition-colors focus-within:border-accent-text/50 hover:border-accent-text/40">
+    <article
+      // El enlace del título cubre toda la tarjeta: el anillo de foco se dibuja en la tarjeta.
+      data-focus-ring
+      className="relative flex h-full flex-col gap-4 rounded-card border border-border bg-surface p-6 transition-colors hover:border-accent-text/40 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-accent-text"
+    >
       <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs text-muted">
         <span>
           {project.company} · {project.year}

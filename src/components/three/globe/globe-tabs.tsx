@@ -73,7 +73,11 @@ export function GlobeTabs({ label, home, views }: GlobeTabsProps) {
       />
 
       {VIEWS.map((key) => (
-        <Tabs.Content key={key} value={key} className="focus-visible:outline-none">
+        <Tabs.Content
+          key={key}
+          value={key}
+          className="rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-text"
+        >
           {views[key].legend}
         </Tabs.Content>
       ))}

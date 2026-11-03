@@ -53,7 +53,7 @@ export function AreaTabs({ label, areas, defaultSlug }: AreaTabsProps) {
           forceMount
           // Con forceMount Radix no oculta el panel: `hidden` lo saca de la vista y del árbol accesible.
           hidden={area.slug !== active}
-          className="focus-visible:outline-none"
+          className="rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-text"
         >
           {area.panel}
         </Tabs.Content>
