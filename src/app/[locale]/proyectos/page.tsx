@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClientMessages } from "@/components/i18n/client-messages";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -54,26 +55,28 @@ export default async function ProjectsPage({ params }: PageProps<"/[locale]/proy
       <PageHero eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
 
       <div className="container-page">
-        <ProjectGrid
-          areas={getAreas(locale)
-            .filter((area) => usedAreas.has(area.slug))
-            .map((area) => ({ value: area.slug, label: area.title }))}
-          tech={tech}
-          items={projects.map((project) => ({
-            slug: project.slug,
-            areas: project.areas,
-            tech: project.tech,
-            card: (
-              <ProjectCard
-                project={project}
-                labels={{
-                  status: t(`status.${project.status}`),
-                  readCase: t("readCase"),
-                }}
-              />
-            ),
-          }))}
-        />
+        <ClientMessages namespaces={["Projects"]}>
+          <ProjectGrid
+            areas={getAreas(locale)
+              .filter((area) => usedAreas.has(area.slug))
+              .map((area) => ({ value: area.slug, label: area.title }))}
+            tech={tech}
+            items={projects.map((project) => ({
+              slug: project.slug,
+              areas: project.areas,
+              tech: project.tech,
+              card: (
+                <ProjectCard
+                  project={project}
+                  labels={{
+                    status: t(`status.${project.status}`),
+                    readCase: t("readCase"),
+                  }}
+                />
+              ),
+            }))}
+          />
+        </ClientMessages>
       </div>
 
       <ContactCta

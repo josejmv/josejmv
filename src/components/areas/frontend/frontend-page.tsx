@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { ClientMessages } from "@/components/i18n/client-messages";
 import { AreaShell } from "../area-shell";
 import type { AreaPageProps } from "../registry";
 import { SignatureModule } from "../signature-module";
@@ -39,7 +40,9 @@ export async function FrontendPage({ locale }: AreaPageProps) {
         description={t("description")}
         disclaimer={tArea("disclaimer")}
       >
-        <TokenPlayground />
+        <ClientMessages namespaces={["AreaFrontend"]}>
+          <TokenPlayground />
+        </ClientMessages>
         <AtomicLibraryMap
           title={t("library.title")}
           note={t("library.note")}

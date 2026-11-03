@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { ClientMessages } from "@/components/i18n/client-messages";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ThemeProvider } from "@/components/theme/theme-provider";
@@ -47,7 +48,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       className={`${fontVariables} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <NextIntlClientProvider>
+        <ClientMessages>
           <ThemeProvider>
             <div className="relative isolate flex min-h-full flex-1 flex-col overflow-clip">
               <GridBackground />
@@ -65,7 +66,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
               <SiteFooter locale={locale} />
             </div>
           </ThemeProvider>
-        </NextIntlClientProvider>
+        </ClientMessages>
       </body>
     </html>
   );

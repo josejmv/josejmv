@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { ClientMessages } from "@/components/i18n/client-messages";
 import { AreaShell } from "../area-shell";
 import type { AreaPageProps } from "../registry";
 import { SignatureModule } from "../signature-module";
@@ -20,11 +21,13 @@ export async function AiPage({ locale }: AreaPageProps) {
         description={t("description")}
         disclaimer={tArea("disclaimer")}
       >
-        <ExtractionDemo
-          documentTitle={t("document.title")}
-          documentLines={t.raw("document.lines") as string[]}
-          fields={t.raw("fields") as ExtractionField[]}
-        />
+        <ClientMessages namespaces={["AreaAi"]}>
+          <ExtractionDemo
+            documentTitle={t("document.title")}
+            documentLines={t.raw("document.lines") as string[]}
+            fields={t.raw("fields") as ExtractionField[]}
+          />
+        </ClientMessages>
         <StepChain
           title={t("workflow.title")}
           label={t("workflow.label")}

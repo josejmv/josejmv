@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { ClientMessages } from "@/components/i18n/client-messages";
 import { AreaShell } from "../area-shell";
 import type { AreaPageProps } from "../registry";
 import { SignatureModule } from "../signature-module";
@@ -19,7 +20,9 @@ export async function BackendPage({ locale }: AreaPageProps) {
         description={t("description")}
         disclaimer={tArea("disclaimer")}
       >
-        <PaymentFlowSimulator />
+        <ClientMessages namespaces={["AreaBackend"]}>
+          <PaymentFlowSimulator />
+        </ClientMessages>
       </SignatureModule>
     </AreaShell>
   );

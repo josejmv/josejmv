@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { ClientMessages } from "@/components/i18n/client-messages";
 import { AreaShell } from "../area-shell";
 import type { AreaPageProps } from "../registry";
 import { SignatureModule } from "../signature-module";
@@ -20,7 +21,9 @@ export async function DevopsPage({ locale }: AreaPageProps) {
         description={t("description")}
         disclaimer={tArea("disclaimer")}
       >
-        <PipelineRunner />
+        <ClientMessages namespaces={["AreaDevops"]}>
+          <PipelineRunner />
+        </ClientMessages>
         <StepChain
           title={t("infra.title")}
           label={t("infra.label")}

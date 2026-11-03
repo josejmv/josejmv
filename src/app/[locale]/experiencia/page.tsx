@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClientMessages } from "@/components/i18n/client-messages";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -85,25 +86,27 @@ export default async function ExperiencePage({ params }: PageProps<"/[locale]/ex
       </section>
 
       <div className="container-page mt-10">
-        <ExperienceTimeline
-          areas={areas.map((area) => ({ value: area.slug, label: area.title }))}
-          items={roles.map((role, index) => ({
-            id: role.id,
-            areas: role.areas,
-            card: (
-              <ExperienceCard
-                role={role}
-                period={period(role.start, role.end)}
-                open={index === 0}
-                labels={{
-                  highlights: t("highlights"),
-                  projects: t("projects"),
-                  stack: t("stack"),
-                }}
-              />
-            ),
-          }))}
-        />
+        <ClientMessages namespaces={["Experience"]}>
+          <ExperienceTimeline
+            areas={areas.map((area) => ({ value: area.slug, label: area.title }))}
+            items={roles.map((role, index) => ({
+              id: role.id,
+              areas: role.areas,
+              card: (
+                <ExperienceCard
+                  role={role}
+                  period={period(role.start, role.end)}
+                  open={index === 0}
+                  labels={{
+                    highlights: t("highlights"),
+                    projects: t("projects"),
+                    stack: t("stack"),
+                  }}
+                />
+              ),
+            }))}
+          />
+        </ClientMessages>
       </div>
 
       <section aria-labelledby="metrics-title" className="container-page mt-10">
