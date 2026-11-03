@@ -35,7 +35,14 @@
   "Footer": {
     "navTitle": "navigation",
     "contactTitle": "contact",
-    "rights": "© {year} {name}"
+    "rights": "© {year} {name}",
+    "areasTitle": "areas",
+    "channelsTitle": "contact",
+    "statusLink": "See availability →",
+    "localTime": "local time",
+    "builtWith": "Built with Next.js, Tailwind and three.js",
+    "source": "Site source code",
+    "backToTop": "Back to top"
   },
   "Command": {
     "title": "Command menu",
@@ -79,7 +86,8 @@
     "note": "each area → its own page",
     "tabs": "Areas",
     "impact": "measured impact · before → after",
-    "cases": "See {area} cases →"
+    "cases": "See {area} cases →",
+    "allAreas": "see all areas →"
   },
   "Career": {
     "title": "Career",
@@ -96,7 +104,8 @@
   "Cta": {
     "title": "Shall we build something reliable?",
     "subtitle": "I reply in English or Spanish.",
-    "action": "Email me on Gmail"
+    "action": "Email me on Gmail",
+    "secondary": "See every way to reach me"
   },
   "Experience": {
     "metaTitle": "Experience · José M. Vasquez",
@@ -150,7 +159,9 @@
     "cases": "Cases",
     "related": "Related projects",
     "readCase": "Read the case study →",
-    "disclaimer": "Demo with fictitious data: no real clients and nothing from production."
+    "disclaimer": "Demo with fictitious data: no real clients and nothing from production.",
+    "breadcrumb": "Breadcrumb",
+    "home": "Home"
   },
   "AreaFrontend": {
     "title": "A new brand is a configuration change",
@@ -606,5 +617,66 @@
     "rm": "rm: permission denied. This portfolio is in production.",
     "exit": "There is no exit. Try contact instead.",
     "lsUsage": "usage: ls [areas | projects]"
+  },
+  "AreasIndex": {
+    "metaTitle": "Areas · José M. Vasquez",
+    "metaDescription": "Each node is an area and each line, a project that crosses them. Frontend, Backend & Payments, Compliance AML/KYC, DevOps, AI Engineering and Leadership.",
+    "eyebrow": "areas",
+    "titleStart": "Six areas, ",
+    "titleHighlight": "one standard",
+    "lead": "Each node is an area and each line, a project that crosses them. Pick a node to see what I did there, with which metric and where it connects with the rest.",
+    "groupLabel": "Areas",
+    "connectsWith": "connects with",
+    "stack": "stack",
+    "explore": "Explore {area} →",
+    "sceneNote": "Drag to orbit · arrow keys to change area",
+    "sceneNote2d": "Pick a node · arrow keys to change area",
+    "listTitle": "All areas",
+    "seeArea": "See area →"
+  },
+  "ContactPage": {
+    "metaTitle": "Contact · José M. Vasquez",
+    "metaDescription": "Reach me however you prefer. Email is best for proposals and details; I reply in Spanish or English.",
+    "eyebrow": "contact",
+    "titleStart": "Let's talk about ",
+    "titleHighlight": "what you want to build",
+    "lead": "Reach me however you prefer. Email is best for proposals and details; I reply in Spanish or English.",
+    "channelsLabel": "Contact channels",
+    "primaryEyebrow": "main channel · Gmail",
+    "writeEmail": "Write an email",
+    "copyEmail": "Copy email",
+    "copied": "Copied!",
+    "copyManually": "Copy it manually",
+    "newTab": "(opens in a new tab)",
+    "form": {
+      "title": "Send me a message",
+      "intro": "Sending opens your email app with the message ready for {email}. Fields marked * are required.",
+      "name": "Name *",
+      "email": "Email *",
+      "company": "Company",
+      "type": "Opportunity type",
+      "message": "Message *",
+      "submit": "Send message",
+      "note": "no third-party services · sent from your own email",
+      "error": "Fill in your name, a valid email and the message.",
+      "errors": {
+        "name": "Enter your name (2 to 80 characters).",
+        "email": "Enter a valid email.",
+        "company": "Company allows up to 80 characters.",
+        "message": "Write a message of 10 to 2000 characters."
+      },
+      "subjectPrefix": "Portfolio",
+      "sentTitle": "Done, {name}. Your email is drafted.",
+      "sentBody": "Your email app opened with the message for {email}: just press Send. Didn't it open? <link>Open it here</link> or copy the email above.",
+      "again": "Write another message"
+    },
+    "availabilityTitle": "Availability",
+    "cv": {
+      "title": "Résumé",
+      "subtitle": "Senior Full Stack Developer · payments, compliance and platform.",
+      "download": "Download résumé (PDF, English)",
+      "experience": "or see the full career →"
+    },
+    "unavailable": "Not available right now"
   }
 }

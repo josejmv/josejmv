@@ -35,7 +35,14 @@
   "Footer": {
     "navTitle": "navegación",
     "contactTitle": "contacto",
-    "rights": "© {year} {name}"
+    "rights": "© {year} {name}",
+    "areasTitle": "áreas",
+    "channelsTitle": "contacto",
+    "statusLink": "Ver disponibilidad →",
+    "localTime": "hora local",
+    "builtWith": "Hecho con Next.js, Tailwind y three.js",
+    "source": "Código del sitio",
+    "backToTop": "Volver arriba"
   },
   "Command": {
     "title": "Buscador de comandos",
@@ -79,7 +86,8 @@
     "note": "cada área → su propia página",
     "tabs": "Áreas",
     "impact": "impacto medido · antes → después",
-    "cases": "Ver casos de {area} →"
+    "cases": "Ver casos de {area} →",
+    "allAreas": "ver todas las áreas →"
   },
   "Career": {
     "title": "Trayectoria",
@@ -96,7 +104,8 @@
   "Cta": {
     "title": "¿Construimos algo confiable?",
     "subtitle": "Respondo en español o en inglés.",
-    "action": "Escríbeme a Gmail"
+    "action": "Escríbeme a Gmail",
+    "secondary": "Ver todas las vías de contacto"
   },
   "Experience": {
     "metaTitle": "Experiencia · José M. Vasquez",
@@ -150,7 +159,9 @@
     "cases": "Casos",
     "related": "Proyectos relacionados",
     "readCase": "Leer el case study →",
-    "disclaimer": "Demo con datos ficticios: nada de clientes reales ni de producción."
+    "disclaimer": "Demo con datos ficticios: nada de clientes reales ni de producción.",
+    "breadcrumb": "Ruta de navegación",
+    "home": "Inicio"
   },
   "AreaFrontend": {
     "title": "Una marca nueva es un cambio de configuración",
@@ -606,5 +617,66 @@
     "rm": "rm: permiso denegado. Este portafolio está en producción.",
     "exit": "No hay salida. Mejor escribe contact.",
     "lsUsage": "uso: ls [areas | proyectos]"
+  },
+  "AreasIndex": {
+    "metaTitle": "Áreas · José M. Vasquez",
+    "metaDescription": "Cada nodo es un área y cada línea, un proyecto que las cruza. Frontend, Backend & Pagos, Compliance AML/KYC, DevOps, AI Engineering y Leadership.",
+    "eyebrow": "áreas",
+    "titleStart": "Seis áreas, ",
+    "titleHighlight": "un mismo criterio",
+    "lead": "Cada nodo es un área y cada línea, un proyecto que las cruza. Elige un nodo para ver qué hice ahí, con qué métrica y dónde se conecta con lo demás.",
+    "groupLabel": "Áreas",
+    "connectsWith": "se conecta con",
+    "stack": "stack",
+    "explore": "Explorar {area} →",
+    "sceneNote": "Arrastra para orbitar · flechas para cambiar de área",
+    "sceneNote2d": "Elige un nodo · flechas para cambiar de área",
+    "listTitle": "Todas las áreas",
+    "seeArea": "Ver área →"
+  },
+  "ContactPage": {
+    "metaTitle": "Contacto · José M. Vasquez",
+    "metaDescription": "Escríbeme por la vía que prefieras. El correo es la mejor para propuestas y detalles; respondo en español o en inglés.",
+    "eyebrow": "contacto",
+    "titleStart": "Hablemos de lo ",
+    "titleHighlight": "que quieres construir",
+    "lead": "Escríbeme por la vía que prefieras. El correo es la mejor para propuestas y detalles; respondo en español o en inglés.",
+    "channelsLabel": "Vías de contacto",
+    "primaryEyebrow": "vía principal · Gmail",
+    "writeEmail": "Escribir un correo",
+    "copyEmail": "Copiar email",
+    "copied": "¡Copiado!",
+    "copyManually": "Copia manualmente",
+    "newTab": "(se abre en una pestaña nueva)",
+    "form": {
+      "title": "Envíame un mensaje",
+      "intro": "Al enviar se abre tu app de correo con el mensaje listo para {email}. Los campos con * son obligatorios.",
+      "name": "Nombre *",
+      "email": "Email *",
+      "company": "Empresa",
+      "type": "Tipo de oportunidad",
+      "message": "Mensaje *",
+      "submit": "Enviar mensaje",
+      "note": "sin servicios de terceros · se envía desde tu correo",
+      "error": "Completa nombre, un email válido y el mensaje.",
+      "errors": {
+        "name": "Escribe tu nombre (2 a 80 caracteres).",
+        "email": "Escribe un email válido.",
+        "company": "La empresa admite hasta 80 caracteres.",
+        "message": "Escribe un mensaje de 10 a 2000 caracteres."
+      },
+      "subjectPrefix": "Portafolio",
+      "sentTitle": "Listo, {name}. Tu correo ya está redactado.",
+      "sentBody": "Se abrió tu app de correo con el mensaje para {email}: solo falta pulsar Enviar. ¿No se abrió? <link>Ábrelo aquí</link> o copia el email de arriba.",
+      "again": "Escribir otro mensaje"
+    },
+    "availabilityTitle": "Disponibilidad",
+    "cv": {
+      "title": "Currículum",
+      "subtitle": "Senior Full Stack Developer · pagos, compliance y plataforma.",
+      "download": "Descargar CV (PDF, en inglés)",
+      "experience": "o ver la trayectoria completa →"
+    },
+    "unavailable": "Sin disponibilidad por ahora"
   }
 }

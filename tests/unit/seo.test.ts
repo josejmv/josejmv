@@ -16,6 +16,10 @@ describe("classifyPath (404 real desde el proxy)", () => {
     "/en/projects/kyc-engine",
     "/es/areas/devops",
     "/en/areas/ai-engineering",
+    "/es/areas",
+    "/en/areas",
+    "/es/contacto",
+    "/en/contact",
     // Ruta interna en el otro idioma: next-intl la redirige a la pública.
     "/en/experiencia",
     "/en/proyectos/export-engine",
@@ -34,6 +38,7 @@ describe("classifyPath (404 real desde el proxy)", () => {
     ["/es/proyectos/payment-gateway", "es"],
     ["/en/projects/design-tokens", "en"],
     ["/en/blog/monologos", "en"],
+    ["/es/contact", "es"],
   ])("%s es desconocida (404 en %s)", (path, locale) => {
     expect(classifyPath(path)).toEqual({ kind: "unknown", locale });
   });
@@ -75,10 +80,14 @@ describe("sitemap", () => {
         "/en/projects/payment-orchestrator",
         "/es/areas/leadership",
         "/en/areas/leadership",
+        "/es/areas",
+        "/en/areas",
+        "/es/contacto",
+        "/en/contact",
       ]),
     );
-    // 3 estáticas + 3 case studies + 6 áreas, por 2 idiomas.
-    expect(entries).toHaveLength(24);
+    // 5 estáticas + 3 case studies + 6 áreas, por 2 idiomas.
+    expect(entries).toHaveLength(28);
   });
 
   it("no lista proyectos sin case study ni la página 404", () => {

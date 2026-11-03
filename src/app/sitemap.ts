@@ -14,6 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { href: "/", priority: 1 },
     { href: "/experiencia", priority: 0.9 },
     { href: "/proyectos", priority: 0.9 },
+    { href: "/areas", priority: 0.9 },
+    { href: "/contacto", priority: 0.8 },
     ...getCaseStudySlugs().map((slug) => ({
       href: { pathname: "/proyectos/[slug]" as const, params: { slug } },
       priority: 0.8,
