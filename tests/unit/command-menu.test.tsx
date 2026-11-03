@@ -34,6 +34,7 @@ function renderMenu() {
           areas={areas}
           projects={[{ slug: "payment-orchestrator", title: "Orquestador de pagos" }]}
           email="hola@example.com"
+          label={es.Command.trigger}
         />
       </ThemeProvider>
     </NextIntlClientProvider>,

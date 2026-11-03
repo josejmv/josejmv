@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import { cn } from "@/lib/cn";
@@ -20,12 +19,13 @@ export interface CommandMenuProps {
   areas: CommandArea[];
   projects: CommandProject[];
   email: string;
+  /** Texto del botón («Buscar…»), traducido en el servidor. */
+  label: string;
   className?: string;
 }
 
 /** Botón "Buscar… ⌘K" del header + atajo global ⌘K / Ctrl+K. */
-export function CommandMenu({ areas, projects, email, className }: CommandMenuProps) {
-  const t = useTranslations("Command");
+export function CommandMenu({ areas, projects, email, label, className }: CommandMenuProps) {
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   // Elemento con foco antes de abrir: se restaura al cerrar (el diálogo se monta de forma diferida).
@@ -77,7 +77,7 @@ export function CommandMenu({ areas, projects, email, className }: CommandMenuPr
         )}
       >
         {/* El nombre accesible sale del contenido (WCAG 2.5.3): el texto solo se oculta visualmente. */}
-        <span className="sr-only lg:not-sr-only">{t("trigger")}</span>
+        <span className="sr-only lg:not-sr-only">{label}</span>
         <kbd className="rounded-md bg-chip px-2 py-0.5 font-mono text-text-2 pointer-coarse:hidden">
           {shortcut}
         </kbd>

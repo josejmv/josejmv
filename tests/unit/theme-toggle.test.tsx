@@ -13,7 +13,7 @@ function renderToggle(locale: "es" | "en" = "es") {
   return render(
     <NextIntlClientProvider locale={locale} messages={locale === "es" ? es : en}>
       <ThemeProvider>
-        <ThemeToggle />
+        <ThemeToggle label={(locale === "es" ? es : en).Theme.toggle} />
       </ThemeProvider>
     </NextIntlClientProvider>,
   );

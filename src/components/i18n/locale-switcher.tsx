@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import type { ComponentProps } from "react";
 
 import { Link, usePathname } from "@/i18n/navigation";
@@ -14,8 +14,7 @@ type Href = ComponentProps<typeof Link>["href"];
  * Enlace al otro idioma conservando la página actual (incluidas rutas con `[slug]`).
  * Es un `<a>` real con `hreflang`, así que funciona sin JS y lo entienden los buscadores.
  */
-export function LocaleSwitcher({ className }: { className?: string }) {
-  const t = useTranslations("LocaleSwitcher");
+export function LocaleSwitcher({ label, className }: { label: string; className?: string }) {
   const locale = useLocale();
   const pathname = usePathname();
   const params = useParams();
@@ -32,7 +31,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
       locale={target}
       hrefLang={target}
       // WCAG 2.5.3: el nombre accesible empieza por el texto visible ("ES/EN").
-      aria-label={`${visible} · ${t("label", { language: t(target) })}`}
+      aria-label={`${visible} · ${label}`}
       className={cn(
         "inline-flex h-11 items-center rounded-pill border border-border px-3.5 font-mono text-xs font-semibold text-muted transition-colors hover:bg-chip",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text",

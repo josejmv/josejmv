@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 
 import { cn } from "@/lib/cn";
@@ -17,9 +16,15 @@ export interface MobileMenuArea {
   title: string;
 }
 
+interface MobileMenuProps {
+  areas: MobileMenuArea[];
+  /** Nombre accesible del botón ☰, traducido en el servidor. */
+  label: string;
+  className?: string;
+}
+
 /** Botón ☰ del header móvil. Abre el Sheet con secciones, las 6 áreas, idioma y tema. */
-export function MobileMenu({ areas, className }: { areas: MobileMenuArea[]; className?: string }) {
-  const tHeader = useTranslations("Header");
+export function MobileMenu({ areas, label, className }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -36,7 +41,7 @@ export function MobileMenu({ areas, className }: { areas: MobileMenuArea[]; clas
           setOpen(true);
         }}
         onPointerEnter={() => setLoaded(true)}
-        aria-label={tHeader("openMenu")}
+        aria-label={label}
         className={cn(
           "inline-flex size-11 items-center justify-center rounded-pill border border-border text-text transition-colors hover:bg-chip",
           "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text",

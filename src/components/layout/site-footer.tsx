@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
 import type { ContentLocale } from "@content/schema";
+import { getHeaderLabels } from "@/i18n/header-labels";
 import { Link } from "@/i18n/navigation";
 import { getProfile } from "@/lib/content";
 import { getCurrentMonth } from "@/lib/time";
@@ -13,11 +14,12 @@ const linkClasses =
   "inline-flex min-h-11 items-center text-sm text-muted transition-colors hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text";
 
 export async function SiteFooter({ locale }: { locale: ContentLocale }) {
-  const [t, tNav, tHeader, month] = await Promise.all([
+  const [t, tNav, tHeader, month, labels] = await Promise.all([
     getTranslations({ locale, namespace: "Footer" }),
     getTranslations({ locale, namespace: "Nav" }),
     getTranslations({ locale, namespace: "Header" }),
     getCurrentMonth(),
+    getHeaderLabels(locale),
   ]);
   const profile = getProfile(locale);
 
@@ -69,7 +71,7 @@ export async function SiteFooter({ locale }: { locale: ContentLocale }) {
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-subtle">
         <p>{t("rights", { year: month.slice(0, 4), name: profile.name })}</p>
-        <LocaleSwitcher />
+        <LocaleSwitcher label={labels.switchLocale} />
       </div>
     </footer>
   );

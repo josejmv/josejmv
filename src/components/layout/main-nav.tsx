@@ -1,20 +1,22 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 
-import { NAV_ITEMS } from "./nav-items";
+import { NAV_ITEMS, type NavKey } from "./nav-items";
 
 /** Navegación principal de desktop. Client solo para marcar la sección activa. */
-export function MainNav({ className }: { className?: string }) {
-  const t = useTranslations("Nav");
-  const tHeader = useTranslations("Header");
+interface MainNavProps {
+  labels: Record<NavKey, string>;
+  label: string;
+  className?: string;
+}
+
+export function MainNav({ labels, label, className }: MainNavProps) {
   const pathname = usePathname();
 
   return (
-    <nav aria-label={tHeader("primaryNav")} className={className}>
+    <nav aria-label={label} className={className}>
       <ul className="flex items-center gap-1 lg:gap-2">
         {NAV_ITEMS.map((item) => {
           const active = item.match?.(pathname) ?? false;
@@ -29,7 +31,7 @@ export function MainNav({ className }: { className?: string }) {
                   active ? "text-text" : "text-muted hover:text-text",
                 )}
               >
-                {t(item.key)}
+                {labels[item.key]}
               </Link>
             </li>
           );

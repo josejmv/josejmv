@@ -25,6 +25,9 @@ vi.mock("next/navigation", async (importOriginal) => ({
   useSearchParams: () => new URLSearchParams(),
 }));
 
+const navLabels = (m: typeof es) => ({ labels: m.Nav, label: m.Header.primaryNav });
+const switchLabel = { es: "Cambiar idioma a inglés", en: "Switch language to Spanish" } as const;
+
 function renderWith(node: ReactNode, locale: "es" | "en" = "es") {
   return render(
     <NextIntlClientProvider locale={locale} messages={locale === "es" ? es : en}>
@@ -40,7 +43,7 @@ beforeEach(() => {
 
 describe("MainNav", () => {
   it("marca Inicio como página actual en la Home", () => {
-    renderWith(<MainNav />);
+    renderWith(<MainNav {...navLabels(es)} />);
     expect(screen.getByRole("link", { name: "Inicio" })).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("link", { name: "Experiencia" })).not.toHaveAttribute("aria-current");
   });
@@ -48,14 +51,14 @@ describe("MainNav", () => {
   it("usa las rutas localizadas en inglés", () => {
     nav.pathname = "/en/experience";
     nav.params = { locale: "en" };
-    renderWith(<MainNav />, "en");
+    renderWith(<MainNav {...navLabels(en)} />, "en");
     const link = screen.getByRole("link", { name: "Experience" });
     expect(link).toHaveAttribute("href", "/en/experience");
     expect(link).toHaveAttribute("aria-current", "page");
   });
 
   it("enlaza Áreas y Contacto a secciones de la Home", () => {
-    renderWith(<MainNav />);
+    renderWith(<MainNav {...navLabels(es)} />);
     expect(screen.getByRole("link", { name: "Áreas" })).toHaveAttribute("href", "/es#areas");
     expect(screen.getByRole("link", { name: "Contacto" })).toHaveAttribute("href", "/es#contacto");
   });
@@ -64,7 +67,7 @@ describe("MainNav", () => {
 describe("LocaleSwitcher", () => {
   it("apunta a la misma página en el otro idioma", () => {
     nav.pathname = "/es/experiencia";
-    renderWith(<LocaleSwitcher />);
+    renderWith(<LocaleSwitcher label={switchLabel.es} />);
     const link = screen.getByRole("link", { name: /Cambiar idioma a inglés/ });
     expect(link).toHaveAttribute("href", "/en/experience");
     expect(link).toHaveAttribute("hreflang", "en");
@@ -73,7 +76,7 @@ describe("LocaleSwitcher", () => {
   it("conserva los parámetros de rutas dinámicas", () => {
     nav.pathname = "/en/areas/devops";
     nav.params = { locale: "en", slug: "devops" };
-    renderWith(<LocaleSwitcher />, "en");
+    renderWith(<LocaleSwitcher label={switchLabel.en} />, "en");
     expect(screen.getByRole("link", { name: /Switch language to Spanish/ })).toHaveAttribute(
       "href",
       "/es/areas/devops",
@@ -89,7 +92,7 @@ describe("MobileMenu", () => {
 
   it("abre el Sheet con secciones, áreas, idioma y tema, y se cierra", async () => {
     const user = userEvent.setup();
-    renderWith(<MobileMenu areas={areas} />);
+    renderWith(<MobileMenu areas={areas} label={es.Header.openMenu} />);
 
     const trigger = screen.getByRole("button", { name: "Abrir menú" });
     await user.click(trigger);

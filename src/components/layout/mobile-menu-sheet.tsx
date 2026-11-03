@@ -1,7 +1,7 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
@@ -26,6 +26,9 @@ interface MobileMenuSheetProps {
 export function MobileMenuSheet({ open, setOpen, areas, onCloseAutoFocus }: MobileMenuSheetProps) {
   const t = useTranslations("Nav");
   const tHeader = useTranslations("Header");
+  const tLocale = useTranslations("LocaleSwitcher");
+  const tTheme = useTranslations("Theme");
+  const locale = useLocale();
   const pathname = usePathname();
 
   return (
@@ -106,8 +109,11 @@ export function MobileMenuSheet({ open, setOpen, areas, onCloseAutoFocus }: Mobi
           </nav>
 
           <div className="mt-4 grid grid-cols-2 gap-2">
-            <LocaleSwitcher className="w-full justify-center" />
-            <ThemeToggle className="w-full" />
+            <LocaleSwitcher
+              label={tLocale("label", { language: tLocale(locale === "es" ? "en" : "es") })}
+              className="w-full justify-center"
+            />
+            <ThemeToggle label={tTheme("toggle")} className="w-full" />
           </div>
         </Dialog.Content>
       </Dialog.Portal>
