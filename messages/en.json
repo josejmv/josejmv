@@ -561,7 +561,6 @@
     "outputLabel": "Terminal output",
     "help": {
       "title": "Available commands:",
-      "hint": "There are a couple of hidden commands. Good luck.",
       "commands": {
         "help": "this help",
         "whoami": "who I am",
@@ -572,7 +571,16 @@
         "contact": "contact channels (contact gmail opens one)",
         "theme": "switch theme (theme dark · theme light)",
         "lang": "switch language (lang es)",
-        "clear": "clear the screen"
+        "clear": "clear the screen",
+        "pwd": "where you are",
+        "echo": "repeat what you type",
+        "date": "date and time"
+      },
+      "eggsTitle": "Easter eggs:",
+      "eggs": {
+        "sudo hire jose": "recruiter mode with admin rights",
+        "rm -rf /": "dare to delete everything? (spoiler: I won't let you)",
+        "exit": "try to get out of here"
       }
     },
     "notFound": "command not found: {cmd}. Try help.",

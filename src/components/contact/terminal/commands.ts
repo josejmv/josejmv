@@ -21,7 +21,13 @@ export interface TerminalData {
 
 /** Textos de `messages/*.json → Terminal`, sin formatear: los `{placeholders}` se rellenan aquí. */
 export interface TerminalStrings {
-  help: { title: string; hint: string; commands: Record<string, string> };
+  help: {
+    title: string;
+    commands: Record<string, string>;
+    eggsTitle: string;
+    /** Easter eggs: comando → descripción. Se listan tal cual, para que se descubran. */
+    eggs: Record<string, string>;
+  };
   notFound: string;
   noSuchPath: string;
   navigating: string;
@@ -79,6 +85,9 @@ export const COMMANDS = [
   "contact",
   "theme",
   "lang",
+  "pwd",
+  "echo",
+  "date",
   "clear",
 ] as const;
 
@@ -181,7 +190,6 @@ export function run(input: string, ctx: Context): CommandResult {
 
   // Easter eggs (antes de separar argumentos: dependen de la línea completa).
   if (/^sudo\b/i.test(line)) {
-    const primary = data.contacts[0];
     return /^sudo\s+(hire|contrata(r)?)\b/i.test(line)
       ? {
           lines: [
@@ -189,7 +197,8 @@ export function run(input: string, ctx: Context): CommandResult {
               text,
               tone: i === 0 ? ("muted" as const) : ("accent" as const),
             })),
-            { text: primary.label, href: primary.href },
+            // Todos los canales, con Gmail (primario) primero.
+            ...data.contacts.map((c) => ({ text: c.label, href: c.href })),
           ],
         }
       : { lines: [{ text: strings.sudoDenied, tone: "error" }] };
@@ -207,8 +216,12 @@ export function run(input: string, ctx: Context): CommandResult {
       return {
         lines: [
           { text: strings.help.title, tone: "muted" },
-          ...COMMANDS.map((c) => ({ text: `${c.padEnd(11)} ${strings.help.commands[c] ?? ""}` })),
-          { text: strings.help.hint, tone: "muted" },
+          ...COMMANDS.map((c) => ({ text: `${c.padEnd(15)} ${strings.help.commands[c] ?? ""}` })),
+          { text: strings.help.eggsTitle, tone: "muted" },
+          ...Object.entries(strings.help.eggs).map(([command, description]) => ({
+            text: `${command.padEnd(15)} ${description}`,
+            tone: "accent" as const,
+          })),
         ],
       };
     case "whoami":

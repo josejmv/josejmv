@@ -561,7 +561,6 @@
     "outputLabel": "Salida de la terminal",
     "help": {
       "title": "Comandos disponibles:",
-      "hint": "Hay un par de comandos ocultos. Suerte.",
       "commands": {
         "help": "esta ayuda",
         "whoami": "quién soy",
@@ -572,7 +571,16 @@
         "contact": "canales de contacto (contact gmail abre uno)",
         "theme": "cambia el tema (theme dark · theme light)",
         "lang": "cambia el idioma (lang en)",
-        "clear": "limpia la pantalla"
+        "clear": "limpia la pantalla",
+        "pwd": "dónde estás",
+        "echo": "repite lo que escribas",
+        "date": "fecha y hora"
+      },
+      "eggsTitle": "Easter eggs:",
+      "eggs": {
+        "sudo hire jose": "modo reclutador con permisos de administrador",
+        "rm -rf /": "¿te atreves a borrarlo todo? (spoiler: no te dejo)",
+        "exit": "intenta salir de aquí"
       }
     },
     "notFound": "comando no encontrado: {cmd}. Prueba help.",

@@ -40,7 +40,10 @@ describe("terminal: comandos", () => {
     for (const command of ["whoami", "cd", "contact", "theme", "lang", "clear"]) {
       expect(out).toContain(command);
     }
-    expect(out).toContain(es.Terminal.help.hint);
+    // Los easter eggs se anuncian en la ayuda para que se descubran.
+    for (const [command, description] of Object.entries(es.Terminal.help.eggs)) {
+      expect(out).toContain(`${command.padEnd(15)} ${description}`);
+    }
   });
 
   it("acepta alias en español y mayúsculas", () => {
@@ -101,7 +104,10 @@ describe("terminal: comandos", () => {
 
   it("easter eggs: sudo hire, sudo a secas y rm -rf", () => {
     const hire = run("sudo hire jose", ctx).lines;
-    expect(hire.at(-1)).toEqual({ text: "Gmail", href: "mailto:hola@example.com" });
+    expect(hire.slice(-2)).toEqual([
+      { text: "Gmail", href: "mailto:hola@example.com" },
+      { text: "GitHub", href: "https://github.com/x" },
+    ]);
     expect(text("sudo rm algo")).toBe(es.Terminal.sudoDenied);
     expect(text("rm -rf /")).toBe(es.Terminal.rm);
   });

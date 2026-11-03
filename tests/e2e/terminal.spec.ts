@@ -54,9 +54,12 @@ test("historial con flechas y autocompletado con Tab", async ({ page }) => {
   await expect(t.input).toBeFocused();
 });
 
-test("easter egg: sudo hire jose termina en el CTA de Gmail", async ({ page }) => {
+test("easter egg: sudo hire jose termina en todos los canales de contacto", async ({ page }) => {
   const t = await terminal(page);
   await t.type("sudo hire jose");
   await expect(t.log).toContainText("Acceso concedido");
   await expect(t.log.getByRole("link", { name: "Gmail" })).toHaveAttribute("href", /^mailto:/);
+  for (const name of ["LinkedIn", "GitHub", "WhatsApp"]) {
+    await expect(t.log.getByRole("link", { name })).toHaveAttribute("href", /^https:\/\//);
+  }
 });

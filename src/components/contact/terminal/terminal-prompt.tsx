@@ -149,8 +149,17 @@ export function TerminalPrompt({ data, strings, labels }: TerminalPromptProps) {
         aria-label={labels.output}
         className={cn("max-h-56 overflow-y-auto", entries.length === 0 && "hidden")}
       >
-        {entries.map((entry) => (
-          <div key={entry.id} className="py-0.5">
+        {entries.map((entry, index) => (
+          <div
+            key={entry.id}
+            // La respuesta al último comando se marca con borde y fondo; las anteriores se atenúan.
+            className={cn(
+              "my-1 border-l-2 py-1 pl-3 transition-colors",
+              index === entries.length - 1
+                ? "border-accent-text bg-chip/40"
+                : "border-border opacity-60",
+            )}
+          >
             <p>
               <span aria-hidden="true" className="text-accent-text">
                 ${" "}
