@@ -30,6 +30,11 @@
   /* Errores de formulario (texto AA sobre --surface y sobre --danger-bg). */
   --danger-bg: rgba(240, 128, 128, 0.12);
   --danger-text: #f3b4b4;
+  /* Constelación de /areas: fondo del escenario, nodos inactivos y rayos al núcleo. */
+  --constellation-from: #121a2a;
+  --constellation-to: #0b0f18;
+  --constellation-node: #5f7fa3;
+  --constellation-ray: rgba(255, 255, 255, 0.08);
 }
 
 [data-theme="light"] {
@@ -55,6 +60,10 @@
   --globe-dot: rgba(58, 68, 88, 0.55);
   --danger-bg: rgba(190, 40, 40, 0.08);
   --danger-text: #a12a2a;
+  --constellation-from: #ffffff;
+  --constellation-to: #e9e6dc;
+  --constellation-node: #6f8db0;
+  --constellation-ray: rgba(18, 21, 28, 0.1);
 }
 
 @theme inline {
@@ -90,6 +99,7 @@
   --animate-floaty: floaty 7s ease-in-out infinite;
   --animate-dash: dash 2.6s linear infinite;
   --animate-fade-up: fade-up 0.5s ease-out both;
+  --animate-fade-in: fade-in 0.15s ease-out both;
   --animate-grow-x: grow-x 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 
   @keyframes pulse-soft {
@@ -128,6 +138,11 @@
   @keyframes typing {
     from {
       width: 0;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
     }
   }
   @keyframes fade-up {
