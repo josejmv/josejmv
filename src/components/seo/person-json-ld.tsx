@@ -24,7 +24,7 @@ export function PersonJsonLd({ profile, locale, knowsAbout }: PersonJsonLdProps)
     sameAs,
     knowsAbout,
     knowsLanguage: profile.languages.map((language) => language.name),
-    address: { "@type": "PostalAddress", addressCountry: "CO" },
+    address: { "@type": "PostalAddress", addressCountry: profile.home.country },
   };
 
   return (

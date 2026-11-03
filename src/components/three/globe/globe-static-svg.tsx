@@ -1,19 +1,11 @@
-import type { LocalizedCountry } from "@/lib/content";
+import type { GlobeHome, LocalizedCountry } from "@/lib/content";
 import { cn } from "@/lib/cn";
-import {
-  arcPath,
-  GLOBE_CENTER,
-  GLOBE_VIEWBOX,
-  type LatLng,
-  project,
-  toLimb,
-} from "@/lib/globe/projection";
+import { arcPath, GLOBE_CENTER, GLOBE_VIEWBOX, project, toLimb } from "@/lib/globe/projection";
 
 interface GlobeStaticSvgProps {
   points: LocalizedCountry[];
-  home: LatLng;
+  home: GlobeHome;
   /** Código ISO del país de origen (se resalta en champagne). */
-  homeId?: string;
   label: string;
   className?: string;
 }
@@ -23,16 +15,10 @@ interface GlobeStaticSvgProps {
  * desde `content/countries.ts`. Es el fallback del globo 3D (sin WebGL, reduced-motion o mientras
  * carga). Equipo: punto en `--accent-2`. Empresas: anillo en `--accent-text` (ADR 0003).
  */
-export function GlobeStaticSvg({
-  points,
-  home,
-  homeId = "CO",
-  label,
-  className,
-}: GlobeStaticSvgProps) {
+export function GlobeStaticSvg({ points, home, label, className }: GlobeStaticSvgProps) {
   const origin = project(home);
   const targets = points
-    .filter((p) => p.id !== homeId || p.kind === "company")
+    .filter((p) => p.id !== home.id || p.kind === "company")
     .map((point) => {
       const projected = project(point);
       return { point, projected, anchor: projected.visible ? projected : toLimb(projected) };
@@ -49,7 +35,7 @@ export function GlobeStaticSvg({
       >
         <g fill="none" strokeWidth="1.4" className="text-accent-text">
           {targets
-            .filter(({ point }) => point.id !== homeId)
+            .filter(({ point }) => point.id !== home.id)
             .map(({ point, anchor }) => (
               <path
                 key={point.id}
@@ -99,7 +85,7 @@ export function GlobeStaticSvg({
         <g className="font-mono text-[10px]">
           {targets.map(({ point, projected, anchor }) => {
             const left = anchor.x < GLOBE_CENTER;
-            const isHome = point.id === homeId;
+            const isHome = point.id === home.id;
             return (
               <text
                 key={point.id}

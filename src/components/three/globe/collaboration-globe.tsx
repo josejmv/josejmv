@@ -5,7 +5,7 @@ import { type ReactNode, useEffect, useRef, useState, useSyncExternalStore } fro
 
 import { useInView } from "@/hooks/use-in-view";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
-import type { LocalizedCountry } from "@/lib/content";
+import type { GlobeHome, LocalizedCountry } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
 // three + react-globe.gl van en un chunk aparte que solo se pide cerca del viewport (ADR 0001).
@@ -60,7 +60,7 @@ function hasWebGL(): boolean {
 
 export interface CollaborationGlobeProps {
   points: LocalizedCountry[];
-  home: { lat: number; lng: number };
+  home: GlobeHome;
   /** Globo estático (GlobeStaticSvg) del mismo dataset: se ve en SSR, sin WebGL o con reduced-motion. */
   fallback: ReactNode;
   className?: string;

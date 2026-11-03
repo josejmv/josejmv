@@ -6,13 +6,12 @@ import { MeshPhongMaterial } from "three";
 import { feature } from "topojson-client";
 import countriesTopology from "world-atlas/countries-110m.json";
 
-import type { LocalizedCountry } from "@/lib/content";
+import type { GlobeHome, LocalizedCountry } from "@/lib/content";
 import { cameraAltitude, VIEW_CENTER } from "@/lib/globe/projection";
 
 export interface GlobeCanvasProps {
   points: LocalizedCountry[];
-  home: { lat: number; lng: number };
-  homeId?: string;
+  home: GlobeHome;
   /** `false` fuera del viewport: el render se pausa. */
   active: boolean;
   /** Se llama cuando el globo ya pintó el primer cuadro (para el fundido con el fallback). */
@@ -78,7 +77,6 @@ const getTheme = () => document.documentElement.getAttribute("data-theme") ?? "d
 export default function GlobeCanvas({
   points,
   home,
-  homeId = "CO",
   active,
   onReady,
   rotateAfterMs = 0,
@@ -116,9 +114,9 @@ export default function GlobeCanvas({
   const arcs = useMemo(
     () =>
       points
-        .filter((p) => p.id !== homeId)
+        .filter((p) => p.id !== home.id)
         .map((p) => ({ startLat: home.lat, startLng: home.lng, endLat: p.lat, endLng: p.lng })),
-    [points, home, homeId],
+    [points, home],
   );
 
   const companies = useMemo(() => points.filter((p) => p.kind === "company"), [points]);
@@ -133,7 +131,7 @@ export default function GlobeCanvas({
       pointColor: (d: object) =>
         (d as LocalizedCountry).kind === "company" ? palette.company : palette.team,
       // Radio en grados: lo bastante grande para apuntar con el mouse sin precisión.
-      pointRadius: (d: object) => ((d as LocalizedCountry).id === homeId ? 1.5 : 1.15),
+      pointRadius: (d: object) => ((d as LocalizedCountry).id === home.id ? 1.5 : 1.15),
       pointLabel: (d: object) => {
         const point = d as LocalizedCountry;
         const extra = point.companies?.length
@@ -142,7 +140,7 @@ export default function GlobeCanvas({
         return `<div class="rounded-xl border border-border bg-surface px-3 py-2 font-sans text-xs text-text shadow-xl"><strong class="font-semibold">${escapeHtml(point.name)}</strong>${extra}</div>`;
       },
     }),
-    [palette, homeId],
+    [palette, home.id],
   );
 
   function handleReady() {

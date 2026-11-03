@@ -9,6 +9,8 @@ export const profile = {
     en: "Payments, Compliance & Platform Engineering",
   },
   location: { es: "Cajicá, Colombia", en: "Cajicá, Colombia" },
+  // Si te mudas: cambia `location` y `home` (país ISO de content/countries.ts y coordenadas de la ciudad).
+  home: { country: "CO", lat: 4.92, lng: -74.03 },
   summary: {
     es: "7 años construyendo producto de punta a punta. Hoy, sistemas fintech regulados donde se mueve dinero y automatización AML/KYC, con TypeScript/NestJS, Python/FastAPI y Next.js.",
     en: "7 years building product end to end. Today, regulated fintech systems where money moves and AML/KYC automation, with TypeScript/NestJS, Python/FastAPI and Next.js.",

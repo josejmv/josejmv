@@ -3,7 +3,7 @@
 import * as Tabs from "@radix-ui/react-tabs";
 import { type ReactNode, useState } from "react";
 
-import type { LocalizedCountry } from "@/lib/content";
+import type { GlobeHome, LocalizedCountry } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
 import { CollaborationGlobe } from "./collaboration-globe";
@@ -22,7 +22,7 @@ interface GlobeViewData {
 
 interface GlobeTabsProps {
   label: string;
-  home: { lat: number; lng: number };
+  home: GlobeHome;
   views: Record<GlobeView, GlobeViewData>;
 }
 

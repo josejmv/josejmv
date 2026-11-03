@@ -3,7 +3,7 @@ import "server-only";
 import { z } from "zod";
 
 import { areas as rawAreas } from "@content/areas";
-import { companyCountries, HOME, teamCountries } from "@content/countries";
+import { companyCountries, teamCountries } from "@content/countries";
 import { education as rawEducation } from "@content/education";
 import { experience as rawExperience } from "@content/experience";
 import { profile as rawProfile } from "@content/profile";
@@ -39,6 +39,16 @@ const content = {
     company: z.array(Country).parse(companyCountries),
   },
 };
+
+// `profile.home.country` debe ser un país del globo: si no, el origen no tendría marcador.
+{
+  const ids = new Set([...content.countries.team, ...content.countries.company].map((c) => c.id));
+  if (!ids.has(content.profile.home.country)) {
+    throw new Error(
+      `profile.home.country "${content.profile.home.country}" no existe en content/countries.ts`,
+    );
+  }
+}
 
 function isLocalized(value: unknown): value is Localized {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
@@ -103,9 +113,18 @@ export function getStack(): StackItem[] {
   return content.stack;
 }
 
+/** Origen del globo: id del país (para no trazarse un arco a sí mismo) y coordenadas. */
+export interface GlobeHome {
+  id: string;
+  lat: number;
+  lng: number;
+}
+
 export function getGlobeData(locale: ContentLocale) {
+  const { country, lat, lng } = content.profile.home;
+  const home: GlobeHome = { id: country, lat, lng };
   return {
-    home: HOME,
+    home,
     team: localize(content.countries.team, locale),
     company: localize(content.countries.company, locale),
   };
