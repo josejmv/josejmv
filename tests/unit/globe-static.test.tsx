@@ -3,7 +3,14 @@ import { describe, expect, it } from "vitest";
 
 import { GlobeStaticSvg } from "@/components/three/globe/globe-static-svg";
 import { getGlobeData } from "@/lib/content";
-import { arcPath, GLOBE_CENTER, GLOBE_RADIUS, project, toLimb } from "@/lib/globe/projection";
+import {
+  arcPath,
+  cameraAltitude,
+  GLOBE_CENTER,
+  GLOBE_RADIUS,
+  project,
+  toLimb,
+} from "@/lib/globe/projection";
 
 describe("proyección ortográfica", () => {
   it("coincide con las coordenadas del lienzo de diseño (Colombia)", () => {
@@ -50,5 +57,16 @@ describe("GlobeStaticSvg", () => {
       0,
     );
     expect(container.querySelectorAll("circle.fill-accent-2")).toHaveLength(0);
+  });
+});
+
+describe("cameraAltitude (fundido sin costuras)", () => {
+  it("encuadra la esfera 3D al mismo tamaño que la del SVG (radio 200 de 440)", () => {
+    const altitude = cameraAltitude();
+    expect(altitude).toBeCloseTo(1.562, 2);
+    // Comprobación inversa: a esa altitud la esfera ocupa el 90,9 % del lado.
+    const distance = 100 * (1 + altitude);
+    const fill = Math.tan(Math.asin(100 / distance)) / Math.tan((25 * Math.PI) / 180);
+    expect(fill).toBeCloseTo((2 * GLOBE_RADIUS) / 440, 4);
   });
 });

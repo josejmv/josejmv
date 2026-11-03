@@ -11,6 +11,22 @@ export const VIEW_CENTER = { lat: 18, lng: -35 } as const;
 
 const DEG = Math.PI / 180;
 
+/** Cámara de react-globe.gl (three `PerspectiveCamera` por defecto) y radio interno de three-globe. */
+const CAMERA_FOV_DEG = 50;
+const GLOBE_3D_RADIUS = 100;
+
+/**
+ * Altitud de cámara (en radios del globo) para que la esfera 3D ocupe en el lienzo la misma
+ * fracción que la del SVG estático (radio 200 de 440). Así el fundido estático → 3D no cambia de
+ * tamaño: la esfera de radio R vista a distancia d subtiende asin(R/d), y en pantalla mide
+ * tan(asin(R/d)) / tan(fov/2) de la mitad del alto.
+ */
+export function cameraAltitude(fill = (2 * GLOBE_RADIUS) / GLOBE_VIEWBOX): number {
+  const tanAngle = fill * Math.tan((CAMERA_FOV_DEG / 2) * DEG);
+  const distance = GLOBE_3D_RADIUS / Math.sin(Math.atan(tanAngle));
+  return distance / GLOBE_3D_RADIUS - 1;
+}
+
 export interface ProjectedPoint {
   x: number;
   y: number;

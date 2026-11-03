@@ -11,6 +11,9 @@ import { cn } from "@/lib/cn";
 // three + react-globe.gl van en un chunk aparte que solo se pide cerca del viewport (ADR 0001).
 const GlobeCanvas = dynamic(() => import("./globe-canvas"), { ssr: false });
 
+/** Duración del fundido SVG → 3D (ms). El 3D empieza a rotar al terminar. */
+const FADE_MS = 700;
+
 /** Solo desktop con puntero fino: el chunk 3D pesa ~555 kB gz (ver ADR 0001). */
 const DESKTOP_QUERY = "(min-width: 1024px) and (pointer: fine)";
 
@@ -104,6 +107,7 @@ export function CollaborationGlobe({ points, home, fallback, className }: Collab
             home={home}
             active={visible}
             onReady={() => setReady(true)}
+            rotateAfterMs={FADE_MS + 300}
           />
         </div>
       )}

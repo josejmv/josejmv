@@ -24,6 +24,9 @@
   --glow-1: rgba(143, 184, 222, 0.16);
   --glow-2: rgba(212, 191, 142, 0.09);
   --globe-image: url("/globe/globe-dark.svg");
+  /* Globo 3D: mismos tonos que el SVG estático (esfera y puntos de tierra). */
+  --globe-surface: #131c2e;
+  --globe-dot: rgba(175, 195, 218, 0.55);
 }
 
 [data-theme="light"] {
@@ -45,6 +48,8 @@
   --glow-1: rgba(47, 95, 138, 0.12);
   --glow-2: rgba(125, 95, 36, 0.08);
   --globe-image: url("/globe/globe-light.svg");
+  --globe-surface: #efede6;
+  --globe-dot: rgba(58, 68, 88, 0.55);
 }
 
 @theme inline {

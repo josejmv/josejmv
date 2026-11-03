@@ -7,7 +7,7 @@ import { feature } from "topojson-client";
 import countriesTopology from "world-atlas/countries-110m.json";
 
 import type { LocalizedCountry } from "@/lib/content";
-import { VIEW_CENTER } from "@/lib/globe/projection";
+import { cameraAltitude, VIEW_CENTER } from "@/lib/globe/projection";
 
 export interface GlobeCanvasProps {
   points: LocalizedCountry[];
@@ -17,7 +17,12 @@ export interface GlobeCanvasProps {
   active: boolean;
   /** Se llama cuando el globo ya pintó el primer cuadro (para el fundido con el fallback). */
   onReady?: () => void;
+  /** Milisegundos tras `onReady` antes de empezar a rotar: el globo queda quieto durante el fundido. */
+  rotateAfterMs?: number;
 }
+
+/** Misma escala que el SVG estático: el fundido no cambia el tamaño de la esfera. */
+const ALTITUDE = cameraAltitude();
 
 interface Palette {
   /** Tema al que corresponden estos colores. */
@@ -36,8 +41,8 @@ function readPalette(theme: string): Palette {
   const v = (name: string) => css.getPropertyValue(name).trim();
   return {
     theme,
-    land: v("--muted"),
-    globe: v("--surface-2"),
+    land: v("--globe-dot"),
+    globe: v("--globe-surface"),
     arc: v("--accent-text"),
     team: v("--accent-2"),
     company: v("--accent-text"),
@@ -76,6 +81,7 @@ export default function GlobeCanvas({
   homeId = "CO",
   active,
   onReady,
+  rotateAfterMs = 0,
 }: GlobeCanvasProps) {
   const globeRef = useRef<GlobeMethods | undefined>(undefined);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -98,6 +104,9 @@ export default function GlobeCanvas({
     if (active) globe.resumeAnimation();
     else globe.pauseAnimation();
   }, [active]);
+
+  const rotateTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  useEffect(() => () => clearTimeout(rotateTimer.current), []);
 
   const material = useMemo(
     () => new MeshPhongMaterial({ color: palette.globe, shininess: 4 }),
@@ -123,7 +132,8 @@ export default function GlobeCanvas({
       ring: () => palette.company,
       pointColor: (d: object) =>
         (d as LocalizedCountry).kind === "company" ? palette.company : palette.team,
-      pointRadius: (d: object) => ((d as LocalizedCountry).id === homeId ? 0.7 : 0.45),
+      // Radio en grados: lo bastante grande para apuntar con el mouse sin precisión.
+      pointRadius: (d: object) => ((d as LocalizedCountry).id === homeId ? 1.5 : 1.15),
       pointLabel: (d: object) => {
         const point = d as LocalizedCountry;
         const extra = point.companies?.length
@@ -138,11 +148,15 @@ export default function GlobeCanvas({
   function handleReady() {
     const globe = globeRef.current;
     if (!globe) return;
-    globe.pointOfView({ ...VIEW_CENTER, altitude: 2.1 });
+    globe.pointOfView({ ...VIEW_CENTER, altitude: ALTITUDE });
     const controls = globe.controls();
     controls.enableZoom = false;
-    controls.autoRotate = true;
     controls.autoRotateSpeed = 0.35;
+    // Quieto mientras se funde con el SVG (misma vista): luego empieza a rotar.
+    controls.autoRotate = false;
+    rotateTimer.current = setTimeout(() => {
+      controls.autoRotate = true;
+    }, rotateAfterMs);
     // Móvil: menos píxeles por cuadro (ADR 0001).
     globe.renderer().setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     if (!active) globe.pauseAnimation();
@@ -160,14 +174,17 @@ export default function GlobeCanvas({
           globeMaterial={material}
           showAtmosphere
           atmosphereColor={palette.atmosphere}
-          atmosphereAltitude={0.14}
+          atmosphereAltitude={0.1}
           hexPolygonsData={landFeatures}
           hexPolygonResolution={3}
           hexPolygonMargin={0.45}
           hexPolygonUseDots
+          hexPolygonsTransitionDuration={0}
           hexPolygonColor={accessors.land}
           arcsData={arcs}
           arcColor={accessors.arc}
+          // Arcos bajos, cerca de la superficie como en el SVG: el fundido no los hace saltar.
+          arcAltitudeAutoScale={0.22}
           arcStroke={0.45}
           arcDashLength={0.35}
           arcDashGap={0.2}
@@ -178,7 +195,7 @@ export default function GlobeCanvas({
           pointColor={accessors.pointColor}
           pointAltitude={0.012}
           pointRadius={accessors.pointRadius}
-          pointsTransitionDuration={600}
+          pointsTransitionDuration={0}
           pointLabel={accessors.pointLabel}
           ringsData={companies}
           ringLat="lat"
