@@ -1,9 +1,9 @@
 "use client";
 
-import * as Tabs from "@radix-ui/react-tabs";
 import { type ReactNode, useState } from "react";
 
 import type { GlobeHome, LocalizedCountry } from "@/lib/content";
+import { useTabs } from "@/components/ui/use-tabs";
 import { cn } from "@/lib/cn";
 
 import { CollaborationGlobe } from "./collaboration-globe";
@@ -35,21 +35,19 @@ const VIEWS: GlobeView[] = ["team", "company"];
 export function GlobeTabs({ label, home, views }: GlobeTabsProps) {
   const [view, setView] = useState<GlobeView>("team");
   const active = views[view];
+  const tabs = useTabs(VIEWS, view, setView);
 
   return (
-    <Tabs.Root
-      value={view}
-      onValueChange={(value) => setView(value as GlobeView)}
-      className="flex w-full flex-col items-center gap-4"
-    >
-      <Tabs.List
+    <div className="flex w-full flex-col items-center gap-4">
+      <div
+        {...tabs.listProps}
         aria-label={label}
         className="inline-flex gap-1 rounded-pill border border-border bg-surface-2 p-1"
       >
         {VIEWS.map((key) => (
-          <Tabs.Trigger
+          <button
             key={key}
-            value={key}
+            {...tabs.tabProps(key)}
             className={cn(
               "h-11 rounded-pill px-3 text-xs font-medium whitespace-nowrap text-text-2 transition-colors sm:px-[18px] sm:text-[13px]",
               "hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text",
@@ -57,9 +55,9 @@ export function GlobeTabs({ label, home, views }: GlobeTabsProps) {
             )}
           >
             {views[key].label}
-          </Tabs.Trigger>
+          </button>
         ))}
-      </Tabs.List>
+      </div>
 
       <CollaborationGlobe
         points={active.points}
@@ -73,14 +71,14 @@ export function GlobeTabs({ label, home, views }: GlobeTabsProps) {
       />
 
       {VIEWS.map((key) => (
-        <Tabs.Content
+        <div
           key={key}
-          value={key}
+          {...tabs.panelProps(key)}
           className="rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-text"
         >
           {views[key].legend}
-        </Tabs.Content>
+        </div>
       ))}
-    </Tabs.Root>
+    </div>
   );
 }

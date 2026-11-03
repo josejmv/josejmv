@@ -1,8 +1,8 @@
 "use client";
 
-import * as Tabs from "@radix-ui/react-tabs";
 import { type ReactNode, useState } from "react";
 
+import { useTabs } from "@/components/ui/use-tabs";
 import { cn } from "@/lib/cn";
 
 interface AreaTab {
@@ -19,22 +19,29 @@ interface AreaTabsProps {
 }
 
 /**
- * Tabs de las 6 áreas (Radix). Todos los paneles van en el HTML (`forceMount`) y los inactivos se
- * ocultan: el contenido de cada área es indexable aunque solo se vea una. En móvil, scroll horizontal.
+ * Tabs de las 6 áreas (`useTabs`, ADR 0004). Todos los paneles van en el HTML y los inactivos
+ * llevan `hidden`: el contenido de cada área es indexable aunque solo se vea una. En móvil, scroll
+ * horizontal.
  */
 export function AreaTabs({ label, areas, defaultSlug }: AreaTabsProps) {
   const [active, setActive] = useState(defaultSlug);
+  const tabs = useTabs(
+    areas.map((area) => area.slug),
+    active,
+    setActive,
+  );
 
   return (
-    <Tabs.Root value={active} onValueChange={setActive} className="flex flex-col gap-6">
-      <Tabs.List
+    <div className="flex flex-col gap-6">
+      <div
+        {...tabs.listProps}
         aria-label={label}
         className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 md:flex-wrap md:overflow-visible"
       >
         {areas.map((area) => (
-          <Tabs.Trigger
+          <button
             key={area.slug}
-            value={area.slug}
+            {...tabs.tabProps(area.slug)}
             className={cn(
               "h-11 shrink-0 rounded-[10px] border border-border px-4 text-sm font-medium whitespace-nowrap text-text-2 transition-colors",
               "hover:bg-chip hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text",
@@ -42,22 +49,19 @@ export function AreaTabs({ label, areas, defaultSlug }: AreaTabsProps) {
             )}
           >
             {area.title}
-          </Tabs.Trigger>
+          </button>
         ))}
-      </Tabs.List>
+      </div>
 
       {areas.map((area) => (
-        <Tabs.Content
+        <div
           key={area.slug}
-          value={area.slug}
-          forceMount
-          // Con forceMount Radix no oculta el panel: `hidden` lo saca de la vista y del árbol accesible.
-          hidden={area.slug !== active}
+          {...tabs.panelProps(area.slug)}
           className="rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-text"
         >
           {area.panel}
-        </Tabs.Content>
+        </div>
       ))}
-    </Tabs.Root>
+    </div>
   );
 }
