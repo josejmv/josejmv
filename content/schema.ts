@@ -233,7 +233,102 @@ export const Project = z
   .strict();
 export type Project = z.infer<typeof Project>;
 
+// ── Contacto ──────────────────────────────────────────────────────────────────
+
+export const CONTACT_CHANNEL_IDS = ["gmail", "linkedin", "github", "whatsapp"] as const;
+export const OPPORTUNITY_TYPES = ["empleo", "contrato", "consultoria", "otro"] as const;
+export type OpportunityType = (typeof OPPORTUNITY_TYPES)[number];
+
+export const ContactContent = z
+  .object({
+    /** Texto de cada canal; el `href` sale de `profile.contactLinks` con el mismo `id`. */
+    channels: z
+      .array(
+        z
+          .object({
+            id: z.enum(CONTACT_CHANNEL_IDS),
+            handle: Localized,
+            description: Localized,
+          })
+          .strict(),
+      )
+      .length(CONTACT_CHANNEL_IDS.length),
+    availability: z
+      .object({
+        status: z.enum(["available", "unavailable"]),
+        title: Localized,
+        rows: z.array(z.object({ key: text, label: Localized, value: Localized }).strict()),
+        languagesLabel: Localized,
+        locationLabel: Localized,
+      })
+      .strict(),
+    opportunityTypes: z
+      .array(z.object({ value: z.enum(OPPORTUNITY_TYPES), label: Localized }).strict())
+      .length(OPPORTUNITY_TYPES.length),
+    cv: z.object({ href: z.string().startsWith("/"), language: z.enum(LOCALES) }).strict(),
+  })
+  .strict();
+export type ContactContent = z.infer<typeof ContactContent>;
+
+/**
+ * Formulario de Contacto (ADR 0005). Cada mensaje de error es el nombre del campo: la UI lo traduce
+ * con `ContactPage.form.errors.<campo>`.
+ */
+export const contactFormSchema = z.object({
+  name: z.string().trim().min(2, "name").max(80, "name"),
+  email: z.string().trim().pipe(z.email("email")),
+  company: z.string().trim().max(80, "company").optional().default(""),
+  type: z.enum(OPPORTUNITY_TYPES, "type").default("empleo"),
+  message: z.string().trim().min(10, "message").max(2000, "message"),
+});
+export type ContactFormValues = z.infer<typeof contactFormSchema>;
+export type ContactFormField = keyof ContactFormValues;
+
+// ── Constelación de áreas ─────────────────────────────────────────────────────
+
+const Percent = z.number().min(0).max(100);
+
+export const AreasGraph = z
+  .object({
+    defaultSelected: AreaSlug,
+    nodes: z
+      .array(
+        z
+          .object({
+            id: AreaSlug,
+            /** Texto dentro de la esfera (FE, BE…). */
+            code: z.string().regex(/^[A-Z]{2,3}$/),
+            /** Módulo firma de su página de área. */
+            module: text,
+            position3d: z.tuple([z.number(), z.number(), z.number()]),
+            /** Posición en el viewBox 1000×600 del fallback 2D. */
+            position2d: z.object({ x: z.number().min(0).max(1000), y: z.number().min(0).max(600) }),
+            /** Posición en % del escenario móvil (4:5), más compacta. */
+            mobile: z.object({ x: Percent, y: Percent }),
+            /** Escala del nodo en el fallback. */
+            depth: z.number().min(0.85).max(1.1),
+            metric: KeyMetric,
+          })
+          .strict(),
+      )
+      .length(AREA_SLUGS.length)
+      .refine((nodes) => new Set(nodes.map((n) => n.id)).size === nodes.length, {
+        message: "Cada área aparece una sola vez",
+      }),
+    edges: z
+      .array(z.object({ from: AreaSlug, to: AreaSlug, label: Localized }).strict())
+      .min(1)
+      .refine((edges) => edges.every((e) => e.from !== e.to), {
+        message: "Una conexión une dos áreas distintas",
+      }),
+  })
+  .strict();
+export type AreasGraph = z.infer<typeof AreasGraph>;
+
 // ── Tipos de entrada (lo que se escribe en content/*.ts, antes de defaults) ───
+
+export type ContactContentInput = z.input<typeof ContactContent>;
+export type AreasGraphInput = z.input<typeof AreasGraph>;
 
 export type ProfileInput = z.input<typeof Profile>;
 export type ExperienceInput = z.input<typeof Experience>;
