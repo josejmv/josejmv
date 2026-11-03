@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Áreas · José M. Vasquez</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0A0D14}
+a{color:#D4BF8E}a:hover{color:#EADBB5}
+.mono{font-family:'JetBrains Mono',monospace}
+.chip{padding:5px 9px;border-radius:6px;background:#1B2232;font:400 12px 'JetBrains Mono',monospace;color:#C9D0DB}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@keyframes spin{to{transform:rotateX(72deg) rotateZ(360deg)}}
+@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:.8}}
+@keyframes flow{to{stroke-dashoffset:-60}}
+.node{animation:bob 6s ease-in-out infinite}
+.ring{animation:spin 40s linear infinite}
+.star{animation:twinkle 4s ease-in-out infinite}
+.edge{stroke-dasharray:4 8;animation:flow 3s linear infinite}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #E8EAF0; background: #0A0D14; min-height: 100vh; position: relative; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 56px 56px"></div>
+<div aria-hidden="true" style="position: absolute; top: 120px; left: 50%; width: 1100px; height: 900px; translate: -50% 0; border-radius: 50%; background: radial-gradient(ellipse, rgba(143,184,222,0.13), rgba(212,191,142,0.06) 40%, rgba(10,13,20,0) 70%)"></div>
+<div style="position: relative">
+<dc-import name="Header" active="areas" hint-size="100%,96px"></dc-import>
+<main style="max-width: 1200px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+<section style="padding: 56px 0 0; display: flex; flex-direction: column; gap: 16px; max-width: 780px">
+<p class="mono" style="margin: 0; font-size: 13px; color: #9AA3B2">áreas</p>
+<h1 style="margin: 0; font-family: Sora, sans-serif; font-weight: 600; font-size: clamp(40px, 6vw, 60px); letter-spacing: -1.5px; line-height: 1.05">Seis áreas, <span style="background: linear-gradient(90deg, #D4BF8E, #8FB8DE); -webkit-background-clip: text; background-clip: text; color: transparent">un mismo criterio</span></h1>
+<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #9AA3B2">Cada nodo es un área y cada línea, un proyecto que las cruza. Elige un nodo para ver qué hice ahí, con qué métrica y dónde se conecta con lo demás.</p>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<div style="flex: 999 1 560px; min-width: 0; position: relative; min-height: 600px; border-radius: 28px; border: 1px solid rgba(255,255,255,0.07); background: radial-gradient(circle at 50% 50%, #121A2A, #0B0F18 70%); overflow: hidden; perspective: 1000px">
+<div aria-hidden="true" class="ring" style="position: absolute; left: 50%; top: 50%; width: 560px; height: 560px; margin: -280px 0 0 -280px; border-radius: 50%; border: 1px solid rgba(212,191,142,0.25); transform: rotateX(72deg)"></div>
+<div aria-hidden="true" class="ring" style="position: absolute; left: 50%; top: 50%; width: 760px; height: 760px; margin: -380px 0 0 -380px; border-radius: 50%; border: 1px dashed rgba(143,184,222,0.18); transform: rotateX(72deg); animation-duration: 70s"></div>
+<svg aria-hidden="true" viewBox="0 0 1000 600" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%">
+<g fill="#C9D0DB"><circle class="star" cx="80" cy="60" r="1.2"/><circle class="star" cx="930" cy="90" r="1.4" style="animation-delay: 1s"/><circle class="star" cx="640" cy="40" r="1"/><circle class="star" cx="300" cy="560" r="1.3" style="animation-delay: 2s"/><circle class="star" cx="880" cy="540" r="1.1" style="animation-delay: 0.5s"/><circle class="star" cx="40" cy="380" r="1" style="animation-delay: 1.5s"/><circle class="star" cx="960" cy="320" r="1.2" style="animation-delay: 2.5s"/><circle class="star" cx="420" cy="30" r="1.1"/></g>
+<g stroke="rgba(255,255,255,0.08)" stroke-width="1"><line x1="500" y1="300" x2="210" y2="160"/><line x1="500" y1="300" x2="480" y2="100"/><line x1="500" y1="300" x2="800" y2="170"/><line x1="500" y1="300" x2="820" y2="430"/><line x1="500" y1="300" x2="520" y2="510"/><line x1="500" y1="300" x2="190" y2="440"/></g>
+<sc-for list="{{edges}}" as="e" hint-placeholder-count="7"><line class="edge" x1="{{e.x1}}" y1="{{e.y1}}" x2="{{e.x2}}" y2="{{e.y2}}" stroke="{{e.color}}" stroke-width="{{e.w}}" stroke-opacity="{{e.op}}"/></sc-for>
+</svg>
+<div aria-hidden="true" style="position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #F4EBD3, #D4BF8E 35%, #3A4A66 80%); box-shadow: 0 0 60px rgba(212,191,142,0.35); font: 700 15px Sora, sans-serif; color: #0A0D14">JMV</div>
+<sc-for list="{{nodes}}" as="n" hint-placeholder-count="6">
+<button type="button" class="node" aria-pressed="{{n.on}}" onClick="{{n.pick}}" style="position: absolute; left: {{n.left}}; top: {{n.top}}; translate: -50% -50%; scale: {{n.scale}}; animation-delay: {{n.delay}}; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 8px; border: 0; background: transparent; color: #E8EAF0; cursor: pointer; opacity: {{n.op}}">
+<span style="width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: {{n.orb}}; box-shadow: {{n.glow}}; border: 1px solid rgba(255,255,255,0.18); font: 600 12px 'JetBrains Mono', monospace; color: {{n.orbText}}">{{n.code}}</span>
+<span style="padding: 5px 12px; border-radius: 999px; background: rgba(10,13,20,0.8); border: 1px solid {{n.ring}}; font: 600 13px Inter, sans-serif; white-space: nowrap">{{n.label}}</span>
+</button>
+</sc-for>
+<sc-for list="{{edgeLabels}}" as="l" hint-placeholder-count="2"><span class="mono" style="position: absolute; left: {{l.left}}; top: {{l.top}}; translate: -50% -50%; padding: 3px 8px; border-radius: 6px; background: rgba(10,13,20,0.85); border: 1px solid rgba(212,191,142,0.3); font-size: 11px; color: #D4BF8E; white-space: nowrap; pointer-events: none">{{l.text}}</span></sc-for>
+<p class="mono" style="position: absolute; left: 20px; bottom: 14px; margin: 0; font-size: 11px; color: #7E8798">escena 3D · react-three-fiber en el sitio real · aquí, vista CSS</p>
+</div>
+
+<aside style="flex: 1 1 320px; padding: 28px; border-radius: 28px; background: #121722; border: 1px solid rgba(212,191,142,0.2); display: flex; flex-direction: column; gap: 16px">
+<p class="mono" style="margin: 0; font-size: 12px; color: #D4BF8E">◆ {{cur.module}}</p>
+<h2 style="margin: 0; font-family: Sora; font-weight: 600; font-size: 26px; line-height: 1.2">{{cur.headline}}</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.7; color: #C9D0DB">{{cur.text}}</p>
+<div style="padding: 16px; border-radius: 16px; background: #0E131D"><b style="display: block; font-family: Sora; font-size: 30px; color: #D4BF8E">{{cur.metric}}</b><span style="font-size: 13px; color: #9AA3B2">{{cur.metricLabel}}</span></div>
+<div><p class="mono" style="margin: 0 0 8px; font-size: 12px; color: #9AA3B2">se conecta con</p><ul style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.8; color: #C9D0DB"><sc-for list="{{cur.links}}" as="k" hint-placeholder-count="2"><li>{{k}}</li></sc-for></ul></div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{cur.chips}}" as="c" hint-placeholder-count="4"><span class="chip">{{c}}</span></sc-for></div>
+<a href="{{cur.href}}" style="margin-top: auto; display: inline-flex; justify-content: center; align-items: center; height: 48px; border-radius: 12px; background: #D4BF8E; color: #0A0D14; font-weight: 600; text-decoration: none">Explorar&nbsp;{{cur.label}}&nbsp;→</a>
+</aside>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px; padding-top: 12px">
+<h2 style="margin: 0; font-family: Sora; font-weight: 600; font-size: 24px">Todas las áreas</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 14px">
+<sc-for list="{{cards}}" as="c" hint-placeholder-count="6">
+<a href="{{c.href}}" style="text-decoration: none; color: #E8EAF0; padding: 22px; border-radius: 20px; background: #121722; border: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 8px">
+<span class="mono" style="font-size: 12px; color: #9AA3B2">{{c.num}} · {{c.label}}</span>
+<strong style="font-family: Sora; font-size: 19px; font-weight: 600; line-height: 1.3">{{c.headline}}</strong>
+<span style="font-size: 13px; color: #9AA3B2"><b style="color: #D4BF8E">{{c.metric}}</b> {{c.metricLabel}}</span>
+<span style="font-size: 13px; color: #D4BF8E; margin-top: 4px">Ver área →</span>
+</a>
+</sc-for>
+</div>
+</section>
+</main>
+<div style="height: 24px"></div>
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2100}}'>
+class Component extends DCLogic {
+constructor(props) { super(props); this.state = { sel: 'backend' }; }
+renderVals() {
+const A = [
+{ id: 'frontend', code: 'FE', label: 'Frontend', x: 210, y: 160, s: 1.08, href: 'Area-frontend.dc.html', module: 'TokenPlayground', headline: 'Interfaces que escalan entre marcas', text: 'Next.js App Router y React en producción: un portal white-label que sirve 3 marcas desde un solo codebase, con tokens de diseño, i18n a escala e infraestructura de testing propia.', metric: '−30%', metricLabel: 'suite de tests (255 s → 178 s)', chips: ['next.js','react','tailwind','vitest'] },
+{ id: 'backend', code: 'BE', label: 'Backend & Pagos', x: 480, y: 100, s: 0.9, href: 'Area-backend.dc.html', module: 'PaymentFlowSimulator', headline: 'Correcto donde se mueve el dinero', text: 'Orquestador de pagos de un sitio de recaudo en línea y co-desarrollo de una pasarela propia sobre PSE y Bre-B, diseñada para no cobrar dos veces nunca.', metric: '−98.8%', metricLabel: 'paginación por cursor (300k filas)', chips: ['nestjs','fastapi','go','postgresql'] },
+{ id: 'compliance', code: 'KYC', label: 'Compliance AML/KYC', x: 760, y: 175, s: 1.05, href: 'Area-compliance.dc.html', module: 'KycPipeline', headline: 'AML/KYC automatizado (art. 492)', text: 'Módulo de validación AML/KYC de punta a punta para una plataforma de seguros: backend FastAPI, adaptador hexagonal con puertos tipados, bandeja de casos y wizard de 4 pasos.', metric: '224', metricLabel: 'commits de código en 8 semanas', chips: ['python','fastapi','sqlalchemy','pytest'] },
+{ id: 'devops', code: 'OPS', label: 'DevOps', x: 800, y: 420, s: 0.95, href: 'Area-devops.dc.html', module: 'PipelineRunner', headline: 'CI que evita romper cosas', text: 'Gates de CI que limitan lint, typecheck, tests y build al diff del merge request, implantados en dos repositorios el mismo día.', metric: '−97%', metricLabel: 'guardado de caché en CI (1:36 → 0:03)', chips: ['gitlab ci','github actions','docker'] },
+{ id: 'ai', code: 'AI', label: 'AI Engineering', x: 520, y: 470, s: 1.1, href: 'Area-ai.dc.html', module: 'ExtractionDemo', headline: 'LLMs en producción y desarrollo asistido', text: 'Workflows spec-first con Claude Code integrados al issue tracker y producto sobre una plataforma de extracción documental con LLM.', metric: '403', metricLabel: 'commits pareados con IA en 4 repositorios', chips: ['claude code','aws bedrock','python'] },
+{ id: 'leadership', code: 'LD', label: 'Leadership', x: 190, y: 440, s: 0.88, href: 'Area-leadership.dc.html', module: 'TeamGrowthChart + DocsStandard', headline: 'Liderar con proceso y calma', text: 'Liderazgo de personas en tres etapas y liderazgo de proceso con un estándar de documentación adoptado por 5 desarrolladores.', metric: '63', metricLabel: 'features con el estándar RFC → ADR', chips: ['rfc','adr','jira'] }
+];
+const E = [['frontend','backend','Sitio de pagos (Next.js)'],['backend','devops','Gate de CI'],['backend','compliance','Motor KYC (FastAPI)'],['compliance','ai','Extracción con Bedrock'],['ai','leadership','Workflow con Claude Code'],['leadership','frontend','Estándar de documentación'],['frontend','devops','Suite de tests −30%']];
+const sel = this.state.sel;
+const byId = {}; A.forEach(a => byId[a.id] = a);
+const pct = (v, max) => (v / max * 100).toFixed(2) + '%';
+const edges = E.map(([a, b]) => { const on = a === sel || b === sel; return { x1: byId[a].x, y1: byId[a].y, x2: byId[b].x, y2: byId[b].y, color: on ? '#D4BF8E' : '#8FB8DE', w: on ? 2 : 1, op: on ? 0.95 : 0.3 }; });
+const edgeLabels = E.filter(([a, b]) => a === sel || b === sel).map(([a, b, t]) => ({ text: t, left: pct((byId[a].x + byId[b].x) / 2, 1000), top: pct((byId[a].y + byId[b].y) / 2, 600) }));
+const nodes = A.map((a, i) => { const on = a.id === sel; return { code: a.code, label: a.label, on, pick: () => this.setState({ sel: a.id }), left: pct(a.x, 1000), top: pct(a.y, 600), scale: on ? a.s * 1.15 : a.s, delay: (i * 0.7) + 's', op: on ? 1 : 0.55 + a.s * 0.35, orb: on ? 'radial-gradient(circle at 35% 30%, #F4EBD3, #D4BF8E 45%, #7A6435)' : 'radial-gradient(circle at 35% 30%, #C9DCF0, #5F7FA3 55%, #1B2232)', orbText: on ? '#0A0D14' : '#0A0D14', glow: on ? '0 0 40px rgba(212,191,142,0.55)' : '0 0 24px rgba(143,184,222,0.25)', ring: on ? '#D4BF8E' : 'rgba(255,255,255,0.12)' }; });
+const c = byId[sel];
+const links = E.filter(([a, b]) => a === sel || b === sel).map(([a, b, t]) => (a === sel ? byId[b].label : byId[a].label) + ' · ' + t);
+return { nodes, edges, edgeLabels, cur: { ...c, links }, cards: A.map((a, i) => ({ ...a, num: '0' + (i + 1) })) };
+}
+}
+</script>
+</body>
+</html>

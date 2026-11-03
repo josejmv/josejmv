@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Contacto · José M. Vasquez</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0A0D14}
+a{color:#D4BF8E}a:hover{color:#EADBB5}
+.mono{font-family:'JetBrains Mono',monospace}
+.ch{display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:22px;background:#121722;border:1px solid rgba(255,255,255,0.06);text-decoration:none;color:#E8EAF0}
+.ico{width:44px;height:44px;border-radius:12px;background:#1B2232;display:grid;place-items:center;color:#D4BF8E}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:13px;color:#C9D0DB}
+.inp{height:46px;padding:0 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.12);background:#0E131D;color:#E8EAF0;font:400 14px Inter,sans-serif;box-sizing:border-box;width:100%}
+.inp:focus{outline:2px solid #D4BF8E;outline-offset:1px}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #E8EAF0; background: #0A0D14; min-height: 100vh; position: relative; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 56px 56px"></div>
+<div aria-hidden="true" style="position: absolute; top: -200px; left: -200px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, rgba(212,191,142,0.12), rgba(10,13,20,0) 65%)"></div>
+<div style="position: relative">
+<dc-import name="Header" active="contact" hint-size="100%,96px"></dc-import>
+<main style="max-width: 1200px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+<section style="padding: 56px 0 4px; display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<p class="mono" style="margin: 0; font-size: 13px; color: #9AA3B2">contacto</p>
+<h1 style="margin: 0; font-family: Sora, sans-serif; font-weight: 600; font-size: clamp(44px, 7vw, 68px); letter-spacing: -1.6px; line-height: 1">Hablemos de lo <span style="background: linear-gradient(90deg, #D4BF8E, #8FB8DE); -webkit-background-clip: text; background-clip: text; color: transparent">que quieres construir</span></h1>
+<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #9AA3B2">Escríbeme por la vía que prefieras. El correo es la mejor para propuestas y detalles; respondo en español o en inglés.</p>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 14px">
+<div class="ch" style="grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; background: linear-gradient(120deg, rgba(212,191,142,0.16), rgba(143,184,222,0.10)); border-color: rgba(212,191,142,0.3)">
+<div style="display: flex; gap: 16px; align-items: center; min-width: 0">
+<div class="ico" style="width: 56px; height: 56px; background: #D4BF8E; color: #0A0D14; flex: none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+<div style="min-width: 0"><p class="mono" style="margin: 0; font-size: 12px; color: #D4BF8E">vía principal · Gmail</p><p style="margin: 4px 0 0; font-family: Sora; font-size: clamp(18px, 3vw, 26px); font-weight: 600; overflow-wrap: anywhere">josejmvasquez@gmail.com</p></div>
+</div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<a href="mailto:josejmvasquez@gmail.com" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 999px; background: #D4BF8E; color: #0A0D14; font-weight: 600; text-decoration: none">Escribir un correo</a>
+<button type="button" onClick="{{copy}}" style="height: 48px; padding: 0 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #E8EAF0; font: 500 14px Inter, sans-serif; cursor: pointer">{{copyLabel}}</button>
+</div>
+</div>
+<a class="ch" href="https://www.linkedin.com/in/josejmv/"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></span><strong style="font-size: 17px">LinkedIn</strong><span class="mono" style="font-size: 12px; color: #9AA3B2">in/josejmv</span><span style="font-size: 13px; color: #9AA3B2">Trayectoria completa y recomendaciones.</span></a>
+<a class="ch" href="https://github.com/josejmv"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5a3 3 0 0 0-.9-2.4c3-.3 6-1.5 6-6.5a5 5 0 0 0-1.4-3.5 4.6 4.6 0 0 0-.1-3.5s-1.1-.3-3.6 1.4a12.4 12.4 0 0 0-6.5 0C6 1.3 4.9 1.6 4.9 1.6a4.6 4.6 0 0 0-.1 3.5A5 5 0 0 0 3.4 8.6c0 5 3 6.2 6 6.5a3 3 0 0 0-.9 2.4V21"/></svg></span><strong style="font-size: 17px">GitHub</strong><span class="mono" style="font-size: 12px; color: #9AA3B2">github.com/josejmv</span><span style="font-size: 13px; color: #9AA3B2">Código público y este portafolio.</span></a>
+<a class="ch" href="https://wa.me/573174480435"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.6z"/></svg></span><strong style="font-size: 17px">WhatsApp</strong><span class="mono" style="font-size: 12px; color: #9AA3B2">mensaje directo</span><span style="font-size: 13px; color: #9AA3B2">Para coordinar algo rápido.</span></a>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+<div style="flex: 999 1 560px; min-width: 0; padding: 30px; border-radius: 24px; background: #121722; border: 1px solid rgba(255,255,255,0.06)">
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<form style="display: flex; flex-direction: column; gap: 16px">
+<div><h2 style="margin: 0; font-family: Sora; font-weight: 600; font-size: 24px">Envíame un mensaje</h2><p style="margin: 6px 0 0; font-size: 14px; color: #9AA3B2">Al enviar se abre tu app de correo con el mensaje listo para josejmvasquez@gmail.com. Los campos con * son obligatorios.</p></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px">
+<label class="fld">Nombre *<input class="inp" type="text" name="name" autocomplete="name" value="{{f.name}}" onChange="{{onName}}"></label>
+<label class="fld">Email *<input class="inp" type="email" name="email" autocomplete="email" value="{{f.email}}" onChange="{{onEmail}}"></label>
+<label class="fld">Empresa<input class="inp" type="text" name="company" autocomplete="organization" value="{{f.company}}" onChange="{{onCompany}}"></label>
+<label class="fld">Tipo de oportunidad<select class="inp" name="type" value="{{f.type}}" onChange="{{onType}}"><option value="empleo">Empleo de tiempo completo</option><option value="contrato">Contrato o freelance</option><option value="consultoria">Consultoría</option><option value="otro">Otro</option></select></label>
+</div>
+<label class="fld">Mensaje *<textarea class="inp" name="message" rows="6" value="{{f.message}}" onChange="{{onMessage}}" style="height: auto; padding: 12px 14px; resize: vertical; line-height: 1.6"></textarea></label>
+<sc-if value="{{hasError}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; padding: 10px 14px; border-radius: 10px; background: rgba(240,128,128,0.12); color: #F3B4B4; font-size: 13px">Completa nombre, un email válido y el mensaje.</p></sc-if>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+<span class="mono" style="font-size: 11px; color: #7E8798">sin servicios de terceros · se envía desde tu correo</span>
+<button type="button" onClick="{{submit}}" style="height: 48px; padding: 0 26px; border-radius: 999px; border: 0; background: #D4BF8E; color: #0A0D14; font: 600 14px Inter, sans-serif; cursor: pointer">Enviar mensaje</button>
+</div>
+</form>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start; padding: 20px 0">
+<div class="ico" style="width: 56px; height: 56px; background: rgba(110,231,183,0.15); color: #6EE7B7"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></div>
+<h2 style="margin: 0; font-family: Sora; font-weight: 600; font-size: 24px">Listo, {{f.name}}. Tu correo ya está redactado.</h2>
+<p style="margin: 0; color: #9AA3B2; font-size: 14px">Se abrió tu app de correo con el mensaje para josejmvasquez@gmail.com: solo falta pulsar Enviar. ¿No se abrió? <a href="{{mailto}}">Ábrelo aquí</a> o copia el email de arriba.</p>
+<button type="button" onClick="{{reset}}" style="height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #E8EAF0; font: 500 14px Inter, sans-serif; cursor: pointer">Escribir otro mensaje</button>
+</div>
+</sc-if>
+</div>
+
+<aside style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px">
+<div style="padding: 26px; border-radius: 24px; background: #121722; border: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #6EE7B7; box-shadow: 0 0 12px rgba(110,231,183,0.6)"></span><strong style="font-size: 16px">Disponible para nuevos proyectos</strong></div>
+<dl style="margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 14px">
+<div style="display: flex; justify-content: space-between; gap: 12px"><dt style="color: #9AA3B2">Modalidad</dt><dd style="margin: 0; text-align: right">Remoto</dd></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><dt style="color: #9AA3B2">Tipo de contrato</dt><dd style="margin: 0; text-align: right">Full-time (preferido) · contrato por tiempo con opción de renovación</dd></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><dt style="color: #9AA3B2">Zona horaria</dt><dd style="margin: 0; text-align: right">Bogotá · UTC−5</dd></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><dt style="color: #9AA3B2">Idiomas</dt><dd style="margin: 0; text-align: right">Español nativo · Inglés B2</dd></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><dt style="color: #9AA3B2">Ubicación</dt><dd style="margin: 0; text-align: right">Cajicá, Colombia</dd></div>
+</dl>
+</div>
+<div style="padding: 26px; border-radius: 24px; background: linear-gradient(135deg, #161C2A, #121722 60%); border: 1px solid rgba(212,191,142,0.18); display: flex; flex-direction: column; gap: 12px">
+<strong style="font-family: Sora; font-size: 18px; font-weight: 600">Currículum</strong>
+<p style="margin: 0; font-size: 13px; line-height: 1.6; color: #9AA3B2">Senior Full Stack Developer · pagos, compliance y plataforma.</p>
+<a href="https://josejmv.vercel.app/cv/jose-vasquez-cv.pdf" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 46px; border-radius: 12px; background: #E8EAF0; color: #0A0D14; font-weight: 600; text-decoration: none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Descargar CV (PDF, en inglés)</a>
+<a href="Experience.dc.html" style="font-size: 13px">o ver la trayectoria completa →</a>
+</div>
+</aside>
+</section>
+</main>
+<div style="height: 24px"></div>
+<dc-import name="Footer" cta="{{ false }}" hint-size="100%,100px"></dc-import>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+constructor(props) { super(props); this.state = { f: { name: '', email: '', company: '', type: 'empleo', message: '' }, sent: false, error: false, copied: false }; }
+set(k) { return (e) => this.setState({ f: { ...this.state.f, [k]: e.target.value } }); }
+renderVals() {
+const f = this.state.f;
+const TYPES = { empleo: 'Empleo de tiempo completo', contrato: 'Contrato o freelance', consultoria: 'Consultoría', otro: 'Otro' };
+const subject = 'Portafolio · ' + TYPES[f.type] + ' · ' + (f.name || '');
+const body = f.message + '\n\n—\n' + f.name + '\n' + f.email + (f.company ? '\n' + f.company : '');
+const mailto = 'mailto:josejmvasquez@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+return {
+f,
+onName: this.set('name'), onEmail: this.set('email'), onCompany: this.set('company'), onType: this.set('type'), onMessage: this.set('message'),
+submit: (e) => { if (e && e.preventDefault) e.preventDefault(); const ok = f.name.trim() && /.+@.+\..+/.test(f.email) && f.message.trim(); if (!ok) { this.setState({ error: true }); return; } try { window.open(mailto, '_blank'); } catch (err) {} this.setState({ sent: true, error: false }); },
+mailto,
+reset: () => this.setState({ sent: false, error: false, f: { name: '', email: '', company: '', type: 'empleo', message: '' } }),
+copy: () => { try { navigator.clipboard.writeText('josejmvasquez@gmail.com'); } catch (e) {} this.setState({ copied: true }); setTimeout(() => this.setState({ copied: false }), 1800); },
+copyLabel: this.state.copied ? '¡Copiado!' : 'Copiar email',
+sent: this.state.sent, notSent: !this.state.sent, hasError: this.state.error
+};
+}
+}
+</script>
+</body>
+</html>

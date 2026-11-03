@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Footer del sitio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #E8EAF0; background: #0A0D14; padding: 24px 24px 32px; box-sizing: border-box">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px">
+<sc-if value="{{showCta}}" hint-placeholder-val="{{ true }}">
+<section style="padding: 36px; border-radius: 24px; background: linear-gradient(120deg, rgba(212,191,142,0.14), rgba(143,184,222,0.12)); border: 1px solid rgba(212,191,142,0.25); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap">
+<div><h2 style="margin: 0; font-family: Sora, sans-serif; font-weight: 600; font-size: 30px">¿Construimos algo confiable?</h2><p style="margin: 8px 0 0; color: #9AA3B2">Respondo en español o en inglés.</p></div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<a href="mailto:josejmvasquez@gmail.com" style="display: inline-flex; align-items: center; height: 50px; padding: 0 24px; border-radius: 999px; background: #E8EAF0; color: #0A0D14; font-weight: 600; text-decoration: none">Escríbeme a Gmail</a>
+<a href="Contact.dc.html" style="display: inline-flex; align-items: center; height: 50px; padding: 0 24px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); color: #E8EAF0; font-weight: 500; text-decoration: none">Ver todas las vías de contacto</a>
+</div>
+</section>
+</sc-if>
+<footer style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13px; color: #9AA3B2">
+<span>© 2026 José M. Vasquez · Cajicá, Colombia</span>
+<nav aria-label="Pie de página" style="display: flex; gap: 18px; flex-wrap: wrap">
+<a href="Experience.dc.html" style="color: #9AA3B2; text-decoration: none">Experiencia</a>
+<a href="Areas.dc.html" style="color: #9AA3B2; text-decoration: none">Áreas</a>
+<a href="Projects.dc.html" style="color: #9AA3B2; text-decoration: none">Proyectos</a>
+<a href="Contact.dc.html" style="color: #9AA3B2; text-decoration: none">Contacto</a>
+<a href="https://www.linkedin.com/in/josejmv/" style="color: #9AA3B2; text-decoration: none">LinkedIn</a>
+<a href="https://github.com/josejmv" style="color: #9AA3B2; text-decoration: none">GitHub</a>
+</nav>
+</footer>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"cta":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":460}}'>
+class Component extends DCLogic {
+renderVals() {
+return { showCta: this.props.cta ?? true };
+}
+}
+</script>
+</body>
+</html>
